@@ -1,6 +1,9 @@
 package co.valetapp;
 
 import android.content.Context;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -22,6 +25,7 @@ public class TimedFragment extends DynamicFragment {
 	ObjectAnimator countdownAnimator;
 	TextView hoursTextView, minutesTextView, secondsTextView;
 	long time;
+    Ringtone ringtone;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,7 +37,10 @@ public class TimedFragment extends DynamicFragment {
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		
+
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        ringtone  = RingtoneManager.getRingtone(getActivity().getApplicationContext(), notification);
+
 		countdownLinearLayout = (LinearLayout) view.findViewById(R.id.countdown_linear_layout);
 		hoursTextView = (TextView) view.findViewById(R.id.hours_text_view);
 		minutesTextView = (TextView) view.findViewById(R.id.minutes_text_view);
@@ -56,6 +63,8 @@ public class TimedFragment extends DynamicFragment {
 			minutesTextView.setText("00");
 			secondsTextView.setText("00");
 			countdownAnimator.start();
+
+            ringtone.play();
 		}
 		else {
 			new CountDownTimer(millisInFuture, 1000) {
@@ -71,18 +80,27 @@ public class TimedFragment extends DynamicFragment {
 						if (hours.length() == 1) hours = "0" + hours;
 						millisUntilFinished %= HOUR;
 					}
+                    else {
+                        hours = "00";
+                    }
 					
 					if (millisUntilFinished >= MINUTE) {
 						minutes = Long.toString(millisUntilFinished / MINUTE);
 						if (minutes.length() == 1) minutes = "0" + minutes;
 						millisUntilFinished %= MINUTE;
 					}
+                    else {
+                        minutes = "00";
+                    }
 					
 					if (millisUntilFinished > SECOND) {
 						seconds = Long.toString(millisUntilFinished / SECOND);
 						if (seconds.length() == 1) seconds = "0" + seconds;
 						millisUntilFinished %= SECOND;
 					}
+                    else {
+                        seconds = "00";
+                    }
 					
 					secondsTextView.setText(seconds);
 					minutesTextView.setText(minutes);
@@ -98,6 +116,8 @@ public class TimedFragment extends DynamicFragment {
 					secondsTextView.setText("00");
 					
 					countdownAnimator.start();
+
+                    ringtone.play();
 				}
 			}.start();
 		}
@@ -110,5 +130,9 @@ public class TimedFragment extends DynamicFragment {
 		if (countdownAnimator.isRunning()) {
 			countdownAnimator.end();
 		}
+
+        if (ringtone.isPlaying()) {
+            ringtone.stop();
+        }
 	}
 }

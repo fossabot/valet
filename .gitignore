@@ -11,6 +11,7 @@
 # generated files
 bin/
 gen/
+out/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -24,12 +25,11 @@ proguard/
 
 # Intellij workspace file
 .idea/workspace.xml
-out/
 
 #OSX
 .DS_Store
+
+#Proguard
 client/proguard_logs/dump.txt
-
 client/proguard_logs/mapping.txt
-
 client/proguard_logs/usage.txt

@@ -49,12 +49,19 @@
     </orderEntry>
     <orderEntry type="module" module-name="google-play-services_lib" />
     <orderEntry type="module" module-name="nine-old-androids" />
-    <orderEntry type="module" module-name="view-pager-indicator" />
-    <orderEntry type="module" module-name="mulsellistperfcompat" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/libs/Parse-1.1.16.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/crittercism_v3_0_7_sdkonly.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

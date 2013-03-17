@@ -1,5 +1,7 @@
 package co.valetapp;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,11 +22,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import co.valetapp.BarFragment.BarItem;
 import co.valetapp.InfoFragment.GeoCoderAsyncTask;
-import co.valetapp.bluetooth.BluetoothActivity;
 import com.android.vending.billing.util.IabHelper;
 import com.android.vending.billing.util.IabResult;
 import com.android.vending.billing.util.Inventory;
 import com.android.vending.billing.util.Purchase;
+import com.crittercism.app.Crittercism;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdate;
@@ -41,6 +43,7 @@ import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.parse.Parse;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 
 import java.util.List;
@@ -99,7 +102,12 @@ public class ParkActivity extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Crittercism.init(getApplicationContext(), "5145fe5c4002050d07000002");
         Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
+
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         criteria = new Criteria();
@@ -165,7 +173,6 @@ public class ParkActivity extends FragmentActivity
 
         hideMap();
 
-
         iabHelper = new IabHelper(this, Const.IAB_KEY);
         iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             public void onIabSetupFinished(IabResult result) {
@@ -201,11 +208,11 @@ public class ParkActivity extends FragmentActivity
     }
 
     private void saveData() {
+        ParseGeoPoint point = new ParseGeoPoint(Double.parseDouble(prefs.getString(Const.LAT_KEY, "")), Double.parseDouble(prefs.getString(Const.LONG_KEY, "")));
         ParseObject park = new ParseObject("Park");
-        park.put("latitude", Double.parseDouble(prefs.getString(Const.LAT_KEY, "")));
-        park.put("longitude", Double.parseDouble(prefs.getString(Const.LONG_KEY, "")));
+        park.put("location", point);
         park.put("time", prefs.getLong(Const.TIME_KEY, 0));
-        park.saveInBackground();
+        park.saveEventually();
     }
 
     private void hideMap() {
@@ -570,11 +577,14 @@ public class ParkActivity extends FragmentActivity
 
         Editor editor = getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).edit();
 
+        long time;
         DynamicFragment scheduleFragment = (DynamicFragment) getSupportFragmentManager().findFragmentById(R.id.dynamic_fl);
         if (scheduleFragment instanceof TimerFragment) {
-            editor.putLong(Const.TIME_KEY, ((TimerFragment) scheduleFragment).getTime());
+            time = ((TimerFragment) scheduleFragment).getTime();
+            editor.putLong(Const.TIME_KEY, time);
         } else if (scheduleFragment instanceof AlarmFragment) {
-            editor.putLong(Const.TIME_KEY, ((AlarmFragment) scheduleFragment).getTime());
+            time =  ((AlarmFragment) scheduleFragment).getTime();
+            editor.putLong(Const.TIME_KEY, time);
 
         } else {
             return;
@@ -582,6 +592,11 @@ public class ParkActivity extends FragmentActivity
         editor.commit();
 
         saveData();
+
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent i = new Intent(this, ParkActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, i, 0);
+        am.set(AlarmManager.RTC_WAKEUP, time, pi);
 
         setState(State.TIMED);
     }
@@ -641,10 +656,6 @@ public class ParkActivity extends FragmentActivity
                 finish();
             } else {
                 startActivity(getIntent());
-            }
-        } else if (requestCode == Const.REQUEST_ENABLE_BT) {
-            if (requestCode == RESULT_OK) {
-                startActivity(new Intent(this, BluetoothActivity.class));
             }
         }
     }
