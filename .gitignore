@@ -24,6 +24,7 @@ proguard/
 
 # Intellij workspace file
 .idea/workspace.xml
+out/
 
 #OSX
 .DS_Store

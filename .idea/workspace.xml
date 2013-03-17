@@ -9,6 +9,13 @@
         <option name="name" value="Valet" />
         <option name="pid" value="" />
       </filter>
+      <filter>
+        <option name="logLevel" value="verbose" />
+        <option name="logMessagePattern" value="parse" />
+        <option name="logTagPattern" value="" />
+        <option name="name" value="Parse" />
+        <option name="pid" value="" />
+      </filter>
     </filters>
   </component>
   <component name="AndroidDesignerProfile">
@@ -37,10 +44,13 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Valet" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Parse" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d006fa18-78a6-4dcc-838a-3916f3b617ad" name="Default" comment="" />
+    <list default="true" id="d006fa18-78a6-4dcc-838a-3916f3b617ad" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/valetapp/ParkActivity.java" afterPath="$PROJECT_DIR$/src/co/valetapp/ParkActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="Valet.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="$USER_HOME$/Downloads/JakeWharton-NineOldAndroids-9f20fd7/library/nine-old-androids.iml" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1362854630542" ignored="false" />
@@ -48,7 +58,7 @@
     <file path="/AboutActivity.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1362855466809" ignored="false" />
     <file path="/InfoFragment.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1362855560795" ignored="false" />
     <file path="/fragment.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363473376711" ignored="false" />
-    <file path="/ParkActivity.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363492675926" ignored="false" />
+    <file path="/ParkActivity.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363540917070" ignored="false" />
     <file path="/bluetooth_bar_item_selector.xml" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1362858986855" ignored="false" />
     <file path="/Settings.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1362942658749" ignored="false" />
     <file path="$PROJECT_DIR$/gen/co/valetapp/R.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363488587853" ignored="false" />
@@ -64,7 +74,7 @@
     <file path="/BarFragment.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363476570024" ignored="false" />
     <file path="/AutoInfoFragment.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363467493530" ignored="false" />
     <file path="/AutoSetFragment.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363488065398" ignored="false" />
-    <file path="/Dummy.txt" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363485859985" ignored="false" />
+    <file path="/Dummy.txt" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363540200215" ignored="false" />
     <file path="/auto_info_bar_item.xml" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363468467813" ignored="false" />
     <file path="/auto_info_bar_item_selector.xml" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363468181109" ignored="false" />
     <file path="/auto_set_bar_item.xml" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363476117035" ignored="false" />
@@ -158,15 +168,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ParkActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/co/valetapp/ParkActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="493" column="21" selection-start="16591" selection-end="16591" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="auto_strings.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/values/auto_strings.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -214,6 +215,11 @@
     <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/.keystore" />
     <option name="KEY_ALIAS" value="Valet" />
   </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
@@ -231,8 +237,8 @@
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/drawable/btn_check_holo_light.xml" />
         <option value="$PROJECT_DIR$/src/co/valetapp/Const.java" />
-        <option value="$PROJECT_DIR$/src/co/valetapp/ParkActivity.java" />
         <option value="$PROJECT_DIR$/res/values/auto_strings.xml" />
+        <option value="$PROJECT_DIR$/src/co/valetapp/ParkActivity.java" />
       </list>
     </option>
   </component>
@@ -243,7 +249,7 @@
     <option name="width" value="1920" />
     <option name="height" value="1080" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -399,9 +405,9 @@
     <property name="ExportedApkPath" value="$PROJECT_DIR$/valet.apk" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="preferences.sourceCode.XML" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="ExportedModule" value="valet" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/Parse-1.1.16.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -638,18 +644,18 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935324" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39900497" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298647" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39900497" sideWeight="0.59551764" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32935324" sideWeight="0.50053364" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935324" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935324" sideWeight="0.49786553" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24919957" sideWeight="0.6706468" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32935324" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32935324" sideWeight="0.49573106" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
@@ -841,7 +847,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/co/valetapp/ParkActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="493" column="21" selection-start="16591" selection-end="16591" vertical-scroll-proportion="0.0">
+        <state line="493" column="19" selection-start="16601" selection-end="16601" vertical-scroll-proportion="0.63033175">
           <folding />
         </state>
       </provider>
