@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     File created by the Android Action Bar Style Generator
+
+     Copyright (C) 2012 readyState Software Ltd
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+
+    <color name="default_pressed_background">#CCffffff</color>
+    <color name="default_focused_background">#AAffffff</color>
+    <color name="default_background">#00000000</color>
+    <color name="default_text">#ffffff</color>
+
+    <!--  -->
+    <color name="inverse_pressed_background">#CC000000</color>
+    <color name="inverse_focused_background">#AA000000</color>
+    <color name="inverse_background">#00000000</color>
+    <color name="inverse_spinner_background">#ffffff</color>
+    <color name="inverse_text">#000000</color>
+    <color name="timer_indicator_default">#00000000</color>
+    <color name="timer_indicator_selected">#ffffff</color>
+    
+    <color name="bluetooth_title_bar">#000000</color>
+
+</resources>

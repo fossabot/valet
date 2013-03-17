@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/co.valetapp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <co.valetapp.view.FontableTextView
+        android:id="@+id/address_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textColor="@color/default_text"
+        android:textSize="14sp"
+        app:font="Gotham-Medium.ttf" />
+
+    <co.valetapp.view.FontableTextView
+        android:id="@+id/distance_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:singleLine="true"
+        android:textColor="@color/default_text"
+        android:textSize="14sp"
+        app:font="Gotham-Medium.ttf" />
+
+</LinearLayout>

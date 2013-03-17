@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/co.valetapp"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@drawable/default_selector"
+    android:clickable="true"
+    android:onClick="onAlarmItem" >
+
+    <co.valetapp.view.FontableTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clickable="false"
+        android:gravity="center_vertical"
+        android:text="@string/alarm_bar_item"
+        android:textSize="18sp"
+        app:font="Gotham-Bold.ttf" />
+
+</FrameLayout>

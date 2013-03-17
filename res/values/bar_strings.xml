@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="park_bar_item">Park My Car</string>
+    <string name="reset_bar_item_cd">Unpark my car.</string>
+    <string name="find_bar_item_cd">Find my car.</string>
+    <string name="alarm_bar_item_cd">Set an alarm.</string>
+    <string name="timer_bar_item_cd">Set a timer.</string>
+    <string name="share_bar_item_cd">Share something about Valet.</string>
+    <string name="auto_bar_item_cd">Autopark with Bluetooth</string>
+    <string name="schedule_bar_item_cd">Schedule a parking reminder.</string>
+    <string name="set_bar_item">Set</string>
+    <string name="timer_bar_item">Timer</string>
+    <string name="alarm_bar_item">Alarm</string>
+    <string name="unpark_bar_item">Unpark My Car</string>
+    <string name="unschedule_bar_item">Reset</string>
+    <string name="locating_bar_item">Locating&#8230;</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="48dp"
+    android:layout_height="match_parent"
+    android:onClick="onAutoInfoItem"
+    android:src="@drawable/auto_info_bar_item_selector"
+    android:contentDescription="@string/auto_bar_item_cd"
+    android:background="@drawable/default_selector" />
