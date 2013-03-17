@@ -47,518 +47,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d006fa18-78a6-4dcc-838a-3916f3b617ad" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/crittercism_v3_0_7_sdkonly.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/co/valetapp/BootBroadcastReceiver.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/action-bar-sherlock.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/gen/com/actionbarsherlock/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/gen/com/actionbarsherlock/Manifest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/gen/com/actionbarsherlock/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/libs/android-support-v4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/project.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/color/abs__primary_text_disable_only_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/color/abs__primary_text_disable_only_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/color/abs__primary_text_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/color/abs__primary_text_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_bottom_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_bottom_solid_inverse_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_bottom_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_bottom_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_bottom_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_share_pack_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_share_pack_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_solid_shadow_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_stacked_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_stacked_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_stacked_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_stacked_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ab_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__btn_cab_done_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__btn_cab_done_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__btn_cab_done_focused_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__btn_cab_done_focused_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__btn_cab_done_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__btn_cab_done_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__cab_background_bottom_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__cab_background_bottom_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__cab_background_top_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__cab_background_top_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__dialog_full_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__dialog_full_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_ab_back_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_ab_back_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_cab_done_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_cab_done_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_clear_disabled.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_clear_normal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_clear_search_api_disabled_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_clear_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_go.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_go_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_menu_moreoverflow_normal_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_menu_moreoverflow_normal_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_menu_share_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_voice_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__ic_voice_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__list_activated_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__list_divider_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__list_divider_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__list_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__list_longpressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__list_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__list_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__list_selector_disabled_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__list_selector_disabled_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__menu_dropdown_panel_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__menu_dropdown_panel_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__progress_bg_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__progress_bg_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__progress_primary_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__progress_primary_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__progress_secondary_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__progress_secondary_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__spinner_48_inner_holo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__spinner_48_outer_holo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__spinner_ab_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__spinner_ab_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__spinner_ab_disabled_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__spinner_ab_disabled_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__spinner_ab_focused_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__spinner_ab_focused_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__spinner_ab_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__spinner_ab_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__tab_selected_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__tab_selected_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__tab_selected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__tab_unselected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__textfield_search_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__textfield_search_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__textfield_search_right_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__textfield_search_right_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__textfield_search_right_selected_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__textfield_search_right_selected_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__textfield_search_selected_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-hdpi/abs__textfield_search_selected_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_bottom_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_bottom_solid_inverse_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_bottom_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_bottom_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_bottom_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_share_pack_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_share_pack_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_solid_shadow_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_stacked_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_stacked_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_stacked_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_stacked_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ab_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__btn_cab_done_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__btn_cab_done_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__btn_cab_done_focused_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__btn_cab_done_focused_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__btn_cab_done_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__btn_cab_done_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__cab_background_bottom_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__cab_background_bottom_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__cab_background_top_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__cab_background_top_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__dialog_full_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__dialog_full_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_ab_back_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_ab_back_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_cab_done_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_cab_done_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_clear_disabled.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_clear_normal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_clear_search_api_disabled_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_clear_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_go.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_go_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_menu_moreoverflow_normal_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_menu_moreoverflow_normal_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_menu_share_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_voice_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__ic_voice_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__list_activated_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__list_divider_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__list_divider_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__list_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__list_longpressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__list_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__list_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__list_selector_disabled_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__list_selector_disabled_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__menu_dropdown_panel_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__menu_dropdown_panel_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__progress_bg_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__progress_bg_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__progress_primary_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__progress_primary_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__progress_secondary_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__progress_secondary_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__spinner_48_inner_holo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__spinner_48_outer_holo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__spinner_ab_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__spinner_ab_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__spinner_ab_disabled_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__spinner_ab_disabled_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__spinner_ab_focused_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__spinner_ab_focused_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__spinner_ab_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__spinner_ab_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__tab_selected_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__tab_selected_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__tab_selected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__tab_unselected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__textfield_search_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__textfield_search_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__textfield_search_right_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__textfield_search_right_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__textfield_search_right_selected_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__textfield_search_right_selected_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__textfield_search_selected_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-mdpi/abs__textfield_search_selected_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-v11/abs__progress_medium_holo.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_bottom_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_bottom_solid_inverse_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_bottom_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_bottom_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_bottom_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_share_pack_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_share_pack_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_solid_shadow_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_stacked_solid_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_stacked_solid_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_stacked_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_stacked_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_transparent_dark_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ab_transparent_light_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__btn_cab_done_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__btn_cab_done_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__btn_cab_done_focused_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__btn_cab_done_focused_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__btn_cab_done_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__btn_cab_done_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__cab_background_bottom_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__cab_background_bottom_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__cab_background_top_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__cab_background_top_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__dialog_full_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__dialog_full_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_ab_back_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_ab_back_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_cab_done_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_cab_done_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_clear_disabled.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_clear_search_api_disabled_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_clear_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_go.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_go_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_menu_moreoverflow_normal_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_menu_moreoverflow_normal_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_menu_share_holo_dark.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_menu_share_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_voice_search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__ic_voice_search_api_holo_light.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__list_activated_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__list_divider_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__list_divider_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__list_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__list_longpressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__list_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__list_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__list_selector_disabled_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__list_selector_disabled_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__menu_dropdown_panel_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__menu_dropdown_panel_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__progress_bg_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__progress_bg_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__progress_primary_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__progress_primary_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__progress_secondary_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__progress_secondary_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__spinner_48_inner_holo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__spinner_48_outer_holo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__spinner_ab_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__spinner_ab_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__spinner_ab_disabled_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__spinner_ab_disabled_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__spinner_ab_focused_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__spinner_ab_focused_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__spinner_ab_pressed_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__spinner_ab_pressed_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__tab_selected_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__tab_selected_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__tab_selected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__tab_unselected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__textfield_search_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__textfield_search_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__textfield_search_right_default_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__textfield_search_right_default_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__textfield_search_right_selected_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__textfield_search_right_selected_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__textfield_search_selected_holo_dark.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable-xhdpi/abs__textfield_search_selected_holo_light.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__activated_background_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__activated_background_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__btn_cab_done_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__btn_cab_done_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__ic_clear.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__ic_clear_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__ic_menu_moreoverflow_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__ic_menu_moreoverflow_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__item_background_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__item_background_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__list_selector_background_transition_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__list_selector_background_transition_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__list_selector_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__list_selector_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__progress_horizontal_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__progress_horizontal_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__progress_medium_holo.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__search_dropdown_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__search_dropdown_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__spinner_ab_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__spinner_ab_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__tab_indicator_ab_holo.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__textfield_searchview_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__textfield_searchview_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__textfield_searchview_right_holo_dark.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/drawable/abs__textfield_searchview_right_holo_light.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout-large/abs__action_mode_close_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout-v14/sherlock_spinner_dropdown_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout-v14/sherlock_spinner_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout-xlarge/abs__screen_action_bar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout-xlarge/abs__screen_action_bar_overlay.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__action_bar_home.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__action_bar_tab.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__action_bar_tab_bar_view.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__action_bar_title_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__action_menu_item_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__action_menu_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__action_mode_bar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__action_mode_close_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__activity_chooser_view.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__activity_chooser_view_list_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__dialog_title_holo.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__list_menu_item_checkbox.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__list_menu_item_icon.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__list_menu_item_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__list_menu_item_radio.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__popup_menu_item_layout.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__screen_action_bar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__screen_action_bar_overlay.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__screen_simple.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__screen_simple_overlay_action_mode.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__search_dropdown_item_icons_2line.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__search_view.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/abs__simple_dropdown_hint.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/sherlock_spinner_dropdown_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/layout/sherlock_spinner_item.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-land/abs__dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-large-hdpi-1024x600/abs__dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-large-land-hdpi-1024x600/abs__dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-large-land-mdpi-1024x600/abs__dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-large-mdpi-1024x600/abs__dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-large/abs__dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-sw600dp/abs__bools.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-sw600dp/abs__dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-v11/abs__themes.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-v14/abs__styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-v14/abs__themes.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-w360dp/abs__dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-w480dp/abs__bools.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-w480dp/abs__config.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-w500dp/abs__dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-w600dp/abs__dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values-xlarge/abs__dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values/abs__attrs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values/abs__bools.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values/abs__colors.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values/abs__config.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values/abs__dimens.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values/abs__ids.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values/abs__strings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values/abs__styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/res/values/abs__themes.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/android/support/v4/app/Watson.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/ActionBarSherlock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/app/ActionBar.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/app/SherlockActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/app/SherlockDialogFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/app/SherlockExpandableListActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/app/SherlockFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/app/SherlockFragmentActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/app/SherlockListActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/app/SherlockListFragment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/app/SherlockPreferenceActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/ActionBarSherlockCompat.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/ActionBarSherlockNative.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/ResourcesCompat.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/app/ActionBarImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/app/ActionBarWrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/Animator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/AnimatorListenerAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/AnimatorSet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/FloatEvaluator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/FloatKeyframeSet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/IntEvaluator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/IntKeyframeSet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/Keyframe.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/KeyframeSet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/ObjectAnimator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/PropertyValuesHolder.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/TypeEvaluator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/animation/ValueAnimator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/view/NineViewGroup.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/view/animation/AnimatorProxy.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/widget/NineFrameLayout.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/widget/NineHorizontalScrollView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/nineoldandroids/widget/NineLinearLayout.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/ActionProviderWrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/StandaloneActionMode.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/View_HasStateListenerSupport.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/View_OnAttachStateChangeListener.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/ActionMenu.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/ActionMenuItem.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/ActionMenuItemView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/ActionMenuPresenter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/ActionMenuView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/BaseMenuPresenter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/ListMenuItemView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/MenuBuilder.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/MenuItemImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/MenuItemWrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/MenuPopupHelper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/MenuPresenter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/MenuView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/MenuWrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/SubMenuBuilder.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/view/menu/SubMenuWrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/AbsActionBarView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/ActionBarContainer.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/ActionBarContextView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/ActionBarView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/CapitalizingButton.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/CapitalizingTextView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/CollapsibleActionViewWrapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/FakeDialogPhoneWindow.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/IcsAbsSpinner.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/IcsAdapterView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/IcsColorDrawable.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/IcsLinearLayout.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/IcsListPopupWindow.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/IcsProgressBar.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/IcsSpinner.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/IcsView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/internal/widget/ScrollingTabContainerView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/view/ActionMode.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/view/ActionProvider.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/view/CollapsibleActionView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/view/Menu.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/view/MenuInflater.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/view/MenuItem.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/view/SubMenu.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/view/Window.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/widget/ActivityChooserModel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/widget/ActivityChooserView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/widget/SearchView.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/widget/ShareActionProvider.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/action-bar-sherlock/src/com/actionbarsherlock/widget/SuggestionsAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/.classpath" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/.project" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/.settings/org.eclipse.jdt.core.prefs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/assets/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/internal_src/com/h6ah4i/android/compat/content/EditorCompatImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/internal_src/com/h6ah4i/android/compat/content/EditorCompatImplGB.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/internal_src/com/h6ah4i/android/compat/content/EditorCompatImplHoneycomb.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/internal_src/com/h6ah4i/android/compat/content/SharedPreferencesCompatImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/internal_src/com/h6ah4i/android/compat/content/SharedPreferencesCompatImplGB.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/internal_src/com/h6ah4i/android/compat/content/SharedPreferencesCompatImplHoneycomb.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/internal_src/com/h6ah4i/android/compat/preference/PreferenceCompatImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/internal_src/com/h6ah4i/android/compat/preference/PreferenceCompatImplGB.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/internal_src/com/h6ah4i/android/compat/preference/PreferenceCompatImplHoneycomb.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/internal_src/com/h6ah4i/android/compat/utils/SharedPreferencesJsonStringSetWrapperUtils.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/libs/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/mulsellistperfcompat.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/proguard-project.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/project.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/res/values/attrs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/src/com/h6ah4i/android/compat/content/SharedPreferenceCompat.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/src/com/h6ah4i/android/compat/preference/MultiSelectListPreferenceCompat.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/mulsellistperfcompat/src/com/h6ah4i/android/compat/preference/PreferenceCompat.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/gen/com/viewpagerindicator/BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/gen/com/viewpagerindicator/Manifest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/gen/com/viewpagerindicator/R.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/project.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/color/vpi__dark_theme.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/color/vpi__light_theme.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-hdpi/vpi__tab_selected_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-hdpi/vpi__tab_selected_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-hdpi/vpi__tab_selected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-hdpi/vpi__tab_unselected_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-hdpi/vpi__tab_unselected_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-hdpi/vpi__tab_unselected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-mdpi/vpi__tab_selected_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-mdpi/vpi__tab_selected_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-mdpi/vpi__tab_selected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-mdpi/vpi__tab_unselected_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-mdpi/vpi__tab_unselected_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-mdpi/vpi__tab_unselected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-xhdpi/vpi__tab_selected_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-xhdpi/vpi__tab_selected_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-xhdpi/vpi__tab_selected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-xhdpi/vpi__tab_unselected_focused_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-xhdpi/vpi__tab_unselected_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable-xhdpi/vpi__tab_unselected_pressed_holo.9.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/drawable/vpi__tab_indicator.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/values/vpi__attrs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/values/vpi__colors.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/values/vpi__defaults.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/res/values/vpi__styles.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/src/com/viewpagerindicator/CirclePageIndicator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/src/com/viewpagerindicator/IconPageIndicator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/src/com/viewpagerindicator/IconPagerAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/src/com/viewpagerindicator/IcsLinearLayout.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/src/com/viewpagerindicator/LinePageIndicator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/src/com/viewpagerindicator/PageIndicator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/src/com/viewpagerindicator/TabPageIndicator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/src/com/viewpagerindicator/TitlePageIndicator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/src/com/viewpagerindicator/UnderlinePageIndicator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/apklibs/view-pager-indicator/view-pager-indicator.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/co/valetapp/Settings.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/co/valetapp/bluetooth/BluetoothActivity.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/valet.apk" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/valetapp/ParkActivity.java" afterPath="$PROJECT_DIR$/src/co/valetapp/ParkActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/co/valetapp/TimedFragment.java" afterPath="$PROJECT_DIR$/src/co/valetapp/TimedFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/valet.iml" afterPath="$PROJECT_DIR$/valet.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Valet.iws" />
@@ -602,6 +91,7 @@
     <file path="/AlarmReceiver.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363543776481" ignored="false" />
     <file path="/BootReceiver.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363543977070" ignored="false" />
     <file path="/TimedFragment.java" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363544670412" ignored="false" />
+    <file path="/.gitignore" changelist="d006fa18-78a6-4dcc-838a-3916f3b617ad" time="1363545832447" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -678,7 +168,7 @@
       <file leaf-file-name="ParkActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/co/valetapp/ParkActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="110" column="0" selection-start="4118" selection-end="4118" vertical-scroll-proportion="0.0">
+            <state line="76" column="16" selection-start="3047" selection-end="3047" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -689,7 +179,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="2" selection-start="117" selection-end="117" vertical-scroll-proportion="0.30650154">
+            <state line="14" column="0" selection-start="130" selection-end="130" vertical-scroll-proportion="0.39009288">
               <folding />
             </state>
           </provider>
@@ -717,7 +207,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/co/valetapp/BarFragment.java" />
         <option value="$PROJECT_DIR$/res/layout/bluetooh_bar_item.xml" />
         <option value="$PROJECT_DIR$/res/layout/auto_set_fragment.xml" />
         <option value="$PROJECT_DIR$/res/layout/bluetooth_check_box.xml" />
@@ -733,6 +222,7 @@
         <option value="$PROJECT_DIR$/src/co/valetapp/TimedFragment.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/co/valetapp/ParkActivity.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -848,7 +338,7 @@
   <component name="PropertiesComponent">
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/co/valetapp" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -1293,7 +783,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/co/valetapp/ParkActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="0" selection-start="4118" selection-end="4118" vertical-scroll-proportion="0.0">
+        <state line="76" column="16" selection-start="3047" selection-end="3047" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1302,7 +792,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="2" selection-start="117" selection-end="117" vertical-scroll-proportion="0.30650154">
+        <state line="14" column="0" selection-start="130" selection-end="130" vertical-scroll-proportion="0.39009288">
           <folding />
         </state>
       </provider>
