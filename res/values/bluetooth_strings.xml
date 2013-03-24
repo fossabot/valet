@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="empty_text_view">You have no paired Bluetooh devices.</string>
-    <string name="pair_button">Pair Device</string>
-    <string name="title_text_view">Select your car\'s Bluetooth device.</string>
-    <string name="subtitle_text_view">Your car is parked when your phone disconnects.</string>
-    
-</resources>

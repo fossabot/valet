@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="pref_auto_park_title">Auto Park</string>
-    <string name="pref_auto_park_on">Parked when you exit your car</string>
-    <string name="pref_auto_park_off">Manually park your car</string>
-    <string name="pref_bluetooth">Bluetooth</string>
-    <string name="pref_bluetooth_summ">Must be on for Auto Park</string>
-</resources>
