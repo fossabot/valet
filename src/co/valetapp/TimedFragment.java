@@ -7,9 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.PowerManager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,6 +24,7 @@ public class TimedFragment extends DynamicFragment {
     long time;
     Ringtone ringtone;
     PowerManager.WakeLock wl;
+    CountDownTimer countDownTimer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,7 +41,7 @@ public class TimedFragment extends DynamicFragment {
         ringtone = RingtoneManager.getRingtone(getActivity().getApplicationContext(), notification);
 
         PowerManager pm = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
-        wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "");
+        wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Valet");
 
         countdownLinearLayout = (LinearLayout) view.findViewById(R.id.countdown_linear_layout);
         hoursTextView = (TextView) view.findViewById(R.id.hours_text_view);
@@ -58,71 +57,70 @@ public class TimedFragment extends DynamicFragment {
     @Override
     public void onResume() {
         super.onResume();
+
         long millisInFuture = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE)
                 .getLong(Const.TIME_KEY, 0) - System.currentTimeMillis();
 
-        if (millisInFuture < 0) {
-            alarm();
-        } else {
-            new CountDownTimer(millisInFuture, 1000) {
+        countDownTimer = new CountDownTimer(millisInFuture, 1000) {
 
-                @Override
-                public void onTick(long millisUntilFinished) {
+            @Override
+            public void onTick(long millisUntilFinished) {
 
 
-                    String hours = null, minutes = null, seconds = null;
+                String hours = null, minutes = null, seconds = null;
 
-                    if (millisUntilFinished >= HOUR) {
-                        hours = Long.toString(millisUntilFinished / HOUR);
-                        if (hours.length() == 1) hours = "0" + hours;
-                        millisUntilFinished %= HOUR;
-                    } else {
-                        hours = "00";
-                    }
-
-                    if (millisUntilFinished >= MINUTE) {
-                        minutes = Long.toString(millisUntilFinished / MINUTE);
-                        if (minutes.length() == 1) minutes = "0" + minutes;
-                        millisUntilFinished %= MINUTE;
-                    } else {
-                        minutes = "00";
-                    }
-
-                    if (millisUntilFinished > SECOND) {
-                        seconds = Long.toString(millisUntilFinished / SECOND);
-                        if (seconds.length() == 1) seconds = "0" + seconds;
-                        millisUntilFinished %= SECOND;
-                    } else {
-                        seconds = "00";
-                    }
-
-                    secondsTextView.setText(seconds);
-                    minutesTextView.setText(minutes);
-                    hoursTextView.setText(hours);
-
-                    time = millisUntilFinished;
+                if (millisUntilFinished >= HOUR) {
+                    hours = Long.toString(millisUntilFinished / HOUR);
+                    if (hours.length() == 1) hours = "0" + hours;
+                    millisUntilFinished %= HOUR;
+                } else {
+                    hours = "00";
                 }
 
-                @Override
-                public void onFinish() {
-                    alarm();
+                if (millisUntilFinished >= MINUTE) {
+                    minutes = Long.toString(millisUntilFinished / MINUTE);
+                    if (minutes.length() == 1) minutes = "0" + minutes;
+                    millisUntilFinished %= MINUTE;
+                } else {
+                    minutes = "00";
                 }
-            }.start();
-        }
+
+                if (millisUntilFinished > SECOND) {
+                    seconds = Long.toString(millisUntilFinished / SECOND);
+                    if (seconds.length() == 1) seconds = "0" + seconds;
+                    millisUntilFinished %= SECOND;
+                } else {
+                    seconds = "00";
+                }
+
+                secondsTextView.setText(seconds);
+                minutesTextView.setText(minutes);
+                hoursTextView.setText(hours);
+
+                time = millisUntilFinished;
+            }
+
+            @Override
+            public void onFinish() {
+                alarm();
+            }
+        }.start();
     }
 
     private void alarm() {
+        String action = getActivity().getIntent().getAction();
+        if (action != null && action.equals(Const.ACTION_ALARM)) {
+            ((ParkActivity) getActivity()).setState(ParkActivity.State.UNSCHEDULE);
+            ringtone.play();
+        }
+
+        // TODO don't make the alarm ring twice if the user is viewing the TimedFragment already
+
         hoursTextView.setText("00");
         minutesTextView.setText("00");
         secondsTextView.setText("00");
 
         countdownAnimator.start();
-
-        wl.acquire();
-        ringtone.play();
-
-       ((ParkActivity) getActivity()).setState(ParkActivity.State.UNSCHEDULE);
-
     }
 
     @Override
@@ -137,6 +135,7 @@ public class TimedFragment extends DynamicFragment {
             ringtone.stop();
         }
 
-        if (wl.isHeld()) wl.release();
+        countDownTimer.cancel();
+        countDownTimer = null;
     }
 }

@@ -10,10 +10,10 @@
 	<string name="share_extra_html_text_parked_anchor">here</string>
 	<string name="share_intent_chooser_title">Share</string>
 	<string name="find_intent_chooser_title">Find</string>
-	<string name="user_marker_title">You Are Here</string>
-	<string name="vehicle_marker_title">Your Vehicle</string>
+	<string name="vehicle_marker_title">Your Car</string>
 	<string name="accuracy_abbreviation">accy</string>
-	<string name="meter_abbreviation">m</string>
+    <string name="mile_abbreviation">mi</string>
+    <string name="kilometer_abbreviation">km</string>
 	<string name="pm">PM</string>
 	<string name="am">AM</string>
 	<string name="at">at</string>
@@ -28,7 +28,7 @@
 	<string name="location_dialog_positive_button">Yes</string>
 	<string name="location_dialog_negative_button">No</string>
 	<string name="no_location_message">Valet requires GPS to park your car.</string>
-	<string name="reset_dialog_message">Reset your vehicle\'s location?</string>
+	<string name="reset_dialog_message">Reset your car\'s location?</string>
 	<string name="reset_dialog_positive_button">Yes</string>
 	<string name="reset_dialog_no_button">No</string>
 	

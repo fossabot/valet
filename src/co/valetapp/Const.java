@@ -21,10 +21,9 @@ public class Const {
     public static final String KEY_5 = "XOAZg9o1q0QV+LNFnwIDAQAB";
     public static final String IAB_KEY = Const.KEY_1 + Const.KEY_2 + Const.KEY_3 + Const.KEY_4 + Const.KEY_5;
     public static final String SKU_AUTO_PARK = "android.test.purchased";
-
+    public static final String TAG = "Valet";
+    public static final String ACTION_ALARM = "co.valetapp.alarm";
 
     private Const() {
     }
-
-    ;
 }

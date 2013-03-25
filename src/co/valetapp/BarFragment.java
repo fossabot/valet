@@ -26,7 +26,7 @@ public class BarFragment extends Fragment {
 		TIMER(R.layout.timer_bar_item),
 		ALARM(R.layout.alarm_bar_item),
 		SET(R.layout.set_bar_item),
-        BLUETOOTH(R.layout.bluetooh_bar_item);
+        BLUETOOTH(R.layout.bluetooth_bar_item);
 
 		final int mResourceId;
 		BarItem(int resourceId) {

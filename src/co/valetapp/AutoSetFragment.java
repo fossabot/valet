@@ -7,11 +7,13 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -34,33 +36,46 @@ public class AutoSetFragment extends DynamicFragment {
 
         int count = 0;
         Set<BluetoothDevice> bondedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
-        for (BluetoothDevice bluetoothDevice : bondedDevices) {
-
-            CheckBox cb = new CheckBox(getActivity());
+        if (bondedDevices.size() == 0) {
+            TextView tv = new TextView(getActivity());
             Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Gotham-Medium.ttf");
-            cb.setTypeface(typeface);
-            cb.setTextColor(Color.WHITE);
-            cb.setText(bluetoothDevice.getName());
-            cb.setTag(bluetoothDevice.getAddress());
+            tv.setTypeface(typeface);
+            tv.setTextColor(Color.WHITE);
+            tv.setText(R.string.no_bluetooth);
+            one.addView(tv);
 
-            SharedPreferences prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
-            Set<String> addresses = prefs.getStringSet(Const.BLUETOOTH_KEY, null);
-            if (addresses != null) {
-                for (String address : addresses) {
-                    if (address.equals(cb.getTag())) {
-                        cb.setChecked(true);
+            // TODO make the TextView center in the TableRow
+        }
+        else {
+            for (BluetoothDevice bluetoothDevice : bondedDevices) {
+
+                CheckBox cb = new CheckBox(getActivity());
+                Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Gotham-Medium.ttf");
+                cb.setTypeface(typeface);
+                cb.setTextColor(Color.WHITE);
+                cb.setText(bluetoothDevice.getName());
+                cb.setTag(bluetoothDevice.getAddress());
+
+                SharedPreferences prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
+                Set<String> addresses = prefs.getStringSet(Const.BLUETOOTH_KEY, null);
+                if (addresses != null) {
+                    for (String address : addresses) {
+                        if (address.equals(cb.getTag())) {
+                            cb.setChecked(true);
+                        }
                     }
                 }
+
+                if (count % 2 == 0) {
+                    one.addView(cb);
+
+                } else {
+                    two.addView(cb);
+                }
+
+                count++;
             }
 
-            if (count % 2 == 0) {
-                one.addView(cb);
-
-            } else {
-                two.addView(cb);
-            }
-
-            count++;
         }
     }
 
