@@ -13,6 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.nineoldandroids.animation.ObjectAnimator;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class TimedFragment extends DynamicFragment {
     private static final int SECOND = 1000;
     private static final int MINUTE = 60 * SECOND;
@@ -20,7 +24,7 @@ public class TimedFragment extends DynamicFragment {
     private static final int DAY = 24 * HOUR;
     LinearLayout countdownLinearLayout;
     ObjectAnimator countdownAnimator;
-    TextView hoursTextView, minutesTextView, secondsTextView;
+    TextView hoursTextView, minutesTextView, secondsTextView, dateTextView;
     long time;
     Ringtone ringtone;
     PowerManager.WakeLock wl;
@@ -47,6 +51,7 @@ public class TimedFragment extends DynamicFragment {
         hoursTextView = (TextView) view.findViewById(R.id.hours_text_view);
         minutesTextView = (TextView) view.findViewById(R.id.minutes_text_view);
         secondsTextView = (TextView) view.findViewById(R.id.seconds_text_view);
+        dateTextView = (TextView) view.findViewById(R.id.dateTextView);
 
         countdownAnimator = ObjectAnimator.ofFloat(countdownLinearLayout, "alpha", 1f, 0f, 1f);
         countdownAnimator.setRepeatCount(Animation.INFINITE);
@@ -58,8 +63,12 @@ public class TimedFragment extends DynamicFragment {
     public void onResume() {
         super.onResume();
 
-        long millisInFuture = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE)
-                .getLong(Const.TIME_KEY, 0) - System.currentTimeMillis();
+        long timeInMillis = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).getLong(Const.TIME_KEY, 0);
+
+        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date(timeInMillis));
+        dateTextView.setText(currentDateTimeString);
+
+        long millisInFuture = timeInMillis - System.currentTimeMillis();
 
         countDownTimer = new CountDownTimer(millisInFuture, 1000) {
 
@@ -71,7 +80,7 @@ public class TimedFragment extends DynamicFragment {
 
                 if (millisUntilFinished >= HOUR) {
                     hours = Long.toString(millisUntilFinished / HOUR);
-                    if (hours.length() == 1) hours = "0" + hours;
+//                    if (hours.length() == 1) hours = "0" + hours;
                     millisUntilFinished %= HOUR;
                 } else {
                     hours = "00";
