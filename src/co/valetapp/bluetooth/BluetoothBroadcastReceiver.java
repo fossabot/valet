@@ -19,14 +19,10 @@ public class BluetoothBroadcastReceiver extends BroadcastReceiver {
         if (prefs.contains(Const.BLUETOOTH_KEY)) {
             if (intent.getAction().equals(BluetoothDevice.ACTION_ACL_DISCONNECTED)) {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                Set<String> addresses = prefs.getStringSet(Const.BLUETOOTH_KEY, null);
-                if (addresses != null) {
-                    for (String address : addresses) {
-                        if (address.equals(device.getAddress())) {
-                            context.startService(new Intent(context, LocationService.class));
-
-                            break;
-                        }
+                if (prefs.contains(Const.BLUETOOTH_KEY)) {
+                    String address = prefs.getString(Const.BLUETOOTH_KEY, "");
+                    if (address.equals(device.getAddress())) {
+                        context.startService(new Intent(context, LocationService.class));
                     }
                 }
             }

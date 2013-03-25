@@ -17,6 +17,7 @@ import android.os.IBinder;
 
 public class LocationService extends Service implements LocationListener {
 	private LocationManager locationManager;
+    private Location location;
 
     Runnable timeout = new Runnable() {
         @Override
@@ -54,19 +55,21 @@ public class LocationService extends Service implements LocationListener {
 	@Override
 	public void onLocationChanged(Location location) {
 		if (location.getAccuracy() != 0.0f && location.getAccuracy() < Const.MIN_ACCURACY) {
-			Editor editor = getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).edit();
-			editor.putString(Const.LAT_KEY, Double.toString(location.getLatitude()));
-			editor.putString(Const.LONG_KEY, Double.toString(location.getLongitude()));
-			editor.commit();
-			
-			stopSelf();
+			stopSelf(); // Calls onDestroy()
 		}
+
+        this.location = location;
 	}
 	
 	@Override
 	public void onDestroy() {
 		locationManager.removeUpdates(this);
 		handler.removeCallbacks(timeout);
+
+        Editor editor = getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).edit();
+        editor.putString(Const.LAT_KEY, Double.toString(location.getLatitude()));
+        editor.putString(Const.LONG_KEY, Double.toString(location.getLongitude()));
+        editor.commit();
 
 		super.onDestroy();
 	}

@@ -4,23 +4,23 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.TableRow;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class AutoSetFragment extends DynamicFragment {
 
-    TableRow one, two;
+    Spinner bluetoothSpinner;
+    TextView bluetoothTextView;
+    SharedPreferences prefs;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,66 +31,65 @@ public class AutoSetFragment extends DynamicFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        one = (TableRow) view.findViewById(R.id.tableRowOne);
-        two = (TableRow) view.findViewById(R.id.tableRowTwo);
+        bluetoothSpinner = (Spinner) view.findViewById(R.id.bluetoothSpinner);
+        bluetoothTextView = (TextView) view.findViewById(R.id.bluetoothTextView);
 
-        int count = 0;
+        prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
         Set<BluetoothDevice> bondedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
         if (bondedDevices.size() == 0) {
-            TextView tv = new TextView(getActivity());
-            Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Gotham-Medium.ttf");
-            tv.setTypeface(typeface);
-            tv.setTextColor(Color.WHITE);
-            tv.setText(R.string.no_bluetooth);
-            one.addView(tv);
+            bluetoothTextView.setText(R.string.no_bluetooth);
 
-            // TODO make the TextView center in the TableRow
-        }
-        else {
+        } else {
+            bluetoothTextView.setText(R.string.select_bluetooth);
+
+            List<MyBluetoothDevice> myBluetoothDevices = new ArrayList<MyBluetoothDevice>(bondedDevices.size());
             for (BluetoothDevice bluetoothDevice : bondedDevices) {
-
-                CheckBox cb = new CheckBox(getActivity());
-                Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Gotham-Medium.ttf");
-                cb.setTypeface(typeface);
-                cb.setTextColor(Color.WHITE);
-                cb.setText(bluetoothDevice.getName());
-                cb.setTag(bluetoothDevice.getAddress());
-
-                SharedPreferences prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
-                Set<String> addresses = prefs.getStringSet(Const.BLUETOOTH_KEY, null);
-                if (addresses != null) {
-                    for (String address : addresses) {
-                        if (address.equals(cb.getTag())) {
-                            cb.setChecked(true);
-                        }
-                    }
-                }
-
-                if (count % 2 == 0) {
-                    one.addView(cb);
-
-                } else {
-                    two.addView(cb);
-                }
-
-                count++;
+                myBluetoothDevices.add(new MyBluetoothDevice(bluetoothDevice.getName(), bluetoothDevice.getAddress()));
             }
 
+            ArrayAdapter<MyBluetoothDevice> adapter = new ArrayAdapter<MyBluetoothDevice>(getActivity(), R.layout.spinner_item, myBluetoothDevices);
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+            bluetoothSpinner.setAdapter(adapter);
+
+            if (prefs.contains(Const.BLUETOOTH_KEY)) {
+                String address = prefs.getString(Const.BLUETOOTH_KEY, "");
+                int i = 0;
+                for (MyBluetoothDevice myBluetoothDevice : myBluetoothDevices) {
+                    if (myBluetoothDevice.address.equals(address)) {
+                        bluetoothSpinner.setSelection(i);
+
+                        break;
+                    }
+
+                    i++;
+                }
+            }
         }
     }
 
     void save() {
-        Set<String> addresses = new HashSet<String>();
+        MyBluetoothDevice myBluetoothDevice = (MyBluetoothDevice) bluetoothSpinner.getSelectedItem();
+        prefs.edit().putString(Const.BLUETOOTH_KEY, myBluetoothDevice.address).commit();
+    }
 
-        for (int i = 0; i < one.getChildCount(); i++) {
-            addresses.add((String) one.getChildAt(i).getTag());
+    private class MyBluetoothDevice {
+
+        private final String name, address;
+
+        private MyBluetoothDevice(String n, String a) {
+            name = n;
+            address = a;
         }
 
-        for (int i = 0; i < two.getChildCount(); i++) {
-            addresses.add((String) two.getChildAt(i).getTag());
+        @Override
+        public String toString() {
+            return name;
         }
-
-        SharedPreferences.Editor editor = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).edit();
-        editor.putStringSet(Const.BLUETOOTH_KEY, addresses).commit();
     }
 }

@@ -9,7 +9,7 @@ public class Const {
     public static final String LAT_KEY = "co.valetapp.lat";
     public static final String LONG_KEY = "co.valetapp.long";
     public static final String TIME_KEY = "co.valetapp.time";
-    public static final String BLUETOOTH_KEY = "co.valetapp.bluetooth";
+    public static final String BLUETOOTH_KEY = "co.valetapp.bluetoothSpinner";
     public static final float METERS_TO_MILES = 0.00062137f;
     public static final long MS_IN_HOUR = 3600000;
     public static final long MS_IN_MINUTE = 60000;
