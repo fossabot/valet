@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="park_bar_item">Припаркуй мою машину.</string>
+    <string name="reset_bar_item_cd">Верни мою машину.</string>
+    <string name="find_bar_item_cd">Найди мою машину.</string>
+    <string name="alarm_bar_item_cd">Установить будильник.</string>
+    <string name="timer_bar_item_cd">Установить таймер.</string>
+    <string name="share_bar_item_cd">Отписаться о программе Валет.</string>
+    <string name="auto_bar_item_cd">Автопарковка с Блютус.</string>
+    <string name="schedule_bar_item_cd">Задать напоминание о парковке.</string>
+    <string name="set_bar_item">Задать</string>
+    <string name="timer_bar_item">Таймер</string>
+    <string name="alarm_bar_item">Будильник</string>
+    <string name="unpark_bar_item">Отпарковать мою машину</string>
+    <string name="unschedule_bar_item">Сброс</string>
+    <string name="locating_bar_item">Ищу&#8230;</string>
+</resources>

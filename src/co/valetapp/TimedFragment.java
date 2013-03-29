@@ -123,8 +123,6 @@ public class TimedFragment extends DynamicFragment {
             ringtone.play();
         }
 
-        // TODO don't make the alarm ring twice if the user is viewing the TimedFragment already
-
         hoursTextView.setText("00");
         minutesTextView.setText("00");
         secondsTextView.setText("00");

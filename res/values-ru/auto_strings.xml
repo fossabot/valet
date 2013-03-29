@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auto_info">Ваша машина будет припаркована автоматически, когда ваш телефон отсоединится от Блютус устройства. Эта функция доступна только при включенном режиме Блютус. Только знакомые Блютус устройства отображены здесь.
+    </string>
+    <string name="auto_set_bar_item">Автоматически припарковать машину.</string>
+    <string name="bluetooth_bar_item">Настройки Блютус.</string>
+    <string name="auto_park_confirm">Ваша машина будет автоматически припакрована. Запустите Валет, чтобы найти вашу машину.</string>
+    <string name="no_bluetooth">Нет присоединенного Блютус устройства.</string>
+    <string name="select_bluetooth">Выберите Bluetooth вашего автомобиля</string>
+
+</resources>

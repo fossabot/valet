@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Valet</string>
+    <string name="app_name_caps">VALET</string>
+    <string name="period">.</string>
+    <string name="not_supported">Ihr Gerät unterstützt Google Play Services nicht. Bitte schreiben sie an support@valetapp.co für eine Rückerstattung.</string>
+</resources>

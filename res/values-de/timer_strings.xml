@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="separator">:</string>
+    <string name="am">am</string>
+    <string name="pm">pm</string>
+    <string name="hours">stunden</string>
+</resources>

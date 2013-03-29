@@ -13,7 +13,6 @@ public class AlarmFragment extends DynamicFragment {
 
 	Spinner dayOfWeekSpinner, hourSpinner, minuteSpinner, amPmSpinner;
 
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

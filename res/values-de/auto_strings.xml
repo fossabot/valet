@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auto_info">Ihr Auto wird automatisch geparkt werden, wenn Ihr Telefon einer geprüften Bluetooth-Gerät trennt. Das funktioniert nur mit Bluetooth. Nur gekoppelten Bluetooth-Geräte sind angezeigt.
+    </string>
+    <string name="auto_set_bar_item">Mein Auto auto-parken</string>
+    <string name="bluetooth_bar_item">Bluetooth-Einstellungen</string>
+    <string name="auto_park_confirm">Ihr Auto wird auto-geparkt werden. Öffnen Sie Valet, um Ihr Auto zu finden.</string>
+    <string name="no_bluetooth">Keine gepaarte Bluetooth-Geräte</string>
+    <string name="select_bluetooth">Wählen Sie Ihr Auto Bluetooth</string>
+
+</resources>

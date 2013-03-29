@@ -48,6 +48,7 @@ import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 
 import java.util.List;
+import java.util.Locale;
 
 public class ParkActivity extends FragmentActivity
         implements LocationListener, OnMarkerClickListener {
@@ -472,8 +473,16 @@ public class ParkActivity extends FragmentActivity
             default:
                 InfoFragment infoFragment = getInfoFragment();
                 infoFragment.distanceAnimator.start();
-                float distance = vehicleLocation.distanceTo(location) * Const.METERS_TO_MILES;
-                infoFragment.distanceTextView.setText(String.format("%.2f", distance) + getString(R.string.mile_abbreviation));
+
+                if (getResources().getConfiguration().locale.equals(Locale.US)) {
+                    float distance = vehicleLocation.distanceTo(location) * Const.METERS_TO_MILES;
+                    infoFragment.distanceTextView.setText(String.format("%.2f", distance) + getString(R.string.mile_abbreviation));
+                }
+                else {
+                    float distance = vehicleLocation.distanceTo(location) / 1000; // km
+                    infoFragment.distanceTextView.setText(String.format("%.2f", distance) + getString(R.string.kilometer_abbreviation));
+                }
+
                 break;
         }
     }
