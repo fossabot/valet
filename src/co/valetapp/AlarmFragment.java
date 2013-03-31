@@ -1,6 +1,7 @@
 package co.valetapp;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.Spinner;
 public class AlarmFragment extends DynamicFragment {
 
 	Spinner dayOfWeekSpinner, hourSpinner, minuteSpinner, amPmSpinner;
+    boolean is24HourClock;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,14 +83,33 @@ public class AlarmFragment extends DynamicFragment {
 		hourSpinner.setSelection(9);
 		minuteSpinner.setSelection(0);
 		amPmSpinner.setSelection(0);
+
+        if (getResources().getConfiguration().locale.equals(Locale.US)) {
+            is24HourClock = true;
+        }
+        else {
+            amPmSpinner.setVisibility(View.GONE);
+            is24HourClock = false;
+        }
 	}
 
 	long getTime() {
+
+
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(Calendar.DAY_OF_WEEK, getDayOfWeek());
-		calendar.set(Calendar.HOUR, getHour());
-		calendar.set(Calendar.MINUTE, getMinute());
-		calendar.set(Calendar.AM_PM, getAmPm());
+
+        if (is24HourClock) {
+            calendar.set(Calendar
+
+                    .HOUR_OF_DAY, getHour());
+        }
+        else {
+            calendar.set(Calendar.HOUR, getHour());
+            calendar.set(Calendar.AM_PM, getAmPm());
+        }
+        calendar.set(Calendar.MINUTE, getMinute());
+
 
 		if (System.currentTimeMillis() > calendar.getTimeInMillis()) {
 			calendar.add(Calendar.WEEK_OF_YEAR, 1);
@@ -136,20 +157,5 @@ public class AlarmFragment extends DynamicFragment {
 		default:
 			return 0;
 		}
-	}
-
-	int getPositionOfMinute(int m) {
-		String minute = Integer.toString(m);
-
-		int position = 0;
-		String[] minutes = getResources().getStringArray(R.array.minute);
-		for (int i = 0; i < minutes.length; i++) {
-			if (minutes[i].equals(minute)) {
-				position = i;
-				break;
-			}
-		}
-
-		return position;
 	}
 }

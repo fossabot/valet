@@ -44,9 +44,11 @@ public class AutoSetFragment extends DynamicFragment {
         Set<BluetoothDevice> bondedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
         if (bondedDevices.size() == 0) {
             bluetoothTextView.setText(R.string.no_bluetooth);
+            bluetoothSpinner.setVisibility(View.GONE);
 
         } else {
             bluetoothTextView.setText(R.string.select_bluetooth);
+            bluetoothSpinner.setVisibility(View.VISIBLE);
 
             List<MyBluetoothDevice> myBluetoothDevices = new ArrayList<MyBluetoothDevice>(bondedDevices.size());
             for (BluetoothDevice bluetoothDevice : bondedDevices) {
@@ -75,7 +77,10 @@ public class AutoSetFragment extends DynamicFragment {
 
     void save() {
         MyBluetoothDevice myBluetoothDevice = (MyBluetoothDevice) bluetoothSpinner.getSelectedItem();
-        prefs.edit().putString(Const.BLUETOOTH_KEY, myBluetoothDevice.address).commit();
+        if (myBluetoothDevice != null) {
+            prefs.edit().putString(Const.BLUETOOTH_KEY, myBluetoothDevice.address).commit();
+        }
+
     }
 
     private class MyBluetoothDevice {

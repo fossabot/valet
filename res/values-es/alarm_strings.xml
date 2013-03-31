@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hour_abbreviation">h</string>
+    <string name="mintute_abbreviation">m</string>
+    <string name="second_abbreviation">s</string>
+
+</resources>

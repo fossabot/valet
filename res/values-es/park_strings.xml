@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<string name="distance_units">mi</string>
+	<string name="timer_button">Configurar un temporizador</string>
+	<string name="share_extra_text_parking">Encuentro mi coche con valet y usted también debería. http://www.valetapp.co</string>
+	<string name="share_extra_html_text_parking">Encuentro mi coche con <a href="http://www.valetapp.co">Valet</a> y usted también debería.</string>
+	<string name="share_extra_text_parked">Mi coche está aquí:</string>
+	<string name="share_extra_html_text_parked">Mi coche está</string>
+	<string name="share_extra_html_text_parked_anchor">aquí</string>
+	<string name="share_intent_chooser_title">compartir</string>
+	<string name="find_intent_chooser_title">encontrar</string>
+	<string name="vehicle_marker_title">Su coche</string>
+	<string name="accuracy_abbreviation">accy</string>
+    <string name="mile_abbreviation">mi</string>
+    <string name="kilometer_abbreviation">km</string>
+	<string name="pm">PM</string>
+	<string name="am">AM</string>
+	<string name="at">at</string>
+	<string name="monday">lunes</string>
+	<string name="tuesday">martes</string>
+	<string name="wednesday">miércoles</string>
+	<string name="thursday">jueves</string>
+	<string name="friday">viernes</string>
+	<string name="saturday">sábado</string>
+	<string name="sunday">domingo</string>
+	<string name="location_dialog_message">Encienda su GPS?</string>
+	<string name="location_dialog_positive_button">sí</string>
+	<string name="location_dialog_negative_button">no</string>
+	<string name="no_location_message">Valet requiere un GPS para aparcar el coche.</string>
+	<string name="reset_dialog_message">Cambiar la ubicación de su coche?</string>
+	<string name="reset_dialog_positive_button">sí</string>
+	<string name="reset_dialog_no_button">no</string>
+	
+</resources>

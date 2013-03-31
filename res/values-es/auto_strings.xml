@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auto_info">Su coche se aparca automáticamente cuando el teléfono se desconecta de un dispositivo Bluetooth activada. Esto sólo ocurre cuando Bluetooth está activado. Dispositivos Bluetooth que están conectados se muestran.
+    </string>
+    <string name="auto_set_bar_item">Auto aparcar mi coche</string>
+    <string name="bluetooth_bar_item">Configuración de Bluetooth</string>
+    <string name="auto_park_confirm">Su coche se aparca automáticamente.  Open Valet to find your car.</string>
+    <string name="no_bluetooth">No hay ningún dispositivo Bluetooth emparejado</string>
+    <string name="select_bluetooth">Seleccione el Bluetooth coches</string>
+</resources>

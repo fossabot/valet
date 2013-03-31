@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="park_bar_item">Aparcar mi coche</string>
+    <string name="reset_bar_item_cd">Desaparcar mi coche</string>
+    <string name="find_bar_item_cd">Encuentra mi coche</string>
+    <string name="alarm_bar_item_cd">Configurar una alarma</string>
+    <string name="timer_bar_item_cd">Configurar un temporizador</string>
+    <string name="share_bar_item_cd">Comparte algo acerca de Valet</string>
+    <string name="auto_bar_item_cd">Autopark con Bluetooth</string>
+    <string name="schedule_bar_item_cd">Programe un recordatorio de estacionamiento</string>
+    <string name="set_bar_item">establecer</string>
+    <string name="timer_bar_item">temporizador</string>
+    <string name="alarm_bar_item">alarma</string>
+    <string name="unpark_bar_item">Desaparcar mi coche</string>
+    <string name="unschedule_bar_item">reajustar</string>
+    <string name="locating_bar_item">Localizando&#8230;</string>
+</resources>

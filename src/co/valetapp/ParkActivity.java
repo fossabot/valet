@@ -33,7 +33,6 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -72,6 +71,9 @@ public class ParkActivity extends FragmentActivity
             if (result.isFailure()) {
                 Log.e(getLocalClassName(), "Error purchasing: " + result);
 
+                if (result.getResponse() == 7) {
+                    hasAutoPark = true; // already owned
+                }
                 return;
             } else if (purchase.getSku().equals(Const.SKU_AUTO_PARK)) {
                 hasAutoPark = true;

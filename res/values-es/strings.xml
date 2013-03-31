@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Valet</string>
+    <string name="app_name_caps">VALET</string>
+    <string name="period">.</string>
+    <string name="not_supported">El dispositivo no es compatible con los servicios de Google Play.  Email support@valetapp.co para un reembolso.</string>
+</resources>

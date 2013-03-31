@@ -14,8 +14,8 @@ import android.widget.TextView;
 import com.nineoldandroids.animation.ObjectAnimator;
 
 import java.text.DateFormat;
-import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class TimedFragment extends DynamicFragment {
     private static final int SECOND = 1000;
@@ -65,8 +65,14 @@ public class TimedFragment extends DynamicFragment {
 
         long timeInMillis = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).getLong(Const.TIME_KEY, 0);
 
-        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date(timeInMillis));
-        dateTextView.setText(currentDateTimeString);
+        if (getResources().getConfiguration().locale.equals(Locale.US)) {
+            dateTextView.setText(android.text.format.DateFormat.format("MMM dd 'at' h:mmaa", timeInMillis));
+        }
+        else {
+            String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date(timeInMillis));
+            dateTextView.setText(currentDateTimeString);
+        }
+
 
         long millisInFuture = timeInMillis - System.currentTimeMillis();
 
@@ -80,10 +86,9 @@ public class TimedFragment extends DynamicFragment {
 
                 if (millisUntilFinished >= HOUR) {
                     hours = Long.toString(millisUntilFinished / HOUR);
-//                    if (hours.length() == 1) hours = "0" + hours;
                     millisUntilFinished %= HOUR;
                 } else {
-                    hours = "00";
+                    hours = "0";
                 }
 
                 if (millisUntilFinished >= MINUTE) {
