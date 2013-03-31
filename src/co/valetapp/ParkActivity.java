@@ -56,6 +56,7 @@ public class ParkActivity extends FragmentActivity
     Location vehicleLocation;
     float bestAccuracy;
     Criteria criteria;
+    boolean isPausing;
     ObjectAnimator titleAnimator;
     TextView titleTextView;
     InfoFragment infoFragment;
@@ -187,7 +188,10 @@ public class ParkActivity extends FragmentActivity
                 super.onAnimationEnd(animation);
                 showMap();
 
-                setState(State.PARKING);
+                if (!isPausing) {
+                    setState(State.PARKING);
+                }
+
             }
         });
 
@@ -208,6 +212,17 @@ public class ParkActivity extends FragmentActivity
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        isPausing = false;
+
+       if (state != null) {
+           setState(state);
+       }
     }
 
     @Override
@@ -492,6 +507,8 @@ public class ParkActivity extends FragmentActivity
     @Override
     protected void onPause() {
         super.onPause();
+
+        isPausing = true;
 
         if (locationManager != null) locationManager.removeUpdates(this);
 
