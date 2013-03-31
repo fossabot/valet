@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 
+import java.util.Locale;
+
 public class IntentLibrary {
 
 	private IntentLibrary(){};
@@ -13,7 +15,7 @@ public class IntentLibrary {
 		Intent intent = new Intent();
 
 		intent.setAction(Intent.ACTION_VIEW);
-		String uri = String.format("geo:%f,%f?z=%d&q=%f,%f(%s)", latitude, longitude, 
+		String uri = String.format(Locale.US, "geo:%f,%f?z=%d&q=%f,%f(%s)", latitude, longitude,
 				Const.ZOOM_LEVEL, latitude, longitude, context.getString(R.string.vehicle_marker_title));
 
 
@@ -27,7 +29,7 @@ public class IntentLibrary {
 		intent.setAction(Intent.ACTION_SEND);
 		intent.setType("text/plain");
 
-		String googleMapsUrl = String.format("http://maps.google.com/?q=loc:%f,%f&z=%d",
+		String googleMapsUrl = String.format(Locale.US, "http://maps.google.com/?q=loc:%f,%f&z=%d",
 				latitude, longitude, Const.ZOOM_LEVEL);
 		intent.putExtra(Intent.EXTRA_TEXT, context.getString(R.string.share_extra_text_parked) + " " + googleMapsUrl);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
