@@ -85,31 +85,31 @@ public class AlarmFragment extends DynamicFragment {
 		amPmSpinner.setSelection(0);
 
         if (getResources().getConfiguration().locale.equals(Locale.US)) {
-            is24HourClock = true;
+            is24HourClock = false;
         }
         else {
             amPmSpinner.setVisibility(View.GONE);
-            is24HourClock = false;
+            is24HourClock = true;
         }
 	}
 
 	long getTime() {
 
 
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.DAY_OF_WEEK, getDayOfWeek());
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.MINUTE, getMinute());
 
         if (is24HourClock) {
-            calendar.set(Calendar
-
-                    .HOUR_OF_DAY, getHour());
+            calendar.set(Calendar.HOUR_OF_DAY, getHour());
         }
         else {
             calendar.set(Calendar.HOUR, getHour());
             calendar.set(Calendar.AM_PM, getAmPm());
         }
-        calendar.set(Calendar.MINUTE, getMinute());
 
+        calendar.set(Calendar.DAY_OF_WEEK, getDayOfWeek());
 
 		if (System.currentTimeMillis() > calendar.getTimeInMillis()) {
 			calendar.add(Calendar.WEEK_OF_YEAR, 1);

@@ -56,7 +56,6 @@ public class ParkActivity extends FragmentActivity
     Location vehicleLocation;
     float bestAccuracy;
     Criteria criteria;
-    boolean isPausing;
     ObjectAnimator titleAnimator;
     TextView titleTextView;
     InfoFragment infoFragment;
@@ -66,6 +65,11 @@ public class ParkActivity extends FragmentActivity
     State state;
     AlarmManager am;
     IabHelper iabHelper;
+    boolean isPausing;
+    boolean hasInventory;
+    boolean hasAutoPark;
+    boolean hasBilling;
+
     IabHelper.OnIabPurchaseFinishedListener purchaseFinishedListener
             = new IabHelper.OnIabPurchaseFinishedListener() {
         public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
@@ -79,8 +83,6 @@ public class ParkActivity extends FragmentActivity
             } else if (purchase.getSku().equals(Const.SKU_AUTO_PARK)) {
                 hasAutoPark = true;
             }
-
-            iabHelper.dispose();
         }
     };
     IabHelper.QueryInventoryFinishedListener gotInventoryListener
@@ -94,13 +96,11 @@ public class ParkActivity extends FragmentActivity
                 hasAutoPark = inventory.hasPurchase(Const.SKU_AUTO_PARK);
             }
 
-            setInitialState();
+            hasInventory = true;
 
-            iabHelper.dispose();
+            setInitialState();
         }
     };
-    boolean hasAutoPark;
-    boolean hasBilling;
 
     public static PendingIntent getAlarmIntent(Context context) {
         Intent i = new Intent(context, AlarmBroadcastReceiver.class);
@@ -191,27 +191,12 @@ public class ParkActivity extends FragmentActivity
                 if (!isPausing) {
                     setState(State.PARKING);
                 }
-
             }
         });
 
         hideMap();
 
         iabHelper = new IabHelper(this, Const.IAB_KEY);
-        iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
-            public void onIabSetupFinished(IabResult result) {
-                if (!result.isSuccess()) {
-                    Log.e(getLocalClassName(), "Problem setting up In-app Billing: " + result);
-
-                    hasBilling = false;
-
-                    setInitialState();
-                } else {
-                    hasBilling = true;
-                    iabHelper.queryInventoryAsync(gotInventoryListener);
-                }
-            }
-        });
     }
 
     @Override
@@ -220,9 +205,29 @@ public class ParkActivity extends FragmentActivity
 
         isPausing = false;
 
-       if (state != null) {
-           setState(state);
-       }
+        if (!hasInventory) {
+            iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
+                public void onIabSetupFinished(IabResult result) {
+                    if (!result.isSuccess()) {
+                        Log.e(getLocalClassName(), "Problem setting up In-app Billing: " + result);
+
+                        hasBilling = false;
+
+                        setInitialState();
+                    } else {
+                        hasBilling = true;
+                        iabHelper.queryInventoryAsync(gotInventoryListener);
+                    }
+                }
+            });
+        } else {
+            if (state == State.LOCATED || state == State.PARKING || state == State.AUTO_INFO || state == State.AUTO_SET) {
+                getVehicleLocation();
+            } else {
+                showVehicle();
+            }
+
+        }
     }
 
     @Override
@@ -245,8 +250,11 @@ public class ParkActivity extends FragmentActivity
             }
 
             showMap();
+            showVehicle();
         } else {
-            titleAnimator.start();
+            if (!titleAnimator.isRunning()) {
+                titleAnimator.start();
+            }
         }
     }
 
@@ -317,11 +325,7 @@ public class ParkActivity extends FragmentActivity
 
                 locationManager.removeUpdates(this);
 
-                googleMap.clear();
-
                 barFragment.setItems(BarItem.FIND, BarItem.SCHEDULE, BarItem.RESET, BarItem.SHARE);
-
-                showVehicle();
 
                 break;
             case SCHEDULE:
@@ -357,8 +361,6 @@ public class ParkActivity extends FragmentActivity
                 dynamicFragment = new TimedFragment();
 
                 barFragment.setItems(BarItem.FIND, BarItem.SCHEDULE, BarItem.RESET, BarItem.SHARE);
-
-                showVehicle();
 
                 break;
             case CONFIRM:
@@ -425,7 +427,7 @@ public class ParkActivity extends FragmentActivity
                     }
                 }
 
-                locationManager.requestLocationUpdates(provider, 0, 0, this);
+                locationManager.requestLocationUpdates(provider, 1000, 10, this);
             }
 
             if (newestLocation != null) {
@@ -467,7 +469,6 @@ public class ParkActivity extends FragmentActivity
                             .position(latLng)
                             .draggable(false)
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin)));
-                    vehicleMarker.showInfoWindow();
 
                     setState(State.LOCATED);
                 } else {
@@ -477,7 +478,6 @@ public class ParkActivity extends FragmentActivity
                         }
 
                         vehicleMarker.setPosition(latLng);
-                        vehicleMarker.showInfoWindow();
 
                         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
 
@@ -494,8 +494,7 @@ public class ParkActivity extends FragmentActivity
                 if (getResources().getConfiguration().locale.equals(Locale.US)) {
                     float distance = vehicleLocation.distanceTo(location) * Const.METERS_TO_MILES;
                     infoFragment.distanceTextView.setText(String.format("%.2f", distance) + getString(R.string.mile_abbreviation));
-                }
-                else {
+                } else {
                     float distance = vehicleLocation.distanceTo(location) / 1000; // km
                     infoFragment.distanceTextView.setText(String.format("%.2f", distance) + getString(R.string.kilometer_abbreviation));
                 }
@@ -510,13 +509,10 @@ public class ParkActivity extends FragmentActivity
 
         isPausing = true;
 
-        if (locationManager != null) locationManager.removeUpdates(this);
+        locationManager.removeUpdates(this);
 
-        if (titleAnimator != null && titleAnimator.isRunning()) {
-            titleAnimator.end();
-        }
-
-        if (googleMap != null) googleMap.stopAnimation();
+        endAnimation();
+        googleMap.stopAnimation();
 
         if (geoCoderAsyncTask != null) {
             geoCoderAsyncTask.cancel(true);
@@ -524,8 +520,6 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onParkItem(View v) {
-        endAnimation();
-
         Editor editor = prefs.edit();
         editor.putString(Const.LAT_KEY, Double.toString(vehicleMarker.getPosition().latitude));
         editor.putString(Const.LONG_KEY, Double.toString(vehicleMarker.getPosition().longitude));
@@ -535,9 +529,6 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onAutoItem(View v) {
-        endAnimation();
-
-
         setState(State.AUTO_SET);
     }
 
@@ -576,15 +567,12 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onFindItem(View v) {
-        endAnimation();
-
-        startActivity(IntentLibrary.getFindIntent(this,
-                vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude));
+        startActivity(Intent.createChooser(IntentLibrary.getFindIntent(this,
+                vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude),
+                getString(R.string.find_intent_chooser_title)));
     }
 
     public void onScheduleItem(View v) {
-        endAnimation();
-
         if (getDynamicFragment() instanceof TimedFragment) {
             setState(State.UNSCHEDULE);
         } else {
@@ -593,8 +581,6 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onUnscheduleItem(View v) {
-        endAnimation();
-
         Editor edit = prefs.edit();
         edit.remove(Const.TIME_KEY);
         edit.commit();
@@ -606,14 +592,10 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onTimerItem(View v) {
-        endAnimation();
-
         setState(State.TIMER);
     }
 
     public void onAlarmItem(View v) {
-        endAnimation();
-
         setState(State.ALARM);
     }
 
@@ -623,8 +605,6 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onSetItem(View v) {
-        endAnimation();
-
         Editor editor = getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).edit();
 
         long time;
@@ -649,14 +629,10 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onResetItem(View v) {
-        endAnimation();
-
         setState(State.CONFIRM);
     }
 
     public void onUnparkItem(View v) {
-        endAnimation();
-
         Editor edit = prefs.edit();
         edit.remove(Const.LAT_KEY);
         edit.remove(Const.LONG_KEY);
@@ -669,28 +645,22 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onShareItem(View v) {
-        endAnimation();
-
         startActivity(Intent.createChooser(IntentLibrary.getShareIntent(this,
                 vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude), getString(R.string.share_intent_chooser_title)));
     }
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        return startFindIntentActivity(marker);
-    }
+        if (state != State.PARKING && state != State.LOCATED && state != State.AUTO_INFO && state != State.AUTO_SET) {
+            startActivity(Intent.createChooser(IntentLibrary.getFindIntent(this,
+                    vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude),
+                    getString(R.string.find_intent_chooser_title)));
 
-    private boolean startFindIntentActivity(Marker marker) {
-        switch (state) {
-            case PARKED:
-            case TIMED:
-                startActivity(Intent.createChooser(IntentLibrary.getFindIntent(this,
-                        vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude),
-                        getString(R.string.find_intent_chooser_title)));
-                return true;
-            default:
-                return false;
+            return true;
+        } else {
+            return false;
         }
+
     }
 
     @Override
@@ -701,8 +671,7 @@ public class ParkActivity extends FragmentActivity
             } else {
                 startActivity(getIntent());
             }
-        }
-        else {
+        } else {
             if (!iabHelper.handleActivityResult(requestCode, resultCode, data)) {
                 // not handled, so handle it ourselves (here's where you'd
                 // perform any handling of activity results not related to in-app
@@ -713,6 +682,7 @@ public class ParkActivity extends FragmentActivity
     }
 
     private void showVehicle() {
+        googleMap.clear();
 
         Double latitude = Double.parseDouble(prefs.getString(Const.LAT_KEY, "0"));
         Double longitude = Double.parseDouble(prefs.getString(Const.LONG_KEY, "0"));
@@ -720,7 +690,6 @@ public class ParkActivity extends FragmentActivity
                 .position(new LatLng(latitude, longitude))
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin)));
         vehicleMarker.setDraggable(false);
-        vehicleMarker.showInfoWindow();
 
         vehicleLocation = new Location(LocationManager.GPS_PROVIDER);
         vehicleLocation.setLatitude(latitude);
