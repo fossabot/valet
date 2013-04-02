@@ -133,10 +133,6 @@ public class ParkActivity extends FragmentActivity
         Crittercism.init(getApplicationContext(), "5145fe5c4002050d07000002");
         Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
 
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
-
         am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
