@@ -222,6 +222,7 @@ public class ParkActivity extends FragmentActivity
     }
 
     private void setInitialState() {
+        titleTextView.setVisibility(View.VISIBLE);
         if (prefs.contains(Const.LAT_KEY) && prefs.contains(Const.LONG_KEY)) {
             if (prefs.contains(Const.TIME_KEY)) {
                 setState(State.TIMED);
@@ -232,7 +233,6 @@ public class ParkActivity extends FragmentActivity
             show();
             showVehicle();
         } else {
-            titleTextView.setVisibility(View.VISIBLE);
             titleAnimator.start();
             setState(State.PARKING);
         }
@@ -569,7 +569,6 @@ public class ParkActivity extends FragmentActivity
         setContentView(R.layout.park_activity);
 
         titleTextView = (TextView) findViewById(R.id.title_ftv);
-        titleTextView.setVisibility(View.INVISIBLE);
         titleTextView.setOnClickListener(new OnClickListener() {
 
             @Override
