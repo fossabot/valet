@@ -232,6 +232,7 @@ public class ParkActivity extends FragmentActivity
             show();
             showVehicle();
         } else {
+            titleTextView.setVisibility(View.VISIBLE);
             titleAnimator.start();
             setState(State.PARKING);
         }
@@ -568,6 +569,7 @@ public class ParkActivity extends FragmentActivity
         setContentView(R.layout.park_activity);
 
         titleTextView = (TextView) findViewById(R.id.title_ftv);
+        titleTextView.setVisibility(View.INVISIBLE);
         titleTextView.setOnClickListener(new OnClickListener() {
 
             @Override
