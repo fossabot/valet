@@ -66,12 +66,12 @@ public class LocationService extends Service implements LocationListener {
 	
 	@Override
 	public void onDestroy() {
+        super.onDestroy();
+
 		locationManager.removeUpdates(this);
 		handler.removeCallbacks(timeout);
 
         Tools.park(this, location.getLatitude(), location.getLongitude(), manual);
-
-		super.onDestroy();
 	}
 	
 	@Override

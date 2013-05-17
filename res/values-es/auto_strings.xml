@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="auto_info">Su coche se aparca automáticamente cuando el teléfono se desconecta de un dispositivo Bluetooth activada. Esto sólo ocurre cuando Bluetooth está activado. Dispositivos Bluetooth que están conectados se muestran.
+    <string name="auto_info">Gire el sensor de aparcamiento en automatizar la función de parque. Esto requiere un aumento de la batería y no es 100% exacto.\n\nAlternativamente, usted puede tener un enlace a un dispositivo Bluetooth emparejado para utilizar la conectividad del parque de automóviles y ahorrar batería.
     </string>
     <string name="auto_set_bar_item">Auto aparcar mi coche</string>
     <string name="bluetooth_bar_item">Configuración de Bluetooth</string>

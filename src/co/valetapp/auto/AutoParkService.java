@@ -164,7 +164,6 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
                         DETECTION_INTERVAL_MILLISECONDS,
                         mActivityRecognitionPendingIntent);
 
-                Log.d(TAG, "Start updates" + " " + DETECTION_INTERVAL_MILLISECONDS);
         /*
          * Since the preceding call is synchronous, turn off the
          * in progress flag and disconnect the client
@@ -177,7 +176,6 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
                 mActivityRecognitionClient.removeActivityUpdates(
                         mActivityRecognitionPendingIntent);
 
-                Log.d(TAG, "Stop updates");
                 break;
         }
     }

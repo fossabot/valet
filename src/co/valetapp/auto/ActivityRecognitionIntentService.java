@@ -60,9 +60,6 @@ public class ActivityRecognitionIntentService extends IntentService {
              */
             int activityType = mostProbableActivity.getType();
 
-            String activityName = getNameFromType(activityType);
-            Log.d(TAG, activityName + " " + confidence);
-
             Intent autoParkServiceIntent = new Intent(this, AutoParkService.class);
             autoParkServiceIntent.setAction(AutoParkService.ACTION_START);
             if (confidence == MAX_CONFIDENCE && activityType == DetectedActivity.STILL) {

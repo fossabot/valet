@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="auto_info">Auto Park when your phone disconnects from a Bluetooth device. This only occurs with Bluetooth on.  Only paired devices are shown.\n\nIf Parking Sensor is on Auto Park works without Bluetooth.  This uses more battery and isn\'t 100% reliable.
+    <string name="auto_info">Turn the Parking Sensor on to automate the park feature. This uses slightly more battery and is not 100% accurate.\n\nAlternatively you may link to a paired Bluetooth device to utilize connectivity to auto park and save battery life.
     </string>
     <string name="auto_set_bar_item">Auto Park My Car</string>
     <string name="bluetooth_bar_item">Bluetooth Settings</string>
