@@ -22,10 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import co.valetapp.BarFragment.BarItem;
 import co.valetapp.InfoFragment.GeoCoderAsyncTask;
-import com.android.vending.billing.util.IabHelper;
-import com.android.vending.billing.util.IabResult;
-import com.android.vending.billing.util.Inventory;
-import com.android.vending.billing.util.Purchase;
 import com.crittercism.app.Crittercism;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -63,43 +59,8 @@ public class ParkActivity extends FragmentActivity
     Marker vehicleMarker;
     State state;
     AlarmManager am;
-    IabHelper iabHelper;
-    boolean hasAutoPark;
-    boolean hasBilling;
     GeoCoderAsyncTask geoCoderAsyncTask;
-    IabHelper.OnIabSetupFinishedListener onSetupFinishedListener
-            = new IabHelper.OnIabSetupFinishedListener() {
 
-        @Override
-        public void onIabSetupFinished(IabResult result) {
-            hasBilling = result.isSuccess();
-            iabHelper.queryInventoryAsync(onQueryInventoryFinished);
-        }
-    };
-    IabHelper.QueryInventoryFinishedListener onQueryInventoryFinished
-            = new IabHelper.QueryInventoryFinishedListener() {
-
-        @Override
-        public void onQueryInventoryFinished(IabResult result,
-                                             Inventory inventory) {
-
-            if (result.isSuccess()) hasAutoPark = inventory.hasPurchase(Const.SKU_AUTO_PARK);
-
-            setInitialState();
-        }
-    };
-    IabHelper.OnIabPurchaseFinishedListener purchaseFinishedListener
-            = new IabHelper.OnIabPurchaseFinishedListener() {
-        public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
-
-            if (result.isFailure()) {
-                if (result.getResponse() == IabHelper.BILLING_RESPONSE_RESULT_ITEM_ALREADY_OWNED) hasAutoPark = true;
-            }
-            else if (purchase.getSku().equals(Const.SKU_AUTO_PARK)) {
-                hasAutoPark = true;
-            }
-        }
-    };
     AnimatorListenerAdapter animationListener
             = new AnimatorListenerAdapter() {
 
@@ -195,26 +156,11 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onAutoSetItem(View v) {
-        if (hasAutoPark) {
             AutoSetFragment frag = (AutoSetFragment) getDynamicFragment();
             frag.save();
 
             Toast.makeText(ParkActivity.this, R.string.auto_park_confirm, Toast.LENGTH_LONG).show();
             finish();
-        } else {
-            iabHelper.dispose();
-            iabHelper = new IabHelper(this, Const.IAB_KEY);
-            iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
-                public void onIabSetupFinished(IabResult result) {
-                    if (result.isSuccess()) {
-                        iabHelper.launchPurchaseFlow(ParkActivity.this, Const.SKU_AUTO_PARK, 10001,
-                                purchaseFinishedListener, "");
-                    }
-                }
-            });
-
-            // TODO implement recommended security features
-        }
     }
 
     public void onAutoInfoItem(View v) {
@@ -277,11 +223,7 @@ public class ParkActivity extends FragmentActivity
 
                 break;
             case LOCATED:
-                if (hasBilling) {
                     barFragment.setItems(BarItem.PARK, BarItem.AUTO);
-                } else {
-                    barFragment.setItems(BarItem.PARK);
-                }
 
                 break;
             case PARKED:
@@ -527,13 +469,6 @@ public class ParkActivity extends FragmentActivity
             } else {
                 startActivity(getIntent());
             }
-        } else {
-            if (!iabHelper.handleActivityResult(requestCode, resultCode, data)) {
-                // not handled, so handle it ourselves (here's where you'd
-                // perform any handling of activity results not related to in-app
-                // billing...
-                super.onActivityResult(requestCode, resultCode, data);
-            }
         }
     }
 
@@ -549,8 +484,8 @@ public class ParkActivity extends FragmentActivity
             return; // The user's device does not support Google Maps v2.
         }
 
-        iabHelper = new IabHelper(this, Const.IAB_KEY);
-        iabHelper.startSetup(onSetupFinishedListener);
+//        iabHelper = new IabHelper(this, Const.IAB_KEY);
+//        iabHelper.startSetup(onSetupFinishedListener);
 
         Crittercism.init(getApplicationContext(), "5145fe5c4002050d07000002");
         Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
@@ -583,7 +518,7 @@ public class ParkActivity extends FragmentActivity
         infoFragment = getInfoFragment();
         geoCoderAsyncTask = infoFragment.new GeoCoderAsyncTask();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.bar_fl,  new BarFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.bar_fl, new BarFragment()).commit();
         getSupportFragmentManager().executePendingTransactions();
 
         titleAnimator = ObjectAnimator.ofFloat(titleTextView, "alpha", 0f, 1f);
@@ -591,14 +526,8 @@ public class ParkActivity extends FragmentActivity
         titleAnimator.addListener(animationListener);
 
         hide();
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        if (iabHelper != null) iabHelper.dispose();
-        iabHelper = null;
+        setInitialState();
     }
 
     @Override
@@ -632,8 +561,7 @@ public class ParkActivity extends FragmentActivity
             if (vehicleMarker != null) {
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
                 googleMap.animateCamera(cameraUpdate);
-            }
-            else {
+            } else {
                 getVehicleLocation();
             }
         }
