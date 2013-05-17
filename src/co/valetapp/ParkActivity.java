@@ -162,14 +162,13 @@ public class ParkActivity extends FragmentActivity
     private void setInitialState() {
         titleTextView.setVisibility(View.VISIBLE);
         if (prefs.contains(Const.LAT_KEY) && prefs.contains(Const.LONG_KEY)) {
+            show();
+
             if (prefs.contains(Const.TIME_KEY)) {
                 setState(State.TIMED);
             } else {
                 setState(State.PARKED);
             }
-
-            show();
-            showVehicle();
         } else {
             titleAnimator.start();
             setState(State.PARKING);
@@ -225,6 +224,8 @@ public class ParkActivity extends FragmentActivity
 
                 barFragment.setItems(BarItem.FIND, BarItem.SCHEDULE, BarItem.RESET, BarItem.SHARE);
 
+                showVehicle();
+
                 break;
             case SCHEDULE:
                 addToBackStack = true;
@@ -259,6 +260,8 @@ public class ParkActivity extends FragmentActivity
                 dynamicFragment = new TimedFragment();
 
                 barFragment.setItems(BarItem.FIND, BarItem.SCHEDULE, BarItem.RESET, BarItem.SHARE);
+
+                showVehicle();
 
                 break;
             case CONFIRM:
@@ -395,6 +398,8 @@ public class ParkActivity extends FragmentActivity
     public void onUnparkItem(View v) {
         Tools.unpark(this);
 
+        infoFragment.noteEditText.setVisibility(View.GONE);
+
         setState(State.PARKING);
     }
 
@@ -504,7 +509,6 @@ public class ParkActivity extends FragmentActivity
         googleMap.setOnMarkerClickListener(this);
 
         infoFragment = getInfoFragment();
-        geoCoderAsyncTask = infoFragment.new GeoCoderAsyncTask();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.bar_fl, new BarFragment()).commit();
         getSupportFragmentManager().executePendingTransactions();
@@ -528,8 +532,9 @@ public class ParkActivity extends FragmentActivity
 
         googleMap.stopAnimation();
 
-
-        geoCoderAsyncTask.cancel(true);
+        if (geoCoderAsyncTask != null) {
+            geoCoderAsyncTask.cancel(true);
+        }
     }
 
     @Override
@@ -590,9 +595,9 @@ public class ParkActivity extends FragmentActivity
         googleMap.setMyLocationEnabled(true);
 
         InfoFragment infoFragment = getInfoFragment();
-        if (infoFragment.addressTextView.getText().length() == 0) {
-            geoCoderAsyncTask.execute(vehicleMarker.getPosition());
-        }
+        geoCoderAsyncTask = infoFragment.new GeoCoderAsyncTask();
+        geoCoderAsyncTask.execute(vehicleMarker.getPosition());
+        infoFragment.noteEditText.setVisibility(View.VISIBLE);
 
         getUserLocation();
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	
+    <string name="note">Добавить примечание</string>
 	<string name="distance_units">миль</string>
 	<string name="timer_button">Задать таймер</string>
 	<string name="share_extra_text_parking">Я нахожу свою машину с помощью Валет и тебе тоже советую — http://www.valetapp.co</string>

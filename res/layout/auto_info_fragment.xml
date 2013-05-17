@@ -7,6 +7,6 @@
     android:text="@string/auto_info"
     android:gravity="center"
     android:lineSpacingExtra="1dp"
-    android:textSize="15sp"
+    android:textSize="12sp"
     app:font="Gotham-Medium.ttf"
     android:id="@+id/textView" />

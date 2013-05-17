@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	
+    <string name="note">Anmerkung hinzufügen</string>
 	<string name="distance_units">Meilen</string>
 	<string name="timer_button">Timer einstellen</string>
 	<string name="share_extra_text_parking">Ich finde mein Auto mit Valet und Sie sollen auch. http://www.valetapp.co</string>

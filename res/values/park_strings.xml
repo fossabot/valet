@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="note">Note</string>
+	<string name="note">Add note</string>
 	<string name="distance_units">mi</string>
 	<string name="timer_button">Set Timer</string>
 	<string name="share_extra_text_parking">I find my car using Valet and you should too. http://www.valetapp.co</string>

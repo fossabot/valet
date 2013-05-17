@@ -81,6 +81,8 @@ public class InfoFragment extends Fragment {
 	void clear() {
 		addressTextView.setText("");
 		distanceTextView.setText("");
+        noteEditText.setText("");
+        prefs.edit().remove(Const.NOTE_KEY).commit();
 	}
 	
 	class GeoCoderAsyncTask extends AsyncTask<LatLng, Void, List<Address>> {

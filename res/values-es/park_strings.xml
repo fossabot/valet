@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	
+    <string name="note">Agregar una nota</string>
 	<string name="distance_units">mi</string>
 	<string name="timer_button">Configurar un temporizador</string>
 	<string name="share_extra_text_parking">Encuentro mi coche con valet y usted también debería. http://www.valetapp.co</string>

@@ -6,5 +6,8 @@
     <string name="bluetooth_bar_item">Configuración de Bluetooth</string>
     <string name="auto_park_confirm">Su coche se aparca automáticamente.  Open Valet to find your car.</string>
     <string name="no_bluetooth">No hay ningún dispositivo Bluetooth emparejado</string>
-    <string name="select_bluetooth">Seleccione el Bluetooth coches</string>
+    <string name="select_bluetooth">Bluetooth:</string>
+    <string name="parking_sensor">sensor de aparcamiento</string>
+    <string name="notification_title">Servicio de Auto Park</string>
+    <string name="notification_text">Establecer un temporizador o alarma</string>
 </resources>

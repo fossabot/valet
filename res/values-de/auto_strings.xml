@@ -6,6 +6,9 @@
     <string name="bluetooth_bar_item">Bluetooth-Einstellungen</string>
     <string name="auto_park_confirm">Ihr Auto wird auto-geparkt werden. Öffnen Sie Valet, um Ihr Auto zu finden.</string>
     <string name="no_bluetooth">Keine gepaarte Bluetooth-Geräte</string>
-    <string name="select_bluetooth">Wählen Sie Ihr Auto Bluetooth</string>
+    <string name="select_bluetooth">Bluetooth:</string>
+    <string name="parking_sensor">Parken-Sensor</string>
+    <string name="notification_title">Valet Auto Park</string>
+    <string name="notification_text">Stellen Sie einen Timer oder Alarm</string>
 
 </resources>
