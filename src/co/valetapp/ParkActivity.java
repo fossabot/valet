@@ -542,6 +542,8 @@ public class ParkActivity extends FragmentActivity
 
 
         geoCoderAsyncTask.cancel(true);
+        geoCoderAsyncTask = infoFragment.new GeoCoderAsyncTask();
+
     }
 
     @Override
