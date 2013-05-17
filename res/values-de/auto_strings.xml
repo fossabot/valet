@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="auto_info">Ihr Auto wird automatisch geparkt werden, wenn Ihr Telefon einer geprüften Bluetooth-Gerät trennt. Das funktioniert nur mit Bluetooth. Nur gekoppelten Bluetooth-Geräte sind angezeigt.
+    <string name="auto_info">Schalten Sie das Parken-Sensor auf den Park-Funktion automatisieren. Dies verbraucht ein wenig mehr Akku und ist nicht 100% genau./n/nAlternativ können Sie auch zu einem gekoppelten Bluetooth-Gerät verbinden, um die Konnektivität zu Auto Park nutzen und die Batterie zu schonen.
     </string>
     <string name="auto_set_bar_item">Mein Auto auto-parken</string>
     <string name="bluetooth_bar_item">Bluetooth-Einstellungen</string>
     <string name="auto_park_confirm">Ihr Auto wird auto-geparkt werden. Öffnen Sie Valet, um Ihr Auto zu finden.</string>
     <string name="no_bluetooth">Keine gepaarte Bluetooth-Geräte</string>
-    <string name="select_bluetooth">Wählen Sie Ihr Auto Bluetooth</string>
+    <string name="select_bluetooth">Bluetooth:</string>
+    <string name="parking_sensor">Parken-Sensor</string>
+    <string name="notification_title">Valet Auto Park</string>
+    <string name="notification_text">Stellen Sie einen Timer oder Alarm</string>
 
 </resources>

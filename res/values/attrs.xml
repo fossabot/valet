@@ -15,5 +15,8 @@
     <declare-styleable name="com.roqbot.client.view.FontableCheckBox">
         <attr name="font" />
     </declare-styleable>
+    <declare-styleable name="com.roqbot.client.view.FontableEditText">
+        <attr name="font" />
+    </declare-styleable>
 
 </resources>

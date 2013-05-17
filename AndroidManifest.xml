@@ -17,6 +17,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -59,7 +60,10 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="co.valetapp.bluetooth.LocationService"/>
+        <service android:name=".LocationService"/>
+        <service android:name=".auto.AutoParkService" />
+        <service android:name=".auto.ActivityRecognitionIntentService" android:label="@string/app_name" android:exported="false" />
+
         <receiver android:name=".BootBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

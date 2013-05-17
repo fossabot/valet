@@ -1,7 +1,6 @@
 package co.valetapp;
 
 import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import co.valetapp.BarFragment.BarItem;
 import co.valetapp.InfoFragment.GeoCoderAsyncTask;
+import co.valetapp.auto.AutoParkService;
 import com.crittercism.app.Crittercism;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -75,11 +75,6 @@ public class ParkActivity extends FragmentActivity
             super.onAnimationStart(animation);
         }
     };
-
-    public static PendingIntent getAlarmIntent(Context context) {
-        Intent i = new Intent(context, AlarmBroadcastReceiver.class);
-        return PendingIntent.getBroadcast(context, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
-    }
 
     @Override
     public void onLocationChanged(Location location) {
@@ -143,10 +138,7 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onParkItem(View v) {
-        Editor editor = prefs.edit();
-        editor.putString(Const.LAT_KEY, Double.toString(vehicleMarker.getPosition().latitude));
-        editor.putString(Const.LONG_KEY, Double.toString(vehicleMarker.getPosition().longitude));
-        editor.commit();
+        Tools.park(this, vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude, true);
 
         setState(State.PARKED);
     }
@@ -170,14 +162,13 @@ public class ParkActivity extends FragmentActivity
     private void setInitialState() {
         titleTextView.setVisibility(View.VISIBLE);
         if (prefs.contains(Const.LAT_KEY) && prefs.contains(Const.LONG_KEY)) {
+            show();
+
             if (prefs.contains(Const.TIME_KEY)) {
                 setState(State.TIMED);
             } else {
                 setState(State.PARKED);
             }
-
-            show();
-            showVehicle();
         } else {
             titleAnimator.start();
             setState(State.PARKING);
@@ -233,6 +224,8 @@ public class ParkActivity extends FragmentActivity
 
                 barFragment.setItems(BarItem.FIND, BarItem.SCHEDULE, BarItem.RESET, BarItem.SHARE);
 
+                showVehicle();
+
                 break;
             case SCHEDULE:
                 addToBackStack = true;
@@ -267,6 +260,8 @@ public class ParkActivity extends FragmentActivity
                 dynamicFragment = new TimedFragment();
 
                 barFragment.setItems(BarItem.FIND, BarItem.SCHEDULE, BarItem.RESET, BarItem.SHARE);
+
+                showVehicle();
 
                 break;
             case CONFIRM:
@@ -329,7 +324,7 @@ public class ParkActivity extends FragmentActivity
         edit.commit();
 
 
-        am.cancel(getAlarmIntent(this));
+        am.cancel(Tools.getAlarmIntent(this));
 
         setState(State.PARKED);
     }
@@ -375,7 +370,7 @@ public class ParkActivity extends FragmentActivity
 
         saveData();
 
-        am.set(AlarmManager.RTC_WAKEUP, time, getAlarmIntent(this));
+        am.set(AlarmManager.RTC_WAKEUP, time, Tools.getAlarmIntent(this));
 
         setState(State.TIMED);
     }
@@ -401,13 +396,9 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onUnparkItem(View v) {
-        Editor edit = prefs.edit();
-        edit.remove(Const.LAT_KEY);
-        edit.remove(Const.LONG_KEY);
-        edit.remove(Const.TIME_KEY);
-        edit.commit();
+        Tools.unpark(this);
 
-        am.cancel(getAlarmIntent(this));
+        infoFragment.noteEditText.setVisibility(View.GONE);
 
         setState(State.PARKING);
     }
@@ -484,13 +475,17 @@ public class ParkActivity extends FragmentActivity
             return; // The user's device does not support Google Maps v2.
         }
 
-//        iabHelper = new IabHelper(this, Const.IAB_KEY);
-//        iabHelper.startSetup(onSetupFinishedListener);
-
         Crittercism.init(getApplicationContext(), "5145fe5c4002050d07000002");
         Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
 
         super.onCreate(savedInstanceState);
+
+        prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
+        if (!Tools.isManuallyParked(this) && prefs.getBoolean(Const.PARKING_SENSOR_KEY, false)) {
+            Intent autoParkServiceIntent = new Intent(this, AutoParkService.class);
+            autoParkServiceIntent.setAction(AutoParkService.ACTION_START);
+            startService(autoParkServiceIntent);
+        }
 
         am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
@@ -498,8 +493,6 @@ public class ParkActivity extends FragmentActivity
         criteria = new Criteria();
         criteria.setAccuracy(Criteria.ACCURACY_COARSE);
         criteria.setCostAllowed(false);
-
-        prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
 
         setContentView(R.layout.park_activity);
 
@@ -516,7 +509,6 @@ public class ParkActivity extends FragmentActivity
         googleMap.setOnMarkerClickListener(this);
 
         infoFragment = getInfoFragment();
-        geoCoderAsyncTask = infoFragment.new GeoCoderAsyncTask();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.bar_fl, new BarFragment()).commit();
         getSupportFragmentManager().executePendingTransactions();
@@ -540,10 +532,9 @@ public class ParkActivity extends FragmentActivity
 
         googleMap.stopAnimation();
 
-
-        geoCoderAsyncTask.cancel(true);
-        geoCoderAsyncTask = infoFragment.new GeoCoderAsyncTask();
-
+        if (geoCoderAsyncTask != null) {
+            geoCoderAsyncTask.cancel(true);
+        }
     }
 
     @Override
@@ -604,9 +595,9 @@ public class ParkActivity extends FragmentActivity
         googleMap.setMyLocationEnabled(true);
 
         InfoFragment infoFragment = getInfoFragment();
-        if (infoFragment.addressTextView.getText().length() == 0) {
-            geoCoderAsyncTask.execute(vehicleMarker.getPosition());
-        }
+        geoCoderAsyncTask = infoFragment.new GeoCoderAsyncTask();
+        geoCoderAsyncTask.execute(vehicleMarker.getPosition());
+        infoFragment.noteEditText.setVisibility(View.VISIBLE);
 
         getUserLocation();
     }
