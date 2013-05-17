@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="park_bar_item">Estacionar o meu carro</string>
+    <string name="reset_bar_item_cd">Retirar o meu carro.</string>
+    <string name="find_bar_item_cd">Encontrar o meu carro.</string>
+    <string name="alarm_bar_item_cd">Definir alarme.</string>
+    <string name="timer_bar_item_cd">Definir cronómetro.</string>
+    <string name="share_bar_item_cd">Partilha com os teus amigos a aplicação Valet.</string>
+    <string name="auto_bar_item_cd">Estacionar automaticamente o meu carro com Bluetooth</string>
+    <string name="schedule_bar_item_cd">Definir notificação de estacionamento.</string>
+    <string name="set_bar_item">Definir</string>
+    <string name="timer_bar_item">Cronómetro</string>
+    <string name="alarm_bar_item">Alarme</string>
+    <string name="unpark_bar_item">Retirar o meu carro</string>
+    <string name="unschedule_bar_item">Reiniciar</string>
+    <string name="locating_bar_item">A Localizar&#8230;</string>
+</resources>
