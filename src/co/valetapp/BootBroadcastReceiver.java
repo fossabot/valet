@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import co.valetapp.auto.AutoParkService;
 
 public class BootBroadcastReceiver extends BroadcastReceiver {
 
@@ -15,7 +16,13 @@ public class BootBroadcastReceiver extends BroadcastReceiver {
            SharedPreferences  prefs = context.getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
            if (prefs.contains(Const.TIME_KEY)) {
                AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-               am.set(AlarmManager.RTC_WAKEUP, prefs.getLong(Const.TIME_KEY, 0), ParkActivity.getAlarmIntent(context));
+               am.set(AlarmManager.RTC_WAKEUP, prefs.getLong(Const.TIME_KEY, 0), Tools.getAlarmIntent(context));
+           }
+
+           if (!Tools.isManuallyParked(context) && prefs.getBoolean(Const.PARKING_SENSOR_KEY, false)) {
+               Intent autoParkServiceIntent = new Intent(context, AutoParkService.class);
+               intent.setAction(AutoParkService.ACTION_START);
+               context.startService(autoParkServiceIntent);
            }
         }
     }

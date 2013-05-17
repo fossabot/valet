@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="auto_info">Your car will be  parked automatically when your phone disconnects from a checked Bluetooth device. This only occurs with Bluetooth on.  Only paired Bluetooth devices are shown.
+    <string name="auto_info">Auto Park when your phone disconnects from a Bluetooth device. This only occurs with Bluetooth on.  Only paired devices are shown.\n\nIf Parking Sensor is on Auto Park works without Bluetooth.  This uses more battery and isn\'t 100% reliable.
     </string>
     <string name="auto_set_bar_item">Auto Park My Car</string>
     <string name="bluetooth_bar_item">Bluetooth Settings</string>
     <string name="auto_park_confirm">Your car will be Auto Parked.  Open up Valet to find your car.</string>
     <string name="no_bluetooth">No Bluetooth devices paired</string>
-    <string name="select_bluetooth">Select your car\'s Bluetooth</string>
+    <string name="select_bluetooth">Bluetooth:</string>
+    <string name="parking_sensor">Parking Sensor</string>
 </resources>

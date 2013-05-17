@@ -23,6 +23,7 @@
     <color name="default_focused_background">#AAffffff</color>
     <color name="default_background">#00000000</color>
     <color name="default_text">#ffffff</color>
+    <color name="hint_text">#888888</color>
 
     <!--  -->
     <color name="inverse_pressed_background">#CC000000</color>

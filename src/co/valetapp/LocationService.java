@@ -1,4 +1,4 @@
-package co.valetapp.bluetooth;
+package co.valetapp;
 
 import java.util.List;
 import android.os.Handler;
@@ -18,6 +18,7 @@ import android.os.IBinder;
 public class LocationService extends Service implements LocationListener {
 	private LocationManager locationManager;
     private Location location;
+    private boolean manual;
 
     Runnable timeout = new Runnable() {
         @Override
@@ -30,6 +31,8 @@ public class LocationService extends Service implements LocationListener {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
+        manual = intent.getBooleanExtra(Const.MANUAL_KEY, false);
+
 		locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 		Criteria criteria = new Criteria();
 		criteria.setAccuracy(Criteria.ACCURACY_FINE);
@@ -66,10 +69,7 @@ public class LocationService extends Service implements LocationListener {
 		locationManager.removeUpdates(this);
 		handler.removeCallbacks(timeout);
 
-        Editor editor = getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).edit();
-        editor.putString(Const.LAT_KEY, Double.toString(location.getLatitude()));
-        editor.putString(Const.LONG_KEY, Double.toString(location.getLongitude()));
-        editor.commit();
+        Tools.park(this, location.getLatitude(), location.getLongitude(), manual);
 
 		super.onDestroy();
 	}

@@ -3,6 +3,10 @@ package co.valetapp;
 import java.io.IOException;
 import java.util.List;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.view.KeyEvent;
+import android.widget.EditText;
 import com.google.android.gms.maps.model.LatLng;
 import com.nineoldandroids.animation.ObjectAnimator;
 
@@ -20,10 +24,14 @@ public class InfoFragment extends Fragment {
 	
 	TextView addressTextView, distanceTextView;
 	ObjectAnimator addressAnimator, distanceAnimator;
+    EditText noteEditText;
+    SharedPreferences prefs;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+        prefs = getActivity(). getSharedPreferences(Const.SHARED_PREFS_NAME, Activity.MODE_PRIVATE);
 	}
 	
 	@Override
@@ -44,6 +52,17 @@ public class InfoFragment extends Fragment {
 		distanceTextView = (TextView) view.findViewById(R.id.distance_view);
 		distanceAnimator = ObjectAnimator.ofFloat(distanceTextView, "alpha", 0f, 1f);
 		distanceAnimator.setDuration(500);
+
+        noteEditText = (EditText) view.findViewById(R.id.noteEditText);
+        noteEditText.setText(prefs.getString(Const.NOTE_KEY, ""));
+        noteEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                prefs.edit().putString(Const.NOTE_KEY, v.getText().toString()).commit();
+
+                return false;
+            }
+        });
 	}
 	
 	@Override
