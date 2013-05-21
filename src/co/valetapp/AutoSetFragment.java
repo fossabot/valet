@@ -80,10 +80,12 @@ public class AutoSetFragment extends DynamicFragment {
         if (bondedDevices.size() == 0) {
             bluetoothTextView.setText(R.string.no_bluetooth);
             bluetoothSpinner.setVisibility(View.GONE);
+            bluetoothCheckBox.setEnabled(false);
 
         } else {
             bluetoothTextView.setText(R.string.select_bluetooth);
             bluetoothSpinner.setVisibility(View.VISIBLE);
+            bluetoothCheckBox.setEnabled(true);
 
             List<MyBluetoothDevice> myBluetoothDevices = new ArrayList<MyBluetoothDevice>(bondedDevices.size());
             for (BluetoothDevice bluetoothDevice : bondedDevices) {

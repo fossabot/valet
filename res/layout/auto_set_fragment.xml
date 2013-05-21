@@ -7,48 +7,33 @@
     android:orientation="vertical">
 
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/bluetoothRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginBottom="8dp">
 
         <co.valetapp.view.FontableCheckBox
             android:id="@+id/bluetoothCheckBox"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/bluetoothLinearLayout"
-            android:layout_alignParentLeft="true" />
+            android:layout_height="wrap_content" />
 
-
-        <RelativeLayout
-            android:id="@+id/bluetoothLinearLayout"
+        <co.valetapp.view.FontableTextView
+            android:id="@+id/bluetoothTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/bluetoothCheckBox">
+            android:text="@string/no_bluetooth"
+            android:layout_marginRight="8dp"
+            android:textSize="15sp"
+            app:font="Gotham-Medium.ttf" />
 
-            <co.valetapp.view.FontableTextView
-                android:id="@+id/bluetoothTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/no_bluetooth"
-                android:layout_alignBaseline="@+id/bluetoothSpinner"
-                android:layout_marginRight="8dp"
-                android:textSize="15sp"
-                app:font="Gotham-Medium.ttf" />
+        <Spinner
+            android:id="@+id/bluetoothSpinner"
+            android:layout_marginRight="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-            <Spinner
-                android:id="@+id/bluetoothSpinner"
-                android:layout_toRightOf="@+id/bluetoothTextView"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="8dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </RelativeLayout>
-
-
-    </RelativeLayout>
+    </LinearLayout>
 
     <co.valetapp.view.FontableCheckBox
         android:id="@+id/sensorCheckBox"

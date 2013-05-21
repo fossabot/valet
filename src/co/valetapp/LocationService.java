@@ -58,10 +58,11 @@ public class LocationService extends Service implements LocationListener {
 	@Override
 	public void onLocationChanged(Location location) {
 		if (location.getAccuracy() != 0.0f && location.getAccuracy() < Const.MIN_ACCURACY) {
+            this.location = location;
 			stopSelf(); // Calls onDestroy()
 		}
 
-        this.location = location;
+
 	}
 	
 	@Override
