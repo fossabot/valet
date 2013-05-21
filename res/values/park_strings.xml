@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="parked">Parked!</string>
+    <string name="no_address">No address found</string>
 	<string name="note">Add note</string>
 	<string name="distance_units">mi</string>
 	<string name="timer_button">Set Timer</string>

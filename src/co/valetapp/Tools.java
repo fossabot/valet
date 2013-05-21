@@ -94,6 +94,7 @@ public class Tools {
         return false;
     }
 
+
     public static boolean isParked(Context context) {
         SharedPreferences prefs = getPrefs(context);
         if (prefs.contains(Const.LAT_KEY) && prefs.contains(Const.LONG_KEY)) {

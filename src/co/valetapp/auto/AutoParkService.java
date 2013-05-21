@@ -70,20 +70,22 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        DETECTION_INTERVAL_MILLISECONDS =
-                intent.getIntExtra(DETECTION_INTERVAL_SECONDS_KEY, DEFAULT_DETECTION_INTERVAL_SECONDS)
-                        * MILLISECONDS_PER_SECOND;
+        if (intent != null) {
+            DETECTION_INTERVAL_MILLISECONDS =
+                    intent.getIntExtra(DETECTION_INTERVAL_SECONDS_KEY, DEFAULT_DETECTION_INTERVAL_SECONDS)
+                            * MILLISECONDS_PER_SECOND;
 
-        int statusCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if (statusCode != ConnectionResult.SUCCESS) {
-            stopSelf();
-        } else {
-            if (intent.getAction().equals(ACTION_START)) {
-                startUpdates();
-            } else if (intent.getAction().equals(ACTION_STOP)) {
-                stopUpdates();
+            int statusCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+            if (statusCode != ConnectionResult.SUCCESS) {
+                stopSelf();
+            } else {
+                if (intent.getAction().equals(ACTION_START)) {
+                    startUpdates();
+                } else if (intent.getAction().equals(ACTION_STOP)) {
+                    stopUpdates();
+                }
+
             }
-
         }
 
         return START_STICKY;
@@ -175,6 +177,8 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
             case STOP:
                 mActivityRecognitionClient.removeActivityUpdates(
                         mActivityRecognitionPendingIntent);
+
+                stopSelf();
 
                 break;
         }

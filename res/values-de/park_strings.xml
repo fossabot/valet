@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="parked">Geparkt wird!</string>
+    <string name="no_address">Keine Adresse gefunden</string>
     <string name="note">Anmerkung hinzufügen</string>
 	<string name="distance_units">Meilen</string>
 	<string name="timer_button">Timer einstellen</string>

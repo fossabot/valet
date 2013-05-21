@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="parked">Припаркованных!</string>
+    <string name="no_address">Адрес не найден</string>
     <string name="note">Добавить примечание</string>
 	<string name="distance_units">миль</string>
 	<string name="timer_button">Задать таймер</string>

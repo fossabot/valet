@@ -43,6 +43,7 @@ public class ActivityRecognitionIntentService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         // If the incoming intent contains an update
         if (ActivityRecognitionResult.hasResult(intent)) {
+
             // Get the update
             ActivityRecognitionResult result =
                     ActivityRecognitionResult.extractResult(intent);
@@ -59,6 +60,7 @@ public class ActivityRecognitionIntentService extends IntentService {
              * Get an integer describing the type of activity
              */
             int activityType = mostProbableActivity.getType();
+
 
             Intent autoParkServiceIntent = new Intent(this, AutoParkService.class);
             autoParkServiceIntent.setAction(AutoParkService.ACTION_START);

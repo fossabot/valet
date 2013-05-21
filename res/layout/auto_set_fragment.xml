@@ -17,28 +17,35 @@
             android:id="@+id/bluetoothCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/bluetoothSpinner"
+            android:layout_alignBaseline="@+id/bluetoothLinearLayout"
             android:layout_alignParentLeft="true" />
 
 
-        <co.valetapp.view.FontableTextView
-            android:id="@+id/bluetoothTextView"
+        <RelativeLayout
+            android:id="@+id/bluetoothLinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/no_bluetooth"
-            android:layout_alignBaseline="@+id/bluetoothSpinner"
-            android:layout_toRightOf="@+id/bluetoothCheckBox"
-            android:layout_marginRight="8dp"
-            android:textSize="15sp"
-            app:font="Gotham-Medium.ttf" />
+            android:layout_toRightOf="@+id/bluetoothCheckBox">
 
-        <Spinner
-            android:id="@+id/bluetoothSpinner"
-            android:layout_toRightOf="@+id/bluetoothTextView"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <co.valetapp.view.FontableTextView
+                android:id="@+id/bluetoothTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_bluetooth"
+                android:layout_alignBaseline="@+id/bluetoothSpinner"
+                android:layout_marginRight="8dp"
+                android:textSize="15sp"
+                app:font="Gotham-Medium.ttf" />
+
+            <Spinner
+                android:id="@+id/bluetoothSpinner"
+                android:layout_toRightOf="@+id/bluetoothTextView"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
 
 
     </RelativeLayout>

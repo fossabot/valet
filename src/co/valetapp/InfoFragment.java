@@ -115,6 +115,9 @@ public class InfoFragment extends Fragment {
 				addressAnimator.start();
 				addressTextView.setText(result.get(0).getAddressLine(0));
 			}
+            else {
+                addressTextView.setText(getString(R.string.no_address));
+            }
 		}
 	}
 }

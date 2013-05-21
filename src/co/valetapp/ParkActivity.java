@@ -220,6 +220,8 @@ public class ParkActivity extends FragmentActivity
             case PARKED:
                 clearBackStack();
 
+                dynamicFragment = new ParkedFragment();
+
                 locationManager.removeUpdates(this);
 
                 barFragment.setItems(BarItem.FIND, BarItem.SCHEDULE, BarItem.RESET, BarItem.SHARE);
@@ -366,11 +368,16 @@ public class ParkActivity extends FragmentActivity
         } else {
             return;
         }
+        editor.putBoolean(Const.MANUAL_KEY, true);
         editor.commit();
 
         saveData();
 
         am.set(AlarmManager.RTC_WAKEUP, time, Tools.getAlarmIntent(this));
+
+        Intent autoParkServiceIntent = new Intent(this, AutoParkService.class);
+        autoParkServiceIntent.setAction(AutoParkService.ACTION_STOP);
+        startService(autoParkServiceIntent);
 
         setState(State.TIMED);
     }
@@ -641,7 +648,6 @@ public class ParkActivity extends FragmentActivity
     private boolean hasDynamicFragment() {
         return getSupportFragmentManager().findFragmentById(R.id.dynamic_fl) != null;
     }
-
 
     enum State {
         PARKING, LOCATED, PARKED, CONFIRM, SCHEDULE,

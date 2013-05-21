@@ -71,7 +71,10 @@ public class LocationService extends Service implements LocationListener {
 		locationManager.removeUpdates(this);
 		handler.removeCallbacks(timeout);
 
-        Tools.park(this, location.getLatitude(), location.getLongitude(), manual);
+        if (location != null) {
+            Tools.park(this, location.getLatitude(), location.getLongitude(), manual);
+        }
+
 	}
 	
 	@Override
