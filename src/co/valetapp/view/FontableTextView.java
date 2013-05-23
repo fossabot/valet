@@ -15,15 +15,19 @@ public class FontableTextView extends TextView {
 
     public FontableTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        UiUtil.setCustomFont(this,context,attrs,
-                R.styleable.com_roqbot_client_view_FontableTextView,
-                R.styleable.com_roqbot_client_view_FontableTextView_font);
+        if (!isInEditMode()) {
+            UiUtil.setCustomFont(this,context,attrs,
+                    R.styleable.com_roqbot_client_view_FontableTextView,
+                    R.styleable.com_roqbot_client_view_FontableTextView_font);
+        }
     }
 
     public FontableTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        UiUtil.setCustomFont(this,context,attrs,
-                R.styleable.com_roqbot_client_view_FontableTextView,
-                R.styleable.com_roqbot_client_view_FontableTextView_font);
+        if (!isInEditMode()) {
+            UiUtil.setCustomFont(this,context,attrs,
+                    R.styleable.com_roqbot_client_view_FontableTextView,
+                    R.styleable.com_roqbot_client_view_FontableTextView_font);
+        }
     }
 }

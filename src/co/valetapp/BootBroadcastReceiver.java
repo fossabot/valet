@@ -21,7 +21,7 @@ public class BootBroadcastReceiver extends BroadcastReceiver {
 
            if (!Tools.isManuallyParked(context) && prefs.getBoolean(Const.PARKING_SENSOR_KEY, false)) {
                Intent autoParkServiceIntent = new Intent(context, AutoParkService.class);
-               intent.setAction(AutoParkService.ACTION_START);
+               autoParkServiceIntent.setAction(AutoParkService.ACTION_START);
                context.startService(autoParkServiceIntent);
            }
         }

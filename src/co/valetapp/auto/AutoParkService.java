@@ -78,7 +78,8 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
             int statusCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
             if (statusCode != ConnectionResult.SUCCESS) {
                 stopSelf();
-            } else {
+            }
+            else {
                 if (intent.getAction().equals(ACTION_START)) {
                     startUpdates();
                 } else if (intent.getAction().equals(ACTION_STOP)) {
@@ -178,7 +179,8 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
                 mActivityRecognitionClient.removeActivityUpdates(
                         mActivityRecognitionPendingIntent);
 
-                stopSelf();
+                mInProgress = false;
+                mActivityRecognitionClient.disconnect();
 
                 break;
         }
@@ -200,8 +202,6 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
     public void onConnectionFailed(ConnectionResult connectionResult) {
         // Turn off the request flag
         mInProgress = false;
-
-        stopSelf();
     }
 
     public enum REQUEST_TYPE {START, STOP}

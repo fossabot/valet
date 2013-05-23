@@ -13,15 +13,20 @@ public class FontableButton extends Button {
 
     public FontableButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        UiUtil.setCustomFont(this, context, attrs,
-                R.styleable.com_roqbot_client_view_FontableButton,
-                R.styleable.com_roqbot_client_view_FontableButton_font);
+        if (!isInEditMode()) {
+            UiUtil.setCustomFont(this, context, attrs,
+                    R.styleable.com_roqbot_client_view_FontableButton,
+                    R.styleable.com_roqbot_client_view_FontableButton_font);
+        }
     }
 
     public FontableButton(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        UiUtil.setCustomFont(this, context, attrs,
-                R.styleable.com_roqbot_client_view_FontableButton,
-                R.styleable.com_roqbot_client_view_FontableButton_font);
+
+        if (!isInEditMode()) {
+            UiUtil.setCustomFont(this, context, attrs,
+                    R.styleable.com_roqbot_client_view_FontableButton,
+                    R.styleable.com_roqbot_client_view_FontableButton_font);
+        }
     }
 }

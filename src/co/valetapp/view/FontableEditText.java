@@ -15,15 +15,19 @@ public class FontableEditText extends EditText {
 
     public FontableEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        UiUtil.setCustomFont(this,context,attrs,
-                R.styleable.com_roqbot_client_view_FontableEditText,
-                R.styleable.com_roqbot_client_view_FontableEditText_font);
+         if (!isInEditMode()) {
+             UiUtil.setCustomFont(this,context,attrs,
+                     R.styleable.com_roqbot_client_view_FontableEditText,
+                     R.styleable.com_roqbot_client_view_FontableEditText_font);
+         }
     }
 
     public FontableEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        UiUtil.setCustomFont(this,context,attrs,
-                R.styleable.com_roqbot_client_view_FontableEditText,
-                R.styleable.com_roqbot_client_view_FontableEditText_font);
+        if (!isInEditMode()) {
+            UiUtil.setCustomFont(this,context,attrs,
+                    R.styleable.com_roqbot_client_view_FontableEditText,
+                    R.styleable.com_roqbot_client_view_FontableEditText_font);
+        }
     }
 }

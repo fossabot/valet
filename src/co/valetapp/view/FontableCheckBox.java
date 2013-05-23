@@ -16,16 +16,20 @@ public class FontableCheckBox extends CheckBox {
 	public FontableCheckBox(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
-		UiUtil.setCustomFont(this, context, attrs,
-				R.styleable.com_roqbot_client_view_FontableCheckBox,
-				R.styleable.com_roqbot_client_view_FontableCheckBox_font);
+		if (!isInEditMode()) {
+            UiUtil.setCustomFont(this, context, attrs,
+                    R.styleable.com_roqbot_client_view_FontableCheckBox,
+                    R.styleable.com_roqbot_client_view_FontableCheckBox_font);
+        }
 	}
 
 	public FontableCheckBox(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        UiUtil.setCustomFont(this,context,attrs,
-                R.styleable.com_roqbot_client_view_FontableCheckBox,
-                R.styleable.com_roqbot_client_view_FontableCheckBox_font);
+        if (!isInEditMode()) {
+            UiUtil.setCustomFont(this,context,attrs,
+                    R.styleable.com_roqbot_client_view_FontableCheckBox,
+                    R.styleable.com_roqbot_client_view_FontableCheckBox_font);
+        }
     }
 
 }
