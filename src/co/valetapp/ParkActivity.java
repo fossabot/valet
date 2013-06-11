@@ -472,6 +472,10 @@ public class ParkActivity extends FragmentActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Crittercism.init(getApplicationContext(), "5145fe5c4002050d07000002");
+        Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
+        super.onCreate(savedInstanceState);
+
         if (isAlarmIntent()) lockScreen();
 
         int statusCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
@@ -481,11 +485,6 @@ public class ParkActivity extends FragmentActivity
 
             return; // The user's device does not support Google Maps v2.
         }
-
-        Crittercism.init(getApplicationContext(), "5145fe5c4002050d07000002");
-        Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
-
-        super.onCreate(savedInstanceState);
 
         prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
         if (!Tools.isManuallyParked(this) && prefs.getBoolean(Const.PARKING_SENSOR_KEY, false)) {
