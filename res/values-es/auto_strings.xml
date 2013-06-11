@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="auto_info">Gire el sensor de aparcamiento en automatizar la función de parque. Esto requiere un aumento de la batería y no es 100% exacto.\n\nAlternativamente, usted puede tener un enlace a un dispositivo Bluetooth emparejado para utilizar la conectividad del parque de automóviles y ahorrar batería.
+    <string name="auto_info">Gire el sensor de aparcamiento en automatizar la función de parque. Esto requiere un aumento de la batería y no es 100% exacto.\n\nAlternativamente, usted puede tener un enlace a un dispositivo Bluetooth emparejado para utilizar la conectividad del parque de automóviles y ahorrar batería.\n\nTambién puede utilizar un muelle coche. Escritorio muelles no funcionarán.
     </string>
     <string name="auto_set_bar_item">Auto aparcar mi coche</string>
     <string name="bluetooth_bar_item">Configuración de Bluetooth</string>
@@ -10,4 +10,5 @@
     <string name="parking_sensor">sensor de aparcamiento</string>
     <string name="notification_title">Servicio de Auto Park</string>
     <string name="notification_text">Establecer un temporizador o alarma</string>
+    <string name="dock">Dock de coche</string>
 </resources>

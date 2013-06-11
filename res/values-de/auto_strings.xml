@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="auto_info">Schalten Sie das Parken-Sensor auf den Park-Funktion automatisieren. Dies verbraucht ein wenig mehr Akku und ist nicht 100% genau./n/nAlternativ können Sie auch zu einem gekoppelten Bluetooth-Gerät verbinden, um die Konnektivität zu Auto Park nutzen und die Batterie zu schonen.
+    <string name="auto_info">Schalten Sie das Parken-Sensor auf den Park-Funktion automatisieren. Dies verbraucht ein wenig mehr Akku und ist nicht 100% genau.\n\nAlternativ können Sie auch zu einem gekoppelten Bluetooth-Gerät verbinden, um die Konnektivität zu Auto Park nutzen und die Batterie zu schonen.\n\nSie können auch ein Auto-Dock. Ausflüge Docks wird nicht funktionieren.
     </string>
     <string name="auto_set_bar_item">Mein Auto auto-parken</string>
     <string name="bluetooth_bar_item">Bluetooth-Einstellungen</string>
@@ -10,5 +10,6 @@
     <string name="parking_sensor">Parken-Sensor</string>
     <string name="notification_title">Valet Auto Park</string>
     <string name="notification_text">Stellen Sie einen Timer oder Alarm</string>
+    <string name="dock">Auto-Dock</string>
 
 </resources>

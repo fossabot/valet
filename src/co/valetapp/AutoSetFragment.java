@@ -20,7 +20,7 @@ public class AutoSetFragment extends DynamicFragment {
 
     Spinner bluetoothSpinner;
     TextView bluetoothTextView;
-    CheckBox bluetoothCheckBox, sensorCheckBox;
+    CheckBox bluetoothCheckBox, sensorCheckBox, dockCheckBox;
     SharedPreferences prefs;
 
     @Override
@@ -67,6 +67,19 @@ public class AutoSetFragment extends DynamicFragment {
                     Intent autoParkServiceIntent = new Intent(getActivity(), AutoParkService.class);
                     autoParkServiceIntent.setAction(AutoParkService.ACTION_STOP);
                     getActivity().startService(autoParkServiceIntent);
+                }
+            }
+        });
+
+        dockCheckBox = (CheckBox) view.findViewById(R.id.dockCheckBox);
+        dockCheckBox.setChecked(prefs.getBoolean(Const.DOCK_KEY, false));
+        dockCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    prefs.edit().putBoolean(Const.DOCK_KEY, true).commit();
+                } else {
+                    prefs.edit().putBoolean(Const.DOCK_KEY, false).commit();
                 }
             }
         });

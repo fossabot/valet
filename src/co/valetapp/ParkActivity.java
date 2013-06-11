@@ -22,6 +22,7 @@ import android.widget.Toast;
 import co.valetapp.BarFragment.BarItem;
 import co.valetapp.InfoFragment.GeoCoderAsyncTask;
 import co.valetapp.auto.AutoParkService;
+import co.valetapp.dock.DockBroadcastReceiver;
 import com.crittercism.app.Crittercism;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;

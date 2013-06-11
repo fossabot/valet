@@ -61,8 +61,6 @@ public class LocationService extends Service implements LocationListener {
             this.location = location;
 			stopSelf(); // Calls onDestroy()
 		}
-
-
 	}
 	
 	@Override

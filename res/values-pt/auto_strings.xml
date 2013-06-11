@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="auto_info">O carro será automaticamente estacionado quando o seu telemóvel se desconectar do dispositivo Bluetooth emparelhado. Isto só ocorrerá se o Bluetooth estiver ligado. Apenas os dispositivos Bluetooth emparelhados serão mostrados.
+    <string name="auto_info">O carro será automaticamente estacionado quando o seu telemóvel se desconectar do dispositivo Bluetooth emparelhado. Isto só ocorrerá se o Bluetooth estiver ligado.\n\nApenas os dispositivos Bluetooth emparelhados serão mostrados.\n\nVocê também pode usar uma doca carro.  Cais de turismo não vai funcionar.
     </string>
     <string name="auto_set_bar_item">Estacionar automaticamente o meu carro</string>
     <string name="bluetooth_bar_item">Definições Bluetooth</string>
@@ -10,4 +10,5 @@
     <string name="parking_sensor">Sensor de estacionamento</string>
     <string name="notification_title">Valet Auto Park</string>
     <string name="notification_text">Definir um temporizador ou alarme</string>
+    <string name="dock">Doca carro</string>
 </resources>

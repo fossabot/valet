@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<co.valetapp.view.FontableTextView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/co.valetapp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="@string/auto_info"
-    android:gravity="center"
-    android:lineSpacingExtra="1dp"
-    android:textSize="12sp"
-    app:font="Gotham-Medium.ttf"
-    android:id="@+id/textView" />
+    android:layout_height="match_parent">
+
+    <co.valetapp.view.FontableTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/auto_info"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:lineSpacingExtra="1dp"
+        android:textSize="12sp"
+        app:font="Gotham-Medium.ttf"
+        android:id="@+id/textView" />
+</ScrollView>

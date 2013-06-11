@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="32dp" >
+    android:padding="16dp" >
 
     <co.valetapp.view.FontableTextView
         android:id="@+id/title_ftv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         android:visibility="invisible"
         android:text="@string/app_name_caps"
@@ -35,7 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         class="co.valetapp.InfoFragment"
-        tools:context=".ParkActivity" >
+        tools:context=".ParkActivity"
+        tools:layout="@layout/info_fragment">
     </fragment>
 
     <FrameLayout
@@ -49,7 +50,7 @@
         android:id="@+id/bar_fl"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp">
+        android:layout_marginTop="16dp">
     </FrameLayout>
 
 </LinearLayout>

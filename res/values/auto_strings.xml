@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="auto_info">Turn the Parking Sensor on to automate the park feature. This uses slightly more battery and is not 100% accurate.\n\nAlternatively you may link to a paired Bluetooth device to utilize connectivity to auto park and save battery life.
+    <string name="auto_info">Turn the Parking Sensor on to automate the park feature. This uses slightly more battery and is not 100% accurate.\n\nAlternatively you may link to a paired Bluetooth device to utilize connectivity to auto park and save battery life.\n\nYou can also use a car dock.  Desk docks will not work.
     </string>
     <string name="auto_set_bar_item">Auto Park My Car</string>
     <string name="bluetooth_bar_item">Bluetooth Settings</string>
@@ -10,4 +10,5 @@
     <string name="parking_sensor">Parking Sensor</string>
     <string name="notification_title">Valet Auto Park</string>
     <string name="notification_text">Set a timer or Alarm</string>
+    <string name="dock">Car dock</string>
 </resources>
