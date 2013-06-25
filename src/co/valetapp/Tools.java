@@ -14,7 +14,8 @@ import co.valetapp.auto.AutoParkService;
 public class Tools {
 
     public static void park(Context context, Double latitude, Double longitude, boolean manual) {
-        SharedPreferences.Editor editor = getPrefs(context).edit();
+        SharedPreferences prefs = getPrefs(context);
+        SharedPreferences.Editor editor = prefs.edit();
         editor.putString(Const.LAT_KEY, Double.toString(latitude));
         editor.putString(Const.LONG_KEY, Double.toString(longitude));
         editor.putBoolean(Const.MANUAL_KEY, manual);
@@ -24,7 +25,9 @@ public class Tools {
             Intent intent = new Intent(context, AutoParkService.class);
             intent.setAction(AutoParkService.ACTION_STOP);
             context.startService(intent);
-        } else {
+        }
+
+        if (prefs.getBoolean(Const.NOTIFICATIONS_KEY, false)) {
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(context)
                             .setAutoCancel(true)
@@ -54,6 +57,7 @@ public class Tools {
 // mId allows you to update the notification later on.
             mNotificationManager.notify(0, mBuilder.build());
         }
+
     }
 
     public static SharedPreferences getPrefs(Context context) {

@@ -20,6 +20,7 @@ public class Const {
     public static final String BLUETOOTH_ENABLED_KEY = "co.valetapp.bluetooth";
     public static final String PARKING_SENSOR_KEY = "co.valetapp.sensor";
     public static final String DOCK_KEY = "co.valetapp.dock";
+    public static final String NOTIFICATIONS_KEY = "co.valetapp.notifications";
 
     private Const() {
     }

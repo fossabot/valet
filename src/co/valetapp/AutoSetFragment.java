@@ -19,7 +19,7 @@ import java.util.Set;
 public class AutoSetFragment extends DynamicFragment {
 
     Spinner bluetoothSpinner;
-    CheckBox bluetoothCheckBox, sensorCheckBox, dockCheckBox;
+    CheckBox bluetoothCheckBox, sensorCheckBox, dockCheckBox, notificationsCheckBox;
     SharedPreferences prefs;
 
     @Override
@@ -78,6 +78,19 @@ public class AutoSetFragment extends DynamicFragment {
                     prefs.edit().putBoolean(Const.DOCK_KEY, true).commit();
                 } else {
                     prefs.edit().putBoolean(Const.DOCK_KEY, false).commit();
+                }
+            }
+        });
+
+        notificationsCheckBox = (CheckBox) view.findViewById(R.id.notificationsCheckBox);
+        notificationsCheckBox.setChecked(prefs.getBoolean(Const.NOTIFICATIONS_KEY, false));
+        notificationsCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    prefs.edit().putBoolean(Const.NOTIFICATIONS_KEY, true).commit();
+                } else {
+                    prefs.edit().putBoolean(Const.NOTIFICATIONS_KEY, false).commit();
                 }
             }
         });
