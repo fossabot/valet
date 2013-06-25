@@ -2,6 +2,7 @@
 <ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="0dp"
     android:layout_height="@dimen/barHeight"
+    android:layout_marginTop="16dp"
     android:layout_weight="1"
     android:onClick="onResetItem"
     android:src="@drawable/reset_bar_item_selector"

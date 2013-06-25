@@ -2,6 +2,7 @@
 <ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="48dp"
     android:layout_height="@dimen/barHeight"
+    android:layout_marginTop="16dp"
     android:onClick="onAutoInfoItem"
     android:src="@drawable/auto_info_bar_item_selector"
     android:contentDescription="@string/info"
