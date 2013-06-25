@@ -7,8 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
-public class BarFragment extends Fragment {
+public class BarFragment extends Fragment implements View.OnLongClickListener {
 	public static final String BAR_ITEMS_KEY = "co.valetapp.bar_items";
 
 	enum BarItem {
@@ -54,7 +55,7 @@ public class BarFragment extends Fragment {
 		super.onViewCreated(view, savedInstanceState);
 		
 		barLinearLayout = (LinearLayout) view.findViewById(R.id.bar_ll);
-		
+
 		if (barItems != null) {
 			setItems(barItems);
 		}
@@ -63,11 +64,22 @@ public class BarFragment extends Fragment {
 	void setItems(BarItem... barItems) {
 		if (barLinearLayout != null) {
 			for (BarItem barItem : barItems) {
-				barLinearLayout.addView(getActivity().getLayoutInflater()
-						.inflate(barItem.getResourceId(), barLinearLayout, false));
+                View view = getActivity().getLayoutInflater().inflate(barItem.getResourceId(), barLinearLayout, false);
+                view.setTag(barItem);
+                view.setOnLongClickListener(this);
+				barLinearLayout.addView(view);
 			}
 		}
 		
 		this.barItems = barItems;
 	}
+
+    @Override
+    public boolean onLongClick(View v) {
+        BarItem barItem = (BarItem) v.getTag();
+        CharSequence contentDescription = v.getContentDescription();
+        Toast.makeText(getActivity(), contentDescription, Toast.LENGTH_LONG).show();
+
+        return true;
+    }
 }

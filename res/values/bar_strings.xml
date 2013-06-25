@@ -6,7 +6,7 @@
     <string name="alarm_bar_item_cd">Set an alarm.</string>
     <string name="timer_bar_item_cd">Set a timer.</string>
     <string name="share_bar_item_cd">Share something about Valet.</string>
-    <string name="auto_bar_item_cd">Autopark with Bluetooth</string>
+    <string name="auto_bar_item_cd">Autopark with Bluetooth, Parking Sensor, or a Car Dock</string>
     <string name="schedule_bar_item_cd">Schedule a parking reminder.</string>
     <string name="set_bar_item">Set</string>
     <string name="timer_bar_item">Timer</string>
