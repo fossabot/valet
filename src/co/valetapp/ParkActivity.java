@@ -77,6 +77,127 @@ public class ParkActivity extends FragmentActivity
     };
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        Crittercism.init(getApplicationContext(), "5145fe5c4002050d07000002");
+        Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
+        super.onCreate(savedInstanceState);
+
+        if (isAlarmIntent()) lockScreen();
+
+        int statusCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if (statusCode != ConnectionResult.SUCCESS) {
+            Toast.makeText(ParkActivity.this, R.string.not_supported, Toast.LENGTH_LONG).show();
+            finish();
+
+            return; // The user's device does not support Google Maps v2.
+        }
+
+        prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
+        if (!Tools.isManuallyParked(this) && prefs.getBoolean(Const.PARKING_SENSOR_KEY, false)) {
+            Intent autoParkServiceIntent = new Intent(this, AutoParkService.class);
+            autoParkServiceIntent.setAction(AutoParkService.ACTION_START);
+            startService(autoParkServiceIntent);
+        }
+
+        am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+        criteria.setCostAllowed(false);
+
+        setContentView(R.layout.park_activity);
+
+        titleTextView = (TextView) findViewById(R.id.title_ftv);
+        titleTextView.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ParkActivity.this, AboutActivity.class));
+            }
+        });
+
+        googleMap = getMapFragment().getMap();
+        googleMap.setOnMarkerClickListener(this);
+
+        infoFragment = getInfoFragment();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.bar_fl, new BarFragment()).commit();
+        getSupportFragmentManager().executePendingTransactions();
+
+        titleAnimator = ObjectAnimator.ofFloat(titleTextView, "alpha", 0f, 1f);
+        titleAnimator.setDuration(3 * 1000);
+        titleAnimator.addListener(animationListener);
+
+        hide();
+
+        setInitialState();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+
+        if (isAlarmIntent()) lockScreen();
+
+        super.onNewIntent(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (state != null) {
+            if (vehicleMarker != null) {
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
+                googleMap.animateCamera(cameraUpdate);
+            } else {
+                getVehicleLocation();
+            }
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        locationManager.removeUpdates(this);
+
+        titleAnimator.end();
+
+        googleMap.stopAnimation();
+
+        if (geoCoderAsyncTask != null) {
+            geoCoderAsyncTask.cancel(true);
+        }
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        if (state != State.PARKING && state != State.LOCATED && state != State.AUTO_INFO && state != State.AUTO_SET) {
+            startActivity(Intent.createChooser(IntentLibrary.getFindIntent(this,
+                    vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude),
+                    getString(R.string.find_intent_chooser_title)));
+
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Const.REQUEST_CODE_GOOGLE_PLAY) {
+            if (resultCode == RESULT_CANCELED) {
+                finish();
+            } else {
+                startActivity(getIntent());
+            }
+        }
+    }
+
+    @Override
     public void onLocationChanged(Location location) {
         switch (state) {
             case PARKING:
@@ -125,8 +246,139 @@ public class ParkActivity extends FragmentActivity
         }
     }
 
-    private InfoFragment getInfoFragment() {
-        return (InfoFragment) getSupportFragmentManager().findFragmentById(R.id.info_frag);
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+    }
+
+    public void onParkItem(View v) {
+        Tools.park(this, vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude, true);
+
+        setState(State.PARKED);
+    }
+
+    public void onAutoItem(View v) {
+        setState(State.AUTO_SET);
+    }
+
+    public void onAutoSetItem(View v) {
+        AutoSetFragment frag = (AutoSetFragment) getDynamicFragment();
+        frag.save();
+
+        Toast.makeText(ParkActivity.this, R.string.auto_park_confirm, Toast.LENGTH_LONG).show();
+        finish();
+    }
+
+    public void onAutoInfoItem(View v) {
+        setState(State.AUTO_INFO);
+    }
+
+    public void onFindItem(View v) {
+        startActivity(Intent.createChooser(IntentLibrary.getFindIntent(this,
+                vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude),
+                getString(R.string.find_intent_chooser_title)));
+    }
+
+    public void onScheduleItem(View v) {
+        if (getDynamicFragment() instanceof TimedFragment) {
+            setState(State.UNSCHEDULE);
+        } else {
+            setState(State.SCHEDULE);
+        }
+    }
+
+    public void onUnscheduleItem(View v) {
+        Editor edit = prefs.edit();
+        edit.remove(Const.TIME_KEY);
+        edit.commit();
+
+
+        am.cancel(Tools.getAlarmIntent(this));
+
+        setState(State.PARKED);
+    }
+
+    public void onTimerItem(View v) {
+        setState(State.TIMER);
+    }
+
+    public void onAlarmItem(View v) {
+        setState(State.ALARM);
+    }
+
+    public void onBluetoothItem(View v) {
+        Intent settingsIntent = new Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
+        startActivity(settingsIntent);
+    }
+
+    public void onSetItem(View v) {
+        Editor editor = getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).edit();
+
+        long time;
+        DynamicFragment scheduleFragment = (DynamicFragment) getSupportFragmentManager().findFragmentById(R.id.dynamic_fl);
+        if (scheduleFragment instanceof TimerFragment) {
+            time = ((TimerFragment) scheduleFragment).getTime();
+            editor.putLong(Const.TIME_KEY, time);
+        } else if (scheduleFragment instanceof AlarmFragment) {
+            time = ((AlarmFragment) scheduleFragment).getTime();
+            editor.putLong(Const.TIME_KEY, time);
+
+        } else {
+            return;
+        }
+        editor.putBoolean(Const.MANUAL_KEY, true);
+        editor.commit();
+
+        saveData();
+
+        am.set(AlarmManager.RTC_WAKEUP, time, Tools.getAlarmIntent(this));
+
+        Intent autoParkServiceIntent = new Intent(this, AutoParkService.class);
+        autoParkServiceIntent.setAction(AutoParkService.ACTION_STOP);
+        startService(autoParkServiceIntent);
+
+        setState(State.TIMED);
+    }
+
+    public void onResetItem(View v) {
+        setState(State.CONFIRM);
+    }
+
+    public void onUnparkItem(View v) {
+        Tools.unpark(this);
+
+        infoFragment.noteEditText.setVisibility(View.INVISIBLE);
+        infoFragment.root.setVisibility(View.GONE);
+
+        setState(State.PARKING);
+    }
+
+    public void onShareItem(View v) {
+        startActivity(Intent.createChooser(IntentLibrary.getShareIntent(this,
+                vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude), getString(R.string.share_intent_chooser_title)));
+    }
+
+    private void setInitialState() {
+        titleTextView.setVisibility(View.VISIBLE);
+        if (prefs.contains(Const.LAT_KEY) && prefs.contains(Const.LONG_KEY)) {
+            show();
+
+            if (prefs.contains(Const.TIME_KEY)) {
+                setState(State.TIMED);
+            } else {
+                setState(State.PARKED);
+            }
+        } else {
+            titleAnimator.start();
+            setState(State.PARKING);
+        }
     }
 
     void setState(State state) {
@@ -258,19 +510,29 @@ public class ParkActivity extends FragmentActivity
         this.state = state;
     }
 
-    private boolean hasDynamicFragment() {
-        return getSupportFragmentManager().findFragmentById(R.id.dynamic_fl) != null;
-    }
-
-    private DynamicFragment getDynamicFragment() {
-        return (DynamicFragment) getSupportFragmentManager().findFragmentById(R.id.dynamic_fl);
-    }
-
     private void clearBackStack() {
         FragmentManager fm = getSupportFragmentManager();
         for (int i = 0; i < fm.getBackStackEntryCount(); i++) {
             fm.popBackStack();
         }
+    }
+
+    private void hide() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.hide(getMapFragment());
+        ft.hide(getInfoFragment());
+        ft.hide(getBarFragment());
+        ft.commitAllowingStateLoss();
+    }
+
+
+    private void show() {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.show(getMapFragment());
+        ft.show(getInfoFragment());
+        ft.show(getBarFragment());
+        ft.commitAllowingStateLoss();
     }
 
     private void showVehicle() {
@@ -342,106 +604,6 @@ public class ParkActivity extends FragmentActivity
         }
     }
 
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-    }
-
-    public void onParkItem(View v) {
-        Tools.park(this, vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude, true);
-
-        setState(State.PARKED);
-    }
-
-    public void onAutoItem(View v) {
-        setState(State.AUTO_SET);
-    }
-
-    public void onAutoSetItem(View v) {
-        AutoSetFragment frag = (AutoSetFragment) getDynamicFragment();
-        frag.save();
-
-        Toast.makeText(ParkActivity.this, R.string.auto_park_confirm, Toast.LENGTH_LONG).show();
-        finish();
-    }
-
-    public void onAutoInfoItem(View v) {
-        setState(State.AUTO_INFO);
-    }
-
-    public void onFindItem(View v) {
-        startActivity(Intent.createChooser(IntentLibrary.getFindIntent(this,
-                vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude),
-                getString(R.string.find_intent_chooser_title)));
-    }
-
-    public void onScheduleItem(View v) {
-        if (getDynamicFragment() instanceof TimedFragment) {
-            setState(State.UNSCHEDULE);
-        } else {
-            setState(State.SCHEDULE);
-        }
-    }
-
-    public void onUnscheduleItem(View v) {
-        Editor edit = prefs.edit();
-        edit.remove(Const.TIME_KEY);
-        edit.commit();
-
-
-        am.cancel(Tools.getAlarmIntent(this));
-
-        setState(State.PARKED);
-    }
-
-    public void onTimerItem(View v) {
-        setState(State.TIMER);
-    }
-
-    public void onAlarmItem(View v) {
-        setState(State.ALARM);
-    }
-
-    public void onBluetoothItem(View v) {
-        Intent settingsIntent = new Intent(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS);
-        startActivity(settingsIntent);
-    }
-
-    public void onSetItem(View v) {
-        Editor editor = getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).edit();
-
-        long time;
-        DynamicFragment scheduleFragment = (DynamicFragment) getSupportFragmentManager().findFragmentById(R.id.dynamic_fl);
-        if (scheduleFragment instanceof TimerFragment) {
-            time = ((TimerFragment) scheduleFragment).getTime();
-            editor.putLong(Const.TIME_KEY, time);
-        } else if (scheduleFragment instanceof AlarmFragment) {
-            time = ((AlarmFragment) scheduleFragment).getTime();
-            editor.putLong(Const.TIME_KEY, time);
-
-        } else {
-            return;
-        }
-        editor.putBoolean(Const.MANUAL_KEY, true);
-        editor.commit();
-
-        saveData();
-
-        am.set(AlarmManager.RTC_WAKEUP, time, Tools.getAlarmIntent(this));
-
-        Intent autoParkServiceIntent = new Intent(this, AutoParkService.class);
-        autoParkServiceIntent.setAction(AutoParkService.ACTION_STOP);
-        startService(autoParkServiceIntent);
-
-        setState(State.TIMED);
-    }
 
     private void saveData() {
         ParseGeoPoint point = new ParseGeoPoint(Double.parseDouble(prefs.getString(Const.LAT_KEY, "")), Double.parseDouble(prefs.getString(Const.LONG_KEY, "")));
@@ -451,105 +613,17 @@ public class ParkActivity extends FragmentActivity
         park.saveEventually();
     }
 
-    public void onResetItem(View v) {
-        setState(State.CONFIRM);
+    private void lockScreen() {
+        final Window win = getWindow();
+        win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        win.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
     }
 
-    public void onUnparkItem(View v) {
-        Tools.unpark(this);
 
-        infoFragment.noteEditText.setVisibility(View.INVISIBLE);
-        infoFragment.root.setVisibility(View.GONE);
-
-        setState(State.PARKING);
-    }
-
-    public void onShareItem(View v) {
-        startActivity(Intent.createChooser(IntentLibrary.getShareIntent(this,
-                vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude), getString(R.string.share_intent_chooser_title)));
-    }
-
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        if (state != State.PARKING && state != State.LOCATED && state != State.AUTO_INFO && state != State.AUTO_SET) {
-            startActivity(Intent.createChooser(IntentLibrary.getFindIntent(this,
-                    vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude),
-                    getString(R.string.find_intent_chooser_title)));
-
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Const.REQUEST_CODE_GOOGLE_PLAY) {
-            if (resultCode == RESULT_CANCELED) {
-                finish();
-            } else {
-                startActivity(getIntent());
-            }
-        }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        Crittercism.init(getApplicationContext(), "5145fe5c4002050d07000002");
-        Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
-        super.onCreate(savedInstanceState);
-
-        if (isAlarmIntent()) lockScreen();
-
-        int statusCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if (statusCode != ConnectionResult.SUCCESS) {
-            Toast.makeText(ParkActivity.this, R.string.not_supported, Toast.LENGTH_LONG).show();
-            finish();
-
-            return; // The user's device does not support Google Maps v2.
-        }
-
-        prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
-        if (!Tools.isManuallyParked(this) && prefs.getBoolean(Const.PARKING_SENSOR_KEY, false)) {
-            Intent autoParkServiceIntent = new Intent(this, AutoParkService.class);
-            autoParkServiceIntent.setAction(AutoParkService.ACTION_START);
-            startService(autoParkServiceIntent);
-        }
-
-        am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-
-        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        criteria = new Criteria();
-        criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-        criteria.setCostAllowed(false);
-
-        setContentView(R.layout.park_activity);
-
-        titleTextView = (TextView) findViewById(R.id.title_ftv);
-        titleTextView.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ParkActivity.this, AboutActivity.class));
-            }
-        });
-
-        googleMap = getMapFragment().getMap();
-        googleMap.setOnMarkerClickListener(this);
-
-        infoFragment = getInfoFragment();
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.bar_fl, new BarFragment()).commit();
-        getSupportFragmentManager().executePendingTransactions();
-
-        titleAnimator = ObjectAnimator.ofFloat(titleTextView, "alpha", 0f, 1f);
-        titleAnimator.setDuration(3 * 1000);
-        titleAnimator.addListener(animationListener);
-
-        hide();
-
-        setInitialState();
+    private BarFragment getBarFragment() {
+        return (BarFragment) getSupportFragmentManager().findFragmentById(R.id.bar_fl);
     }
 
     private SupportMapFragment getMapFragment() {
@@ -565,87 +639,16 @@ public class ParkActivity extends FragmentActivity
         }
     }
 
-    private void lockScreen() {
-        final Window win = getWindow();
-        win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-                | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
-        win.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+    private InfoFragment getInfoFragment() {
+        return (InfoFragment) getSupportFragmentManager().findFragmentById(R.id.info_frag);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        locationManager.removeUpdates(this);
-
-        titleAnimator.end();
-
-        googleMap.stopAnimation();
-
-        if (geoCoderAsyncTask != null) {
-            geoCoderAsyncTask.cancel(true);
-        }
+    private DynamicFragment getDynamicFragment() {
+        return (DynamicFragment) getSupportFragmentManager().findFragmentById(R.id.dynamic_fl);
     }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        setIntent(intent);
-
-        if (isAlarmIntent()) lockScreen();
-
-        super.onNewIntent(intent);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (state != null) {
-            if (vehicleMarker != null) {
-                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
-                googleMap.animateCamera(cameraUpdate);
-            } else {
-                getVehicleLocation();
-            }
-        }
-    }
-
-    private void hide() {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.hide(getMapFragment());
-        ft.hide(getInfoFragment());
-        ft.hide(getBarFragment());
-        ft.commitAllowingStateLoss();
-    }
-
-    private BarFragment getBarFragment() {
-        return (BarFragment) getSupportFragmentManager().findFragmentById(R.id.bar_fl);
-    }
-
-    private void setInitialState() {
-        titleTextView.setVisibility(View.VISIBLE);
-        if (prefs.contains(Const.LAT_KEY) && prefs.contains(Const.LONG_KEY)) {
-            show();
-
-            if (prefs.contains(Const.TIME_KEY)) {
-                setState(State.TIMED);
-            } else {
-                setState(State.PARKED);
-            }
-        } else {
-            titleAnimator.start();
-            setState(State.PARKING);
-        }
-    }
-
-    private void show() {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.show(getMapFragment());
-        ft.show(getInfoFragment());
-        ft.show(getBarFragment());
-        ft.commitAllowingStateLoss();
+    private boolean hasDynamicFragment() {
+        return getSupportFragmentManager().findFragmentById(R.id.dynamic_fl) != null;
     }
 
     enum State {
