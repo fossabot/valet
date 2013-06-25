@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/co.valetapp"
     android:layout_width="0dp"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/barHeight"
     android:layout_weight="1"
     android:clickable="true"
     android:onClick="onAutoSetItem"

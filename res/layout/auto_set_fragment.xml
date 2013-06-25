@@ -11,21 +11,17 @@
         android:id="@+id/bluetoothRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
 
         <co.valetapp.view.FontableCheckBox
             android:id="@+id/bluetoothCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <co.valetapp.view.FontableTextView
-            android:id="@+id/bluetoothTextView"
+            android:text="@string/select_bluetooth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/no_bluetooth"
             android:layout_marginRight="8dp"
-            android:textSize="15sp"
-            app:font="Gotham-Medium.ttf" />
+            app:font="Gotham-Medium.ttf"
+            />
 
         <Spinner
             android:id="@+id/bluetoothSpinner"
@@ -33,23 +29,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onBluetoothItem"
+            android:src="@drawable/bluetooth_bar_item_selector"
+            android:contentDescription="@string/bluetooth_bar_item"
+            android:background="@drawable/default_selector" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bluetoothRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <co.valetapp.view.FontableCheckBox
+            android:id="@+id/dockCheckBox"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:font="Gotham-Medium.ttf"
+            android:textColor="@color/default_text"
+            android:layout_height="wrap_content"
+            android:text="@string/dock" />
+
+        <co.valetapp.view.FontableCheckBox
+            android:id="@+id/sensorCheckBox"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:font="Gotham-Medium.ttf"
+            android:textColor="@color/default_text"
+            android:layout_height="wrap_content"
+            android:text="@string/parking_sensor"/>
+
     </LinearLayout>
 
     <co.valetapp.view.FontableCheckBox
-        android:id="@+id/sensorCheckBox"
+        android:id="@+id/notificationsCheckBox"
         android:layout_width="match_parent"
         app:font="Gotham-Medium.ttf"
         android:textColor="@color/default_text"
         android:layout_height="wrap_content"
-        android:text="@string/parking_sensor"
-        android:layout_marginBottom="16dp"/>
-
-    <co.valetapp.view.FontableCheckBox
-        android:id="@+id/dockCheckBox"
-        android:layout_width="match_parent"
-        app:font="Gotham-Medium.ttf"
-        android:textColor="@color/default_text"
-        android:layout_height="wrap_content"
-        android:text="@string/dock" />
+        android:text="@string/notifications" />
 
 </LinearLayout>

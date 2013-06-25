@@ -6,9 +6,10 @@
     <string name="bluetooth_bar_item">Bluetooth Settings</string>
     <string name="auto_park_confirm">Your car will be Auto Parked.  Open up Valet to find your car.</string>
     <string name="no_bluetooth">Bluetooth is unavailable</string>
-    <string name="select_bluetooth">Bluetooth:</string>
+    <string name="select_bluetooth">Bluetooth</string>
     <string name="parking_sensor">Parking Sensor</string>
     <string name="notification_title">Valet Auto Park</string>
     <string name="notification_text">Set a timer or Alarm</string>
     <string name="dock">Car dock</string>
+    <string name="notifications">Notifications</string>
 </resources>

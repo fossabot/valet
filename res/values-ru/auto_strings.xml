@@ -6,10 +6,11 @@
     <string name="bluetooth_bar_item">Настройки Блютус.</string>
     <string name="auto_park_confirm">Ваша машина будет автоматически припакрована. Запустите Валет, чтобы найти вашу машину.</string>
     <string name="no_bluetooth">Нет присоединенного Блютус устройства.</string>
-    <string name="select_bluetooth">Bluetooth:</string>
+    <string name="select_bluetooth">Bluetooth</string>
     <string name="parking_sensor">Датчик парковки</string>
     <string name="notification_title">Служащим Auto Park</string>
     <string name="notification_text">Установите таймер или сигнализации</string>
     <string name="dock">Автомобиль док</string>
+    <string name="notifications">Уведомления</string>
 
 </resources>

@@ -19,7 +19,6 @@ import java.util.Set;
 public class AutoSetFragment extends DynamicFragment {
 
     Spinner bluetoothSpinner;
-    TextView bluetoothTextView;
     CheckBox bluetoothCheckBox, sensorCheckBox, dockCheckBox;
     SharedPreferences prefs;
 
@@ -35,7 +34,6 @@ public class AutoSetFragment extends DynamicFragment {
         prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
 
         bluetoothSpinner = (Spinner) view.findViewById(R.id.bluetoothSpinner);
-        bluetoothTextView = (TextView) view.findViewById(R.id.bluetoothTextView);
 
         bluetoothCheckBox = (CheckBox) view.findViewById(R.id.bluetoothCheckBox);
         bluetoothCheckBox.setChecked(prefs.getBoolean(Const.BLUETOOTH_ENABLED_KEY, false));
@@ -91,14 +89,14 @@ public class AutoSetFragment extends DynamicFragment {
 
         Set<BluetoothDevice> bondedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
         if (bondedDevices.size() == 0) {
-            bluetoothTextView.setText(R.string.no_bluetooth);
             bluetoothSpinner.setVisibility(View.GONE);
             bluetoothCheckBox.setEnabled(false);
+            bluetoothCheckBox.setTextColor(getResources().getColor(R.color.hint_text));
 
         } else {
-            bluetoothTextView.setText(R.string.select_bluetooth);
             bluetoothSpinner.setVisibility(View.VISIBLE);
             bluetoothCheckBox.setEnabled(true);
+            bluetoothCheckBox.setTextColor(getResources().getColor(R.color.default_text));
 
             List<MyBluetoothDevice> myBluetoothDevices = new ArrayList<MyBluetoothDevice>(bondedDevices.size());
             for (BluetoothDevice bluetoothDevice : bondedDevices) {

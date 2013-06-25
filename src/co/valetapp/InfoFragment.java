@@ -26,6 +26,7 @@ public class InfoFragment extends Fragment {
 	ObjectAnimator addressAnimator, distanceAnimator;
     EditText noteEditText;
     SharedPreferences prefs;
+    View root;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,9 @@ public class InfoFragment extends Fragment {
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-		
+
+        root = view.findViewById(R.id.root);
+
 		addressTextView = (TextView) view.findViewById(R.id.address_view);
 		addressAnimator = ObjectAnimator.ofFloat(addressTextView, "alpha", 0f, 1f);
 		addressAnimator.setDuration(500);
@@ -54,6 +57,7 @@ public class InfoFragment extends Fragment {
 		distanceAnimator.setDuration(500);
 
         noteEditText = (EditText) view.findViewById(R.id.noteEditText);
+        noteEditText.setVisibility(View.INVISIBLE);
         noteEditText.setText(prefs.getString(Const.NOTE_KEY, ""));
         noteEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -63,6 +67,8 @@ public class InfoFragment extends Fragment {
                 return false;
             }
         });
+
+        root.setVisibility(View.GONE);
 	}
 	
 	@Override

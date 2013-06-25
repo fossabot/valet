@@ -6,9 +6,10 @@
     <string name="bluetooth_bar_item">Definições Bluetooth</string>
     <string name="auto_park_confirm">O seu carro será automaticamente estacionado. Abra o Valet para o encontrar.</string>
     <string name="no_bluetooth">Não há nenhum dispositivo Bluetooth emparelhado</string>
-    <string name="select_bluetooth">Bluetooth:</string>
+    <string name="select_bluetooth">Bluetooth</string>
     <string name="parking_sensor">Sensor de estacionamento</string>
     <string name="notification_title">Valet Auto Park</string>
     <string name="notification_text">Definir um temporizador ou alarme</string>
     <string name="dock">Doca carro</string>
+    <string name="notifications">Notificações</string>
 </resources>

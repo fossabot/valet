@@ -218,8 +218,6 @@ public class ParkActivity extends FragmentActivity
 
                 dynamicFragment = new AutoInfoFragment();
 
-                barFragment.setItems(BarItem.BLUETOOTH);
-
                 break;
 
             case AUTO_SET:
@@ -293,9 +291,10 @@ public class ParkActivity extends FragmentActivity
         googleMap.setMyLocationEnabled(true);
 
         InfoFragment infoFragment = getInfoFragment();
+        infoFragment.root.setVisibility(View.VISIBLE);
+        infoFragment.noteEditText.setVisibility(View.VISIBLE);
         geoCoderAsyncTask = infoFragment.new GeoCoderAsyncTask();
         geoCoderAsyncTask.execute(vehicleMarker.getPosition());
-        infoFragment.noteEditText.setVisibility(View.VISIBLE);
 
         getUserLocation();
     }
@@ -459,7 +458,8 @@ public class ParkActivity extends FragmentActivity
     public void onUnparkItem(View v) {
         Tools.unpark(this);
 
-        infoFragment.noteEditText.setVisibility(View.GONE);
+        infoFragment.noteEditText.setVisibility(View.INVISIBLE);
+        infoFragment.root.setVisibility(View.GONE);
 
         setState(State.PARKING);
     }

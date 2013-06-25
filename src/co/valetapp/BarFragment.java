@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class BarFragment extends Fragment implements View.OnLongClickListener {
-	public static final String BAR_ITEMS_KEY = "co.valetapp.bar_items";
 
 	enum BarItem {
 		PARK(R.layout.park_bar_item),
@@ -26,9 +25,7 @@ public class BarFragment extends Fragment implements View.OnLongClickListener {
 		UNSCHEDULE(R.layout.unschedule_bar_item),
 		TIMER(R.layout.timer_bar_item),
 		ALARM(R.layout.alarm_bar_item),
-		SET(R.layout.set_bar_item),
-        BLUETOOTH(R.layout.bluetooth_bar_item);
-
+		SET(R.layout.set_bar_item);
 		final int mResourceId;
 		BarItem(int resourceId) {
 			mResourceId = resourceId;
