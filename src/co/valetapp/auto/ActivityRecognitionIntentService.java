@@ -73,7 +73,7 @@ public class ActivityRecognitionIntentService extends IntentService {
                 int lastActivityType = mSharedPreferences.getInt(LAST_ACTIVITY_TYPE_KEY, DetectedActivity.UNKNOWN);
 
                 if (lastActivityType == DetectedActivity.ON_BICYCLE || lastActivityType == DetectedActivity.IN_VEHICLE) {
-                    autoParkServiceIntent.putExtra(AutoParkService.DETECTION_INTERVAL_SECONDS_KEY, 10);
+                    autoParkServiceIntent.putExtra(AutoParkService.DETECTION_INTERVAL_SECONDS_KEY, 0);
 
                     if (activityType == DetectedActivity.ON_FOOT) {
                         startService(new Intent(this, LocationService.class));
