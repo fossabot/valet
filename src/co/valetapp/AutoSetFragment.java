@@ -20,6 +20,7 @@ public class AutoSetFragment extends DynamicFragment {
 
     Spinner bluetoothSpinner;
     CheckBox bluetoothCheckBox, sensorCheckBox, dockCheckBox, notificationsCheckBox;
+    ImageButton bluetoothButton;
     SharedPreferences prefs;
 
     @Override
@@ -32,6 +33,17 @@ public class AutoSetFragment extends DynamicFragment {
         super.onViewCreated(view, savedInstanceState);
 
         prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
+
+        bluetoothButton = (ImageButton) view.findViewById(R.id.bluetoothButton);
+        bluetoothButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(getActivity(), bluetoothButton.getContentDescription(), Toast.LENGTH_LONG).show();
+
+                return true;
+            }
+        });
+
 
         bluetoothSpinner = (Spinner) view.findViewById(R.id.bluetoothSpinner);
 

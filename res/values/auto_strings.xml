@@ -12,4 +12,7 @@
     <string name="notification_text">Set a timer or Alarm</string>
     <string name="dock">Car dock</string>
     <string name="notifications">Notifications</string>
+    <string name="info">Information</string>
+    <string name="delete">Delete</string>
+    <string name="view">View</string>
 </resources>

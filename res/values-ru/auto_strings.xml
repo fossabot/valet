@@ -12,5 +12,8 @@
     <string name="notification_text">Установите таймер или сигнализации</string>
     <string name="dock">Автомобиль док</string>
     <string name="notifications">Уведомления</string>
+    <string name="info">информация</string>
+    <string name="delete">удалять</string>
+    <string name="view">смотреть</string>
 
 </resources>

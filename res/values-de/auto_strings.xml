@@ -12,5 +12,8 @@
     <string name="notification_text">Stellen Sie einen Timer oder Alarm</string>
     <string name="dock">Auto-Dock</string>
     <string name="notifications">Benachrichtigungen</string>
+    <string name="info">Informationen</string>
+    <string name="delete">Löschen</string>
+    <string name="view">Anzeigen</string>
 
 </resources>

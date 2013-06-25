@@ -73,9 +73,10 @@ public class BarFragment extends Fragment implements View.OnLongClickListener {
 
     @Override
     public boolean onLongClick(View v) {
-        BarItem barItem = (BarItem) v.getTag();
         CharSequence contentDescription = v.getContentDescription();
-        Toast.makeText(getActivity(), contentDescription, Toast.LENGTH_LONG).show();
+        if (contentDescription != null) {
+            Toast.makeText(getActivity(), contentDescription, Toast.LENGTH_LONG).show();
+        }
 
         return true;
     }

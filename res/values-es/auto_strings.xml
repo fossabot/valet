@@ -12,4 +12,7 @@
     <string name="notification_text">Establecer un temporizador o alarma</string>
     <string name="dock">Dock de coche</string>
     <string name="notifications">Notificaciones</string>
+    <string name="info">Información</string>
+    <string name="delete">Borrar</string>
+    <string name="view">Ver</string>
 </resources>
