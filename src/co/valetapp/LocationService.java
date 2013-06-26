@@ -1,24 +1,30 @@
 package co.valetapp;
 
-import java.util.List;
+import android.location.Location;
 import android.os.Handler;
-import co.valetapp.Const;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences.Editor;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 
-public class LocationService extends Service implements LocationListener {
-	private LocationManager locationManager;
-    private Location location;
+public class LocationService extends Service implements GooglePlayServicesClient.ConnectionCallbacks,
+        GooglePlayServicesClient.OnConnectionFailedListener, LocationListener {
+
+    private static final int MILLISECONDS_PER_SECOND = 1000;
+    public static final int UPDATE_INTERVAL_IN_SECONDS = 1;
+    private static final long UPDATE_INTERVAL = MILLISECONDS_PER_SECOND * UPDATE_INTERVAL_IN_SECONDS;
+
     private boolean manual;
+    LocationRequest mLocationRequest;
+    LocationClient mLocationClient;
+    Location location;
 
     Runnable timeout = new Runnable() {
         @Override
@@ -26,62 +32,92 @@ public class LocationService extends Service implements LocationListener {
             stopSelf();
         }
     };
-
     Handler handler = new Handler();
 
-	@Override
+    public LocationService() {
+        super();
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        mLocationRequest = LocationRequest.create();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(UPDATE_INTERVAL);
+        mLocationClient = new LocationClient(this, this, this);
+    }
+
+    @Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
         manual = intent.getBooleanExtra(Const.MANUAL_KEY, false);
 
-		locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-		Criteria criteria = new Criteria();
-		criteria.setAccuracy(Criteria.ACCURACY_FINE);
-		criteria.setCostAllowed(false);
-		
-		List<String> providers = locationManager.getProviders(criteria, true);
-		if (providers != null) {
-			for (String provider : providers) {
-				locationManager.requestLocationUpdates(provider, 0, 0, this);
-			}
-		}
-
-        handler.postDelayed(timeout,  30 * 1000);
+        if (servicesConnected()) {
+            mLocationClient.connect();
+            handler.postDelayed(timeout,  30 * 1000);
+        } else {
+            stopSelf(); // Calls onDestroy()
+        }
 
 		return START_STICKY;
 	}
 
-	@Override
-	public IBinder onBind(Intent intent) {
-		return null;
-	}
+    @Override
+    public void onConnected(Bundle bundle) {
+        mLocationClient.requestLocationUpdates(mLocationRequest, this);
+    }
 
-	@Override
-	public void onLocationChanged(Location location) {
-		if (location.getAccuracy() != 0.0f && location.getAccuracy() < Const.MIN_ACCURACY) {
+    @Override
+    public void onDisconnected() {
+        stopSelf();
+    }
+
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        stopSelf();
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        if (location.getAccuracy() != 0.0f && location.getAccuracy() < Const.MIN_ACCURACY) {
             this.location = location;
-			stopSelf(); // Calls onDestroy()
-		}
-	}
-	
-	@Override
-	public void onDestroy() {
+            stopSelf();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
         super.onDestroy();
 
-		locationManager.removeUpdates(this);
-		handler.removeCallbacks(timeout);
+        handler.removeCallbacks(timeout);
+        stopLocationUpdates();
 
         if (location != null) {
             Tools.park(this, location.getLatitude(), location.getLongitude(), manual);
         }
+    }
 
-	}
-	
-	@Override
-	public void onProviderDisabled(String provider) {}
+    private boolean servicesConnected() {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if (ConnectionResult.SUCCESS == resultCode) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	@Override
-	public void onProviderEnabled(String provider) {}
+    private void stopLocationUpdates() {
+        if (servicesConnected()) {
+            if (mLocationClient.isConnected()) {
+                mLocationClient.removeLocationUpdates(this);
+                mLocationClient.disconnect();
+            }
+        }
+    }
 
-	@Override
-	public void onStatusChanged(String provider, int status, Bundle extras) {}
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
 }
