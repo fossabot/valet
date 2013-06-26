@@ -31,7 +31,7 @@ public class Tools {
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(context)
                             .setAutoCancel(true)
-                            .setSmallIcon(R.drawable.ic_launcher)
+                            .setSmallIcon(R.drawable.ic_stat_valet)
                             .setContentTitle(context.getString(R.string.notification_title))
                             .setContentText(context.getString(R.string.notification_text));
 // Creates an explicit intent for an Activity in your app

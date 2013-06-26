@@ -72,7 +72,6 @@ public class LocationService extends Service implements GooglePlayServicesClient
         stopSelf();
     }
 
-
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         stopSelf();
@@ -81,9 +80,10 @@ public class LocationService extends Service implements GooglePlayServicesClient
     @Override
     public void onLocationChanged(Location location) {
         if (location.getAccuracy() != 0.0f && location.getAccuracy() < Const.MIN_ACCURACY) {
-            this.location = location;
             stopSelf();
         }
+
+        this.location = location;
     }
 
     @Override
