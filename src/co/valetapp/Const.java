@@ -6,7 +6,7 @@ public class Const {
     public static final String SHARED_PREFS_NAME = "co.valetapp.prefs";
     public static final String LAT_KEY = "co.valetapp.lat";
     public static final String LONG_KEY = "co.valetapp.long";
-    public static final String MANUAL_KEY = "co.valetapp.manual";
+    public static final String RELIABLY_PARKED_KEY = "co.valetapp.manual";
     public static final String TIME_KEY = "co.valetapp.time";
     public static final String BLUETOOTH_KEY = "co.valetapp.bluetoothSpinner";
     public static final String NOTE_KEY = "co.valetapp.note";

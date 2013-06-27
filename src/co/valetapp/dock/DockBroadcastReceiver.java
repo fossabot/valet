@@ -21,6 +21,7 @@ public class DockBroadcastReceiver extends BroadcastReceiver {
 
         if (!isDocked && isEnabled) {
             Intent locationServiceIntent = new Intent(context, LocationService.class);
+            locationServiceIntent.putExtra(Const.RELIABLY_PARKED_KEY, true);
             context.startService(locationServiceIntent);
         }
     }

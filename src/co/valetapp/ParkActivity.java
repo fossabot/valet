@@ -12,7 +12,6 @@ import android.content.pm.ResolveInfo;
 import android.location.Criteria;
 import android.location.Location;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
@@ -513,7 +512,7 @@ public class ParkActivity extends FragmentActivity
         } else {
             return;
         }
-        editor.putBoolean(Const.MANUAL_KEY, true);
+        editor.putBoolean(Const.RELIABLY_PARKED_KEY, true);
         editor.commit();
 
         saveData();

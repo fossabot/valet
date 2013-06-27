@@ -21,7 +21,7 @@ public class Tools {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(Const.LAT_KEY, Double.toString(latitude));
         editor.putString(Const.LONG_KEY, Double.toString(longitude));
-        editor.putBoolean(Const.MANUAL_KEY, manual);
+        editor.putBoolean(Const.RELIABLY_PARKED_KEY, manual);
         editor.commit();
 
         if (manual) {
@@ -95,7 +95,7 @@ public class Tools {
 
     public static boolean isManuallyParked(Context context) {
         if (isParked(context)) {
-            if (getPrefs(context).contains(Const.MANUAL_KEY)) {
+            if (getPrefs(context).contains(Const.RELIABLY_PARKED_KEY)) {
                 return true;
             }
         }

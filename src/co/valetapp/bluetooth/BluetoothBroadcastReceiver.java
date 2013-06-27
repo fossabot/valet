@@ -20,6 +20,7 @@ public class BluetoothBroadcastReceiver extends BroadcastReceiver {
                     String address = prefs.getString(Const.BLUETOOTH_KEY, "");
                     if (address.equals(device.getAddress())) {
                         Intent locationServiceIntent = new Intent(context, LocationService.class);
+                        locationServiceIntent.putExtra(Const.RELIABLY_PARKED_KEY, true);
                         context.startService(locationServiceIntent);
                     }
                 }

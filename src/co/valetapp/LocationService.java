@@ -50,7 +50,7 @@ public class LocationService extends Service implements GooglePlayServicesClient
 
     @Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-        manual = intent.getBooleanExtra(Const.MANUAL_KEY, false);
+        manual = intent.getBooleanExtra(Const.RELIABLY_PARKED_KEY, false);
 
         if (servicesConnected()) {
             mLocationClient.connect();
