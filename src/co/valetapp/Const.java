@@ -17,6 +17,7 @@ public class Const {
     public static final String PARKING_SENSOR_KEY = "co.valetapp.sensor";
     public static final String DOCK_KEY = "co.valetapp.dock";
     public static final String NOTIFICATIONS_KEY = "co.valetapp.notifications";
+    public static final String IMAGE_KEY = "co.valetapp.image";
 
     private Const() {
     }

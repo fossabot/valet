@@ -33,5 +33,6 @@
 	<string name="reset_dialog_message">Ihr Auto\'s Standort rücksetzen?</string>
 	<string name="reset_dialog_positive_button">Ja</string>
 	<string name="reset_dialog_no_button">Nein</string>
-	
+    <string name="camera_button_cd">Nehmen Sie ein Bild</string>
+
 </resources>

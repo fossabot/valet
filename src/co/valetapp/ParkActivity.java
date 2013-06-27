@@ -7,8 +7,13 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.location.Criteria;
 import android.location.Location;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import android.location.LocationManager;
@@ -48,12 +53,16 @@ import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.google.android.gms.location.LocationRequest;
 
+import java.io.*;
+import java.util.List;
 import java.util.Locale;
 
 public class ParkActivity extends FragmentActivity
         implements OnMarkerClickListener, GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener, LocationListener {
 
+    // Update frequency in seconds
+    public static final int UPDATE_INTERVAL_IN_SECONDS = 5;
     /*
      * Define a request code to send to Google Play services
      * This code is returned in Activity.onActivityResult
@@ -61,8 +70,6 @@ public class ParkActivity extends FragmentActivity
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     // Milliseconds per second
     private static final int MILLISECONDS_PER_SECOND = 1000;
-    // Update frequency in seconds
-    public static final int UPDATE_INTERVAL_IN_SECONDS = 5;
     // Update frequency in milliseconds
     private static final long UPDATE_INTERVAL =
             MILLISECONDS_PER_SECOND * UPDATE_INTERVAL_IN_SECONDS;
@@ -71,7 +78,7 @@ public class ParkActivity extends FragmentActivity
     // A fast frequency ceiling in milliseconds
     private static final long FASTEST_INTERVAL =
             MILLISECONDS_PER_SECOND * FASTEST_INTERVAL_IN_SECONDS;
-
+    private static final int IMAGE_CAPTURE_REQUEST = 1000;
     SharedPreferences prefs;
     LocationManager locationManager;
     Location vehicleLocation;
@@ -88,6 +95,7 @@ public class ParkActivity extends FragmentActivity
     // Define an object that holds accuracy and frequency parameters
     LocationRequest mLocationRequest;
     LocationClient mLocationClient;
+    Uri mPictureUri;
     AnimatorListenerAdapter animationListener
             = new AnimatorListenerAdapter() {
 
@@ -102,6 +110,44 @@ public class ParkActivity extends FragmentActivity
             super.onAnimationStart(animation);
         }
     };
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        if (state != State.PARKING && state != State.LOCATED && state != State.AUTO_INFO && state != State.AUTO_SET) {
+            startActivity(Intent.createChooser(IntentLibrary.getFindIntent(this,
+                    vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude),
+                    getString(R.string.find_intent_chooser_title)));
+
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case CONNECTION_FAILURE_RESOLUTION_REQUEST:
+
+                switch (resultCode) {
+                    case RESULT_OK:
+                        startActivity(getIntent());
+                        break;
+                    default:
+                        Toast.makeText(this, getString(R.string.not_supported), Toast.LENGTH_LONG).show();
+                        finish();
+                }
+
+            case IMAGE_CAPTURE_REQUEST:
+                switch (resultCode) {
+                    case RESULT_OK:
+                        prefs.edit().putString(Const.IMAGE_KEY, mPictureUri.toString()).commit();
+                        break;
+                }
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,12 +205,31 @@ public class ParkActivity extends FragmentActivity
         getSupportFragmentManager().executePendingTransactions();
 
         titleAnimator = ObjectAnimator.ofFloat(titleTextView, "alpha", 0f, 1f);
-        titleAnimator.setDuration(3 * 1000);
+        titleAnimator.setDuration(1 * 1000);
         titleAnimator.addListener(animationListener);
 
         hide();
 
         setInitialState();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopLocationUpdates();
+
+        if (titleAnimator != null) {
+            titleAnimator.end();
+        }
+
+        if (googleMap != null) {
+            googleMap.stopAnimation();
+        }
+
+        if (geoCoderAsyncTask != null) {
+            geoCoderAsyncTask.cancel(true);
+        }
     }
 
     @Override
@@ -186,68 +251,89 @@ public class ParkActivity extends FragmentActivity
                 googleMap.animateCamera(cameraUpdate);
             }
         }
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+        if (prefs.contains(Const.IMAGE_KEY)) {
+
+            if (Tools.hasExternalStoragePublicPicture()) {
+                mPictureUri = Uri.parse(prefs.getString(Const.IMAGE_KEY, ""));
+            } else {
+                mPictureUri = null;
+                prefs.edit().remove(Const.IMAGE_KEY);
+            }
+        }
 
         if (servicesConnected()) {
             mLocationClient.connect();
         }
     }
 
-    @Override
-    protected void onPause() {
-        stopLocationUpdates();
-
-        super.onPause();
-
-        if (titleAnimator != null) {
-            titleAnimator.end();
-        }
-
-        if (googleMap != null) {
-            googleMap.stopAnimation();
-        }
-
-        if (geoCoderAsyncTask != null) {
-            geoCoderAsyncTask.cancel(true);
-        }
+    private void lockScreen() {
+        final Window win = getWindow();
+        win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        win.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
     }
 
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        if (state != State.PARKING && state != State.LOCATED && state != State.AUTO_INFO && state != State.AUTO_SET) {
-            startActivity(Intent.createChooser(IntentLibrary.getFindIntent(this,
-                    vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude),
-                    getString(R.string.find_intent_chooser_title)));
-
-            return true;
+    private boolean isAlarmIntent() {
+        String action = getIntent().getAction();
+        if (action != null) {
+            return action.equals(Const.ACTION_ALARM);
         } else {
             return false;
         }
-
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case CONNECTION_FAILURE_RESOLUTION_REQUEST :
+    private void stopLocationUpdates() {
+        if (servicesConnected()) {
+            // If the client is connected
+            if (mLocationClient.isConnected()) {
             /*
-             * If the result code is Activity.RESULT_OK, try
-             * to connect again
+             * Remove location updates for a listener.
+             * The current Activity is the listener, so
+             * the argument is "this".
              */
-                switch (resultCode) {
-                    case RESULT_OK :
-                        startActivity(getIntent());
-                        break;
-                    default:
-                        Toast.makeText(this, getString(R.string.not_supported), Toast.LENGTH_LONG).show();
-                        finish();
-                }
+                mLocationClient.removeLocationUpdates(this);
+            }
+        /*
+         * After disconnect() is called, the client is
+         * considered "dead".
+         */
+            mLocationClient.disconnect();
         }
+    }
 
+    public boolean servicesConnected() {
+        // Check that Google Play services is available
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        // If Google Play services is available
+        if (ConnectionResult.SUCCESS == resultCode) {
+            // In debug mode, log the status
+            Log.d("Location Updates", "Google Play services is available.");
+            // Continue
+            return true;
+            // Google Play services was not available for some reason
+        } else {
+            showErrorDialog(resultCode);
+
+            return false;
+        }
+    }
+
+    private void showErrorDialog(int resultCode) {
+        // Get the error code
+        // Get the error dialog from Google Play services
+        Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(
+                resultCode, this, CONNECTION_FAILURE_RESOLUTION_REQUEST);
+        // If Google Play services can provide an error dialog
+        if (errorDialog != null) {
+            // Create a new DialogFragment for the error dialog
+            ErrorDialogFragment errorFragment = new ErrorDialogFragment();
+            // Set the dialog in the DialogFragment
+            errorFragment.setDialog(errorDialog);
+            // Show the error dialog in the DialogFragment
+            errorFragment.show(getSupportFragmentManager(), "Location Updates");
+        }
     }
 
     @Override
@@ -265,19 +351,20 @@ public class ParkActivity extends FragmentActivity
                             .position(latLng)
                             .draggable(false)
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin)));
+                } else if (location.getAccuracy() != 0.0f && location.getAccuracy() < bestAccuracy) {
+                    vehicleMarker.setPosition(latLng);
 
-                    setState(State.LOCATED);
-                } else {
-                    if (location.getAccuracy() != 0.0f && location.getAccuracy() < bestAccuracy) {
-                        vehicleMarker.setPosition(latLng);
+                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
 
-                        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
-
-                        googleMap.animateCamera(cameraUpdate);
-                    }
+                    googleMap.animateCamera(cameraUpdate);
                 }
 
                 bestAccuracy = location.getAccuracy();
+
+                if (state == State.PARKING) {
+                    setState(State.LOCATED);
+                }
+
                 break;
             default:
                 InfoFragment infoFragment = getInfoFragment();
@@ -314,25 +401,6 @@ public class ParkActivity extends FragmentActivity
     @Override
     public void onDisconnected() {
 
-    }
-
-    private void stopLocationUpdates() {
-        if (servicesConnected()) {
-            // If the client is connected
-            if (mLocationClient.isConnected()) {
-            /*
-             * Remove location updates for a listener.
-             * The current Activity is the listener, so
-             * the argument is "this".
-             */
-                mLocationClient.removeLocationUpdates(this);
-            }
-        /*
-         * After disconnect() is called, the client is
-         * considered "dead".
-         */
-            mLocationClient.disconnect();
-        }
     }
 
     @Override
@@ -382,6 +450,10 @@ public class ParkActivity extends FragmentActivity
 
         Toast.makeText(ParkActivity.this, R.string.auto_park_confirm, Toast.LENGTH_LONG).show();
         finish();
+    }
+
+    private DynamicFragment getDynamicFragment() {
+        return (DynamicFragment) getSupportFragmentManager().findFragmentById(R.id.dynamic_fl);
     }
 
     public void onAutoInfoItem(View v) {
@@ -460,9 +532,14 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onUnparkItem(View v) {
+        Tools.deleteExternalStoragePublicPicture();
         Tools.unpark(this);
+        mPictureUri = null;
+        infoFragment.cameraImageButton.setImageResource(R.drawable.camera_selector);
+        infoFragment.cameraImageButton.setContentDescription(getString(R.string.camera_button_cd));
+        infoFragment.deletePictureButton.setVisibility(View.INVISIBLE);
 
-        infoFragment.noteEditText.setVisibility(View.INVISIBLE);
+        infoFragment.noteLinearLayout.setVisibility(View.INVISIBLE);
         infoFragment.root.setVisibility(View.GONE);
 
         setState(State.PARKING);
@@ -471,6 +548,60 @@ public class ParkActivity extends FragmentActivity
     public void onShareItem(View v) {
         startActivity(Intent.createChooser(IntentLibrary.getShareIntent(this,
                 vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude), getString(R.string.share_intent_chooser_title)));
+    }
+
+    public void onCameraButton(View v) {
+        if (mPictureUri == null) {
+            if (isIntentAvailable(this, MediaStore.ACTION_IMAGE_CAPTURE)) {
+                dispatchTakePictureIntent(IMAGE_CAPTURE_REQUEST);
+            }
+        } else {
+            if (isIntentAvailable(this, Intent.ACTION_VIEW)) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setDataAndType(mPictureUri, "image/*");
+                startActivity(intent);
+            }
+        }
+
+    }
+
+    private void dispatchTakePictureIntent(int actionCode) {
+
+        File f = Tools.createExternalStoragePublicPicture();
+        if (f != null) {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            mPictureUri = Uri.fromFile(f);
+            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mPictureUri);
+            startActivityForResult(takePictureIntent, actionCode);
+        } else {
+            throw new NullPointerException("File is null");
+        }
+
+    }
+
+    public static boolean isIntentAvailable(Context context, String action) {
+        final PackageManager packageManager = context.getPackageManager();
+        final Intent intent = new Intent(action);
+        List<ResolveInfo> list = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+        return list.size() > 0;
+    }
+
+    public void onDeletePictureButton(View v) {
+        Tools.deleteExternalStoragePublicPicture();
+        mPictureUri = null;
+        prefs.edit().remove(Const.IMAGE_KEY).commit();
+
+        InfoFragment infoFragment = getInfoFragment();
+        if (infoFragment != null) {
+            infoFragment.deletePictureButton.setVisibility(View.INVISIBLE);
+            infoFragment.cameraImageButton.setImageResource(R.drawable.camera_selector);
+            infoFragment.cameraImageButton.setContentDescription(getString(R.string.camera_button_cd));
+        }
+
+    }
+
+    private InfoFragment getInfoFragment() {
+        return (InfoFragment) getSupportFragmentManager().findFragmentById(R.id.info_frag);
     }
 
     private void setInitialState() {
@@ -491,9 +622,9 @@ public class ParkActivity extends FragmentActivity
 
     private boolean isParked() {
         if (prefs.contains(Const.LAT_KEY) && prefs.contains(Const.LONG_KEY)) {
-           return true;
+            return true;
         } else {
-           return false;
+            return false;
         }
     }
 
@@ -516,6 +647,13 @@ public class ParkActivity extends FragmentActivity
                 infoFragment.clear();
 
                 barFragment.setItems(BarItem.LOCATING);
+
+                if (servicesConnected()) {
+                    if (!mLocationClient.isConnected()) {
+                        mLocationClient.connect();
+                    }
+                }
+
 
                 break;
             case LOCATED:
@@ -648,7 +786,6 @@ public class ParkActivity extends FragmentActivity
         ft.commitAllowingStateLoss();
     }
 
-
     private void show() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.show(getMapFragment());
@@ -676,7 +813,7 @@ public class ParkActivity extends FragmentActivity
 
         InfoFragment infoFragment = getInfoFragment();
         infoFragment.root.setVisibility(View.VISIBLE);
-        infoFragment.noteEditText.setVisibility(View.VISIBLE);
+        infoFragment.noteLinearLayout.setVisibility(View.VISIBLE);
         geoCoderAsyncTask = infoFragment.new GeoCoderAsyncTask();
         geoCoderAsyncTask.execute(vehicleMarker.getPosition());
     }
@@ -689,15 +826,6 @@ public class ParkActivity extends FragmentActivity
         park.saveEventually();
     }
 
-    private void lockScreen() {
-        final Window win = getWindow();
-        win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-                | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
-        win.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
-    }
-
-
     private BarFragment getBarFragment() {
         return (BarFragment) getSupportFragmentManager().findFragmentById(R.id.bar_fl);
     }
@@ -706,58 +834,8 @@ public class ParkActivity extends FragmentActivity
         return (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_frag);
     }
 
-    private boolean isAlarmIntent() {
-        String action = getIntent().getAction();
-        if (action != null) {
-            return action.equals(Const.ACTION_ALARM);
-        } else {
-            return false;
-        }
-    }
-
-    private InfoFragment getInfoFragment() {
-        return (InfoFragment) getSupportFragmentManager().findFragmentById(R.id.info_frag);
-    }
-
-    private DynamicFragment getDynamicFragment() {
-        return (DynamicFragment) getSupportFragmentManager().findFragmentById(R.id.dynamic_fl);
-    }
-
     private boolean hasDynamicFragment() {
         return getSupportFragmentManager().findFragmentById(R.id.dynamic_fl) != null;
-    }
-
-    public boolean servicesConnected() {
-        // Check that Google Play services is available
-        int resultCode =GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        // If Google Play services is available
-        if (ConnectionResult.SUCCESS == resultCode) {
-            // In debug mode, log the status
-            Log.d("Location Updates", "Google Play services is available.");
-            // Continue
-            return true;
-            // Google Play services was not available for some reason
-        } else {
-            showErrorDialog(resultCode);
-
-            return false;
-        }
-    }
-
-    private void showErrorDialog(int resultCode) {
-        // Get the error code
-        // Get the error dialog from Google Play services
-        Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(
-                resultCode, this, CONNECTION_FAILURE_RESOLUTION_REQUEST);
-        // If Google Play services can provide an error dialog
-        if (errorDialog != null) {
-            // Create a new DialogFragment for the error dialog
-            ErrorDialogFragment errorFragment = new ErrorDialogFragment();
-            // Set the dialog in the DialogFragment
-            errorFragment.setDialog(errorDialog);
-            // Show the error dialog in the DialogFragment
-            errorFragment.show(getSupportFragmentManager(), "Location Updates");
-        }
     }
 
     enum State {
@@ -769,15 +847,18 @@ public class ParkActivity extends FragmentActivity
     public static class ErrorDialogFragment extends DialogFragment {
         // Global field to contain the error dialog
         private Dialog mDialog;
+
         // Default constructor. Sets the dialog field to null
         public ErrorDialogFragment() {
             super();
             mDialog = null;
         }
+
         // Set the dialog to display
         public void setDialog(Dialog dialog) {
             mDialog = dialog;
         }
+
         // Return a Dialog to the DialogFragment.
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {

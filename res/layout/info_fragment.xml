@@ -10,7 +10,6 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginBottom="8dp"
         android:layout_height="wrap_content">
 
         <co.valetapp.view.FontableTextView
@@ -34,18 +33,48 @@
 
     </LinearLayout>
 
-    <co.valetapp.view.FontableEditText
-        android:id="@+id/noteEditText"
+    <LinearLayout
+        android:id="@+id/noteLinearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/default_text"
-        android:singleLine="true"
-        android:textColorHint="@color/hint_text"
-        android:hint="@string/note"
-        app:font="Gotham-Medium.ttf"
-        android:background="@null"
-        android:textSize="14sp"
-        android:cursorVisible="false"
-        android:layout_width="match_parent" />
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <co.valetapp.view.FontableEditText
+            android:id="@+id/noteEditText"
+            android:layout_height="wrap_content"
+            android:textColor="@color/default_text"
+            android:singleLine="true"
+            android:textColorHint="@color/hint_text"
+            android:hint="@string/note"
+            app:font="Gotham-Medium.ttf"
+            android:background="@null"
+            android:textSize="14sp"
+            android:cursorVisible="false"
+            android:layout_weight="1"
+            android:layout_width="0dp" />
+
+        <ImageButton
+            android:id="@+id/deletePictureButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onDeletePictureButton"
+            android:padding="8dp"
+            android:src="@drawable/reset_bar_item_selector"
+            android:contentDescription="@string/delete"
+            android:background="@drawable/default_selector"/>
+
+        <ImageButton
+            android:id="@+id/cameraImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCameraButton"
+            android:padding="8dp"
+            android:contentDescription="@string/camera_button_cd"
+            android:src="@drawable/camera_selector"
+
+            android:background="@drawable/default_selector" />
+    </LinearLayout>
 
 
 </LinearLayout>

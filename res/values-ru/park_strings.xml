@@ -33,5 +33,6 @@
 	<string name="reset_dialog_message">Сбросить местонахождение вашей машины?</string>
 	<string name="reset_dialog_positive_button">Да</string>
 	<string name="reset_dialog_no_button">Нет</string>
-	
+    <string name="camera_button_cd">Сфотографируйте</string>
+
 </resources>

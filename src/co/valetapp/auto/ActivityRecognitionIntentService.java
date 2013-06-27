@@ -22,7 +22,7 @@ import com.google.android.gms.location.DetectedActivity;
  */
 public class ActivityRecognitionIntentService extends IntentService {
 
-    private static final int MIN_CONFIDENCE = 60, MAX_CONFIDENCE = 100;
+    private static final int MIN_CONFIDENCE = 65, MAX_CONFIDENCE = 100;
     private static final String LAST_ACTIVITY_TYPE_KEY = "co.valetapp.last_activity_type";
     private static final String TAG = "Auto";
     private SharedPreferences mSharedPreferences;

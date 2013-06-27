@@ -33,5 +33,6 @@
 	<string name="reset_dialog_message">Cambiar la ubicación de su coche?</string>
 	<string name="reset_dialog_positive_button">sí</string>
 	<string name="reset_dialog_no_button">no</string>
-	
+    <string name="camera_button_cd">Tome una fotografía</string>
+
 </resources>

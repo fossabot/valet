@@ -7,9 +7,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Environment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import co.valetapp.auto.AutoParkService;
+
+import java.io.File;
 
 public class Tools {
 
@@ -26,36 +29,37 @@ public class Tools {
             intent.setAction(AutoParkService.ACTION_STOP);
             context.startService(intent);
         }
-
-        if (prefs.getBoolean(Const.NOTIFICATIONS_KEY, false)) {
-            NotificationCompat.Builder mBuilder =
-                    new NotificationCompat.Builder(context)
-                            .setAutoCancel(true)
-                            .setSmallIcon(R.drawable.ic_stat_valet)
-                            .setContentTitle(context.getString(R.string.notification_title))
-                            .setContentText(context.getString(R.string.notification_text));
+        else {
+            if (prefs.getBoolean(Const.NOTIFICATIONS_KEY, false)) {
+                NotificationCompat.Builder mBuilder =
+                        new NotificationCompat.Builder(context)
+                                .setAutoCancel(true)
+                                .setSmallIcon(R.drawable.ic_stat_valet)
+                                .setContentTitle(context.getString(R.string.notification_title))
+                                .setContentText(context.getString(R.string.notification_text));
 // Creates an explicit intent for an Activity in your app
-            Intent resultIntent = new Intent(context, ParkActivity.class);
+                Intent resultIntent = new Intent(context, ParkActivity.class);
 
 // The stack builder object will contain an artificial back stack for the
 // started Activity.
 // This ensures that navigating backward from the Activity leads out of
 // your application to the Home screen.
-            TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+                TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
 // Adds the back stack for the Intent (but not the Intent itself)
-            stackBuilder.addParentStack(ParkActivity.class);
+                stackBuilder.addParentStack(ParkActivity.class);
 // Adds the Intent that starts the Activity to the top of the stack
-            stackBuilder.addNextIntent(resultIntent);
-            PendingIntent resultPendingIntent =
-                    stackBuilder.getPendingIntent(
-                            0,
-                            PendingIntent.FLAG_UPDATE_CURRENT
-                    );
-            mBuilder.setContentIntent(resultPendingIntent);
-            NotificationManager mNotificationManager =
-                    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                stackBuilder.addNextIntent(resultIntent);
+                PendingIntent resultPendingIntent =
+                        stackBuilder.getPendingIntent(
+                                0,
+                                PendingIntent.FLAG_UPDATE_CURRENT
+                        );
+                mBuilder.setContentIntent(resultPendingIntent);
+                NotificationManager mNotificationManager =
+                        (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 // mId allows you to update the notification later on.
-            mNotificationManager.notify(0, mBuilder.build());
+                mNotificationManager.notify(0, mBuilder.build());
+            }
         }
 
     }
@@ -70,6 +74,7 @@ public class Tools {
         edit.remove(Const.LAT_KEY);
         edit.remove(Const.LONG_KEY);
         edit.remove(Const.TIME_KEY);
+        edit.remove(Const.IMAGE_KEY);
         edit.commit();
 
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
@@ -131,5 +136,30 @@ public class Tools {
         } else {
             return false;
         }
+    }
+
+    public static File createExternalStoragePublicPicture() {
+        File path = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        path.mkdirs();
+        if (path.isDirectory()) {
+            return new File(path, "co.valetapp.jpg");
+        } else {
+            return null;
+        }
+    }
+
+    public static void deleteExternalStoragePublicPicture() {
+        File path = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        File file = new File(path, "co.valetapp.jpg");
+        file.delete();
+    }
+
+    public static boolean hasExternalStoragePublicPicture() {
+        File path = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        File file = new File(path, "co.valetapp.jpg");
+        return file.exists();
     }
 }

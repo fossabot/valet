@@ -11,8 +11,8 @@
         android:id="@+id/bluetoothRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="8dp">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <co.valetapp.view.FontableCheckBox
             android:id="@+id/bluetoothCheckBox"
@@ -26,7 +26,8 @@
         <Spinner
             android:id="@+id/bluetoothSpinner"
             android:layout_marginRight="8dp"
-            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content" />
 
         <ImageButton
@@ -34,18 +35,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onBluetoothItem"
-            android:src="@drawable/bluetooth_bar_item_selector"
+            android:padding="8dp"
+            android:src="@drawable/bluetooth_selector"
             android:contentDescription="@string/select_bluetooth"
             android:background="@drawable/default_selector" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/bluetoothRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
+        android:orientation="horizontal">
 
         <co.valetapp.view.FontableCheckBox
             android:id="@+id/dockCheckBox"
@@ -70,6 +70,7 @@
     <co.valetapp.view.FontableCheckBox
         android:id="@+id/notificationsCheckBox"
         android:layout_width="match_parent"
+        android:layout_marginTop="16dp"
         app:font="Gotham-Medium.ttf"
         android:textColor="@color/default_text"
         android:layout_height="wrap_content"

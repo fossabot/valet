@@ -5,8 +5,9 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.view.KeyEvent;
-import android.widget.EditText;
+import android.widget.*;
 import com.google.android.gms.maps.model.LatLng;
 import com.nineoldandroids.animation.ObjectAnimator;
 
@@ -18,13 +19,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-public class InfoFragment extends Fragment {
+public class InfoFragment extends Fragment implements View.OnLongClickListener{
 	
 	TextView addressTextView, distanceTextView;
 	ObjectAnimator addressAnimator, distanceAnimator;
+    LinearLayout noteLinearLayout;
     EditText noteEditText;
+    ImageButton cameraImageButton, deletePictureButton;
     SharedPreferences prefs;
     View root;
 	
@@ -48,6 +50,12 @@ public class InfoFragment extends Fragment {
 
         root = view.findViewById(R.id.root);
 
+        cameraImageButton = (ImageButton) view.findViewById(R.id.cameraImageButton);
+        cameraImageButton.setOnLongClickListener(this);
+
+        deletePictureButton = (ImageButton) view.findViewById(R.id.deletePictureButton);
+        cameraImageButton.setOnLongClickListener(this);
+
 		addressTextView = (TextView) view.findViewById(R.id.address_view);
 		addressAnimator = ObjectAnimator.ofFloat(addressTextView, "alpha", 0f, 1f);
 		addressAnimator.setDuration(500);
@@ -56,8 +64,10 @@ public class InfoFragment extends Fragment {
 		distanceAnimator = ObjectAnimator.ofFloat(distanceTextView, "alpha", 0f, 1f);
 		distanceAnimator.setDuration(500);
 
+        noteLinearLayout = (LinearLayout) view.findViewById(R.id.noteLinearLayout);
+        noteLinearLayout.setVisibility(View.INVISIBLE);
+
         noteEditText = (EditText) view.findViewById(R.id.noteEditText);
-        noteEditText.setVisibility(View.INVISIBLE);
         noteEditText.setText(prefs.getString(Const.NOTE_KEY, ""));
         noteEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -70,8 +80,23 @@ public class InfoFragment extends Fragment {
 
         root.setVisibility(View.GONE);
 	}
-	
-	@Override
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (prefs.contains(Const.IMAGE_KEY) && Tools.hasExternalStoragePublicPicture()) {
+            deletePictureButton.setVisibility(View.VISIBLE);
+            cameraImageButton.setImageResource(R.drawable.picture_selector);
+            cameraImageButton.setContentDescription(getString(R.string.view));
+        } else {
+            deletePictureButton.setVisibility(View.INVISIBLE);
+            cameraImageButton.setImageResource(R.drawable.camera_selector);
+            cameraImageButton.setContentDescription(getString(R.string.camera_button_cd));
+        }
+    }
+
+    @Override
 	public void onPause() {
 		super.onPause();
 		
@@ -90,8 +115,15 @@ public class InfoFragment extends Fragment {
         noteEditText.setText("");
         prefs.edit().remove(Const.NOTE_KEY).commit();
 	}
-	
-	class GeoCoderAsyncTask extends AsyncTask<LatLng, Void, List<Address>> {
+
+    @Override
+    public boolean onLongClick(View v) {
+        Toast.makeText(getActivity(), v.getContentDescription(), Toast.LENGTH_LONG).show();
+
+        return true;
+    }
+
+    class GeoCoderAsyncTask extends AsyncTask<LatLng, Void, List<Address>> {
 
 		private Geocoder geocoder;
 

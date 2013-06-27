@@ -33,5 +33,6 @@
 	<string name="reset_dialog_message">Reiniciar a localização do seu carro?</string>
 	<string name="reset_dialog_positive_button">Sim</string>
 	<string name="reset_dialog_no_button">Não</string>
-	
+    <string name="camera_button_cd">Tire uma foto</string>
+
 </resources>
