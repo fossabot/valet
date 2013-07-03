@@ -4,5 +4,10 @@
     <string name="app_name">Valet</string>
     <string name="app_name_caps">VALET</string>
     <string name="period">.</string>
-    <string name="not_supported">El dispositivo no es compatible con los servicios de Google Play.  Email support@valetapp.co para un reembolso.</string>
+    <string name="not_supported">El dispositivo no es compatible con los servicios de Google Play.
+        Email support@valetapp.co para un reembolso.
+    </string>
+    <string name="rate">Cambio Valet en Google Play?</string>
+    <string name="yes">Ci</string>
+    <string name="no">No</string>
 </resources>

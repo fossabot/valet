@@ -11,12 +11,10 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.location.Criteria;
 import android.location.Location;
-import android.net.Uri;
-import android.provider.MediaStore;
-import com.google.android.gms.location.LocationClient;
-import com.google.android.gms.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -28,13 +26,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
-import co.valetapp.BarFragment.BarItem;
-import co.valetapp.InfoFragment.GeoCoderAsyncTask;
-import co.valetapp.auto.AutoParkService;
+
 import com.crittercism.app.Crittercism;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -50,11 +49,14 @@ import com.nineoldandroids.animation.ObjectAnimator;
 import com.parse.Parse;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
-import com.google.android.gms.location.LocationRequest;
 
-import java.io.*;
+import java.io.File;
 import java.util.List;
 import java.util.Locale;
+
+import co.valetapp.BarFragment.BarItem;
+import co.valetapp.InfoFragment.GeoCoderAsyncTask;
+import co.valetapp.auto.AutoParkService;
 
 public class ParkActivity extends FragmentActivity
         implements OnMarkerClickListener, GooglePlayServicesClient.ConnectionCallbacks,
@@ -111,80 +113,33 @@ public class ParkActivity extends FragmentActivity
     };
 
     @Override
-    public boolean onMarkerClick(Marker marker) {
-        if (state != State.PARKING && state != State.LOCATED && state != State.AUTO_INFO && state != State.AUTO_SET) {
-            startActivity(Intent.createChooser(IntentLibrary.getFindIntent(this,
-                    vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude),
-                    getString(R.string.find_intent_chooser_title)));
-
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case CONNECTION_FAILURE_RESOLUTION_REQUEST:
-
-                switch (resultCode) {
-                    case RESULT_OK:
-                        startActivity(getIntent());
-                        break;
-                    default:
-                        Toast.makeText(this, getString(R.string.not_supported), Toast.LENGTH_LONG).show();
-                        finish();
-                }
-
-            case IMAGE_CAPTURE_REQUEST:
-                switch (resultCode) {
-                    case RESULT_OK:
-                        prefs.edit().putString(Const.IMAGE_KEY, mPictureUri.toString()).commit();
-                        break;
-                }
-
-        }
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         Crittercism.init(getApplicationContext(), "5145fe5c4002050d07000002");
         Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
-        super.onCreate(savedInstanceState);
-
-        if (!servicesConnected()) {
-            return;
-        }
-
-        if (isAlarmIntent()) lockScreen();
 
         prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
-        if (!Tools.isManuallyParked(this) && prefs.getBoolean(Const.PARKING_SENSOR_KEY, false)) {
-            Intent autoParkServiceIntent = new Intent(this, AutoParkService.class);
-            autoParkServiceIntent.setAction(AutoParkService.ACTION_START);
-            startService(autoParkServiceIntent);
+        if (!prefs.contains(Const.SHOW_RATING_KEY)) {
+            prefs.edit().putBoolean(Const.SHOW_RATING_KEY, true);
         }
 
         am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         mLocationRequest = LocationRequest.create();
-        // Use high accuracy
-        mLocationRequest.setPriority(
-                LocationRequest.PRIORITY_HIGH_ACCURACY);
-        // Set the update interval to 5 seconds
+
+        mLocationClient = new LocationClient(this, this, this);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         mLocationRequest.setInterval(UPDATE_INTERVAL);
-        // Set the fastest update interval to 1 second
         mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
 
-         /*
-         * Create a new location client, using the enclosing class to
-         * handle callbacks.
-         */
-        mLocationClient = new LocationClient(this, this, this);
-
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.park_activity);
+
+        googleMap = getMapFragment().getMap();
+        if (googleMap != null) {
+            googleMap.setOnMarkerClickListener(this);
+        }
+
+        infoFragment = getInfoFragment();
 
         titleTextView = (TextView) findViewById(R.id.title_ftv);
         titleTextView.setOnClickListener(new OnClickListener() {
@@ -195,21 +150,64 @@ public class ParkActivity extends FragmentActivity
             }
         });
 
-        googleMap = getMapFragment().getMap();
-        googleMap.setOnMarkerClickListener(this);
-
-        infoFragment = getInfoFragment();
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.bar_fl, new BarFragment()).commit();
-        getSupportFragmentManager().executePendingTransactions();
 
         titleAnimator = ObjectAnimator.ofFloat(titleTextView, "alpha", 0f, 1f);
         titleAnimator.setDuration(1 * 1000);
         titleAnimator.addListener(animationListener);
 
-        hide();
+        if (servicesConnected()) {
+            if (isAlarmIntent()) lockScreen();
 
-        setInitialState();
+            if (!Tools.isManuallyParked(this) && prefs.getBoolean(Const.PARKING_SENSOR_KEY, false)) {
+                Intent autoParkServiceIntent = new Intent(this, AutoParkService.class);
+                autoParkServiceIntent.setAction(AutoParkService.ACTION_START);
+                startService(autoParkServiceIntent);
+            }
+
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.bar_fl, new BarFragment()).commit();
+            getSupportFragmentManager().executePendingTransactions();
+
+            hide();
+
+            setInitialState();
+        }
+    }
+
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+
+        if (isAlarmIntent()) lockScreen();
+
+        super.onNewIntent(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (state != null && googleMap != null) {
+            if (vehicleMarker != null) {
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
+                googleMap.animateCamera(cameraUpdate);
+            }
+        }
+
+        if (prefs.contains(Const.IMAGE_KEY)) {
+
+            if (Tools.hasExternalStoragePublicPicture()) {
+                mPictureUri = Uri.parse(prefs.getString(Const.IMAGE_KEY, ""));
+            } else {
+                mPictureUri = null;
+                prefs.edit().remove(Const.IMAGE_KEY);
+            }
+        }
+
+        if (servicesConnected()) {
+            mLocationClient.connect();
+        }
     }
 
     @Override
@@ -232,39 +230,44 @@ public class ParkActivity extends FragmentActivity
     }
 
     @Override
-    protected void onNewIntent(Intent intent) {
-        setIntent(intent);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case CONNECTION_FAILURE_RESOLUTION_REQUEST:
 
-        if (isAlarmIntent()) lockScreen();
+                switch (resultCode) {
+                    case RESULT_OK:
+                        startActivity(getIntent());
+                        break;
+                    default:
+                        Toast.makeText(this, getString(R.string.not_supported), Toast.LENGTH_LONG).show();
+                        finish();
+                }
 
-        super.onNewIntent(intent);
+            case IMAGE_CAPTURE_REQUEST:
+                switch (resultCode) {
+                    case RESULT_OK:
+                        if (mPictureUri != null) {
+                            prefs.edit().putString(Const.IMAGE_KEY, mPictureUri.toString()).commit();
+                        }
+                        break;
+                }
+        }
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    public boolean onMarkerClick(Marker marker) {
+        if (state != State.PARKING && state != State.LOCATED && state != State.AUTO_INFO && state != State.AUTO_SET) {
+            startActivity(Intent.createChooser(IntentLibrary.getFindIntent(this,
+                    vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude),
+                    getString(R.string.find_intent_chooser_title)));
 
-        if (state != null) {
-            if (vehicleMarker != null) {
-                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
-                googleMap.animateCamera(cameraUpdate);
-            }
+            return true;
+        } else {
+            return false;
         }
 
-        if (prefs.contains(Const.IMAGE_KEY)) {
-
-            if (Tools.hasExternalStoragePublicPicture()) {
-                mPictureUri = Uri.parse(prefs.getString(Const.IMAGE_KEY, ""));
-            } else {
-                mPictureUri = null;
-                prefs.edit().remove(Const.IMAGE_KEY);
-            }
-        }
-
-        if (servicesConnected()) {
-            mLocationClient.connect();
-        }
     }
+
 
     private void lockScreen() {
         final Window win = getWindow();
@@ -366,15 +369,17 @@ public class ParkActivity extends FragmentActivity
 
                 break;
             default:
-                InfoFragment infoFragment = getInfoFragment();
-                infoFragment.distanceAnimator.start();
+                if (infoFragment != null) {
+                    InfoFragment infoFragment = getInfoFragment();
+                    infoFragment.distanceAnimator.start();
 
-                if (getResources().getConfiguration().locale.equals(Locale.US)) {
-                    float distance = vehicleLocation.distanceTo(location) * Const.METERS_TO_MILES;
-                    infoFragment.distanceTextView.setText(String.format("%.2f", distance) + getString(R.string.mile_abbreviation));
-                } else {
-                    float distance = vehicleLocation.distanceTo(location) / 1000; // km
-                    infoFragment.distanceTextView.setText(String.format("%.2f", distance) + getString(R.string.kilometer_abbreviation));
+                    if (getResources().getConfiguration().locale.equals(Locale.US)) {
+                        float distance = vehicleLocation.distanceTo(location) * Const.METERS_TO_MILES;
+                        infoFragment.distanceTextView.setText(String.format("%.2f", distance) + getString(R.string.mile_abbreviation));
+                    } else {
+                        float distance = vehicleLocation.distanceTo(location) / 1000; // km
+                        infoFragment.distanceTextView.setText(String.format("%.2f", distance) + getString(R.string.kilometer_abbreviation));
+                    }
                 }
 
                 break;
@@ -541,8 +546,30 @@ public class ParkActivity extends FragmentActivity
         infoFragment.noteLinearLayout.setVisibility(View.INVISIBLE);
         infoFragment.root.setVisibility(View.GONE);
 
+        if (prefs.getBoolean(Const.SHOW_RATING_KEY, true)) {
+            setState(State.RATING);
+        } else {
+            setState(State.PARKING);
+        }
+
+    }
+
+    public void onYesItem(View v) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("market://details?id=co.valetapp"));
+        startActivity(intent);
+
+        prefs.edit().putBoolean(Const.SHOW_RATING_KEY, false).commit();
+
         setState(State.PARKING);
     }
+
+    public void onNoItem(View v) {
+        prefs.edit().putBoolean(Const.SHOW_RATING_KEY, false).commit();
+
+        setState(State.PARKING);
+    }
+
 
     public void onShareItem(View v) {
         startActivity(Intent.createChooser(IntentLibrary.getShareIntent(this,
@@ -729,6 +756,11 @@ public class ParkActivity extends FragmentActivity
 
                 break;
 
+            case RATING:
+                clearBackStack();
+                dynamicFragment = new RateFragment();
+                barFragment.setItems(BarItem.YES, BarItem.NO);
+
         }
 
         FragmentManager fm = getSupportFragmentManager();
@@ -839,7 +871,7 @@ public class ParkActivity extends FragmentActivity
 
     enum State {
         PARKING, LOCATED, PARKED, CONFIRM, SCHEDULE,
-        UNSCHEDULE, ALARM, TIMER, TIMED, AUTO_SET, AUTO_INFO
+        UNSCHEDULE, ALARM, TIMER, TIMED, AUTO_SET, AUTO_INFO, RATING
     }
 
     // Define a DialogFragment that displays the error dialog

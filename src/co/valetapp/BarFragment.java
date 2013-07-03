@@ -11,65 +11,68 @@ import android.widget.Toast;
 
 public class BarFragment extends Fragment implements View.OnLongClickListener {
 
-	enum BarItem {
-		PARK(R.layout.park_bar_item),
-		AUTO(R.layout.auto_bar_item),
+    enum BarItem {
+        PARK(R.layout.park_bar_item),
+        AUTO(R.layout.auto_bar_item),
         AUTO_SET(R.layout.auto_set_bar_item),
         AUTO_INFO(R.layout.auto_info_bar_item),
-		LOCATING(R.layout.locating_bar_item),
-		CONFIRM(R.layout.confirm_bar_item),
-		RESET(R.layout.reset_bar_item), 
-		FIND(R.layout.find_bar_item), 
-		SHARE(R.layout.share_bar_item),
-		SCHEDULE(R.layout.schedule_bar_item),
-		UNSCHEDULE(R.layout.unschedule_bar_item),
-		TIMER(R.layout.timer_bar_item),
-		ALARM(R.layout.alarm_bar_item),
-		SET(R.layout.set_bar_item);
-		final int mResourceId;
-		BarItem(int resourceId) {
-			mResourceId = resourceId;
-		}
+        LOCATING(R.layout.locating_bar_item),
+        CONFIRM(R.layout.confirm_bar_item),
+        RESET(R.layout.reset_bar_item),
+        FIND(R.layout.find_bar_item),
+        SHARE(R.layout.share_bar_item),
+        SCHEDULE(R.layout.schedule_bar_item),
+        UNSCHEDULE(R.layout.unschedule_bar_item),
+        TIMER(R.layout.timer_bar_item),
+        ALARM(R.layout.alarm_bar_item),
+        SET(R.layout.set_bar_item),
+        YES(R.layout.yes_bar_item),
+        NO(R.layout.no_bar_item);
+        final int mResourceId;
 
-		int getResourceId() {
-			return mResourceId;
-		}
-	}
+        BarItem(int resourceId) {
+            mResourceId = resourceId;
+        }
 
-	private LinearLayout barLinearLayout;
-	private BarItem[] barItems;
-	
+        int getResourceId() {
+            return mResourceId;
+        }
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+    private LinearLayout barLinearLayout;
+    private BarItem[] barItems;
 
-		return inflater.inflate(R.layout.bar_fragment, null);
-	}
-	
-	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-		
-		barLinearLayout = (LinearLayout) view.findViewById(R.id.bar_ll);
 
-		if (barItems != null) {
-			setItems(barItems);
-		}
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-	void setItems(BarItem... barItems) {
-		if (barLinearLayout != null) {
-			for (BarItem barItem : barItems) {
+        return inflater.inflate(R.layout.bar_fragment, null);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        barLinearLayout = (LinearLayout) view.findViewById(R.id.bar_ll);
+
+        if (barItems != null) {
+            setItems(barItems);
+        }
+    }
+
+    void setItems(BarItem... barItems) {
+        if (barLinearLayout != null) {
+            for (BarItem barItem : barItems) {
                 View view = getActivity().getLayoutInflater().inflate(barItem.getResourceId(), barLinearLayout, false);
                 view.setTag(barItem);
                 view.setOnLongClickListener(this);
-				barLinearLayout.addView(view);
-			}
-		}
-		
-		this.barItems = barItems;
-	}
+                barLinearLayout.addView(view);
+            }
+        }
+
+        this.barItems = barItems;
+    }
 
     @Override
     public boolean onLongClick(View v) {

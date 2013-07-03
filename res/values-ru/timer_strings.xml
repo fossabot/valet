@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="separator">:</string>
-    <string name="am">ам</string>
-    <string name="pm">пм</string>
     <string name="hours">часов</string>
 </resources>

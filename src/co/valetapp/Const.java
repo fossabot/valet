@@ -18,6 +18,7 @@ public class Const {
     public static final String DOCK_KEY = "co.valetapp.dock";
     public static final String NOTIFICATIONS_KEY = "co.valetapp.notifications";
     public static final String IMAGE_KEY = "co.valetapp.image";
+    public static final String SHOW_RATING_KEY = "co.valetapp.rating";
 
     private Const() {
     }

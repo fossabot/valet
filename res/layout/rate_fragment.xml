@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<co.valetapp.view.FontableTextView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res/co.valetapp"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="match_parent"
+                                   android:text="@string/rate"
+                                   android:gravity="center"
+                                   android:singleLine="true"
+                                   android:textSize="18sp"
+                                   android:id="@+id/rateTextView"
+                                   app:font="Gotham-Bold.ttf"/>

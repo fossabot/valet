@@ -4,5 +4,10 @@
     <string name="app_name">Valet</string>
     <string name="app_name_caps">VALET</string>
     <string name="period">.</string>
-    <string name="not_supported">Your device does not support Google Play Services.  Email support@valetapp.co for a refund.</string>
+    <string name="not_supported">Your device does not support Google Play Services. Email
+        support@valetapp.co for a refund.
+    </string>
+    <string name="rate">Rate Valet on Google Play?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

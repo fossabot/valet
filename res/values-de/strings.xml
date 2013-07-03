@@ -4,5 +4,10 @@
     <string name="app_name">Valet</string>
     <string name="app_name_caps">VALET</string>
     <string name="period">.</string>
-    <string name="not_supported">Ihr Gerät unterstützt Google Play Services nicht. Bitte schreiben sie an support@valetapp.co für eine Rückerstattung.</string>
+    <string name="not_supported">Ihr Gerät unterstützt Google Play Services nicht. Bitte schreiben
+        sie an support@valetapp.co für eine Rückerstattung.
+    </string>
+    <string name="rate">Bewerten Valet auf Google Play?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
 </resources>

@@ -4,5 +4,10 @@
     <string name="app_name">Валет</string>
     <string name="app_name_caps">ВАЛЕТ</string>
     <string name="period">.</string>
-    <string name="not_supported">Ваше устройство не поддерживает Google Play Services.  Напишите на support@valetapp.co для возврата денег.</string>
+    <string name="not_supported">Ваше устройство не поддерживает Google Play Services. Напишите на
+        support@valetapp.co для возврата денег.
+    </string>
+    <string name="rate">Оценить Валет на Google Play?</string>
+    <string name="yes">да</string>
+    <string name="no">нет</string>
 </resources>
