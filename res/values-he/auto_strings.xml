@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="auto_info">Allumez le détecteur de stationnement pour automatiser la fonction de stationnement. Cela nécessite un peu plus de batterie et n\'est pas fiable à 100% a.                                           Vous pouvez sinon relier un appareil compatible Bluetooth pour utiliser une connectivité vous permettant de vous garer automatiquement et d\'économiser la durée de vie de la batterie.</string>
+    <string name="auto_set_bar_item">Garer automatique ma voiture</string>
+    <string name="bluetooth_bar_item">Paramétrages du Bluetooth</string>
+    <string name="auto_park_confirm">Votre voiture sera garée automatiquement. Ouvrez Valet pour trouver votre voiture.</string>
+    <string name="no_bluetooth">Bluetooth non disponible</string>
+    <string name="select_bluetooth">Bluetooth</string>
+    <string name="parking_sensor">Détecteur de stationnement</string>
+    <string name="notification_title">Stationnement automatique Valet</string>
+    <string name="notification_text">Régler une minuterie ou une alarme</string>
+    <string name="dock">Station d\'accueil</string>
+    <string name="notifications">Notifications</string>
+    <string name="info">Informations</string>
+    <string name="delete">Effacer</string>
+    <string name="view">Visualiser</string>
+</resources>

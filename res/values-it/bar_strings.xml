@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="park_bar_item">Parcheggia la mia auto</string>
+    <string name="reset_bar_item_cd">Riprendere la mia auto dal parcheggio</string>
+    <string name="find_bar_item_cd">Trova la mia auto</string>
+    <string name="alarm_bar_item_cd">Impostare un allarme.</string>
+    <string name="timer_bar_item_cd">Impostare un timer</string>
+    <string name="share_bar_item_cd">Condividere qualcosa su Valet.</string>
+    <string name="auto_bar_item_cd">Autopark tramite Bluetooth, Sensore di parcheggio o Car Dock</string>
+    <string name="schedule_bar_item_cd">Pianificare un promemoria parcheggio</string>
+    <string name="set_bar_item">Impostare</string>
+    <string name="timer_bar_item">Timer</string>
+    <string name="alarm_bar_item">Allarme</string>
+    <string name="unpark_bar_item">Riprendere la Mia Auto dal parcheggio</string>
+    <string name="unschedule_bar_item">Reimpostare</string>
+    <string name="locating_bar_item">Localizzando...</string>
+</resources>

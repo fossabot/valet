@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="auto_info">Ruotare il Sensore di parcheggio per automatizzare la funzione di parcheggio. Questo utilizza leggermente più batteria e non è al 100% aaccurato.  In alternativa si può collegare a un dispositivo Bluetooth accoppiato per utilizzare la connettività per il parcheggio auto e salvare la vita della batteria. È inoltre possibile utilizzare un car dock. I desk dock non funzioneranno.</string>
+    <string name="auto_set_bar_item"/>
+    <string name="bluetooth_bar_item">Impostazioni bluetooth</string>
+    <string name="auto_park_confirm">La tua auto sarà Auto Parcheggiata. Accendi Valet per trovare la tua auto.</string>
+    <string name="no_bluetooth">Bluetooth non disponibile</string>
+    <string name="select_bluetooth">Bluetooth</string>
+    <string name="parking_sensor">Sensore parcheggio</string>
+    <string name="notification_title">Auto Park Valet</string>
+    <string name="notification_text">Impostare Timer o Allarme</string>
+    <string name="dock">Car dock</string>
+    <string name="notifications">Notifiche</string>
+    <string name="info">Informazioni</string>
+    <string name="delete">Cancellare</string>
+    <string name="view">Visualizzare</string>
+</resources>

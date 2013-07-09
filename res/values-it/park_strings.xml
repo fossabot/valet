@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="parked">Parcheggiata!</string>
+    <string name="no_address">Indirizzo non trovato.</string>
+	<string name="note">Aggiungi nota</string>
+	<string name="distance_units">mi</string>
+	<string name="timer_button">Impostare timer</string>
+	<string name="share_extra_text_parking">Trovo la mia auto usando Valet e dovresti farlo anche tu. http://www.valetapp.co</string>
+	<string name="share_extra_html_text_parking">Trovo la mia auto usando <a href="http://www.valetapp.co">Valet</a> e dovresti farlo anche tu.</string>
+	<string name="share_extra_text_parked">La mia auto è qui:</string>
+	<string name="share_extra_html_text_parked">La mia auto è</string>
+	<string name="share_extra_html_text_parked_anchor">qui</string>
+	<string name="share_intent_chooser_title">Condividere</string>
+	<string name="find_intent_chooser_title">Trovare</string>
+	<string name="vehicle_marker_title">La tua Auto</string>
+	<string name="accuracy_abbreviation">acc.</string>
+    <string name="mile_abbreviation">mi</string>
+    <string name="kilometer_abbreviation">km</string>
+	<string name="pm">PM</string>
+	<string name="am">AM</string>
+	<string name="at">alle</string>
+	<string name="monday">\nlunedì</string>
+	<string name="tuesday">martedì</string>
+	<string name="wednesday">mercoledì</string>
+	<string name="thursday">giovedì</string>
+	<string name="friday">venerdì</string>
+	<string name="saturday">sabato</string>
+	<string name="sunday">domenica</string>
+	<string name="location_dialog_message">Avviare il GPS?</string>
+	<string name="location_dialog_positive_button">Si</string>
+	<string name="location_dialog_negative_button">No</string>
+	<string name="no_location_message">Valet necessita GPS per parcheggiare la tua auto</string>
+	<string name="reset_dialog_message">Reimpostare la posizione della tua auto?</string>
+	<string name="reset_dialog_positive_button">Si</string>
+	<string name="reset_dialog_no_button">No</string>
+    <string name="camera_button_cd">Fai una foto</string>
+
+</resources>

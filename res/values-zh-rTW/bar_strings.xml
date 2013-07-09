@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="park_bar_item">停泊我的車</string>
+    <string name="reset_bar_item_cd">我的車未停泊</string>
+    <string name="find_bar_item_cd">尋找我的車</string>
+    <string name="alarm_bar_item_cd">設置警報。</string>
+    <string name="timer_bar_item_cd">設置計時器。</string>
+    <string name="share_bar_item_cd">請分享一些與泊車員有關的事情。</string>
+    <string name="auto_bar_item_cd">使用藍牙、泊車距離傳感器、或汽車底座</string>
+    <string name="schedule_bar_item_cd">設置停車提醒。</string>
+    <string name="set_bar_item">設置</string>
+    <string name="timer_bar_item">計時器</string>
+    <string name="alarm_bar_item">警報</string>
+    <string name="unpark_bar_item">我的車未停泊</string>
+    <string name="unschedule_bar_item">重置</string>
+    <string name="locating_bar_item">定位</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="park_bar_item">私の車を駐車する</string>
+    <string name="reset_bar_item_cd">私の車を駐車場から出す</string>
+    <string name="find_bar_item_cd">私の車を探す</string>
+    <string name="alarm_bar_item_cd">アラームを設定する</string>
+    <string name="timer_bar_item_cd">タイマーを設定する</string>
+    <string name="share_bar_item_cd">バレーに関する意見を共有する</string>
+    <string name="auto_bar_item_cd">ブルーツース、パーキングセンサー、カードックでオートパークする</string>
+    <string name="schedule_bar_item_cd">駐車を予定する</string>
+    <string name="set_bar_item">設定</string>
+    <string name="timer_bar_item">タイマー</string>
+    <string name="alarm_bar_item">警告</string>
+    <string name="unpark_bar_item">私の車を駐車場から出す</string>
+    <string name="unschedule_bar_item">リセット</string>
+    <string name="locating_bar_item">ロード中</string>
+</resources>

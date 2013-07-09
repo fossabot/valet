@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="parked">已停好！</string>
+    <string name="no_address">未發現地址</string>
+	<string name="note">添加備註</string>
+	<string name="distance_units">英里</string>
+	<string name="timer_button">設置計時器</string>
+	<string name="share_extra_text_parking">我使用泊車員尋找我的車，您也應該用它。 http://www.valetapp.co</string>
+	<string name="share_extra_html_text_parking">我使用<a href="http://www.valetapp.co">泊車員</a>尋找我的車，您也應該用它。</string>
+	<string name="share_extra_text_parked">我的車在這裡：</string>
+	<string name="share_extra_html_text_parked">我的車是</string>
+	<string name="share_extra_html_text_parked_anchor">這裡</string>
+	<string name="share_intent_chooser_title">共享</string>
+	<string name="find_intent_chooser_title">尋找</string>
+	<string name="vehicle_marker_title">您的車</string>
+	<string name="accuracy_abbreviation">準確度</string>
+    <string name="mile_abbreviation">英里</string>
+    <string name="kilometer_abbreviation">千米</string>
+	<string name="pm">下午</string>
+	<string name="am">上午</string>
+	<string name="at">在</string>
+	<string name="monday">星期一</string>
+	<string name="tuesday">星期二</string>
+	<string name="wednesday">星期三</string>
+	<string name="thursday">星期四</string>
+	<string name="friday">星期五</string>
+	<string name="saturday">星期六</string>
+	<string name="sunday">星期日</string>
+	<string name="location_dialog_message">打開您的GPS？</string>
+	<string name="location_dialog_positive_button">是的</string>
+	<string name="location_dialog_negative_button">沒有</string>
+	<string name="no_location_message">泊車員需要GPS來停泊您的車。</string>
+	<string name="reset_dialog_message">重置您車的位置？</string>
+	<string name="reset_dialog_positive_button">是的</string>
+	<string name="reset_dialog_no_button">沒有</string>
+    <string name="camera_button_cd">拍照</string>
+
+</resources>

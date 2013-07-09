@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name">泊车员</string>
+    <string name="app_name_caps">泊车员</string>
+    <string name="period">。</string>
+    <string name="not_supported">您的设备不支持谷歌玩家服务。请发送电子邮件至support\@valetapp.co获得退款。</string>
+    <string name="rate">在谷歌玩家服务上对泊车员评级吗？</string>
+    <string name="yes">是的</string>
+    <string name="no">没有</string>
+</resources>

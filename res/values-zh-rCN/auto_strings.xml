@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="auto_info">将停车传感器打开到自动停车功能。该功能会稍微耗用更多电池电量，并且不是100% a准确。\n\n或者，您可以连接到配对蓝牙设备通过应用连通性来自动停车并节省电池寿命。\n\n您也可以使用汽车适配底座。桌面上底座不可用。</string>
+    <string name="auto_set_bar_item">自动停泊我的车</string>
+    <string name="bluetooth_bar_item">蓝牙设置</string>
+    <string name="auto_park_confirm">您的车会被自动停泊。打开泊车员寻找您的车。</string>
+    <string name="no_bluetooth">蓝牙不可获得</string>
+    <string name="select_bluetooth">蓝牙</string>
+    <string name="parking_sensor">停车传感器</string>
+    <string name="notification_title">泊车员自动停车</string>
+    <string name="notification_text">设置定时器或者闹钟</string>
+    <string name="dock">汽车适配底座</string>
+    <string name="notifications">通知</string>
+    <string name="info">信息</string>
+    <string name="delete">删除</string>
+    <string name="view">查看</string>
+</resources>

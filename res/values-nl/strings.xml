@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name">Valet</string>
+    <string name="app_name_caps">VALET</string>
+    <string name="period">.</string>
+    <string name="not_supported">Uw apparaat ondersteunt geen Google Play-diensten. E-mail naar support\@valetapp.co voor een terugbetaling</string>
+    <string name="rate">Valet waarderen op Google Play?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nee</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name">泊車員</string>
+    <string name="app_name_caps">泊車員</string>
+    <string name="period">。</string>
+    <string name="not_supported">您的設備不支持穀歌市場服務。請發送電郵至support\@valetapp.co進行充值。</string>
+    <string name="rate">去穀歌市場評價泊車員？</string>
+    <string name="yes">是的</string>
+    <string name="no">沒有</string>
+</resources>

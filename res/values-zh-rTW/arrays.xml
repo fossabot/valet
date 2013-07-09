@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string-array name="day_of_week">
+    <item>星期日</item>
+    <item>星期一</item>
+    <item>星期二</item>
+    <item>星期三</item>
+    <item>星期四</item>
+    <item>星期五</item>
+    <item>星期六</item>
+  </string-array>
+    <string-array name="hour">
+    <item>01</item>
+    <item>02</item>
+    <item>03</item>
+    <item>04</item>
+    <item>05</item>
+    <item>06</item>
+    <item>07</item>
+    <item>08</item>
+    <item>09</item>
+    <item>10</item>
+    <item>11</item>
+    <item>12</item>
+  </string-array>
+    <string-array name="minute">
+    <item>00</item>
+    <item>05</item>
+    <item>10</item>
+    <item>15</item>
+    <item>20</item>
+    <item>25</item>
+    <item>30</item>
+    <item>35</item>
+    <item>40</item>
+    <item>45</item>
+    <item>50</item>
+    <item>55</item>
+  </string-array>
+    <string-array name="am_pm">
+    <item>上午</item>
+    <item>下午</item>
+  </string-array>
+
+    <string-array name="empty"/>
+</resources>
