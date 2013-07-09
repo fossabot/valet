@@ -10,4 +10,5 @@
     <string name="rate">Bewerten Valet auf Google Play?</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
+    <string name="never">Nie</string>
 </resources>

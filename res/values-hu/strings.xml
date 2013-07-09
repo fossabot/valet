@@ -10,4 +10,5 @@
     <string name="rate">Szeretnéd értékelni a Valet-et a Google Play-en?</string>
     <string name="yes">Igen</string>
     <string name="no">Nem</string>
+    <string name="never">Soha</string>
 </resources>

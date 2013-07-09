@@ -20,7 +20,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
-                android:textSize="14sp"
+                android:singleLine="true"
+                android:textSize="12sp"
                 app:font="Gotham-Medium.ttf"
                 />
 
@@ -52,7 +53,7 @@
                 android:id="@+id/dockCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_marginRight="8dp"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:font="Gotham-Medium.ttf"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
@@ -62,7 +63,7 @@
                 android:id="@+id/sensorCheckBox"
                 android:layout_width="wrap_content"
                 app:font="Gotham-Medium.ttf"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
                 android:text="@string/parking_sensor"/>
@@ -71,9 +72,10 @@
 
     <co.valetapp.view.FontableCheckBox
             android:id="@+id/notificationsCheckBox"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_marginTop="16dp"
-            android:textSize="14sp"
+            android:layout_gravity="left"
+            android:textSize="12sp"
             app:font="Gotham-Medium.ttf"
             android:textColor="@color/default_text"
             android:layout_height="wrap_content"

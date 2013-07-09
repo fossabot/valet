@@ -520,8 +520,6 @@ public class ParkActivity extends FragmentActivity
         editor.putBoolean(Const.RELIABLY_PARKED_KEY, true);
         editor.commit();
 
-        saveData();
-
         am.set(AlarmManager.RTC_WAKEUP, time, Tools.getAlarmIntent(this));
 
         Intent autoParkServiceIntent = new Intent(this, AutoParkService.class);
@@ -536,6 +534,8 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onUnparkItem(View v) {
+        saveData();
+
         Tools.deleteExternalStoragePublicPicture();
         Tools.unpark(this);
         mPictureUri = null;
@@ -565,6 +565,10 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onNoItem(View v) {
+        setState(State.PARKING);
+    }
+
+    public void onNeverItem(View v) {
         prefs.edit().putBoolean(Const.SHOW_RATING_KEY, false).commit();
 
         setState(State.PARKING);
@@ -759,7 +763,7 @@ public class ParkActivity extends FragmentActivity
             case RATING:
                 clearBackStack();
                 dynamicFragment = new RateFragment();
-                barFragment.setItems(BarItem.YES, BarItem.NO);
+                barFragment.setItems(BarItem.YES, BarItem.NO, BarItem.NEVER);
 
         }
 
@@ -850,11 +854,15 @@ public class ParkActivity extends FragmentActivity
     }
 
     private void saveData() {
-        ParseGeoPoint point = new ParseGeoPoint(Double.parseDouble(prefs.getString(Const.LAT_KEY, "")), Double.parseDouble(prefs.getString(Const.LONG_KEY, "")));
-        ParseObject park = new ParseObject("Park");
-        park.put("location", point);
-        park.put("time", prefs.getLong(Const.TIME_KEY, 0));
-        park.saveEventually();
+        if (Tools.isParked(this)) {
+            ParseGeoPoint point = new ParseGeoPoint(Double.parseDouble(prefs.getString(Const.LAT_KEY, "0")), Double.parseDouble(prefs.getString(Const.LONG_KEY, "0")));
+            ParseObject park = new ParseObject("Park");
+            park.put("location", point);
+            if (Tools.isTimed(this)) {
+                park.put("time", prefs.getLong(Const.TIME_KEY, 0));
+            }
+            park.saveEventually();
+        }
     }
 
     private BarFragment getBarFragment() {

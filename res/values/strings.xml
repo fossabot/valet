@@ -10,4 +10,5 @@
     <string name="rate">Rate Valet on Google Play?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="never">Never</string>
 </resources>

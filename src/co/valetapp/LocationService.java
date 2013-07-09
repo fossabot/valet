@@ -21,7 +21,7 @@ public class LocationService extends Service implements GooglePlayServicesClient
     public static final int UPDATE_INTERVAL_IN_SECONDS = 1;
     private static final long UPDATE_INTERVAL = MILLISECONDS_PER_SECOND * UPDATE_INTERVAL_IN_SECONDS;
 
-    private boolean mReliablyParked, mManuallyParked;
+    boolean mReliablyParked;
     LocationRequest mLocationRequest;
     LocationClient mLocationClient;
     Location mLocation;
@@ -51,7 +51,6 @@ public class LocationService extends Service implements GooglePlayServicesClient
     @Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
         mReliablyParked = intent.getBooleanExtra(Const.RELIABLY_PARKED_KEY, false);
-        mManuallyParked = intent.getBooleanExtra(Const.MANUALLY_PARKED_KEY, false);
 
         if (servicesConnected()) {
             mLocationClient.connect();
@@ -95,7 +94,7 @@ public class LocationService extends Service implements GooglePlayServicesClient
         stopLocationUpdates();
 
         if (mLocation != null) {
-            Tools.park(this, mLocation.getLatitude(), mLocation.getLongitude(), mReliablyParked, mManuallyParked);
+            Tools.park(this, mLocation.getLatitude(), mLocation.getLongitude(), mReliablyParked, false);
         }
     }
 

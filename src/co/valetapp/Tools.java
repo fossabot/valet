@@ -105,6 +105,15 @@ public class Tools {
         }
     }
 
+    public static boolean isTimed(Context context) {
+        SharedPreferences prefs = getPrefs(context);
+        if (prefs.contains(Const.TIME_KEY)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static File createExternalStoragePublicPicture() {
         File path = Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES);

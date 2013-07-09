@@ -10,4 +10,5 @@
     <string name="rate">Taxa Valet em Google Play?</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
+    <string name="never">Nunca</string>
 </resources>

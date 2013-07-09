@@ -27,7 +27,8 @@ public class BarFragment extends Fragment implements View.OnLongClickListener {
         ALARM(R.layout.alarm_bar_item),
         SET(R.layout.set_bar_item),
         YES(R.layout.yes_bar_item),
-        NO(R.layout.no_bar_item);
+        NO(R.layout.no_bar_item),
+        NEVER(R.layout.never_bar_item);
         final int mResourceId;
 
         BarItem(int resourceId) {

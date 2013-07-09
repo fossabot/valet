@@ -10,4 +10,5 @@
     <string name="rate">Оценить Валет на Google Play?</string>
     <string name="yes">да</string>
     <string name="no">нет</string>
+    <string name="never">никогда</string>
 </resources>

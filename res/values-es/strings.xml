@@ -10,4 +10,5 @@
     <string name="rate">Cambio Valet en Google Play?</string>
     <string name="yes">Ci</string>
     <string name="no">No</string>
+    <string name="never">Nunca</string>
 </resources>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<string-array name="day_of_week">
-    <item>Dimanche</item>
-    <item>Lundi</item>
-    <item>Mardi</item>
-    <item>Mercredi</item>
-    <item>Jeudi</item>
-    <item>Vendredi</item>
-    <item>Samedi</item>
+    <item>יום ראשון</item>
+    <item>יום שני</item>
+    <item>יום שלישי</item>
+    <item>יום רביעי</item>
+    <item>יום חמישי</item>
+    <item>יום שישי</item>
+    <item>יום שבת</item>
   </string-array>
     <string-array name="hour">
     <item>01</item>
@@ -38,8 +38,8 @@
     <item>55</item>
   </string-array>
     <string-array name="am_pm">
-    <item>matin</item>
-    <item>après-midi</item>
+    <item>לפנה\"צ</item>
+    <item>אחה\"צ</item>
   </string-array>
 
     <string-array name="empty"/>
