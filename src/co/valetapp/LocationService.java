@@ -21,18 +21,18 @@ public class LocationService extends Service implements GooglePlayServicesClient
     public static final int UPDATE_INTERVAL_IN_SECONDS = 1;
     private static final long UPDATE_INTERVAL = MILLISECONDS_PER_SECOND * UPDATE_INTERVAL_IN_SECONDS;
 
-    private boolean manual;
+    private boolean mReliablyParked, mManuallyParked;
     LocationRequest mLocationRequest;
     LocationClient mLocationClient;
-    Location location;
+    Location mLocation;
 
-    Runnable timeout = new Runnable() {
+    Runnable mTimeout = new Runnable() {
         @Override
         public void run() {
             stopSelf();
         }
     };
-    Handler handler = new Handler();
+    Handler mHandler = new Handler();
 
     public LocationService() {
         super();
@@ -50,11 +50,12 @@ public class LocationService extends Service implements GooglePlayServicesClient
 
     @Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-        manual = intent.getBooleanExtra(Const.RELIABLY_PARKED_KEY, false);
+        mReliablyParked = intent.getBooleanExtra(Const.RELIABLY_PARKED_KEY, false);
+        mManuallyParked = intent.getBooleanExtra(Const.MANUALLY_PARKED_KEY, false);
 
         if (servicesConnected()) {
             mLocationClient.connect();
-            handler.postDelayed(timeout,  30 * 1000);
+            mHandler.postDelayed(mTimeout, 30 * 1000);
         } else {
             stopSelf(); // Calls onDestroy()
         }
@@ -83,18 +84,18 @@ public class LocationService extends Service implements GooglePlayServicesClient
             stopSelf();
         }
 
-        this.location = location;
+        this.mLocation = location;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
 
-        handler.removeCallbacks(timeout);
+        mHandler.removeCallbacks(mTimeout);
         stopLocationUpdates();
 
-        if (location != null) {
-            Tools.park(this, location.getLatitude(), location.getLongitude(), manual);
+        if (mLocation != null) {
+            Tools.park(this, mLocation.getLatitude(), mLocation.getLongitude(), mReliablyParked, mManuallyParked);
         }
     }
 

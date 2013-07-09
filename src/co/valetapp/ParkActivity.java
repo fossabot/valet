@@ -439,7 +439,7 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onParkItem(View v) {
-        Tools.park(this, vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude, true);
+        Tools.park(this, vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude, true, true);
 
         setState(State.PARKED);
     }
