@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name">주차원</string>
+    <string name="app_name_caps">주차원</string>
+    <string name="period">.</string>
+    <string name="not_supported">기기가 Google Play Service를 지원하지 않습니다. 환불하려면 support\@valetapp.co로 이메일을 보내십시오.</string>
+    <string name="rate">Google Play에서 주차원을 평가하시겠습니까?</string>
+    <string name="yes">예</string>
+    <string name="no">아니오</string>
+</resources>

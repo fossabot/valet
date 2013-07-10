@@ -1,19 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="auto_info">Schalten Sie das Parken-Sensor auf den Park-Funktion automatisieren. Dies verbraucht ein wenig mehr Akku und ist nicht 100% genau.\n\nAlternativ können Sie auch zu einem gekoppelten Bluetooth-Gerät verbinden, um die Konnektivität zu Auto Park nutzen und die Batterie zu schonen.\n\nSie können auch ein Auto-Dock. Ausflüge Docks wird nicht funktionieren.
-    </string>
-    <string name="auto_set_bar_item">Mein Auto auto-parken</string>
+    <string name="auto_info">Schalten Sie den Parksensor ein, um die Parkfunktion auf Automatik zu schalten. Dies verbraucht geringfügig mehr Batterie und ist nicht 100 % a zuverlässig.\n\nSie können auch zu einem gekoppelten Bluetooth-Gerät verlinken, um die Konnektivität zum Auto-Parken zu verwenden und die Batterie zu schonen.\n\nSie können auch ein Auto-Dock verwenden. Schreibtisch-Docks funktionieren nicht.</string>
+    <string name="auto_set_bar_item">Meinen Wagen Auto-Parken</string>
     <string name="bluetooth_bar_item">Bluetooth-Einstellungen</string>
-    <string name="auto_park_confirm">Ihr Auto wird auto-geparkt werden. Öffnen Sie Valet, um Ihr Auto zu finden.</string>
-    <string name="no_bluetooth">Keine gepaarte Bluetooth-Geräte</string>
+    <string name="auto_park_confirm">Ihr Wagen wird automatisch geparkt. Öffnen Sie Valet, um ihren Wagen zu finden.</string>
+    <string name="no_bluetooth">Bluetooth ist nicht verfügbar</string>
     <string name="select_bluetooth">Bluetooth</string>
-    <string name="parking_sensor">Parken-Sensor</string>
-    <string name="notification_title">Valet Auto Park</string>
-    <string name="notification_text">Stellen Sie einen Timer oder Alarm</string>
+    <string name="parking_sensor">Parksensor</string>
+    <string name="notification_title">Valet-Auto-Parken</string>
+    <string name="notification_text">Parkuhr oder Alarm einstellen</string>
     <string name="dock">Auto-Dock</string>
     <string name="notifications">Benachrichtigungen</string>
-    <string name="info">Informationen</string>
+    <string name="info">Information</string>
     <string name="delete">Löschen</string>
-    <string name="view">Anzeigen</string>
-
+    <string name="view">Ansicht</string>
 </resources>

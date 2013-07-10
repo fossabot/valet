@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="hour_abbreviation">시간</string>
+    <string name="mintute_abbreviation">분</string>
+    <string name="second_abbreviation">초</string>
+
+</resources>

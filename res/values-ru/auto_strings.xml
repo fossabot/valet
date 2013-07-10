@@ -1,25 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="auto_info">Поверните датчик парковки на автоматизировать парка функцию. Это
-        использует чуть больше батареи и не на 100% точно.\n\nТакже вы можете связаться с
-        сопряженным устройством Bluetooth, чтобы использовать подключение к авто парка и экономии
-        заряда аккумулятора.\n\nВы также можете использовать док-станции. Рабочий стол доки не будет
-        работать.
-    </string>
-    <string name="auto_set_bar_item">Автоматически припарковать</string>
-    <string name="bluetooth_bar_item">Настройки Блютус.</string>
-    <string name="auto_park_confirm">Ваша машина будет автоматически припакрована. Запустите Валет,
-        чтобы найти вашу машину.
-    </string>
-    <string name="no_bluetooth">Нет присоединенного Блютус устройства.</string>
+    <string name="auto_info">Включите датчик парковки для автоматической парковки машины. Это повлечет немного больший расход батареи и не гарантирует 100% точность. Или же вы можете подключиться к спаренному устройству Bluetooth, и использовать это соединение для экономии батареи при автоматической парковке. Вы также можете использовать автомобильную док-станцию. Настольная док-станция для этого не подойдет.</string>
+    <string name="auto_set_bar_item">Автоматическая парковка машины</string>
+    <string name="bluetooth_bar_item">Настройки Bluetooth</string>
+    <string name="auto_park_confirm">Ваша машина будет автоматически припаркована. Откройте Valet, чтобы найти свою машину.</string>
+    <string name="no_bluetooth">Bluetooth недоступен</string>
     <string name="select_bluetooth">Bluetooth</string>
-    <string name="parking_sensor">Датчик парковки</string>
-    <string name="notification_title">Служащим Auto Park</string>
-    <string name="notification_text">Установите таймер или сигнализации</string>
-    <string name="dock">Автомобиль док</string>
+    <string name="parking_sensor">датчик парковки</string>
+    <string name="notification_title">Автоматическая парковка Valet</string>
+    <string name="notification_text">Установите таймер или будильник</string>
+    <string name="dock">Автомобильная док-станция</string>
     <string name="notifications">Уведомления</string>
-    <string name="info">информация</string>
-    <string name="delete">удалять</string>
-    <string name="view">смотреть</string>
-
+    <string name="info">Информация</string>
+    <string name="delete">Удалить</string>
+    <string name="view">Просмотр</string>
 </resources>

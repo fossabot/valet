@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<string-array name="day_of_week">
-    <item>domingo</item>
-    <item>lunes</item>
-    <item>martes</item>
-    <item>miércoles</item>
-    <item>jueves</item>
-    <item>viernes</item>
-    <item>sábado</item>
+    <item>일요일</item>
+    <item>월요일</item>
+    <item>화요일</item>
+    <item>수요일</item>
+    <item>목요일</item>
+    <item>금요일</item>
+    <item>토요일</item>
   </string-array>
     <string-array name="hour">
     <item>01</item>
@@ -38,8 +38,8 @@
     <item>55</item>
   </string-array>
     <string-array name="am_pm">
-    <item>a.m.</item>
-    <item>p.m.</item>
+    <item>오전</item>
+    <item>오후</item>
   </string-array>
 
     <string-array name="empty"/>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="auto_info">주차 기능을 자동화하려면 주차 센서를 켭니다. 이렇게하면 배터리를 조금 더 사용하게 되고 100 % a 정확하지 않습니다.\n\n또는 자동차 주차에 대한 연결을 활용하고 배터리 사용 시간을 절약하기 위해 페어링 된 블루투스 장치에 연결할 수 있습니다.\n\n또한 자동차 거치대를 사용할 수 있습니다. 데스크 거치대는 작동하지 않습니다.</string>
+    <string name="auto_set_bar_item">자동 주차하기</string>
+    <string name="bluetooth_bar_item">블루투스 설정</string>
+    <string name="auto_park_confirm">차를 자동으로 주차할 수 있습니다. 차를 찾으려면 주차원을 실행합니다.</string>
+    <string name="no_bluetooth">블루투스 사용 불가능</string>
+    <string name="select_bluetooth">블루투스</string>
+    <string name="parking_sensor">주차 센서</string>
+    <string name="notification_title">주차원으로 자동 주차하기</string>
+    <string name="notification_text">타이머나 알람 설정</string>
+    <string name="dock">자동차용 거치대</string>
+    <string name="notifications">알림</string>
+    <string name="info">정보</string>
+    <string name="delete">삭제</string>
+    <string name="view">보기</string>
+</resources>
