@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="auto_info">Encienda el Sensor de Estacionamiento para automatizar la función de estacionado.  Esto utiliza un poco más de batería y no es 100 \"link\" exacto.  Otra posibilidad es que usted haga un enlace a un dispositivo Bluetooth para utilizar la conectividad para estacionar el vehículo de forma automática y ahorrar la vida de la batería.  También puede utilizar una base para automóviles.  Las bases para escritorio no funcionarán.</string>
-    <string name="auto_set_bar_item">Estacione mi automóvil de forma automática</string>
+    <string name="auto_set_bar_item">Estacione mi automóvil\nde forma automática</string>
     <string name="bluetooth_bar_item">Configuraciones Bluetooth</string>
     <string name="auto_park_confirm">Su automóvil se estacionará de forma automática.  Abra Valet para encontrar su automóvil.</string>
     <string name="no_bluetooth">Bluetooth no está disponible</string>
