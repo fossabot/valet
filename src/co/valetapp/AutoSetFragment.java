@@ -9,12 +9,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
-import co.valetapp.auto.AutoParkService;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import co.valetapp.auto.AutoParkService;
 
 public class AutoSetFragment extends DynamicFragment {
 
@@ -22,6 +29,8 @@ public class AutoSetFragment extends DynamicFragment {
     CheckBox bluetoothCheckBox, sensorCheckBox, dockCheckBox, notificationsCheckBox;
     ImageButton bluetoothButton;
     SharedPreferences prefs;
+    ArrayAdapter<MyBluetoothDevice> adapter;
+    List<MyBluetoothDevice> myBluetoothDevices = new ArrayList<MyBluetoothDevice>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +55,20 @@ public class AutoSetFragment extends DynamicFragment {
 
 
         bluetoothSpinner = (Spinner) view.findViewById(R.id.bluetoothSpinner);
+        bluetoothSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MyBluetoothDevice myBluetoothDevice = (MyBluetoothDevice) bluetoothSpinner.getSelectedItem();
+                if (myBluetoothDevice != null) {
+                    prefs.edit().putString(Const.BLUETOOTH_KEY, myBluetoothDevice.address).commit();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                prefs.edit().remove(Const.BLUETOOTH_KEY).commit();
+            }
+        });
 
         bluetoothCheckBox = (CheckBox) view.findViewById(R.id.bluetoothCheckBox);
         bluetoothCheckBox.setChecked(prefs.getBoolean(Const.BLUETOOTH_ENABLED_KEY, false));
@@ -121,7 +144,8 @@ public class AutoSetFragment extends DynamicFragment {
         super.onResume();
 
         Set<BluetoothDevice> bondedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
-        if (bondedDevices.size() == 0) {
+
+        if (bondedDevices == null || bondedDevices.size() == 0) {
             bluetoothSpinner.setVisibility(View.GONE);
             bluetoothCheckBox.setEnabled(false);
             bluetoothCheckBox.setTextColor(getResources().getColor(R.color.hint_text));
@@ -130,38 +154,36 @@ public class AutoSetFragment extends DynamicFragment {
             bluetoothSpinner.setVisibility(View.VISIBLE);
             bluetoothCheckBox.setEnabled(true);
             bluetoothCheckBox.setTextColor(getResources().getColor(R.color.default_text));
+        }
 
-            List<MyBluetoothDevice> myBluetoothDevices = new ArrayList<MyBluetoothDevice>(bondedDevices.size());
+        myBluetoothDevices.clear();
+        if (bondedDevices != null) {
             for (BluetoothDevice bluetoothDevice : bondedDevices) {
                 myBluetoothDevices.add(new MyBluetoothDevice(bluetoothDevice.getName(), bluetoothDevice.getAddress()));
             }
+        }
 
-            ArrayAdapter<MyBluetoothDevice> adapter = new ArrayAdapter<MyBluetoothDevice>(getActivity(), R.layout.spinner_item, myBluetoothDevices);
+        if (adapter == null) {
+            adapter = new ArrayAdapter<MyBluetoothDevice>(getActivity(), R.layout.spinner_item, myBluetoothDevices);
             adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
             bluetoothSpinner.setAdapter(adapter);
+        } else {
+            adapter.notifyDataSetChanged();
+        }
 
-            if (prefs.contains(Const.BLUETOOTH_KEY)) {
-                String address = prefs.getString(Const.BLUETOOTH_KEY, "");
-                int i = 0;
-                for (MyBluetoothDevice myBluetoothDevice : myBluetoothDevices) {
-                    if (myBluetoothDevice.address.equals(address)) {
-                        bluetoothSpinner.setSelection(i);
+        if (prefs.contains(Const.BLUETOOTH_KEY)) {
+            String address = prefs.getString(Const.BLUETOOTH_KEY, "");
+            int i = 0;
+            for (MyBluetoothDevice myBluetoothDevice : myBluetoothDevices) {
+                if (myBluetoothDevice.address.equals(address)) {
+                    bluetoothSpinner.setSelection(i);
 
-                        break;
-                    }
-
-                    i++;
+                    break;
                 }
+
+                i++;
             }
         }
-    }
-
-    void save() {
-        MyBluetoothDevice myBluetoothDevice = (MyBluetoothDevice) bluetoothSpinner.getSelectedItem();
-        if (myBluetoothDevice != null) {
-            prefs.edit().putString(Const.BLUETOOTH_KEY, myBluetoothDevice.address).commit();
-        }
-
     }
 
     private class MyBluetoothDevice {

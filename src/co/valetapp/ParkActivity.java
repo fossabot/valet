@@ -449,9 +449,6 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onAutoSetItem(View v) {
-        AutoSetFragment frag = (AutoSetFragment) getDynamicFragment();
-        frag.save();
-
         Toast.makeText(ParkActivity.this, R.string.auto_park_confirm, Toast.LENGTH_LONG).show();
         finish();
     }
