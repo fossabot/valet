@@ -1,79 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/co.valetapp"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/root"
-    android:layout_height="wrap_content">
+              xmlns:app="http://schemas.android.com/apk/res/co.valetapp"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:id="@+id/root"
+              android:layout_height="wrap_content">
 
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <co.valetapp.view.FontableTextView
+                android:id="@+id/address_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/default_text"
+                android:textSize="14sp"
+                app:font="Gotham-Medium.ttf"/>
+
+        <co.valetapp.view.FontableTextView
+                android:id="@+id/distance_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                android:singleLine="true"
+                android:textColor="@color/default_text"
+                android:textSize="14sp"
+                app:font="Gotham-Medium.ttf"/>
+
+    </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <co.valetapp.view.FontableTextView
-            android:id="@+id/address_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:textColor="@color/default_text"
-            android:textSize="14sp"
-            app:font="Gotham-Medium.ttf" />
-
-        <co.valetapp.view.FontableTextView
-            android:id="@+id/distance_view"
+            android:id="@+id/noteLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:singleLine="true"
-            android:textColor="@color/default_text"
-            android:textSize="14sp"
-            app:font="Gotham-Medium.ttf" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/noteLinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+            android:orientation="horizontal"
+            android:gravity="center">
 
         <co.valetapp.view.FontableEditText
-            android:id="@+id/noteEditText"
-            android:layout_height="wrap_content"
-            android:textColor="@color/default_text"
-            android:singleLine="true"
-            android:textColorHint="@color/hint_text"
-            android:hint="@string/note"
-            app:font="Gotham-Medium.ttf"
-            android:background="@null"
-            android:textSize="14sp"
-            android:cursorVisible="false"
-            android:layout_weight="1"
-            android:layout_width="0dp" />
+                android:id="@+id/noteEditText"
+                android:layout_height="wrap_content"
+                android:textColor="@color/default_text"
+                android:singleLine="true"
+                android:textColorHint="@color/hint_text"
+                android:hint="@string/note"
+                app:font="Gotham-Medium.ttf"
+                android:background="@null"
+                android:textSize="14sp"
+                android:cursorVisible="false"
+                android:layout_weight="1"
+                android:layout_width="0dp"/>
 
         <ImageButton
-            android:id="@+id/deletePictureButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onDeletePictureButton"
-            android:padding="8dp"
-            android:src="@drawable/reset_bar_item_selector"
-            android:contentDescription="@string/delete"
-            android:background="@drawable/default_selector"/>
+                android:id="@+id/deletePictureButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onDeletePictureButton"
+                android:padding="8dp"
+                android:src="@drawable/reset_bar_item_selector"
+                android:contentDescription="@string/delete"
+                android:background="@drawable/default_selector"/>
 
         <ImageButton
-            android:id="@+id/cameraImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onCameraButton"
-            android:padding="8dp"
-            android:contentDescription="@string/camera_button_cd"
-            android:src="@drawable/camera_selector"
+                android:id="@+id/cameraImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onCameraButton"
+                android:padding="8dp"
+                android:contentDescription="@string/camera_button_cd"
+                android:src="@drawable/camera_selector"
 
-            android:background="@drawable/default_selector" />
+                android:background="@drawable/default_selector"/>
     </LinearLayout>
 
 

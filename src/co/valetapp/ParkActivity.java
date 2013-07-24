@@ -123,6 +123,7 @@ public class ParkActivity extends FragmentActivity
         }
 
         am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        setSharedLocation();
 
         mLocationRequest = LocationRequest.create();
 
@@ -178,10 +179,46 @@ public class ParkActivity extends FragmentActivity
     @Override
     protected void onNewIntent(Intent intent) {
         setIntent(intent);
+        if (isAlarmIntent()) {
+            lockScreen();
+            super.onNewIntent(intent);
+        } else {
+            super.onNewIntent(intent);
+            setSharedLocation();
 
-        if (isAlarmIntent()) lockScreen();
+            if (Tools.isTimed(this)) {
+                setState(State.TIMED);
+            } else if (Tools.isParked(this)) {
+                setState(State.PARKED);
+            }
+        }
+    }
 
-        super.onNewIntent(intent);
+    private void setSharedLocation() {
+        Intent intent = getIntent();
+        Uri googleMapsUri = intent.getData();
+        if (googleMapsUri != null) {
+            String q = googleMapsUri.getQueryParameter("q");
+            if (q != null) {
+                int commaIndex = q.indexOf(",");
+                String lat = q.substring(4, commaIndex);
+                String lng = q.substring(commaIndex + 1);
+
+                Tools.park(ParkActivity.this, lat, lng, true, true);
+            }
+
+            String t = googleMapsUri.getQueryParameter("t");
+            if (t != null) {
+                long timestamp = Long.parseLong(t);
+                setAlarm(timestamp);
+            } else {
+                Editor edit = prefs.edit();
+                edit.remove(Const.TIME_KEY);
+                edit.commit();
+
+                am.cancel(Tools.getAlarmIntent(this));
+            }
+        }
     }
 
     @Override
@@ -208,6 +245,8 @@ public class ParkActivity extends FragmentActivity
         if (servicesConnected()) {
             mLocationClient.connect();
         }
+
+
     }
 
     @Override
@@ -500,20 +539,25 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onSetItem(View v) {
-        Editor editor = getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).edit();
-
         long time;
         DynamicFragment scheduleFragment = (DynamicFragment) getSupportFragmentManager().findFragmentById(R.id.dynamic_fl);
         if (scheduleFragment instanceof TimerFragment) {
             time = ((TimerFragment) scheduleFragment).getTime();
-            editor.putLong(Const.TIME_KEY, time);
+
         } else if (scheduleFragment instanceof AlarmFragment) {
             time = ((AlarmFragment) scheduleFragment).getTime();
-            editor.putLong(Const.TIME_KEY, time);
-
         } else {
             return;
         }
+
+        setAlarm(time);
+
+        setState(State.TIMED);
+    }
+
+    private void setAlarm(long time) {
+        Editor editor = getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).edit();
+        editor.putLong(Const.TIME_KEY, time);
         editor.putBoolean(Const.RELIABLY_PARKED_KEY, true);
         editor.commit();
 
@@ -522,8 +566,6 @@ public class ParkActivity extends FragmentActivity
         Intent autoParkServiceIntent = new Intent(this, AutoParkService.class);
         autoParkServiceIntent.setAction(AutoParkService.ACTION_STOP);
         startService(autoParkServiceIntent);
-
-        setState(State.TIMED);
     }
 
     public void onResetItem(View v) {

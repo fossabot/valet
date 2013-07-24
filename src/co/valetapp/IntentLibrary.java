@@ -15,11 +15,11 @@ public class IntentLibrary {
 		Intent intent = new Intent();
 
 		intent.setAction(Intent.ACTION_VIEW);
-		String uri = String.format(Locale.US, "geo:%f,%f?z=%d&q=%f,%f(%s)", latitude, longitude,
-				Const.ZOOM_LEVEL, latitude, longitude, context.getString(R.string.vehicle_marker_title));
+        String uri = String.format(Locale.US, "geo:%f,%f?z=%d&q=%f,%f", latitude, longitude,
+                Const.ZOOM_LEVEL, latitude, longitude);
 
 
-		intent.setData(Uri.parse(uri));
+        intent.setData(Uri.parse(uri));
 
 		return intent;
 	}
@@ -29,9 +29,16 @@ public class IntentLibrary {
 		intent.setAction(Intent.ACTION_SEND);
 		intent.setType("text/plain");
 
-		String googleMapsUrl = String.format(Locale.US, "http://maps.google.com/?q=loc:%f,%f&z=%d",
-				latitude, longitude, Const.ZOOM_LEVEL);
-		intent.putExtra(Intent.EXTRA_TEXT, context.getString(R.string.share_extra_text_parked) + " " + googleMapsUrl);
+        String googleMapsUrl;
+        if (Tools.isTimed(context)) {
+            googleMapsUrl = String.format(Locale.US, "http://maps.google.com/?q=loc:%f,%f&z=%d&t=%s",
+                    latitude, longitude, Const.ZOOM_LEVEL, Long.toString(Tools.getTime(context)));
+        } else {
+            googleMapsUrl = String.format(Locale.US, "http://maps.google.com/?q=loc:%f,%f&z=%d",
+                    latitude, longitude, Const.ZOOM_LEVEL);
+        }
+
+        intent.putExtra(Intent.EXTRA_TEXT, context.getString(R.string.share_extra_text_parked) + " " + googleMapsUrl);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
 			String anchor = String.format("<a href='%s'>%s</a>",
 					googleMapsUrl, context.getString(R.string.share_extra_html_text_parked_anchor));

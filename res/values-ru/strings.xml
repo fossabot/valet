@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
 
-    <string name="app_name">Валет</string>
-    <string name="app_name_caps">ВАЛЕТ</string>
+    <string name="app_name">Valet</string>
+    <string name="app_name_caps">VALET</string>
     <string name="period">.</string>
-    <string name="not_supported">Ваше устройство не поддерживает Google Play Services. Напишите на
-        support@valetapp.co для возврата денег.
+    <string name="not_supported">Ваше устройство не поддерживает Google Play Services. Для возврата
+        средств пишите по адресу support\@valetapp.co.
     </string>
-    <string name="rate">Оценить Валет на Google Play?</string>
-    <string name="yes">да</string>
-    <string name="no">нет</string>
-    <string name="never">никогда</string>
+    <string name="rate">Оценить Valet на Google Play?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="never">Никогда</string>
 </resources>

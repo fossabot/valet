@@ -11,17 +11,21 @@ import android.os.Environment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
-import co.valetapp.auto.AutoParkService;
-
 import java.io.File;
+
+import co.valetapp.auto.AutoParkService;
 
 public class Tools {
 
     public static void park(Context context, Double latitude, Double longitude, boolean reliablyParked, boolean manuallyParked) {
+        park(context, Double.toString(latitude), Double.toString(longitude), reliablyParked, manuallyParked);
+    }
+
+    public static void park(Context context, String latitude, String longitude, boolean reliablyParked, boolean manuallyParked) {
         SharedPreferences prefs = getPrefs(context);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(Const.LAT_KEY, Double.toString(latitude));
-        editor.putString(Const.LONG_KEY, Double.toString(longitude));
+        editor.putString(Const.LAT_KEY, latitude);
+        editor.putString(Const.LONG_KEY, longitude);
         editor.putBoolean(Const.RELIABLY_PARKED_KEY, reliablyParked);
         editor.putBoolean(Const.MANUALLY_PARKED_KEY, manuallyParked);
         editor.commit();
@@ -79,6 +83,10 @@ public class Tools {
             context.startService(intent);
         }
 
+    }
+
+    public static long getTime(Context context) {
+        return context.getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).getLong(Const.TIME_KEY, 0);
     }
 
     public static PendingIntent getAlarmIntent(Context context) {

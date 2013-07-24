@@ -84,6 +84,7 @@
                 android:layout_width="wrap_content"
                 android:textSize="14sp"
                 app:font="Gotham-Medium.ttf"
+                android:layout_marginStart="8dp"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
                 android:text="@string/notifications"/>

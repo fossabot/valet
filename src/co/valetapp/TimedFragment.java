@@ -7,10 +7,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.PowerManager;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.nineoldandroids.animation.ObjectAnimator;
 
 import java.text.DateFormat;
@@ -63,12 +66,11 @@ public class TimedFragment extends DynamicFragment {
     public void onResume() {
         super.onResume();
 
-        long timeInMillis = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).getLong(Const.TIME_KEY, 0);
+        long timeInMillis = Tools.getTime(getActivity());
 
         if (getResources().getConfiguration().locale.equals(Locale.US)) {
             dateTextView.setText(android.text.format.DateFormat.format("MMM dd 'at' h:mmaa", timeInMillis));
-        }
-        else {
+        } else {
             String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date(timeInMillis));
             dateTextView.setText(currentDateTimeString);
         }

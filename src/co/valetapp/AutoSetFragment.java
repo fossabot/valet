@@ -77,8 +77,7 @@ public class AutoSetFragment extends DynamicFragment {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     prefs.edit().putBoolean(Const.BLUETOOTH_ENABLED_KEY, true).commit();
-                }
-                else {
+                } else {
                     prefs.edit().putBoolean(Const.BLUETOOTH_ENABLED_KEY, false).commit();
                 }
             }
@@ -97,8 +96,7 @@ public class AutoSetFragment extends DynamicFragment {
                         Intent autoParkServiceIntent = new Intent(getActivity(), AutoParkService.class);
                         autoParkServiceIntent.setAction(AutoParkService.ACTION_START);
                         getActivity().startService(autoParkServiceIntent);
-                    }
-                    else {
+                    } else {
                         prefs.edit().putBoolean(Const.PARKING_SENSOR_KEY, false).commit();
                         Intent autoParkServiceIntent = new Intent(getActivity(), AutoParkService.class);
                         autoParkServiceIntent.setAction(AutoParkService.ACTION_STOP);
@@ -106,8 +104,7 @@ public class AutoSetFragment extends DynamicFragment {
                     }
                 }
             });
-        }
-        else {
+        } else {
             sensorCheckBox.setEnabled(false);
         }
 
@@ -162,14 +159,18 @@ public class AutoSetFragment extends DynamicFragment {
                 myBluetoothDevices.add(new MyBluetoothDevice(bluetoothDevice.getName(), bluetoothDevice.getAddress()));
             }
         }
+//
+//        if (adapter == null) {
+//            adapter = new ArrayAdapter<MyBluetoothDevice>(getActivity(), R.layout.spinner_item, myBluetoothDevices);
+//            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+//            bluetoothSpinner.setAdapter(adapter);
+//        } else {
+//            adapter.notifyDataSetChanged();
+//        }
 
-        if (adapter == null) {
-            adapter = new ArrayAdapter<MyBluetoothDevice>(getActivity(), R.layout.spinner_item, myBluetoothDevices);
-            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-            bluetoothSpinner.setAdapter(adapter);
-        } else {
-            adapter.notifyDataSetChanged();
-        }
+        adapter = new ArrayAdapter<MyBluetoothDevice>(getActivity(), R.layout.spinner_item, myBluetoothDevices);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        bluetoothSpinner.setAdapter(adapter);
 
         if (prefs.contains(Const.BLUETOOTH_KEY)) {
             String address = prefs.getString(Const.BLUETOOTH_KEY, "");
@@ -184,6 +185,11 @@ public class AutoSetFragment extends DynamicFragment {
                 i++;
             }
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     private class MyBluetoothDevice {
