@@ -9,12 +9,12 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -81,10 +81,8 @@ public class ParkActivity extends FragmentActivity
             MILLISECONDS_PER_SECOND * FASTEST_INTERVAL_IN_SECONDS;
     private static final int IMAGE_CAPTURE_REQUEST = 1000;
     SharedPreferences prefs;
-    LocationManager locationManager;
     Location vehicleLocation;
     float bestAccuracy;
-    Criteria criteria;
     ObjectAnimator titleAnimator;
     TextView titleTextView;
     InfoFragment infoFragment = getInfoFragment();
@@ -402,7 +400,10 @@ public class ParkActivity extends FragmentActivity
 
                 bestAccuracy = location.getAccuracy();
 
-                if (state == State.PARKING) {
+                if (state == State.PARKING &&
+                        location.getAccuracy() != 0.0f
+                        && location.getAccuracy() < Const.MIN_ACCURACY) {
+
                     setState(State.LOCATED);
                 }
 
@@ -435,9 +436,7 @@ public class ParkActivity extends FragmentActivity
                 googleMap.animateCamera(cameraUpdate);
 
             }
-            onLocationChanged(location);
         }
-
         mLocationClient.requestLocationUpdates(mLocationRequest, this);
     }
 
@@ -475,6 +474,11 @@ public class ParkActivity extends FragmentActivity
              */
             showErrorDialog(connectionResult.getErrorCode());
         }
+    }
+
+    public void onLocationItem(View v) {
+        Intent settingsIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        startActivity(settingsIntent);
     }
 
     public void onParkItem(View v) {
@@ -715,7 +719,7 @@ public class ParkActivity extends FragmentActivity
 
                 infoFragment.clear();
 
-                barFragment.setItems(BarItem.LOCATING);
+                barFragment.setItems(BarItem.LOCATING, BarItem.LOCATION);
 
                 if (servicesConnected()) {
                     if (!mLocationClient.isConnected()) {

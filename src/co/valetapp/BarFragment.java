@@ -17,6 +17,7 @@ public class BarFragment extends Fragment implements View.OnLongClickListener {
         AUTO_SET(R.layout.auto_set_bar_item),
         AUTO_INFO(R.layout.auto_info_bar_item),
         LOCATING(R.layout.locating_bar_item),
+        LOCATION(R.layout.location_bar_item),
         CONFIRM(R.layout.confirm_bar_item),
         RESET(R.layout.reset_bar_item),
         FIND(R.layout.find_bar_item),
