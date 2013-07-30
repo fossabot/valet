@@ -400,12 +400,12 @@ public class ParkActivity extends FragmentActivity
 
                 bestAccuracy = location.getAccuracy();
 
-                if (state == State.PARKING &&
-                        location.getAccuracy() != 0.0f
-                        && location.getAccuracy() < Const.MIN_ACCURACY) {
+                if (state == State.PARKING) {
 
                     setState(State.LOCATED);
                 }
+
+                setAccuracyFragment();
 
                 break;
             default:
@@ -423,6 +423,14 @@ public class ParkActivity extends FragmentActivity
                 }
 
                 break;
+        }
+    }
+
+    private void setAccuracyFragment() {
+        DynamicFragment dynamicFragment = getDynamicFragment();
+        if (dynamicFragment != null && dynamicFragment instanceof AccuracyFragment) {
+            AccuracyFragment accuracyFragment = (AccuracyFragment) dynamicFragment;
+            accuracyFragment.setAccuracyTextView(bestAccuracy);
         }
     }
 
@@ -476,7 +484,7 @@ public class ParkActivity extends FragmentActivity
         }
     }
 
-    public void onLocationItem(View v) {
+    public void onLocatingItem(View v) {
         Intent settingsIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
         startActivity(settingsIntent);
     }
@@ -719,7 +727,7 @@ public class ParkActivity extends FragmentActivity
 
                 infoFragment.clear();
 
-                barFragment.setItems(BarItem.LOCATING, BarItem.LOCATION);
+                barFragment.setItems(BarItem.LOCATING);
 
                 if (servicesConnected()) {
                     if (!mLocationClient.isConnected()) {
@@ -727,10 +735,11 @@ public class ParkActivity extends FragmentActivity
                     }
                 }
 
-
                 break;
             case LOCATED:
                 barFragment.setItems(BarItem.PARK, BarItem.AUTO);
+
+                dynamicFragment = new AccuracyFragment();
 
                 break;
             case PARKED:
@@ -833,18 +842,6 @@ public class ParkActivity extends FragmentActivity
         }
 
         ft.commitAllowingStateLoss();
-
-        if (state == State.PARKING) {
-            if (servicesConnected()) {
-                if (mLocationClient.isConnected()) {
-                    Location location = mLocationClient.getLastLocation();
-                    if (location != null) {
-                        onLocationChanged(location);
-                    }
-                }
-            }
-        }
-
         this.state = state;
     }
 

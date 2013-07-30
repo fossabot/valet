@@ -4,9 +4,13 @@
     <string name="app_name">Valet</string>
     <string name="app_name_caps">VALET</string>
     <string name="period">.</string>
-    <string name="not_supported">המכשיר שלך לא תומך בשירותי Google Play.\nלקבלת החזר יש לשלוח מייל לכתובת support\@valetapp.co</string>
+    <string name="not_supported">המכשיר שלך לא תומך בשירותי Google Play.\nלקבלת החזר יש לשלוח מייל
+        לכתובת support\@valetapp.co
+    </string>
     <string name="rate">דרג את Valet ב-Google Play?</string>
     <string name="yes">כן</string>
     <string name="no">לא</string>
     <string name="never">מעולם לא</string>
+    <string name="accuracy">דיוק:</string>
+    <string name="meters">meters</string>
 </resources>

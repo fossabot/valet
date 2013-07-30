@@ -11,4 +11,6 @@
     <string name="yes">Sim</string>
     <string name="no">Não</string>
     <string name="never">Nunca</string>
+    <string name="accuracy">precisão:</string>
+    <string name="meters">meters</string>
 </resources>

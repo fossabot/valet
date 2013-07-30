@@ -4,9 +4,13 @@
     <string name="app_name">バレー</string>
     <string name="app_name_caps">バレー</string>
     <string name="period">.</string>
-    <string name="not_supported">あなたの装置ではグーグルプレイ・サービスが使用出来ません。support\@valetapp.coにメールして、返金を依頼して下さい。</string>
+    <string name="not_supported">
+        あなたの装置ではグーグルプレイ・サービスが使用出来ません。support\@valetapp.coにメールして、返金を依頼して下さい。
+    </string>
     <string name="rate">グーグルプレイでバレーを評価しますか？</string>
     <string name="yes">はい</string>
     <string name="no">いいえ</string>
     <string name="never">決して</string>
+    <string name="accuracy">精度:</string>
+    <string name="meters">meters</string>
 </resources>

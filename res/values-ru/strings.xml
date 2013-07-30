@@ -11,4 +11,6 @@
     <string name="yes">Да</string>
     <string name="no">Нет</string>
     <string name="never">Никогда</string>
+    <string name="accuracy">точность:</string>
+    <string name="meters">meters</string>
 </resources>

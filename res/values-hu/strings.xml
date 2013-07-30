@@ -4,11 +4,14 @@
     <string name="app_name">Valet</string>
     <string name="app_name_caps">VALET</string>
     <string name="period">.</string>
-    <string name="not_supported">A készüléked nem támogatja a Google Play szolgáltatásait. Küldj email-t a
+    <string name="not_supported">A készüléked nem támogatja a Google Play szolgáltatásait. Küldj
+        email-t a
         support@valetapp.co címre a vásárlás árának visszatérítéséhez.
     </string>
     <string name="rate">Szeretnéd értékelni a Valet-et a Google Play-en?</string>
     <string name="yes">Igen</string>
     <string name="no">Nem</string>
     <string name="never">Soha</string>
+    <string name="accuracy">pontosság:</string>
+    <string name="meters">meters</string>
 </resources>

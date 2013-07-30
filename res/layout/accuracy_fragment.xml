@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        android:id="@+id/accuracyLinearLayout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res/co.valetapp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <co.valetapp.view.FontableTextView
+            android:id="@+id/parked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/accuracy"
+            android:textSize="14sp"
+            android:layout_marginRight="8dp"
+            app:font="Gotham-Medium.ttf"/>
+
+    <co.valetapp.view.FontableTextView
+            android:id="@+id/accuracyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:layout_marginRight="8dp"
+            android:textSize="14sp"
+            app:font="Gotham-Medium.ttf"/>
+
+    <co.valetapp.view.FontableTextView
+            android:id="@+id/accuracyUnitLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/meters"
+            android:textSize="14sp"
+            app:font="Gotham-Medium.ttf"/>
+
+
+</LinearLayout>

@@ -9,4 +9,6 @@
     <string name="yes">是的</string>
     <string name="no">没有</string>
     <string name="never">从来</string>
+    <string name="accuracy">准确性:</string>
+    <string name="meters">meters</string>
 </resources>
