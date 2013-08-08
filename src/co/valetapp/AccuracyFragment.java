@@ -30,7 +30,6 @@ public class AccuracyFragment extends DynamicFragment {
         super.onViewCreated(view, savedInstanceState);
 
         accuracyLinearLayout = (LinearLayout) view.findViewById(R.id.accuracyLinearLayout);
-        accuracyLinearLayout.setVisibility(View.INVISIBLE);
         accuracyUnitLabelTextView = (TextView) view.findViewById(R.id.accuracyUnitLabelTextView);
         accuracyTextView = (TextView) view.findViewById(R.id.accuracyTextView);
 
@@ -57,8 +56,6 @@ public class AccuracyFragment extends DynamicFragment {
         } else {
             accuracyTextView.setText(Integer.toString((int) accuracy));
         }
-
-        accuracyLinearLayout.setVisibility(View.VISIBLE);
     }
 
 }

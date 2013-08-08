@@ -2,6 +2,7 @@ package co.valetapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 
@@ -11,11 +12,15 @@ public class IntentLibrary {
 
 	private IntentLibrary(){};
 	
-	public static Intent getFindIntent(Context context, Double latitude, Double longitude) {
+	public static Intent getFindIntent(Context context) {
 		Intent intent = new Intent();
 
+        SharedPreferences prefs = Tools.getPrefs(context);
+        String latitude = prefs.getString(Const.LAT_KEY, "");
+        String longitude = prefs.getString(Const.LONG_KEY, "");
+
 		intent.setAction(Intent.ACTION_VIEW);
-        String uri = String.format(Locale.US, "geo:%f,%f?z=%d&q=%f,%f", latitude, longitude,
+        String uri = String.format(Locale.US, "geo:%s,%s?z=%d&q=%s,%s", latitude, longitude,
                 Const.ZOOM_LEVEL, latitude, longitude);
 
 

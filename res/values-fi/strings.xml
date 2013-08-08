@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Valet</string>
+    <string name="app_name_caps">VALET</string>
+    <string name="period">.</string>
+    <string name="not_supported">Laitteesi ei tue Google Play Palveluita. Ota yhteyttä osoitteeseen
+        support@valetapp.co hyvituksen saamiseksi.
+    </string>
+    <string name="rate">Arvioi Valet Google Playssä?</string>
+    <string name="yes">Kyllä</string>
+    <string name="no">Ei</string>
+    <string name="never">Ei ikinä</string>
+    <string name="accuracy">tarkkuus:</string>
+    <string name="yards">jaardia</string>
+    <string name="meters">metriä</string>
+</resources>

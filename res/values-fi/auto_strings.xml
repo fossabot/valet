@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auto_info">Ota parkkianturi käyttöön automatisoidaksesi parkkitoiminnon. Tämä käyttää hieman enemmän akkua ja ei ole 100%:sti tarkka. Vaihtoehtoisesti voit linkittää paritetun Bluetooth laitteen käyttääksesi automaattista parkeerausta ja säästää akkua.\n\nVoit käyttää myös autotelakkaa.  Työpöytätelakat eivät toimi.
+    </string>
+    <string name="auto_set_bar_item">Parkeeraa autoni automaattisesti</string>
+    <string name="bluetooth_bar_item">Bluetooth asetukset</string>
+    <string name="auto_park_confirm">Autosi parkeerataan automaattisesti.  Avaa Valet löytääksesi autosi.</string>
+    <string name="no_bluetooth">Bluetooth ei ole käytössä</string>
+    <string name="select_bluetooth">Bluetooth</string>
+    <string name="parking_sensor">Parkkianturi</string>
+    <string name="notification_title">Valet Auto Parkeeraaja</string>
+    <string name="notification_text">Aseta ajastin tai hälytys</string>
+    <string name="dock">Autotelakka</string>
+    <string name="notifications">Muistutukset</string>
+    <string name="info">Informaatio</string>
+    <string name="delete">Poista</string>
+    <string name="view">Näytä</string>
+</resources>

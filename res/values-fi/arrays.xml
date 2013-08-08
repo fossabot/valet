@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="day_of_week">
-        <item>domingo</item>
-        <item>lunes</item>
-        <item>martes</item>
-        <item>miércoles</item>
-        <item>jueves</item>
-        <item>viernes</item>
-        <item>sábado</item>
-    </string-array>
+	<string-array name="day_of_week">
+	    <item>Sunnuntai</item>
+	    <item>Maanantai</item>
+	    <item>Tiistai</item>
+	    <item>Keskiviikko</item>
+	    <item>Torstai</item>
+	    <item>Perjantai</item>
+	    <item>Lauantai</item>
+	</string-array>
     <string-array name="hour">
         <item>00</item>
         <item>01</item>
@@ -50,9 +50,9 @@
         <item>55</item>
     </string-array>
     <string-array name="am_pm">
-        <item>a.m.</item>
-        <item>p.m.</item>
+        <item>ap</item>
+        <item>ip</item>
     </string-array>
 
-    <string-array name="empty"/>
+    <string-array name="empty" />
 </resources>

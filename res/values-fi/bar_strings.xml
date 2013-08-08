@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="park_bar_item">Parkeeraa autoni</string>
+    <string name="reset_bar_item_cd">Poista auto parkista.</string>
+    <string name="find_bar_item_cd">Etsi autoni.</string>
+    <string name="alarm_bar_item_cd">Aseta hälytys.</string>
+    <string name="timer_bar_item_cd">Aseta ajastin.</string>
+    <string name="share_bar_item_cd">Jaa autosi sijainti Valetista.</string>
+    <string name="auto_bar_item_cd">Autoparkeeraa Bluetoothilla, parkkianturilla, tai autotelakalla</string>
+    <string name="schedule_bar_item_cd">Ajasta muistutus parkista.</string>
+    <string name="set_bar_item">Aseta</string>
+    <string name="timer_bar_item">Ajastin</string>
+    <string name="alarm_bar_item">Hälytys</string>
+    <string name="unpark_bar_item">Poista auto parkista</string>
+    <string name="unschedule_bar_item">Resetoi</string>
+    <string name="locating_bar_item">Paikannetaan&#8230;</string>
+</resources>

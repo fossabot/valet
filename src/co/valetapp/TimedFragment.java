@@ -127,7 +127,9 @@ public class TimedFragment extends DynamicFragment {
         String action = getActivity().getIntent().getAction();
         if (action != null && action.equals(Const.ACTION_ALARM)) {
             ((ParkActivity) getActivity()).setState(ParkActivity.State.UNSCHEDULE);
-            ringtone.play();
+            if (ringtone != null) {
+                ringtone.play();
+            }
         }
 
         hoursTextView.setText("00");
@@ -145,7 +147,7 @@ public class TimedFragment extends DynamicFragment {
             countdownAnimator.end();
         }
 
-        if (ringtone.isPlaying()) {
+        if (ringtone != null && ringtone.isPlaying()) {
             ringtone.stop();
         }
 
