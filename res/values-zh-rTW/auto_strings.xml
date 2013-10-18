@@ -9,6 +9,8 @@
     <string name="parking_sensor">泊車距離傳感器</string>
     <string name="notification_title">泊車員自動泊車</string>
     <string name="notification_text">設置計時器或警報。</string>
+    <string name="notification_alarm_title">代客報警</string>
+    <string name="notification_alarm_text">你應現在移動你的車！</string>
     <string name="dock">汽車底座</string>
     <string name="notifications">通知</string>
     <string name="info">信息</string>

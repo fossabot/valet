@@ -9,6 +9,8 @@
     <string name="parking_sensor">Sensor de\nestacionamento</string>
     <string name="notification_title">Valet Auto Park</string>
     <string name="notification_text">Configurar um temporizador ou alarme</string>
+    <string name="notification_alarm_title">Valet alarme</string>
+    <string name="notification_alarm_text">Que deviam mover o carro agora!</string>
     <string name="dock">Base de ligação\npara o automóvel</string>
     <string name="notifications">Notificações</string>
     <string name="info">Informações</string>

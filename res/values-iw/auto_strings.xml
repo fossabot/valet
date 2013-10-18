@@ -9,6 +9,8 @@
     <string name="parking_sensor">חיישן חנייה</string>
     <string name="notification_title">חנייה אוטומטית של Valet</string>
     <string name="notification_text">הגדר טיימר או התראה</string>
+    <string name="notification_alarm_title">אזעקה Valet</string>
+    <string name="notification_alarm_text">אתה shoud להזיז את המכונית שלך עכשיו!</string>
     <string name="dock">תחנת עגינה לרכב</string>
     <string name="notifications">הודעות</string>
     <string name="info">מידע</string>

@@ -9,6 +9,8 @@
     <string name="parking_sensor">Sensore parcheggio</string>
     <string name="notification_title">Auto Park Valet</string>
     <string name="notification_text">Impostare Timer o Allarme</string>
+    <string name="notification_alarm_title">Valet alarma</string>
+    <string name="notification_alarm_text">Si shoud spostare l\'auto adesso!</string>
     <string name="dock">Car dock</string>
     <string name="notifications">Notifiche</string>
     <string name="info">Informazioni</string>

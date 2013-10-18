@@ -9,6 +9,8 @@
     <string name="parking_sensor">주차 센서</string>
     <string name="notification_title">주차원으로 자동 주차하기</string>
     <string name="notification_text">타이머나 알람 설정</string>
+    <string name="notification_alarm_title">경보</string>
+    <string name="notification_alarm_text">당신은 지금 당신의 차를 이동 갈까요!</string>
     <string name="dock">자동차용 거치대</string>
     <string name="notifications">알림</string>
     <string name="info">정보</string>

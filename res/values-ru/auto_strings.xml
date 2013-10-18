@@ -9,6 +9,8 @@
     <string name="parking_sensor">датчик парковки</string>
     <string name="notification_title">Автоматическая парковка Valet</string>
     <string name="notification_text">Установите таймер или будильник</string>
+    <string name="notification_alarm_title">тревога Valet</string>
+    <string name="notification_alarm_text">Вы Шоуда переместить свой автомобиль прямо сейчас</string>
     <string name="dock">Автомобильная\nдок-станция</string>
     <string name="notifications">Уведомления</string>
     <string name="info">Информация</string>

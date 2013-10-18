@@ -9,6 +9,8 @@
     <string name="parking_sensor">停车传感器</string>
     <string name="notification_title">泊车员自动停车</string>
     <string name="notification_text">设置定时器或者闹钟</string>
+    <string name="notification_alarm_title">代客报警</string>
+    <string name="notification_alarm_text">你应现在移动你的车</string>
     <string name="dock">汽车适配底座</string>
     <string name="notifications">通知</string>
     <string name="info">信息</string>

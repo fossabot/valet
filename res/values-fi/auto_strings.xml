@@ -10,6 +10,8 @@
     <string name="parking_sensor">Parkkianturi</string>
     <string name="notification_title">Valet Auto Parkeeraaja</string>
     <string name="notification_text">Aseta ajastin tai hälytys</string>
+    <string name="notification_alarm_title">Valet hälytys</string>
+    <string name="notification_alarm_text">Olet shoud siirtää auton nyt!</string>
     <string name="dock">Autotelakka</string>
     <string name="notifications">Muistutukset</string>
     <string name="info">Informaatio</string>

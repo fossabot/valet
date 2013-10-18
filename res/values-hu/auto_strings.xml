@@ -10,6 +10,8 @@
     <string name="parking_sensor">Parkolásérzékelő</string>
     <string name="notification_title">Valet Automatikus Parkolás</string>
     <string name="notification_text">Állíts be időzítőt vagy riasztást</string>
+    <string name="notification_alarm_title">Valet alarma</string>
+    <string name="notification_alarm_text">Meg kellet volna mozgatni a kocsiból!</string>
     <string name="dock">Autós dokkoló</string>
     <string name="notifications">Értesítések</string>
     <string name="info">Információ</string>

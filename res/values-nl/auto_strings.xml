@@ -9,6 +9,8 @@
     <string name="parking_sensor">Parkeersensor</string>
     <string name="notification_title">Valet automatisch parkeren</string>
     <string name="notification_text">Tijd of alarm instellen</string>
+    <string name="notification_alarm_title">Valet alarm</string>
+    <string name="notification_alarm_text">U shoud beweeg je auto nu!</string>
     <string name="dock">Car Dock</string>
     <string name="notifications">Mededelingen</string>
     <string name="info">Informatie</string>

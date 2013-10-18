@@ -9,6 +9,8 @@
     <string name="parking_sensor">Sensor de estacionamiento</string>
     <string name="notification_title">Estacionado automático Valet</string>
     <string name="notification_text">Configurar el medidor de tiempo o una alarma</string>
+    <string name="notification_alarm_title">Valet alarma</string>
+    <string name="notification_alarm_text">Debe mover su auto ahora!</string>
     <string name="dock">Base para automóviles</string>
     <string name="notifications">Avisos</string>
     <string name="info">Información</string>

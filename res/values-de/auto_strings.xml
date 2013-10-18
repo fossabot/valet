@@ -9,6 +9,8 @@
     <string name="parking_sensor">Parksensor</string>
     <string name="notification_title">Valet-Auto-Parken</string>
     <string name="notification_text">Parkuhr oder Alarm einstellen</string>
+    <string name="notification_alarm_title">Valet-Alarm</string>
+    <string name="notification_alarm_text">You should move your car now!</string>
     <string name="dock">Auto-Dock</string>
     <string name="notifications">Benachrichtigungen</string>
     <string name="info">Information</string>
