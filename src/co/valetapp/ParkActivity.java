@@ -55,6 +55,7 @@ import com.parse.ParseObject;
 import java.io.File;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import co.valetapp.BarFragment.BarItem;
@@ -204,11 +205,16 @@ public class ParkActivity extends FragmentActivity
         if (googleMapsUri != null) {
             String q = googleMapsUri.getQueryParameter("q");
             if (q != null) {
-                int commaIndex = q.indexOf(",");
-                String lat = q.substring(4, commaIndex);
-                String lng = q.substring(commaIndex + 1);
+                Pattern p = Pattern.compile("-?\\d{2}.\\d{2,6}");
+                Matcher m = p.matcher(q);
+                if (m.find()) {
+                    String lat = m.group();
+                    if (m.find()) {
+                        String lng = m.group();
 
-                Tools.park(ParkActivity.this, lat, lng, true, true);
+                        Tools.park(ParkActivity.this, lat, lng, true, true);
+                    }
+                }
             }
 
             String t = googleMapsUri.getQueryParameter("t");
@@ -424,7 +430,6 @@ public class ParkActivity extends FragmentActivity
             }
 
             bestAccuracy = location.getAccuracy();
-
 
 
             if (isParkingFragment()) {
