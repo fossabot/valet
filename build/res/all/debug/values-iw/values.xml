@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/arrays.xml -->
+    <eat-comment />
+
+    <string-array name="am_pm">
+        <item>לפנה\"צ</item>
+        <item>אחה\"צ</item>
+    </string-array>
+    <string-array name="day_of_week">
+        <item>יום ראשון</item>
+        <item>יום שני</item>
+        <item>יום שלישי</item>
+        <item>יום רביעי</item>
+        <item>יום חמישי</item>
+        <item>יום שישי</item>
+        <item>יום שבת</item>
+    </string-array>
+    <string-array name="empty" />
+    <string-array name="hour">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+    <string-array name="minute">
+        <item>00</item>
+        <item>05</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+    </string-array>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/strings.xml -->
+    <eat-comment />
+
+    <string name="accuracy">דיוק:</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="accuracy_abbreviation">accy</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="alarm_bar_item">התראה</string>
+    <string name="alarm_bar_item_cd">הגדר התראה.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="am">לפנה\"צ</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/strings.xml -->
+    <eat-comment />
+
+    <string name="app_name">Valet</string>
+    <string name="app_name_caps">VALET</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="at">ב</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/build/exploded-bundles/ComGoogleAndroidGmsPlayServices3265.aar/res/values-iw/strings.xml -->
+    <eat-comment />
+
+    <string name="auth_client_needs_enabling_title" msgid="3983201110833868073">"יש אפליקציה המחייבת הפעלה של שירותי Google Play."</string>
+    <string name="auth_client_needs_installation_title" msgid="7999585836145154206">"יש אפליקציה המחייבת התקנה של שירותי Google Play."</string>
+    <string name="auth_client_needs_update_title" msgid="6488605506794595966">"יש אפליקציה המחייבת עדכון של שירותי Google Play."</string>
+    <string name="auth_client_play_services_err_notification_msg" msgid="3635065018897986478">"שגיאה בשירותי Google Play"</string>
+    <string name="auth_client_requested_by_msg" msgid="6304135633531965756">"התבקשה על ידי <ns1:g id="APP_NAME">%1$s</ns1:g>"</string>
+    <string name="auth_client_using_bad_version_title" msgid="2534454398764507874">"יש אפליקציה שניסתה להשתמש בגרסה שגויה של שירותי Google Play."</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="auto_bar_item_cd">חנייה אוטומטית עם Bluetooth, חיישן חנייה או תחנת עגינה לרכב</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="auto_info">הפעל את חיישן החנייה כדי להפוך את תכונת החנייה לאוטומטית. פעולה זו משתמשת בקצת יותר סוללה והיא אינה מדויקת במאה % a.\n\nלחלופין תוכל לקשר את האפליקציה להתקן Bluetooth כדי להשתמש בקישוריות לחנייה אוטומטית ולחסוך בסוללה.\n\nניתן גם להשתמש בתחנת עגינה לרכב. תחנות עגינה שולחניות לא יעבדו פה.</string>
+    <string name="auto_park_confirm">המכונית שלך תהיה בחנייה אוטומטית. הפעל את Valet כדי למצוא את המכונית שלך.</string>
+    <string name="auto_set_bar_item">חנייה אוטומטית של המכונית שלי</string>
+    <string name="bluetooth_bar_item">הגדרות Bluetooth</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="camera_button_cd">צלם תמונה</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/build/exploded-bundles/ComGoogleAndroidGmsPlayServices3265.aar/res/values-iw/strings.xml -->
+    <eat-comment />
+
+    <string name="common_google_play_services_enable_button" msgid="4181637455539816337">"הפעל את שירותי Google Play"</string>
+    <string name="common_google_play_services_enable_text" msgid="7627896071867667758">"יישום זה לא יעבוד אם לא תפעיל את שירותי Google Play."</string>
+    <string name="common_google_play_services_enable_title" msgid="529078775174559253">"הפעלת שירותי Google Play"</string>
+    <string name="common_google_play_services_install_button" msgid="8515591849428043265">"קבל את שירותי Google Play"</string>
+    <string name="common_google_play_services_install_text_phone" msgid="8685301130651051380">"יישום זה לא יפעל ללא שירותי Google Play, החסרים בטלפון שלך."</string>
+    <string name="common_google_play_services_install_text_tablet" msgid="1589957570365247855">"יישום זה לא יפעל ללא שירותי Google Play, החסרים בטאבלט שלך."</string>
+    <string name="common_google_play_services_install_title" msgid="26645092511305524">"קבל את שירותי Google Play"</string>
+    <string name="common_google_play_services_invalid_account_text" msgid="4983316348021735578">"החשבון שצוין לא קיים במכשיר זה. בחר חשבון אחר."</string>
+    <string name="common_google_play_services_invalid_account_title" msgid="1066672360770936753">"חשבון לא חוקי"</string>
+    <string name="common_google_play_services_network_error_text" msgid="9038847255613537209">"דרוש חיבור נתונים כדי להתחבר לשירותי Google Play."</string>
+    <string name="common_google_play_services_network_error_title" msgid="3827284619958211114">"שגיאת רשת."</string>
+    <string name="common_google_play_services_unknown_issue" msgid="4762332809710093730">"בעיה לא ידועה בשירותי Google Play."</string>
+    <string name="common_google_play_services_unsupported_text" msgid="3542578567569488671">"שירותי Google Play, שחלק מהיישומים שלך מתבססים עליהם, אינם נתמכים על ידי המכשיר שברשותך. צור קשר עם היצרן לקבלת סיוע."</string>
+    <string name="common_google_play_services_unsupported_title" msgid="6334768798839376943">"שירותי Google Play"</string>
+    <string name="common_google_play_services_update_button" msgid="8932944190611227642">"עדכן"</string>
+    <string name="common_google_play_services_update_text" msgid="448354684997260580">"יישום זה לא יפעל אם לא תעדכן את שירותי Google Play."</string>
+    <string name="common_google_play_services_update_title" msgid="6006316683626838685">"עדכון שירותי Google Play"</string>
+    <string name="common_signin_button_text" msgid="9071884888741449141">"היכנס"</string>
+    <string name="common_signin_button_text_long" msgid="2429381841831957106">"היכנס באמצעות Google"</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="delete">מחק</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="distance_units"></string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="dock">תחנת עגינה לרכב</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="find_bar_item_cd">מצא את המכונית שלי.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="find_intent_chooser_title">חפש...</string>
+    <string name="friday">יום שישי</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/alarm_strings.xml -->
+    <eat-comment />
+
+    <string name="hour_abbreviation">שעות</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/timer_strings.xml -->
+    <eat-comment />
+
+    <string name="hours">שעות</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="info">מידע</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="kilometer_abbreviation">ק\"מ</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="locating_bar_item">מאתר...</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="location_dialog_message">להפעיל GPS?</string>
+    <string name="location_dialog_negative_button">לא</string>
+    <string name="location_dialog_positive_button">כן</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/strings.xml -->
+    <eat-comment />
+
+    <string name="meters">meters</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="mile_abbreviation"></string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/alarm_strings.xml -->
+    <eat-comment />
+
+    <string name="mintute_abbreviation">מ\'</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="monday">יום שני</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/strings.xml -->
+    <eat-comment />
+
+    <string name="never">מעולם לא</string>
+    <string name="no">לא</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="no_address">לא נמצאה כתובת</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="no_bluetooth">Bluetooth אינו זמין</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="no_location_message">Valet מצריך חיבור ל- GPS כדי להחנות את רכבך.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/strings.xml -->
+    <eat-comment />
+
+    <string name="not_supported">המכשיר שלך לא תומך בשירותי Google Play.\nלקבלת החזר יש לשלוח מייל
+        לכתובת support\@valetapp.co</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="note">הוסף הערה</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="notification_alarm_text">אתה shoud להזיז את המכונית שלך עכשיו!</string>
+    <string name="notification_alarm_title">אזעקה Valet</string>
+    <string name="notification_text">הגדר טיימר או התראה</string>
+    <string name="notification_title">חנייה אוטומטית של Valet</string>
+    <string name="notifications">הודעות</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="park_bar_item">חנה את הרכב שלי</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="parked">החנייה בוצעה!</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="parking_sensor">חיישן חנייה</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/strings.xml -->
+    <eat-comment />
+
+    <string name="period">.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="pm">אחה\"צ</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/strings.xml -->
+    <eat-comment />
+
+    <string name="rate">דרג את Valet ב-Google Play?</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="reset_bar_item_cd">בטל חנייה.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="reset_dialog_message">לאפס את המיקום של המכונית שלך?</string>
+    <string name="reset_dialog_no_button">לא</string>
+    <string name="reset_dialog_positive_button">כן</string>
+    <string name="saturday">יום שבת</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="schedule_bar_item_cd">קבע זמן לתזכורת חנייה</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/alarm_strings.xml -->
+    <eat-comment />
+
+    <string name="second_abbreviation">ש\'</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="select_bluetooth">Bluetooth</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/timer_strings.xml -->
+    <eat-comment />
+
+    <string name="separator">:</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="set_bar_item">הגדר</string>
+    <string name="share_bar_item_cd">שתף משהו על Valet</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="share_extra_html_text_parked">המכונית שלי היא</string>
+    <string name="share_extra_html_text_parked_anchor">כאן</string>
+    <string name="share_extra_html_text_parking">אני מוצא את המכונית שלי באמצעות <a href="http://www.valetapp.co"> עם שירות </a> וכדאי גם לכם.</string>
+    <string name="share_extra_text_parked">המכונית שלי היא כאן:</string>
+    <string name="share_extra_text_parking">אני מוצא את המכונית שלי באמצעות השירות של Valet וכדאי גם לכם. http://www.valetapp.co</string>
+    <string name="share_intent_chooser_title">שתף</string>
+    <string name="sunday">יום ראשון</string>
+    <string name="thursday">יום חמישי</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="timer_bar_item">טיימר</string>
+    <string name="timer_bar_item_cd">הגדר טיימר.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="timer_button">הגדר טיימר</string>
+    <string name="tuesday">יום שלישי</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="unpark_bar_item">בטל חנייה</string>
+    <string name="unschedule_bar_item">איפוס</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="vehicle_marker_title">המכונית שלך</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="view">הצג</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/park_strings.xml -->
+    <eat-comment />
+
+    <string name="wednesday">יום רביעי</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-iw/strings.xml -->
+    <eat-comment />
+
+    <string name="yes">כן</string>
+
+</resources>

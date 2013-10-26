@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/arrays.xml -->
+    <eat-comment />
+
+    <string-array name="am_pm">
+        <item>a.m.</item>
+        <item>p.m.</item>
+    </string-array>
+    <string-array name="day_of_week">
+        <item>domingo</item>
+        <item>lunes</item>
+        <item>martes</item>
+        <item>miércoles</item>
+        <item>jueves</item>
+        <item>viernes</item>
+        <item>sábado</item>
+    </string-array>
+    <string-array name="empty" />
+    <string-array name="hour">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+    <string-array name="minute">
+        <item>00</item>
+        <item>05</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+    </string-array>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="accuracy">precisión:</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="accuracy_abbreviation">exactitud</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="alarm_bar_item">Alarma</string>
+    <string name="alarm_bar_item_cd">Configurar una alarma</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="am">a.m.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="app_name">Valet</string>
+    <string name="app_name_caps">VALET</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="at">en</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/build/exploded-bundles/ComGoogleAndroidGmsPlayServices3265.aar/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="auth_client_needs_enabling_title" msgid="3983201110833868073">"Una aplicación requiere que se habiliten los servicios de Play."</string>
+    <string name="auth_client_needs_installation_title" msgid="7999585836145154206">"Una aplicación requiere que se instalen los servicios de Google Play."</string>
+    <string name="auth_client_needs_update_title" msgid="6488605506794595966">"Una aplicación requiere que se actualicen los servicios de Google Play."</string>
+    <string name="auth_client_play_services_err_notification_msg" msgid="3635065018897986478">"Error de los servicios de Google Play"</string>
+    <string name="auth_client_requested_by_msg" msgid="6304135633531965756">"Solicitada por <ns1:g id="APP_NAME">%1$s</ns1:g>"</string>
+    <string name="auth_client_using_bad_version_title" msgid="2534454398764507874">"Una aplicación intentó usar versión incorrecta de servicios de Google Play."</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="auto_bar_item_cd">Estacionar de forma automática con Bluetooth, sensor de estacionamiento, o una base para automóviles</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="auto_info">Encienda el Sensor de Estacionamiento para automatizar la función de estacionado.  Esto utiliza un poco más de batería y no es 100 \"link\" exacto.  Otra posibilidad es que usted haga un enlace a un dispositivo Bluetooth para utilizar la conectividad para estacionar el vehículo de forma automática y ahorrar la vida de la batería.  También puede utilizar una base para automóviles.  Las bases para escritorio no funcionarán.</string>
+    <string name="auto_park_confirm">Su automóvil se estacionará de forma automática.  Abra Valet para encontrar su automóvil.</string>
+    <string name="auto_set_bar_item">Estacione mi automóvil\nde forma automática</string>
+    <string name="bluetooth_bar_item">Configuraciones Bluetooth</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="camera_button_cd">Tomar una fotografía</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/build/exploded-bundles/ComGoogleAndroidGmsPlayServices3265.aar/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="common_google_play_services_enable_button" msgid="4181637455539816337">"Habilitar servicios de Google Play"</string>
+    <string name="common_google_play_services_enable_text" msgid="7627896071867667758">"Esta aplicación no funcionará si no habilitas los servicios de Google Play."</string>
+    <string name="common_google_play_services_enable_title" msgid="529078775174559253">"Habilitar servicios de Google Play"</string>
+    <string name="common_google_play_services_install_button" msgid="8515591849428043265">"Descargar servicios de Google Play"</string>
+    <string name="common_google_play_services_install_text_phone" msgid="8685301130651051380">"Esta aplicación no se ejecutará si tu teléfono no tiene instalados los servicios de Google Play."</string>
+    <string name="common_google_play_services_install_text_tablet" msgid="1589957570365247855">"Esta aplicación no se ejecutará si tu tablet no tiene instalados los servicios de Google Play."</string>
+    <string name="common_google_play_services_install_title" msgid="26645092511305524">"Descargar servicios de Google Play"</string>
+    <string name="common_google_play_services_invalid_account_text" msgid="4983316348021735578">"La cuenta especificada no existe en este dispositivo. Selecciona otra cuenta."</string>
+    <string name="common_google_play_services_invalid_account_title" msgid="1066672360770936753">"Cuenta no válida"</string>
+    <string name="common_google_play_services_network_error_text" msgid="9038847255613537209">"Se necesita una conexión de datos para establecer conexión con los servicios de Google Play."</string>
+    <string name="common_google_play_services_network_error_title" msgid="3827284619958211114">"Error de red"</string>
+    <string name="common_google_play_services_unknown_issue" msgid="4762332809710093730">"Error desconocido relacionado con los servicios de Google Play"</string>
+    <string name="common_google_play_services_unsupported_text" msgid="3542578567569488671">"Tu dispositivo no es compatible con los servicios de Google Play, de los cuales dependen tus aplicaciones. Para obtener asistencia, ponte en contacto el fabricante."</string>
+    <string name="common_google_play_services_unsupported_title" msgid="6334768798839376943">"Servicios de Google Play"</string>
+    <string name="common_google_play_services_update_button" msgid="8932944190611227642">"Actualizar"</string>
+    <string name="common_google_play_services_update_text" msgid="448354684997260580">"Esta aplicación no se ejecutará si no actualizas los servicios de Google Play."</string>
+    <string name="common_google_play_services_update_title" msgid="6006316683626838685">"Actualizar servicios de Google Play"</string>
+    <string name="common_signin_button_text" msgid="9071884888741449141">"Iniciar sesión"</string>
+    <string name="common_signin_button_text_long" msgid="2429381841831957106">"Iniciar sesión con Google"</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="delete">Eliminar</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="distance_units">mi</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="dock">Base para automóviles</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="find_bar_item_cd">Encuentre mi automóvil.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="find_intent_chooser_title">Buscar</string>
+    <string name="friday">viernes</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/alarm_strings.xml -->
+    <eat-comment />
+
+    <string name="hour_abbreviation">h</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/timer_strings.xml -->
+    <eat-comment />
+
+    <string name="hours">horas</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="info">Información</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="kilometer_abbreviation">km</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="locating_bar_item">Localizando...</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="location_dialog_message">¿Encender su GPS?</string>
+    <string name="location_dialog_negative_button">No</string>
+    <string name="location_dialog_positive_button">Si</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="meters">meters</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="mile_abbreviation">mi</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/alarm_strings.xml -->
+    <eat-comment />
+
+    <string name="mintute_abbreviation">m</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="monday">lunes</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="no">No</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="no_address">No se encontró dirección</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="no_bluetooth">Bluetooth no está disponible</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="no_location_message">Valet requiere que GPS estacione su automóvil.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="not_supported">Su dispositivo no tiene soporte para los servicios de Google Play.
+        Envíe un correo electrónico a support\@valetapp.com para solicitar un rembolso.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="note">Agregar nota</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="notification_alarm_text">Debe mover su auto ahora!</string>
+    <string name="notification_alarm_title">Valet alarma</string>
+    <string name="notification_text">Configurar el medidor de tiempo o una alarma</string>
+    <string name="notification_title">Estacionado automático Valet</string>
+    <string name="notifications">Avisos</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="park_bar_item">Estacione mi automóvil</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="parked">¡Estacionado!</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="parking_sensor">Sensor de estacionamiento</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="period">.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="pm">p.m.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="rate">¿Calificar Valet en Google Play?</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="reset_bar_item_cd">Mueva mi vehículo</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="reset_dialog_message">¿Restablecer la ubicación de su automóvil?</string>
+    <string name="reset_dialog_no_button">No</string>
+    <string name="reset_dialog_positive_button">Si</string>
+    <string name="saturday">sábado</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="schedule_bar_item_cd">Programar un recordatorio de estacionamiento</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/alarm_strings.xml -->
+    <eat-comment />
+
+    <string name="second_abbreviation">s</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="select_bluetooth">Bluetooth</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/timer_strings.xml -->
+    <eat-comment />
+
+    <string name="separator">:</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="set_bar_item">Configurar</string>
+    <string name="share_bar_item_cd">Compartir algo sobre Valet.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="share_extra_html_text_parked">Mi automóvil está</string>
+    <string name="share_extra_html_text_parked_anchor">aquí</string>
+    <string name="share_extra_html_text_parking">Encuentro mi automóvil usando \"link\" Valet \"link\" y usted también debería hacerlo.</string>
+    <string name="share_extra_text_parked">Mi automóvil está aquí:</string>
+    <string name="share_extra_text_parking">Encuentro mi automóvil utilizando Valet y usted también debería hacerlo.  http://www.valetapp.co</string>
+    <string name="share_intent_chooser_title">Compartir</string>
+    <string name="sunday">domingo</string>
+    <string name="thursday">jueves</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="timer_bar_item">Medidor de tiempo</string>
+    <string name="timer_bar_item_cd">Configurar un medidor de tiempo.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="timer_button">Configurar el medidor de tiempo</string>
+    <string name="tuesday">martes</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="unpark_bar_item">Mueva mi vehículo</string>
+    <string name="unschedule_bar_item">Restablecer</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="vehicle_marker_title">Su automóvil</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="view">Visualizar</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/park_strings.xml -->
+    <eat-comment />
+
+    <string name="wednesday">miércoles</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-es/strings.xml -->
+    <eat-comment />
+
+    <string name="yes">Si</string>
+
+</resources>

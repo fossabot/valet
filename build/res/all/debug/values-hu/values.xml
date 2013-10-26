@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/arrays.xml -->
+    <eat-comment />
+
+    <string-array name="am_pm">
+        <item>de.</item>
+        <item>du.</item>
+    </string-array>
+    <string-array name="day_of_week">
+        <item>Vasárnap</item>
+        <item>Hétfő</item>
+        <item>Kedd</item>
+        <item>Szerda</item>
+        <item>Csütörtök</item>
+        <item>Péntek</item>
+        <item>Szombat</item>
+    </string-array>
+    <string-array name="empty" />
+    <string-array name="hour">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+    <string-array name="minute">
+        <item>00</item>
+        <item>05</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+    </string-array>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/strings.xml -->
+    <eat-comment />
+
+    <string name="accuracy">pontosság:</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="accuracy_abbreviation">pontosság</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="alarm_bar_item">Riasztás</string>
+    <string name="alarm_bar_item_cd">Riasztás beállítása időpontra</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="am">de.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/strings.xml -->
+    <eat-comment />
+
+    <string name="app_name">Valet</string>
+    <string name="app_name_caps">VALET</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="at">ekkor:</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/build/exploded-bundles/ComGoogleAndroidGmsPlayServices3265.aar/res/values-hu/strings.xml -->
+    <eat-comment />
+
+    <string name="auth_client_needs_enabling_title" msgid="3983201110833868073">"Egy alkalmazás kéri a Google Play Szolgáltatások engedélyezését."</string>
+    <string name="auth_client_needs_installation_title" msgid="7999585836145154206">"Egy alkalmazás kéri a Google Play Szolgáltatások telepítését."</string>
+    <string name="auth_client_needs_update_title" msgid="6488605506794595966">"Egy alkalmazás kéri a Google Play Szolgáltatások frissítését."</string>
+    <string name="auth_client_play_services_err_notification_msg" msgid="3635065018897986478">"Google Play szolgáltatási hiba"</string>
+    <string name="auth_client_requested_by_msg" msgid="6304135633531965756">"Igénylő: <ns1:g id="APP_NAME">%1$s</ns1:g>"</string>
+    <string name="auth_client_using_bad_version_title" msgid="2534454398764507874">"Egy alkalmazás a Play Szolgáltatások rossz verzióját akarta használni."</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="auto_bar_item_cd">Automatikus parkolás Bluetooth, Parkolásérzékelő, vagy autós dokkoló segítségével</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="auto_info">Kapcsold be a parkolásérzékelőt, hogy automatizáld a parkolás lehetőséget. Ez kissé több energiát fogyaszt és nem teljesen pontos.\n\nTovábbá párosíthatod a készüléket egy Bluetooth eszközhöz, hogy aktiválja ezt a lehetőséget és kevesebb energiát fogyasszon.\n\nHasználhatsz autós dokkolót is.  Asztali dokkolókkal nem működik.</string>
+    <string name="auto_park_confirm">Az autód automatikusan le lesz parkolva. Nyisd meg a Valet-et az autód megtalálásához.</string>
+    <string name="auto_set_bar_item">Automatikus parkolás</string>
+    <string name="bluetooth_bar_item">Bluetooth beállítások</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="camera_button_cd">Kép készítése</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/build/exploded-bundles/ComGoogleAndroidGmsPlayServices3265.aar/res/values-hu/strings.xml -->
+    <eat-comment />
+
+    <string name="common_google_play_services_enable_button" msgid="4181637455539816337">"Play Szolgáltatások aktiválása"</string>
+    <string name="common_google_play_services_enable_text" msgid="7627896071867667758">"Az alkalmazás csak akkor fog működni, ha engedélyezi a Google Play Szolgáltatásokat."</string>
+    <string name="common_google_play_services_enable_title" msgid="529078775174559253">"Google Play Szolgáltatások aktiválása"</string>
+    <string name="common_google_play_services_install_button" msgid="8515591849428043265">"Play Szolgáltatások telepítése"</string>
+    <string name="common_google_play_services_install_text_phone" msgid="8685301130651051380">"Az alkalmazás működéséhez a Google Play Szolgáltatások szükségesek, ezek nincsenek telepítve a telefonon."</string>
+    <string name="common_google_play_services_install_text_tablet" msgid="1589957570365247855">"Az alkalmazás működéséhez a Google Play Szolgáltatások szükségesek, ezek nincsenek telepítve a táblagépen."</string>
+    <string name="common_google_play_services_install_title" msgid="26645092511305524">"Play Szolgáltatások telepítése"</string>
+    <string name="common_google_play_services_invalid_account_text" msgid="4983316348021735578">"A megadott fiók nem létezik ezen az eszközön. Kérjük, válasszon másik fiókot."</string>
+    <string name="common_google_play_services_invalid_account_title" msgid="1066672360770936753">"Érvénytelen fiók"</string>
+    <string name="common_google_play_services_network_error_text" msgid="9038847255613537209">"A Google Play Szolgáltatásokhoz történő kapcsolódáshoz adatkapcsolat szükséges."</string>
+    <string name="common_google_play_services_network_error_title" msgid="3827284619958211114">"Hálózati hiba"</string>
+    <string name="common_google_play_services_unknown_issue" msgid="4762332809710093730">"Ismeretlen hiba a Google Play Szolgáltatásokban."</string>
+    <string name="common_google_play_services_unsupported_text" msgid="3542578567569488671">"A Google Play Szolgáltatásokat, amelyre egyes alkalmazások támaszkodnak, nem támogatja az eszköz. Segítségért forduljon az eszköz gyártójához."</string>
+    <string name="common_google_play_services_unsupported_title" msgid="6334768798839376943">"Google Play Szolgáltatások"</string>
+    <string name="common_google_play_services_update_button" msgid="8932944190611227642">"Frissítés"</string>
+    <string name="common_google_play_services_update_text" msgid="448354684997260580">"Az alkalmazás csak akkor fog működni, ha frissíti a Google Play Szolgáltatásokat."</string>
+    <string name="common_google_play_services_update_title" msgid="6006316683626838685">"Play Szolgáltatások frissítése"</string>
+    <string name="common_signin_button_text" msgid="9071884888741449141">"Belépés"</string>
+    <string name="common_signin_button_text_long" msgid="2429381841831957106">"Google-bejelentkezés"</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="delete">Törlés</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="distance_units">mérföld</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="dock">Autós dokkoló</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="find_bar_item_cd">Autóm megkeresése</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="find_intent_chooser_title">Keresés</string>
+    <string name="friday">Péntek</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/alarm_strings.xml -->
+    <eat-comment />
+
+    <string name="hour_abbreviation">ó</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/timer_strings.xml -->
+    <eat-comment />
+
+    <string name="hours">óra</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="info">Információ</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="kilometer_abbreviation">km</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="locating_bar_item">Keresés…</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="location_dialog_message">GPS aktiválása?</string>
+    <string name="location_dialog_negative_button">Nem</string>
+    <string name="location_dialog_positive_button">Igen</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/strings.xml -->
+    <eat-comment />
+
+    <string name="meters">meters</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="mile_abbreviation">mérföld</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/alarm_strings.xml -->
+    <eat-comment />
+
+    <string name="mintute_abbreviation">p</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="monday">Hétfő</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/strings.xml -->
+    <eat-comment />
+
+    <string name="never">Soha</string>
+    <string name="no">Nem</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="no_address">A cím nem található</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="no_bluetooth">Bluetooth nem elérhető</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="no_location_message">GPS kapcsolat szükséges a parkoláshoz.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/strings.xml -->
+    <eat-comment />
+
+    <string name="not_supported">A készüléked nem támogatja a Google Play szolgáltatásait. Küldj
+        email-t a
+        support@valetapp.co címre a vásárlás árának visszatérítéséhez.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="note">Megjegyzés hozzáadása</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="notification_alarm_text">Meg kellet volna mozgatni a kocsiból!</string>
+    <string name="notification_alarm_title">Valet alarma</string>
+    <string name="notification_text">Állíts be időzítőt vagy riasztást</string>
+    <string name="notification_title">Valet Automatikus Parkolás</string>
+    <string name="notifications">Értesítések</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="park_bar_item">Parkolás indítása</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="parked">Leparkolva!</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="parking_sensor">Parkolásérzékelő</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/strings.xml -->
+    <eat-comment />
+
+    <string name="period">.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="pm">du.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/strings.xml -->
+    <eat-comment />
+
+    <string name="rate">Szeretnéd értékelni a Valet-et a Google Play-en?</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="reset_bar_item_cd">Parkolás leállítása</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="reset_dialog_message">Autó pozíciójának visszaállítása?</string>
+    <string name="reset_dialog_no_button">Nem</string>
+    <string name="reset_dialog_positive_button">Igen</string>
+    <string name="saturday">Szombat</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="schedule_bar_item_cd">Parkolási emlékeztető beállítása</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/alarm_strings.xml -->
+    <eat-comment />
+
+    <string name="second_abbreviation">mp</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="select_bluetooth">Bluetooth</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/timer_strings.xml -->
+    <eat-comment />
+
+    <string name="separator">:</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="set_bar_item">Beállít</string>
+    <string name="share_bar_item_cd">Valet megosztása</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="share_extra_html_text_parked">Az autóm</string>
+    <string name="share_extra_html_text_parked_anchor">itt van</string>
+    <string name="share_extra_html_text_parking">Az autómat a <a href="http://www.valetapp.co">Valet</a> segítségével találtam meg, ki kellene próbálnod.</string>
+    <string name="share_extra_text_parked">Az autóm itt van:</string>
+    <string name="share_extra_text_parking">Az autómat a Valet segítségével találtam meg, ki kellene próbálnod. http://www.valetapp.co</string>
+    <string name="share_intent_chooser_title">Megosztás</string>
+    <string name="sunday">Vasárnap</string>
+    <string name="thursday">Csütörtök</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="timer_bar_item">Időzítő</string>
+    <string name="timer_bar_item_cd">Időzítés beállítása</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="timer_button">Időzítő beállítása</string>
+    <string name="tuesday">Kedd</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="unpark_bar_item">Parkolás leállítása</string>
+    <string name="unschedule_bar_item">Visszaállítás</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="vehicle_marker_title">Az autóm</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="view">Megtekintés</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/park_strings.xml -->
+    <eat-comment />
+
+    <string name="wednesday">Szerda</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-hu/strings.xml -->
+    <eat-comment />
+
+    <string name="yes">Igen</string>
+
+</resources>

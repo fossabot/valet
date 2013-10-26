@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/arrays.xml -->
+    <eat-comment />
+
+    <string-array name="am_pm">
+        <item>am</item>
+        <item>pm</item>
+    </string-array>
+    <string-array name="day_of_week">
+        <item>日曜日</item>
+        <item>月曜日</item>
+        <item>火曜日</item>
+        <item>水曜日</item>
+        <item>木曜日</item>
+        <item>金曜日</item>
+        <item>土曜日</item>
+    </string-array>
+    <string-array name="empty" />
+    <string-array name="hour">
+        <item>00</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+    </string-array>
+    <string-array name="minute">
+        <item>00</item>
+        <item>05</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+    </string-array>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/strings.xml -->
+    <eat-comment />
+
+    <string name="accuracy">精度:</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="accuracy_abbreviation">正確性</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="alarm_bar_item">警告</string>
+    <string name="alarm_bar_item_cd">アラームを設定する</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="am">AM</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/strings.xml -->
+    <eat-comment />
+
+    <string name="app_name">バレー</string>
+    <string name="app_name_caps">バレー</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="at">で</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/build/exploded-bundles/ComGoogleAndroidGmsPlayServices3265.aar/res/values-ja/strings.xml -->
+    <eat-comment />
+
+    <string name="auth_client_needs_enabling_title" msgid="3983201110833868073">"アプリではGoogle Play開発者サービスを有効にする必要があります。"</string>
+    <string name="auth_client_needs_installation_title" msgid="7999585836145154206">"アプリではGoogle Play開発者サービスをインストールする必要があります。"</string>
+    <string name="auth_client_needs_update_title" msgid="6488605506794595966">"アプリではGoogle Play開発者サービスをアップデートする必要があります。"</string>
+    <string name="auth_client_play_services_err_notification_msg" msgid="3635065018897986478">"Google Play開発者サービスのエラー"</string>
+    <string name="auth_client_requested_by_msg" msgid="6304135633531965756">"<ns1:g id="APP_NAME">%1$s</ns1:g>によるリクエスト"</string>
+    <string name="auth_client_using_bad_version_title" msgid="2534454398764507874">"アプリはGoogle Play開発者サービスの不適切なバージョンを使用しようとしました。"</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="auto_bar_item_cd">ブルーツース、パーキングセンサー、カードックでオートパークする</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="auto_info">パーキングセンサーをつけて駐車機能を自動化して下さい。これには少し多くの電力が消費され、100% a正確ではありません。</string>
+    <string name="auto_park_confirm">あなたの車はオートパークされます。バレーを開けてあなたの車を見つけて下さい。</string>
+    <string name="auto_set_bar_item">オート・パーク・マイ・カー</string>
+    <string name="bluetooth_bar_item">ブルーツース設定</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="camera_button_cd">写真を撮る</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/build/exploded-bundles/ComGoogleAndroidGmsPlayServices3265.aar/res/values-ja/strings.xml -->
+    <eat-comment />
+
+    <string name="common_google_play_services_enable_button" msgid="4181637455539816337">"Play開発者サービスの有効化"</string>
+    <string name="common_google_play_services_enable_text" msgid="7627896071867667758">"このアプリの実行には、Google Play開発者サービスの有効化が必要です。"</string>
+    <string name="common_google_play_services_enable_title" msgid="529078775174559253">"Play開発者サービスの有効化"</string>
+    <string name="common_google_play_services_install_button" msgid="8515591849428043265">"Play開発者サービスの入手"</string>
+    <string name="common_google_play_services_install_text_phone" msgid="8685301130651051380">"このアプリの実行にはGoogle Play開発者サービスが必要ですが、お使いの携帯端末にはインストールされていません。"</string>
+    <string name="common_google_play_services_install_text_tablet" msgid="1589957570365247855">"このアプリの実行にはGoogle Play開発者サービスが必要ですが、お使いのタブレットにはインストールされていません。"</string>
+    <string name="common_google_play_services_install_title" msgid="26645092511305524">"Play開発者サービスの入手"</string>
+    <string name="common_google_play_services_invalid_account_text" msgid="4983316348021735578">"指定したアカウントはこの端末上に存在しません。別のアカウントを選択してください。"</string>
+    <string name="common_google_play_services_invalid_account_title" msgid="1066672360770936753">"無効なアカウント"</string>
+    <string name="common_google_play_services_network_error_text" msgid="9038847255613537209">"Google Play開発者サービスに接続するには、データ接続が必要です。"</string>
+    <string name="common_google_play_services_network_error_title" msgid="3827284619958211114">"ネットワークエラー"</string>
+    <string name="common_google_play_services_unknown_issue" msgid="4762332809710093730">"Google Play開発者サービスで原因不明の問題が発生しました。"</string>
+    <string name="common_google_play_services_unsupported_text" msgid="3542578567569488671">"一部のアプリが使用しているGoogle Play開発者サービスは、お使いの端末ではサポートされていません。詳しくは、端末メーカーまでお問い合わせください。"</string>
+    <string name="common_google_play_services_unsupported_title" msgid="6334768798839376943">"Google Play開発者サービス"</string>
+    <string name="common_google_play_services_update_button" msgid="8932944190611227642">"更新"</string>
+    <string name="common_google_play_services_update_text" msgid="448354684997260580">"このアプリの実行には、Google Play開発者サービスの更新が必要です。"</string>
+    <string name="common_google_play_services_update_title" msgid="6006316683626838685">"Play開発者サービスの更新"</string>
+    <string name="common_signin_button_text" msgid="9071884888741449141">"ログイン"</string>
+    <string name="common_signin_button_text_long" msgid="2429381841831957106">"Googleでログイン"</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="delete">削除</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="distance_units">分</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="dock">カードック</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="find_bar_item_cd">私の車を探す</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="find_intent_chooser_title">探す</string>
+    <string name="friday">金曜日</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/alarm_strings.xml -->
+    <eat-comment />
+
+    <string name="hour_abbreviation">時</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/timer_strings.xml -->
+    <eat-comment />
+
+    <string name="hours">時間</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="info">情報</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="kilometer_abbreviation">キロ</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="locating_bar_item">ロード中</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="location_dialog_message">GPSを作動しますか？</string>
+    <string name="location_dialog_negative_button">いいえ</string>
+    <string name="location_dialog_positive_button">はい</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/strings.xml -->
+    <eat-comment />
+
+    <string name="meters">meters</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="mile_abbreviation">分</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/alarm_strings.xml -->
+    <eat-comment />
+
+    <string name="mintute_abbreviation">メートル</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="monday">月曜日</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/strings.xml -->
+    <eat-comment />
+
+    <string name="never">決して</string>
+    <string name="no">いいえ</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="no_address">住所が見つかりません</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="no_bluetooth">ブルーツースが無効です</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="no_location_message">バレーがあなたの車を駐車するにはGPSが必要です</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/strings.xml -->
+    <eat-comment />
+
+    <string name="not_supported">        あなたの装置ではグーグルプレイ・サービスが使用出来ません。support\@valetapp.coにメールして、返金を依頼して下さい。</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="note">ノートを追加する</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="notification_alarm_text">今、あなたの車を移動閉鎖症</string>
+    <string name="notification_alarm_title">アラーム</string>
+    <string name="notification_text">タイマーかアラームを設定する</string>
+    <string name="notification_title">バレーオートパーク</string>
+    <string name="notifications">通知</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="park_bar_item">私の車を駐車する</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="parked">駐車しました！</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="parking_sensor">パーキングセンサー</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/strings.xml -->
+    <eat-comment />
+
+    <string name="period">.</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="pm">PM</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/strings.xml -->
+    <eat-comment />
+
+    <string name="rate">グーグルプレイでバレーを評価しますか？</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="reset_bar_item_cd">私の車を駐車場から出す</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="reset_dialog_message">あなたの車の場所をリセットしますか？</string>
+    <string name="reset_dialog_no_button">いいえ</string>
+    <string name="reset_dialog_positive_button">はい</string>
+    <string name="saturday">土曜日</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="schedule_bar_item_cd">駐車を予定する</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/alarm_strings.xml -->
+    <eat-comment />
+
+    <string name="second_abbreviation">秒</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="select_bluetooth">ブルーツース</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/timer_strings.xml -->
+    <eat-comment />
+
+    <string name="separator">:</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="set_bar_item">設定</string>
+    <string name="share_bar_item_cd">バレーに関する意見を共有する</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="share_extra_html_text_parked">私の車は</string>
+    <string name="share_extra_html_text_parked_anchor">ここ</string>
+    <string name="share_extra_html_text_parking"><a href="http://www.valetapp.co">バレー</a>を使って私の車を見つけました。あなたのそうすべきです。</string>
+    <string name="share_extra_text_parked">私の車はここにあります</string>
+    <string name="share_extra_text_parking">バレーを使って私の車を見つけました。あなたもそうすべきです\nhttp://www.valetapp.co</string>
+    <string name="share_intent_chooser_title">共有する</string>
+    <string name="sunday">日曜日</string>
+    <string name="thursday">木曜日</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="timer_bar_item">タイマー</string>
+    <string name="timer_bar_item_cd">タイマーを設定する</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="timer_button">タイマーを設定する</string>
+    <string name="tuesday">火曜日</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/bar_strings.xml -->
+    <eat-comment />
+
+    <string name="unpark_bar_item">私の車を駐車場から出す</string>
+    <string name="unschedule_bar_item">リセット</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="vehicle_marker_title">あなたの車</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/auto_strings.xml -->
+    <eat-comment />
+
+    <string name="view">ビュー</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/park_strings.xml -->
+    <eat-comment />
+
+    <string name="wednesday">水曜日</string>
+    <!-- From: file:/Users/jophde/Desktop/valet/res/values-ja/strings.xml -->
+    <eat-comment />
+
+    <string name="yes">はい</string>
+
+</resources>
