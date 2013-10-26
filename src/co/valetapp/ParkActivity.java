@@ -116,7 +116,7 @@ public class ParkActivity extends FragmentActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Crittercism.init(getApplicationContext(), "5145fe5c4002050d07000002");
+        Crittercism.initialize(getApplicationContext(), "5145fe5c4002050d07000002");
         Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
 
         prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
