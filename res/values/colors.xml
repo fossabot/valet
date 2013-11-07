@@ -35,5 +35,6 @@
     <color name="timer_indicator_selected">#ffffff</color>
     
     <color name="bluetooth_title_bar">#000000</color>
+    <color name="trans_black">#CC000000</color>
 
 </resources>

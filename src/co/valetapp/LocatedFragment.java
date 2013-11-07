@@ -12,7 +12,7 @@ import java.util.Locale;
 /**
  * Created by jophde on 7/29/13.
  */
-public class AccuracyFragment extends DynamicFragment {
+public class LocatedFragment extends DynamicFragment {
 
     static final double METERS_TO_YARDS = 1.09361;
 
@@ -22,7 +22,7 @@ public class AccuracyFragment extends DynamicFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.accuracy_fragment, null);
+        return inflater.inflate(R.layout.located_fragment, null);
     }
 
     @Override

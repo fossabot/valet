@@ -36,13 +36,8 @@
         android:supportsRtl="true"
         android:label="@string/app_name"
         android:theme="@style/valet">
-        <!-- Start of Crittercism.com Code -->
-        <activity android:name="com.crittercism.NotificationActivity"/>
-        <!-- End of Crittercism.com Code -->
-
         <activity
             android:name="co.valetapp.ParkActivity"
-            android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:theme="@style/parkActivity">
             <intent-filter>
@@ -61,9 +56,6 @@
                         android:host="maps.google.com"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name="co.valetapp.AboutActivity"
-            android:screenOrientation="portrait"/>
 
         <receiver android:name="co.valetapp.bluetooth.BluetoothBroadcastReceiver">
             <intent-filter>

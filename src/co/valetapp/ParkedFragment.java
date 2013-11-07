@@ -1,21 +1,64 @@
 package co.valetapp;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.location.Location;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.CountDownTimer;
+import android.os.PowerManager;
+import android.view.KeyEvent;
+import android.view.animation.Animation;
+import android.widget.*;
+
+import com.nineoldandroids.animation.ObjectAnimator;
+
+import android.location.Address;
+import android.location.Geocoder;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.animation.AnimatorSet;
 
-public class ParkedFragment extends DynamicFragment {
+public class ParkedFragment extends DynamicFragment implements View.OnLongClickListener {
 
-    ObjectAnimator parkedAnimatorIn, parkedAnimatorOut;
-    TextView parkedTextView;
-    AnimatorSet animatorSet;
+    TextView addressTextView, distanceTextView;
+    ObjectAnimator addressAnimator, distanceAnimator;
+    EditText noteEditText;
+    ImageButton cameraImageButton, deletePictureButton;
+    SharedPreferences prefs;
+    View root;
+    private static final int SECOND = 1000;
+    private static final int MINUTE = 60 * SECOND;
+    private static final int HOUR = 60 * MINUTE;
+    private static final int DAY = 24 * HOUR;
+    LinearLayout countdownLinearLayout;
+    ObjectAnimator countdownAnimator;
+    TextView hoursTextView, minutesTextView, secondsTextView, dateTextView;
+    long time;
+    Ringtone ringtone;
+    PowerManager.WakeLock wl;
+    CountDownTimer countDownTimer;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Activity.MODE_PRIVATE);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.parked_fragment, null);
     }
@@ -24,29 +67,208 @@ public class ParkedFragment extends DynamicFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        parkedTextView = (TextView) view.findViewById(R.id.parked);
+        PowerManager pm = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
+        wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Valet");
 
-        parkedAnimatorIn = ObjectAnimator.ofFloat(parkedTextView, "alpha", 0f, 1f);
-        parkedAnimatorIn.setDuration(1000);
+        root = view.findViewById(R.id.root);
 
-        parkedAnimatorOut = ObjectAnimator.ofFloat(parkedTextView, "alpha", 1f, 0f);
-        parkedAnimatorOut.setStartDelay(1000);
-        parkedAnimatorOut.setDuration(1000);
+        cameraImageButton = (ImageButton) view.findViewById(R.id.cameraImageButton);
+        cameraImageButton.setOnLongClickListener(this);
 
-        animatorSet = new AnimatorSet();
-        animatorSet.playSequentially(parkedAnimatorIn, parkedAnimatorOut);
+        deletePictureButton = (ImageButton) view.findViewById(R.id.deletePictureButton);
+        cameraImageButton.setOnLongClickListener(this);
+
+        addressTextView = (TextView) view.findViewById(R.id.address_view);
+        addressAnimator = ObjectAnimator.ofFloat(addressTextView, "alpha", 0f, 1f);
+        addressAnimator.setDuration(500);
+
+        distanceTextView = (TextView) view.findViewById(R.id.distance_view);
+        distanceAnimator = ObjectAnimator.ofFloat(distanceTextView, "alpha", 0f, 1f);
+        distanceAnimator.setDuration(500);
+
+        noteEditText = (EditText) view.findViewById(R.id.noteEditText);
+        noteEditText.setText(prefs.getString(Const.NOTE_KEY, ""));
+        noteEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                prefs.edit().putString(Const.NOTE_KEY, v.getText().toString()).commit();
+
+                return false;
+            }
+        });
+
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        ringtone = RingtoneManager.getRingtone(getActivity().getApplicationContext(), notification);
+
+        countdownLinearLayout = (LinearLayout) view.findViewById(R.id.countdown_linear_layout);
+        hoursTextView = (TextView) view.findViewById(R.id.hours_text_view);
+        minutesTextView = (TextView) view.findViewById(R.id.minutes_text_view);
+        secondsTextView = (TextView) view.findViewById(R.id.seconds_text_view);
+        dateTextView = (TextView) view.findViewById(R.id.dateTextView);
+
+        countdownAnimator = ObjectAnimator.ofFloat(countdownLinearLayout, "alpha", 1f, 0f, 1f);
+        countdownAnimator.setRepeatCount(Animation.INFINITE);
+        countdownAnimator.setRepeatMode(ObjectAnimator.INFINITE);
+        countdownAnimator.setDuration(500);
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        animatorSet.start();
+    public void onResume() {
+        super.onResume();
+
+        if (prefs.contains(Const.IMAGE_KEY) && Tools.hasExternalStoragePublicPicture()) {
+            deletePictureButton.setVisibility(View.VISIBLE);
+            cameraImageButton.setImageResource(R.drawable.picture_selector);
+            cameraImageButton.setContentDescription(getString(R.string.view));
+        } else {
+            deletePictureButton.setVisibility(View.INVISIBLE);
+            cameraImageButton.setImageResource(R.drawable.camera_selector);
+            cameraImageButton.setContentDescription(getString(R.string.camera_button_cd));
+        }
+
+        if (Tools.isTimed(getActivity())) {
+            countdownLinearLayout.setVisibility(View.VISIBLE);
+
+            long timeInMillis = Tools.getTime(getActivity());
+
+            if (getResources().getConfiguration().locale.equals(Locale.US)) {
+                dateTextView.setText(android.text.format.DateFormat.format("MMM dd 'at' h:mmaa", timeInMillis));
+            } else {
+                String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date(timeInMillis));
+                dateTextView.setText(currentDateTimeString);
+            }
+
+            long millisInFuture = timeInMillis - System.currentTimeMillis();
+
+            countDownTimer = new CountDownTimer(millisInFuture, 1000) {
+
+                @Override
+                public void onTick(long millisUntilFinished) {
+
+
+                    String hours = null, minutes = null, seconds = null;
+
+                    if (millisUntilFinished >= HOUR) {
+                        hours = Long.toString(millisUntilFinished / HOUR);
+                        millisUntilFinished %= HOUR;
+                    } else {
+                        hours = "0";
+                    }
+
+                    if (millisUntilFinished >= MINUTE) {
+                        minutes = Long.toString(millisUntilFinished / MINUTE);
+                        if (minutes.length() == 1) minutes = "0" + minutes;
+                        millisUntilFinished %= MINUTE;
+                    } else {
+                        minutes = "00";
+                    }
+
+                    if (millisUntilFinished > SECOND) {
+                        seconds = Long.toString(millisUntilFinished / SECOND);
+                        if (seconds.length() == 1) seconds = "0" + seconds;
+                        millisUntilFinished %= SECOND;
+                    } else {
+                        seconds = "00";
+                    }
+
+                    secondsTextView.setText(seconds);
+                    minutesTextView.setText(minutes);
+                    hoursTextView.setText(hours);
+
+                    time = millisUntilFinished;
+                }
+
+                @Override
+                public void onFinish() {
+                    alarm();
+                }
+            }.start();
+        } else {
+            countdownLinearLayout.setVisibility(View.GONE);
+        }
+    }
+
+    private void alarm() {
+        if (ringtone != null) {
+            ringtone.play();
+        }
+        hoursTextView.setText("00");
+        minutesTextView.setText("00");
+        secondsTextView.setText("00");
+
+        countdownAnimator.start();
     }
 
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onPause() {
+        super.onPause();
 
-        animatorSet.end();
+        if (addressAnimator.isRunning()) {
+            addressAnimator.end();
+        }
+
+        if (distanceAnimator.isRunning()) {
+            distanceAnimator.end();
+        }
+
+        if (countdownAnimator.isRunning()) {
+            countdownAnimator.end();
+        }
+
+        if (ringtone != null && ringtone.isPlaying()) {
+            ringtone.stop();
+        }
+
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        Toast.makeText(getActivity(), v.getContentDescription(), Toast.LENGTH_LONG).show();
+
+        return true;
+    }
+
+    class GeoCoderAsyncTask extends AsyncTask<Location, Void, List<Address>> {
+
+        private Geocoder geocoder;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            geocoder = new Geocoder(getActivity());
+        }
+
+        @Override
+        protected List<Address> doInBackground(Location... params) {
+
+            try {
+                return geocoder.getFromLocation(params[0].getLatitude(),
+                        params[0].getLongitude(), 1);
+            } catch (IOException e) {
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(List<Address> result) {
+            super.onPostExecute(result);
+
+            if (result != null && result.size() > 0) {
+                CharSequence t = addressTextView.getText();
+                String s = t == null ? "" : t.toString();
+                String addressLine = result.get(0).getAddressLine(0);
+                if (!addressLine.equals(s)) {
+                    addressAnimator.start();
+                    addressTextView.setText(addressLine);
+                }
+            } else {
+                addressTextView.setText(getString(R.string.no_address));
+            }
+        }
     }
 }

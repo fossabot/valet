@@ -1,12 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<co.valetapp.view.FontableTextView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/co.valetapp"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="@string/parked"
-    android:gravity="center"
-    android:singleLine="true"
-    android:textSize="18sp"
-    android:id="@+id/parked"
-    app:font="Gotham-Bold.ttf" />
+    android:orientation="vertical"
+    android:id="@+id/root"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
+
+        <co.valetapp.view.FontableTextView
+            android:id="@+id/address_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/default_text"
+            android:hint="@string/hint_address"
+            android:textColorHint="@color/hint_text"
+            android:textSize="14sp"
+            app:font="Gotham-Medium.ttf" />
+
+        <co.valetapp.view.FontableTextView
+            android:id="@+id/distance_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:hint="@string/hint_distance"
+            android:textColorHint="@color/hint_text"
+            android:gravity="right"
+            android:singleLine="true"
+            android:textColor="@color/default_text"
+            android:textSize="14sp"
+            app:font="Gotham-Medium.ttf" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/noteLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <co.valetapp.view.FontableEditText
+            android:id="@+id/noteEditText"
+            android:layout_height="wrap_content"
+            android:textColor="@color/default_text"
+            android:singleLine="true"
+            android:textColorHint="@color/hint_text"
+            android:hint="@string/note"
+            app:font="Gotham-Medium.ttf"
+            android:background="@null"
+            android:textSize="14sp"
+            android:cursorVisible="false"
+            android:layout_weight="1"
+            android:layout_width="0dp" />
+
+        <ImageButton
+            android:id="@+id/deletePictureButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onDeletePictureButton"
+            android:padding="8dp"
+            android:src="@drawable/reset_bar_item_selector"
+            android:contentDescription="@string/delete"
+            android:background="@drawable/default_selector" />
+
+        <ImageButton
+            android:id="@+id/cameraImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCameraButton"
+            android:padding="8dp"
+            android:contentDescription="@string/camera_button_cd"
+            android:src="@drawable/camera_selector"
+
+            android:background="@drawable/default_selector" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:id="@+id/countdown_linear_layout"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+            <co.valetapp.view.FontableTextView
+                android:id="@+id/hours_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textSize="24sp"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:minEms="1"
+                app:font="Gotham-Bold.ttf" />
+
+            <co.valetapp.view.FontableTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hour_abbreviation"
+                android:textSize="24sp"
+                app:font="Gotham-Bold.ttf" />
+
+            <co.valetapp.view.FontableTextView
+                android:id="@+id/minutes_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textSize="24sp"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:minEms="2"
+                app:font="Gotham-Bold.ttf" />
+
+            <co.valetapp.view.FontableTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mintute_abbreviation"
+                android:textSize="24sp"
+                app:font="Gotham-Bold.ttf" />
+
+            <co.valetapp.view.FontableTextView
+                android:id="@+id/seconds_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textSize="24sp"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:minEms="2"
+                app:font="Gotham-Bold.ttf" />
+
+            <co.valetapp.view.FontableTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/second_abbreviation"
+                android:textSize="24sp"
+                app:font="Gotham-Bold.ttf" />
+
+        </LinearLayout>
+
+        <co.valetapp.view.FontableTextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            app:font="Gotham-Medium.ttf" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="0dp"
+    android:layout_width="48dp"
     android:layout_height="@dimen/barHeight"
-    android:layout_weight="1"
     android:layout_margin="8dp"
-    android:onClick="onShareItem"
-    android:src="@drawable/share_bar_item_selector"
-    android:contentDescription="@string/share_bar_item_cd"
+    android:onClick="onLocateItem"
+    android:src="@drawable/locate_bar_item_selector"
+    android:contentDescription="@string/locate_bar_item_cd"
     android:background="@drawable/default_selector" />

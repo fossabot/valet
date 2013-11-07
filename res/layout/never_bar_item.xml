@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res/co.valetapp"
-             android:layout_width="0dp"
-             android:layout_height="@dimen/barHeight"
-             android:layout_marginTop="16dp"
-             android:layout_weight="1"
-             android:clickable="true"
-             android:onClick="onNeverItem"
-             android:background="@drawable/default_selector">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="0dp"
+    android:layout_height="@dimen/barHeight"
+    android:layout_weight="1"
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:onClick="onNeverItem"
+    android:background="@drawable/default_selector">
 
     <co.valetapp.view.FontableTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center_vertical"
-            android:text="@string/never"
-            android:textColor="@color/default_text_selector"
-            android:clickable="false"
-            android:textSize="18sp"
-            app:font="Gotham-Bold.ttf"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:text="@string/never"
+        android:textColor="@color/default_text_selector"
+        android:clickable="false"
+        android:textSize="18sp"
+        app:font="Gotham-Bold.ttf" />
 
 </FrameLayout>

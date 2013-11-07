@@ -7,9 +7,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Environment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.util.TypedValue;
 
 import java.io.File;
 
@@ -66,11 +68,14 @@ public class Tools {
     }
 
     public static void unpark(Context context) {
+        deleteExternalStoragePublicPicture();
+
         SharedPreferences prefs = getPrefs(context);
         SharedPreferences.Editor edit = prefs.edit();
         edit.remove(Const.LAT_KEY);
         edit.remove(Const.LONG_KEY);
         edit.remove(Const.TIME_KEY);
+        edit.remove(Const.NOTE_KEY);
         edit.remove(Const.IMAGE_KEY);
         edit.commit();
 
@@ -145,5 +150,10 @@ public class Tools {
                 Environment.DIRECTORY_PICTURES);
         File file = new File(path, "co.valetapp.jpg");
         return file.exists();
+    }
+
+    public static float convertDpToPixels(Context context, int dp) {
+        Resources r = context.getResources();
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
 }

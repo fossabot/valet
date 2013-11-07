@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -13,13 +14,13 @@ public class BarFragment extends Fragment implements View.OnLongClickListener {
 
     enum BarItem {
         PARK(R.layout.park_bar_item),
-        AUTO(R.layout.auto_bar_item),
-        AUTO_SET(R.layout.auto_set_bar_item),
-        AUTO_INFO(R.layout.auto_info_bar_item),
+        LOCATE(R.layout.locate_bar_item),
+        SETTINGS(R.layout.settings_bar_item),
+        HELP(R.layout.help_bar_item),
         LOCATING(R.layout.locating_bar_item),
         CONFIRM(R.layout.confirm_bar_item),
-        RESET(R.layout.reset_bar_item),
         FIND(R.layout.find_bar_item),
+        RESET(R.layout.reset_bar_item),
         SHARE(R.layout.share_bar_item),
         SCHEDULE(R.layout.schedule_bar_item),
         UNSCHEDULE(R.layout.unschedule_bar_item),
@@ -43,7 +44,6 @@ public class BarFragment extends Fragment implements View.OnLongClickListener {
     private LinearLayout barLinearLayout;
     private BarItem[] barItems;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,6 +66,7 @@ public class BarFragment extends Fragment implements View.OnLongClickListener {
         if (barLinearLayout != null) {
             for (BarItem barItem : barItems) {
                 View view = getActivity().getLayoutInflater().inflate(barItem.getResourceId(), barLinearLayout, false);
+                assert view != null;
                 view.setTag(barItem);
                 view.setOnLongClickListener(this);
                 barLinearLayout.addView(view);
