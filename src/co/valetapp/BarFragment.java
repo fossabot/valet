@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -14,7 +13,7 @@ public class BarFragment extends Fragment implements View.OnLongClickListener {
 
     enum BarItem {
         PARK(R.layout.park_bar_item),
-        LOCATE(R.layout.locate_bar_item),
+        LOCATION(R.layout.location_bar_item),
         SETTINGS(R.layout.settings_bar_item),
         HELP(R.layout.help_bar_item),
         LOCATING(R.layout.locating_bar_item),

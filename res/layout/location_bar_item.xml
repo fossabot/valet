@@ -4,6 +4,6 @@
     android:layout_height="@dimen/barHeight"
     android:layout_margin="8dp"
     android:onClick="onLocateItem"
-    android:src="@drawable/locate_bar_item_selector"
+    android:src="@drawable/location_bar_item_selector"
     android:contentDescription="@string/locate_bar_item_cd"
     android:background="@drawable/default_selector" />
