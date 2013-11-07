@@ -1,4 +1,4 @@
-package co.valetapp;
+package co.valetapp.util;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -15,7 +15,10 @@ import android.util.TypedValue;
 
 import java.io.File;
 
-import co.valetapp.auto.AutoParkService;
+import co.valetapp.R;
+import co.valetapp.activity.ParkActivity;
+import co.valetapp.receiver.AlarmBroadcastReceiver;
+import co.valetapp.service.AutoParkService;
 
 public class Tools {
 

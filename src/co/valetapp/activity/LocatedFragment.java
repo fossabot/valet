@@ -1,13 +1,14 @@
-package co.valetapp;
+package co.valetapp.activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Locale;
+
+import co.valetapp.R;
 
 /**
  * Created by jophde on 7/29/13.
@@ -16,7 +17,6 @@ public class LocatedFragment extends DynamicFragment {
 
     static final double METERS_TO_YARDS = 1.09361;
 
-    LinearLayout accuracyLinearLayout;
     TextView accuracyUnitLabelTextView;
     TextView accuracyTextView;
 
@@ -29,7 +29,6 @@ public class LocatedFragment extends DynamicFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        accuracyLinearLayout = (LinearLayout) view.findViewById(R.id.accuracyLinearLayout);
         accuracyUnitLabelTextView = (TextView) view.findViewById(R.id.accuracyUnitLabelTextView);
         accuracyTextView = (TextView) view.findViewById(R.id.accuracyTextView);
 

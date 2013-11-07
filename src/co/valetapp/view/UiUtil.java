@@ -1,7 +1,4 @@
-package co.valetapp.view.util;
-
-import java.lang.ref.SoftReference;
-import java.util.Hashtable;
+package co.valetapp.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.lang.ref.SoftReference;
+import java.util.Hashtable;
 
 public class UiUtil {
 

@@ -1,4 +1,30 @@
-package co.valetapp;
+package co.valetapp.activity;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.PowerManager;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.nineoldandroids.animation.ObjectAnimator;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -6,28 +32,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.location.Location;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.CountDownTimer;
-import android.os.PowerManager;
-import android.view.KeyEvent;
-import android.view.animation.Animation;
-import android.widget.*;
-
-import com.nineoldandroids.animation.ObjectAnimator;
-
-import android.location.Address;
-import android.location.Geocoder;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import co.valetapp.R;
+import co.valetapp.util.Const;
+import co.valetapp.util.Tools;
 
 public class ParkedFragment extends DynamicFragment implements View.OnLongClickListener {
 

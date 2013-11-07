@@ -1,19 +1,14 @@
-package co.valetapp.auto;
+package co.valetapp.service;
 
-import android.app.AlarmManager;
 import android.app.IntentService;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.IBinder;
-import android.util.Log;
-import android.widget.Toast;
-import co.valetapp.Const;
-import co.valetapp.LocationService;
-import co.valetapp.ParkActivity;
+
 import com.google.android.gms.location.ActivityRecognitionResult;
 import com.google.android.gms.location.DetectedActivity;
+
+import co.valetapp.util.Const;
 
 /**
  * User: jophde
@@ -67,8 +62,7 @@ public class ActivityRecognitionIntentService extends IntentService {
             if (confidence == MAX_CONFIDENCE && activityType == DetectedActivity.STILL) {
                 // Restart the service with a longer interval if the phone certain to be still
                 autoParkServiceIntent.putExtra(AutoParkService.DETECTION_INTERVAL_SECONDS_KEY, 10 * 60); // 10 Minutes
-            }
-            else if (confidence >= MIN_CONFIDENCE) {
+            } else if (confidence >= MIN_CONFIDENCE) {
 
                 int lastActivityType = mSharedPreferences.getInt(LAST_ACTIVITY_TYPE_KEY, DetectedActivity.UNKNOWN);
 

@@ -1,12 +1,13 @@
-package co.valetapp.bluetooth;
+package co.valetapp.receiver;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import co.valetapp.Const;
-import co.valetapp.LocationService;
+
+import co.valetapp.service.LocationService;
+import co.valetapp.util.Const;
 
 public class BluetoothBroadcastReceiver extends BroadcastReceiver {
 

@@ -1,38 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-        android:id="@+id/accuracyLinearLayout"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:padding="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    <co.valetapp.view.FontableTextView
-            android:id="@+id/parked"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true">
+
+        <co.valetapp.view.FontableTextView
+            android:id="@+id/accuracyLabelTextView"
+            app:font="Gotham-Medium.ttf"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="8dp"
+
             android:text="@string/accuracy"
-            android:textSize="14sp"
-            android:layout_marginRight="8dp"
-            app:font="Gotham-Medium.ttf"/>
+            android:textSize="14sp" />
 
-    <co.valetapp.view.FontableTextView
+        <co.valetapp.view.FontableTextView
             android:id="@+id/accuracyTextView"
+            app:font="Gotham-Medium.ttf"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
+            android:layout_toRightOf="@id/accuracyLabelTextView"
             android:layout_marginRight="8dp"
-            android:textSize="14sp"
-            app:font="Gotham-Medium.ttf"/>
 
-    <co.valetapp.view.FontableTextView
+            android:singleLine="true"
+            android:textSize="14sp" />
+
+        <co.valetapp.view.FontableTextView
             android:id="@+id/accuracyUnitLabelTextView"
+            app:font="Gotham-Medium.ttf"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/accuracyTextView"
+
             android:text="@string/meters"
-            android:textSize="14sp"
-            app:font="Gotham-Medium.ttf"/>
+            android:textSize="14sp" />
+
+    </LinearLayout>
 
 
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/locationImageButton"
+        android:onClick="onLocationItem"
+        android:layout_width="48dp"
+        android:layout_height="@dimen/barHeight"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/location_bar_item_selector"
+        android:contentDescription="@string/locate_bar_item_cd"
+        android:background="@drawable/default_selector" />
+</RelativeLayout>

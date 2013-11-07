@@ -1,11 +1,12 @@
-package co.valetapp.dock;
+package co.valetapp.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import co.valetapp.Const;
-import co.valetapp.LocationService;
+
+import co.valetapp.service.LocationService;
+import co.valetapp.util.Const;
 
 /**
  * Created by jophde on 6/11/13.

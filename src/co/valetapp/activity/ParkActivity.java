@@ -1,4 +1,4 @@
-package co.valetapp;
+package co.valetapp.activity;
 
 import android.app.AlarmManager;
 import android.app.Dialog;
@@ -54,13 +54,17 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import co.valetapp.BarFragment.BarItem;
-import co.valetapp.ParkedFragment.GeoCoderAsyncTask;
-import co.valetapp.auto.AutoParkService;
+import co.valetapp.R;
+import co.valetapp.activity.BarFragment.BarItem;
+import co.valetapp.activity.ParkedFragment.GeoCoderAsyncTask;
+import co.valetapp.service.AutoParkService;
+import co.valetapp.util.Const;
+import co.valetapp.util.IntentLibrary;
+import co.valetapp.util.Tools;
 
 public class ParkActivity extends FragmentActivity
         implements OnMarkerClickListener, GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener, LocationListener {
+        GooglePlayServicesClient.OnConnectionFailedListener, LocationListener, FindFragment.Callback {
 
     // Update frequency in seconds
     public static final int UPDATE_INTERVAL_IN_SECONDS = 5;
@@ -636,6 +640,8 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onUnparkItem(View v) {
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
         saveData();
 
         Tools.unpark(this);
@@ -688,8 +694,9 @@ public class ParkActivity extends FragmentActivity
         }
     }
 
-    public void onLocateItem(View v) {
-        setState(State.PARKING);
+    public void onLocationItem(View v) {
+        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        startActivity(intent);
     }
 
     private void dispatchTakePictureIntent(int actionCode) {
@@ -774,6 +781,11 @@ public class ParkActivity extends FragmentActivity
 
                 dynamicFragment = new LocatedFragment();
 
+                if (prefs.getBoolean(Const.SHOW_MANUAL_PARK_HINT_KEY, true)) {
+                    Toast.makeText(this, getString(R.string.manual_park_hint), Toast.LENGTH_LONG).show();
+                    prefs.edit().putBoolean(Const.SHOW_MANUAL_PARK_HINT_KEY, false).commit();
+                }
+
                 break;
 
             case MANUAL:
@@ -792,6 +804,7 @@ public class ParkActivity extends FragmentActivity
 
                 break;
             case FIND:
+                dynamicFragment = new FindFragment();
 
                 break;
 
@@ -835,7 +848,7 @@ public class ParkActivity extends FragmentActivity
                 break;
 
             case SETTINGS:
-                dynamicFragment = new AutoSetFragment();
+                dynamicFragment = new SettingsFragment();
 
                 barFragment.setItems(BarItem.HELP);
 
@@ -939,6 +952,11 @@ public class ParkActivity extends FragmentActivity
         fm.executePendingTransactions();
 
         return (DynamicFragment) fm.findFragmentById(R.id.dynamic_fl);
+    }
+
+    @Override
+    public void onSelectMapType(int type) {
+        googleMap.setMapType(type);
     }
 
     enum State {

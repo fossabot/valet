@@ -11,7 +11,9 @@
         <item name="android:spinnerDropDownItemStyle">@style/spinnerDropDownItemValet</item>
         <item name="android:seekBarStyle">@style/seekBar</item>
         <item name="android:checkboxStyle">@style/checkbox</item>
-	</style>
+        <item name="android:radioButtonStyle">@style/radioButton</item>
+
+    </style>
 
     <style name="spinner" parent="android:Widget.Spinner">
         <item name="android:background">@drawable/spinner_background_holo_light</item>
@@ -37,6 +39,7 @@
         <item name="android:paddingRight">16dip</item>
     </style>
 
-
-
+    <style name="radioButton" parent="android:Widget.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/btn_radio_holo_light</item>
+    </style>
 </resources>

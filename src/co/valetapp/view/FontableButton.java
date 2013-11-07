@@ -3,8 +3,8 @@ package co.valetapp.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.Button;
+
 import co.valetapp.R;
-import co.valetapp.view.util.UiUtil;
 
 public class FontableButton extends Button {
     public FontableButton(Context context) {

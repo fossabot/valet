@@ -1,18 +1,21 @@
-package co.valetapp;
-
-import android.location.Location;
-import android.os.Handler;
+package co.valetapp.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+
+import co.valetapp.util.Const;
+import co.valetapp.util.Tools;
 
 public class LocationService extends Service implements GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener, LocationListener {
@@ -49,7 +52,7 @@ public class LocationService extends Service implements GooglePlayServicesClient
     }
 
     @Override
-	public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(Intent intent, int flags, int startId) {
         mReliablyParked = intent.getBooleanExtra(Const.RELIABLY_PARKED_KEY, false);
 
         if (servicesConnected()) {
@@ -59,8 +62,8 @@ public class LocationService extends Service implements GooglePlayServicesClient
             stopSelf(); // Calls onDestroy()
         }
 
-		return START_STICKY;
-	}
+        return START_STICKY;
+    }
 
     @Override
     public void onConnected(Bundle bundle) {

@@ -1,4 +1,4 @@
-package co.valetapp;
+package co.valetapp.activity;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -21,9 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import co.valetapp.auto.AutoParkService;
+import co.valetapp.R;
+import co.valetapp.service.AutoParkService;
+import co.valetapp.util.Const;
 
-public class AutoSetFragment extends DynamicFragment {
+public class SettingsFragment extends DynamicFragment {
 
     Spinner bluetoothSpinner;
     CheckBox bluetoothCheckBox, sensorCheckBox, dockCheckBox, notificationsCheckBox;
@@ -34,7 +36,7 @@ public class AutoSetFragment extends DynamicFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.auto_set_fragment, null);
+        return inflater.inflate(R.layout.settings_fragment, null);
     }
 
     @Override

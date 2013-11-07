@@ -1,4 +1,4 @@
-package co.valetapp;
+package co.valetapp.receiver;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,6 +8,11 @@ import android.content.Intent;
 import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+
+import co.valetapp.R;
+import co.valetapp.activity.ParkActivity;
+import co.valetapp.util.Const;
+import co.valetapp.util.Tools;
 
 /**
  * User: jophde

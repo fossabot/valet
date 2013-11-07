@@ -1,4 +1,4 @@
-package co.valetapp;
+package co.valetapp.util;
 
 public class Const {
     public static final float MIN_ACCURACY = 10f;
@@ -23,6 +23,7 @@ public class Const {
     public static final String NOTIFICATIONS_KEY = "co.valetapp.notifications";
     public static final String IMAGE_KEY = "co.valetapp.image";
     public static final String SHOW_RATING_KEY = "co.valetapp.rating";
+    public static final String SHOW_MANUAL_PARK_HINT_KEY = "co.valetapp.manual_park_hint";
 
     private Const() {
     }
