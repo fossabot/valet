@@ -265,6 +265,8 @@ public class ParkedFragment extends DynamicFragment implements View.OnLongClickL
         protected void onPostExecute(List<Address> result) {
             super.onPostExecute(result);
 
+            if (!isVisible()) return;
+
             if (result != null && result.size() > 0) {
                 CharSequence t = addressTextView.getText();
                 String s = t == null ? "" : t.toString();

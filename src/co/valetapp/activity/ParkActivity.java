@@ -15,6 +15,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
@@ -120,55 +121,13 @@ public class ParkActivity extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.park_activity);
 
-        View root = findViewById(R.id.root);
-        ViewTreeObserver obs = root.getViewTreeObserver();
-        assert obs != null;
-        obs.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                final float margin = Tools.convertDpToPixels(ParkActivity.this, 8);
-                final Configuration config = getResources().getConfiguration();
-                int orientation = config.orientation;
-                if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-
-                    float barHeight = findViewById(R.id.bar_fl).getHeight();
-                    if (barHeight > 0) {
-                        barHeight += margin;
-                    }
-                    float dynamicHeight = findViewById(R.id.dynamic_fl).getHeight();
-                    if (dynamicHeight > 0) {
-                        dynamicHeight += margin;
-                    }
-                    int bottomPadding = (int) (barHeight + dynamicHeight);
-                    if (bottomPadding > 0) {
-                        bottomPadding += margin;
-                    }
-
-                    googleMap.setPadding(0, 0, 0, bottomPadding);
-                } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    int rightPadding = 0;
-                    float barWidth = findViewById(R.id.bar_fl).getWidth();
-                    if (barWidth > 0) {
-                        rightPadding += (float) (barWidth + (margin * 2));
-                    } else {
-                        float dynamicWidth = findViewById(R.id.dynamic_fl).getWidth();
-                        if (dynamicWidth > 0) {
-                            rightPadding += (float) (dynamicWidth + (margin * 2));
-                        }
-                    }
-
-                    googleMap.setPadding(0, 0, rightPadding, 0);
-                }
-
-                if (vehicleMarker != null) {
-                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
-                    googleMap.animateCamera(cameraUpdate);
-                }
-            }
-        });
-
         googleMap = getMapFragment().getMap();
         if (googleMap != null) {
+            View root = findViewById(R.id.root);
+            ViewTreeObserver obs = root.getViewTreeObserver();
+            assert obs != null;
+            obs.addOnGlobalLayoutListener(listener);
+
             googleMap.setOnMarkerClickListener(this);
             googleMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
                 @Override
@@ -208,11 +167,61 @@ public class ParkActivity extends FragmentActivity
                 stateStack = (Stack<State>) savedInstanceState.getSerializable(STATE_STACK);
                 assert stateStack != null;
                 setState(stateStack.peek(), false);
+
+                Handler h = new Handler();
+                h.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (vehicleMarker != null) {
+                            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
+                            googleMap.animateCamera(cameraUpdate);
+                        }
+                    }
+                });
             } else {
                 setInitialState();
             }
         }
     }
+
+    ViewTreeObserver.OnGlobalLayoutListener listener = new ViewTreeObserver.OnGlobalLayoutListener() {
+        @Override
+        public void onGlobalLayout() {
+            final float margin = Tools.convertDpToPixels(ParkActivity.this, 8);
+            final Configuration config = getResources().getConfiguration();
+            int orientation = config.orientation;
+            if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+
+                float barHeight = findViewById(R.id.bar_fl).getHeight();
+                if (barHeight > 0) {
+                    barHeight += margin;
+                }
+                float dynamicHeight = findViewById(R.id.dynamic_fl).getHeight();
+                if (dynamicHeight > 0) {
+                    dynamicHeight += margin;
+                }
+                int bottomPadding = (int) (barHeight + dynamicHeight);
+                if (bottomPadding > 0) {
+                    bottomPadding += margin;
+                }
+
+                googleMap.setPadding(0, 0, 0, bottomPadding);
+            } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                int rightPadding = 0;
+                float barWidth = findViewById(R.id.bar_fl).getWidth();
+                if (barWidth > 0) {
+                    rightPadding += (float) (barWidth + (margin * 2));
+                } else {
+                    float dynamicWidth = findViewById(R.id.dynamic_fl).getWidth();
+                    if (dynamicWidth > 0) {
+                        rightPadding += (float) (dynamicWidth + (margin * 2));
+                    }
+                }
+
+                googleMap.setPadding(0, 0, rightPadding, 0);
+            }
+        }
+    };
 
     @Override
     protected void onResume() {
@@ -769,11 +778,7 @@ public class ParkActivity extends FragmentActivity
 
                 barFragment.setItems(BarItem.LOCATING);
 
-                if (servicesConnected()) {
-                    if (!mLocationClient.isConnected()) {
-                        mLocationClient.connect();
-                    }
-                }
+                startLocationUpdates();
 
                 break;
             case LOCATED:
@@ -781,19 +786,14 @@ public class ParkActivity extends FragmentActivity
 
                 dynamicFragment = new LocatedFragment();
 
-                if (prefs.getBoolean(Const.SHOW_MANUAL_PARK_HINT_KEY, true)) {
-                    Toast.makeText(this, getString(R.string.manual_park_hint), Toast.LENGTH_LONG).show();
-                    prefs.edit().putBoolean(Const.SHOW_MANUAL_PARK_HINT_KEY, false).commit();
-                }
+                startLocationUpdates();
 
                 break;
-
             case MANUAL:
                 barFragment.setItems(BarItem.PARK);
                 stopLocationUpdates();
 
                 break;
-
             case PARKED:
                 stateStack.clear();
                 stateStack.push(State.PARKED);
@@ -807,7 +807,6 @@ public class ParkActivity extends FragmentActivity
                 dynamicFragment = new FindFragment();
 
                 break;
-
             case SCHEDULE:
                 barFragment.setItems(BarItem.TIMER, BarItem.ALARM);
 
@@ -861,6 +860,8 @@ public class ParkActivity extends FragmentActivity
                 dynamicFragment = new RateFragment();
                 barFragment.setItems(BarItem.YES, BarItem.NO, BarItem.NEVER);
 
+                break;
+
         }
 
         FragmentManager fm = getSupportFragmentManager();
@@ -876,6 +877,14 @@ public class ParkActivity extends FragmentActivity
 
         if (Tools.isParked(this)) {
             showVehicle();
+        }
+    }
+
+    private void startLocationUpdates() {
+        if (servicesConnected()) {
+            if (!mLocationClient.isConnected()) {
+                mLocationClient.connect();
+            }
         }
     }
 
@@ -912,20 +921,23 @@ public class ParkActivity extends FragmentActivity
         Double latitude = Double.parseDouble(prefs.getString(Const.LAT_KEY, "0"));
         Double longitude = Double.parseDouble(prefs.getString(Const.LONG_KEY, "0"));
 
-        if (vehicleMarker == null) {
-            vehicleMarker = googleMap.addMarker(new MarkerOptions()
-                    .position(new LatLng(latitude, longitude))
-                    .draggable(false)
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin)));
+        if (vehicleMarker != null) {
+            vehicleMarker.remove();
+            vehicleMarker = null;
         }
+
+        vehicleMarker = googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(latitude, longitude))
+                .draggable(false)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin)));
 
         vehicleLocation = new Location(LocationManager.GPS_PROVIDER);
         vehicleLocation.setLatitude(latitude);
         vehicleLocation.setLongitude(longitude);
 
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
-
         googleMap.animateCamera(cameraUpdate);
+
         googleMap.setMyLocationEnabled(true);
     }
 

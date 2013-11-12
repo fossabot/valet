@@ -12,7 +12,7 @@
         android:id="@+id/normalRadioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/normalRadioButton"
+        android:text="@string/normal_radio_button"
         app:font="Gotham-Medium.ttf"
         android:textColor="@color/default_text"
         android:textSize="14sp" />
@@ -22,7 +22,7 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/satelliteRadioButton"
+        android:text="@string/satellite_radio_button"
         app:font="Gotham-Medium.ttf"
         android:textColor="@color/default_text"
         android:textSize="14sp" />

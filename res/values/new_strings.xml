@@ -5,7 +5,6 @@
     <string name="hint_address">Address</string>
     <string name="hint_distance">Distance</string>
     <string name="locate_bar_item_cd">Automatically locate your car</string>
-    <string name="manual_park_hint">Touch and hold marker to park manually</string>
-    <string name="normalRadioButton">Normal</string>
-    <string name="satelliteRadioButton">Satellite</string>
+    <string name="normal_radio_button">Normal</string>
+    <string name="satellite_radio_button">Satellite</string>
 </resources>
