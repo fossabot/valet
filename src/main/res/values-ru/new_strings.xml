@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="bar_item_help">Помощь</string>
+    <string name="settings_bar_item_cd">Настройки</string>
+    <string name="hint_address">Адрес</string>
+    <string name="hint_distance">Расстояние</string>
+    <string name="locate_bar_item_cd">Автоматически обнаружить положение вашей машины</string>
+    <string name="normal_radio_button">Нормальный</string>
+    <string name="satellite_radio_button">Спутник</string>
+</resources>

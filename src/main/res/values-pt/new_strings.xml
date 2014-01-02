@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="bar_item_help">Ajuda</string>
+    <string name="settings_bar_item_cd">Configurações</string>
+    <string name="hint_address">Endereço</string>
+    <string name="hint_distance">Distância</string>
+    <string name="locate_bar_item_cd">Localizar automaticamente o seu carro</string>
+    <string name="normal_radio_button">Normal</string>
+    <string name="satellite_radio_button">Satélite</string>
+</resources>

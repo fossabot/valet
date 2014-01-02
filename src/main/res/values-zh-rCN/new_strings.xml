@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="bar_item_help">帮助</string>
+    <string name="settings_bar_item_cd">设置</string>
+    <string name="hint_address">地址</string>
+    <string name="hint_distance">距离</string>
+    <string name="locate_bar_item_cd">自动定位您的车</string>
+    <string name="normal_radio_button">标准</string>
+    <string name="satellite_radio_button">卫星</string>
+</resources>

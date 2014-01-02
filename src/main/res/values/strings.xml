@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Valet</string>
+    <string name="app_name_free">Valet Free</string>
+    <string name="app_name_caps">VALET</string>
+    <string name="period">.</string>
+    <string name="not_supported">Your device does not support Google Play Services. Email
+        support@valetapp.co for a refund.
+    </string>
+    <string name="rate">Rate Valet on Google Play?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="never">Never</string>
+    <string name="accuracy">accuracy:</string>
+    <string name="yards">yards</string>
+    <string name="meters">meters</string>
+</resources>

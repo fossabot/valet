@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="bar_item_help">Hulp</string>
+    <string name="settings_bar_item_cd">Instellingen</string>
+    <string name="hint_address">Adres</string>
+    <string name="hint_distance">Afstand</string>
+    <string name="locate_bar_item_cd">Automatisch uw auto lokaliseren</string>
+    <string name="normal_radio_button">Normaal</string>
+    <string name="satellite_radio_button">Sateliet</string>
+</resources>
