@@ -13,5 +13,5 @@
     <string name="alarm_bar_item">알람</string>
     <string name="unpark_bar_item">내 차를 주차 해제하기</string>
     <string name="unschedule_bar_item">재설정</string>
-    <string name="locating_bar_item">찾고있는 중 ...</string>
+    <string name="locating_bar_item">찾고있는 중 &#8230;</string>
 </resources>

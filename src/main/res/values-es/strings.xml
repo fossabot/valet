@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Valet</string>
+    <string name="app_name_free">Valet Free</string>
     <string name="app_name_caps">VALET</string>
     <string name="period">.</string>
     <string name="not_supported">Su dispositivo no tiene soporte para los servicios de Google Play.
@@ -10,6 +11,8 @@
     <string name="rate">¿Calificar Valet en Google Play?</string>
     <string name="yes">Si</string>
     <string name="no">No</string>
+    <string name="never">Never</string>
     <string name="accuracy">precisión:</string>
     <string name="meters">meters</string>
+    <string name="yards">yards</string>
 </resources>

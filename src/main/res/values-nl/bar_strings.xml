@@ -13,5 +13,5 @@
     <string name="alarm_bar_item">Alarm</string>
     <string name="unpark_bar_item">Auto uitparkeren</string>
     <string name="unschedule_bar_item">Opnieuw instellen</string>
-    <string name="locating_bar_item">Wordt gelocaliseerd...</string>
+    <string name="locating_bar_item">Wordt gelocaliseerd &#8230;</string>
 </resources>

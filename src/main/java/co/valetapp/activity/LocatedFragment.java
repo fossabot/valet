@@ -49,7 +49,7 @@ public class LocatedFragment extends DynamicFragment {
         }
     }
 
-    void setAccuracyTextView(float accuracy) {
+    public void setAccuracyTextView(float accuracy) {
         if (getResources().getConfiguration().locale.equals(Locale.US)) {
             accuracyTextView.setText(Integer.toString((int) (accuracy * METERS_TO_YARDS)));
         } else {

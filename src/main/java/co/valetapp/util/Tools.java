@@ -107,27 +107,22 @@ public class Tools {
             if (getPrefs(context).contains(Const.RELIABLY_PARKED_KEY)) {
                 return true;
             }
+            else {
+                return false;
+            }
+        } else {
+            return false;
         }
-
-        return false;
     }
 
     public static boolean isParked(Context context) {
         SharedPreferences prefs = getPrefs(context);
-        if (prefs.contains(Const.LAT_KEY) && prefs.contains(Const.LONG_KEY)) {
-            return true;
-        } else {
-            return false;
-        }
+        return prefs.contains(Const.LAT_KEY) && prefs.contains(Const.LONG_KEY);
     }
 
     public static boolean isTimed(Context context) {
         SharedPreferences prefs = getPrefs(context);
-        if (prefs.contains(Const.TIME_KEY)) {
-            return true;
-        } else {
-            return false;
-        }
+        return prefs.contains(Const.TIME_KEY);
     }
 
     public static File createExternalStoragePublicPicture() {

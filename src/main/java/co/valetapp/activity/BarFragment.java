@@ -13,7 +13,7 @@ import co.valetapp.R;
 
 public class BarFragment extends Fragment implements View.OnLongClickListener {
 
-    enum BarItem {
+    public enum BarItem {
         PARK(R.layout.park_bar_item),
         LOCATION(R.layout.location_bar_item),
         SETTINGS(R.layout.settings_bar_item),
@@ -63,7 +63,7 @@ public class BarFragment extends Fragment implements View.OnLongClickListener {
         }
     }
 
-    void setItems(BarItem... barItems) {
+    public void setItems(BarItem... barItems) {
         if (barLinearLayout != null) {
             for (BarItem barItem : barItems) {
                 View view = getActivity().getLayoutInflater().inflate(barItem.getResourceId(), barLinearLayout, false);

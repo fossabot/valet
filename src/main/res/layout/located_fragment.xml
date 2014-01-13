@@ -20,7 +20,6 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_marginRight="8dp"
 
             android:text="@string/accuracy"
@@ -32,7 +31,6 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/accuracyLabelTextView"
             android:layout_marginRight="8dp"
 
             android:singleLine="true"
@@ -44,7 +42,6 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/accuracyTextView"
 
             android:text="@string/meters"
             android:textSize="14sp" />

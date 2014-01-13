@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">泊车员</string>
+    <string name="app_name_free">Valet Free</string>
     <string name="app_name_caps">泊车员</string>
     <string name="period">。</string>
     <string name="not_supported">您的设备不支持谷歌玩家服务。请发送电子邮件至support\@valetapp.co获得退款。</string>
@@ -9,6 +10,7 @@
     <string name="yes">是的</string>
     <string name="no">没有</string>
     <string name="never">从来</string>
+    <string name="yards">yards</string>
     <string name="accuracy">准确性:</string>
     <string name="meters">meters</string>
 </resources>

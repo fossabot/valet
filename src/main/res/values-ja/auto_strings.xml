@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="auto_info">パーキングセンサーをつけて駐車機能を自動化して下さい。これには少し多くの電力が消費され、100% a正確ではありません。</string>
-    <string name="auto_set_bar_item">オート・パーク・マイ・カー</string>
-    <string name="bluetooth_bar_item">ブルーツース設定</string>
-    <string name="auto_park_confirm">あなたの車はオートパークされます。バレーを開けてあなたの車を見つけて下さい。</string>
-    <string name="no_bluetooth">ブルーツースが無効です</string>
+    <string name="auto_info">パーキングセンサーをつけて駐車機能を自動化して下さい。これには少し多くの電力が消費され、100\% a正確ではありません。</string>
     <string name="select_bluetooth">ブルーツース</string>
     <string name="parking_sensor">パーキングセンサー</string>
     <string name="notification_title">バレーオートパーク</string>

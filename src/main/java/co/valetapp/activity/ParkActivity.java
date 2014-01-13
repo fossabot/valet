@@ -575,16 +575,17 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onSettingsItem(View v) {
-        if (BuildConfig.FLAVOR.equals("paid")) {
-            setState(State.SETTINGS);
-        } else if (BuildConfig.FLAVOR.equals("free")) {
-            Toast.makeText(this, "Free!", Toast.LENGTH_LONG).show();
-        }
-
+        setState(State.SETTINGS);
     }
 
     public void onHelpItem(View v) {
-        setState(State.HELP);
+        if (BuildConfig.FLAVOR.equals("paid")) {
+            setState(State.HELP);
+        } else if (BuildConfig.FLAVOR.equals("free")) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("market://details?id=co.valetapp"));
+            startActivity(intent);
+        }
     }
 
     public void onFindItem(View v) {

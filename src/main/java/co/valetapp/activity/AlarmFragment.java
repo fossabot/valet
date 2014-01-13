@@ -31,11 +31,7 @@ public class AlarmFragment extends DynamicFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getResources().getConfiguration().locale.equals(Locale.US)) {
-            is24HourClock = false;
-        } else {
-            is24HourClock = true;
-        }
+        is24HourClock = !getResources().getConfiguration().locale.equals(Locale.US);
     }
 
     @Override
@@ -116,7 +112,7 @@ public class AlarmFragment extends DynamicFragment {
         }
     }
 
-    long getTime() {
+    public long getTime() {
 
 
         Calendar calendar = Calendar.getInstance();

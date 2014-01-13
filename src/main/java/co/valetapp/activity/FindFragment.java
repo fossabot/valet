@@ -14,7 +14,7 @@ import static com.google.android.gms.maps.GoogleMap.MAP_TYPE_SATELLITE;
 
 public class FindFragment extends DynamicFragment {
 
-    interface Callback {
+    public interface Callback {
         void onSelectMapType(int type);
     }
 

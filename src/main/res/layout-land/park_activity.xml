@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/root"
+<RelativeLayout
+    android:id="@+id/root"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <fragment android:id="@+id/map_frag"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
+    <fragment
+        tools:ignore="MissingPrefix"
+        android:id="@+id/map_frag"
+        class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="com.google.android.gms.maps.SupportMapFragment"
         map:uiCompass="true"
         map:uiRotateGestures="true"
         map:uiScrollGestures="true"
@@ -20,7 +23,8 @@
         tools:context=".ParkActivity"
         tools:layout="@layout/map_stub" />
 
-    <FrameLayout android:id="@+id/bar_fl"
+    <FrameLayout
+        android:id="@+id/bar_fl"
         android:background="@color/trans_black"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
@@ -30,7 +34,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true" />
 
-    <FrameLayout android:id="@+id/dynamic_fl"
+    <FrameLayout
+        android:id="@+id/dynamic_fl"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
         android:background="@color/trans_black"
@@ -40,5 +45,5 @@
         android:layout_alignRight="@id/bar_fl"
         android:layout_below="@+id/bar_fl"
 
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true" />
 </RelativeLayout>

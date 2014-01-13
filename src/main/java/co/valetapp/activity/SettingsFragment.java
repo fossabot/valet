@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import co.valetapp.BuildConfig;
 import co.valetapp.R;
 import co.valetapp.service.AutoParkService;
 import co.valetapp.util.Const;
@@ -136,6 +138,23 @@ public class SettingsFragment extends DynamicFragment {
                 }
             }
         });
+
+    }
+
+    private void disable() {
+        bluetoothSpinner.setEnabled(false);
+        bluetoothCheckBox.setEnabled(false);
+        sensorCheckBox.setEnabled(false);
+        dockCheckBox.setEnabled(false);
+        notificationsCheckBox.setEnabled(false);
+        bluetoothButton.setEnabled(false);
+
+        Resources resources = getResources();
+        bluetoothSpinner.setVisibility(View.GONE);
+        bluetoothCheckBox.setTextColor(resources.getColor(R.color.hint_text));
+        sensorCheckBox.setTextColor(resources.getColor(R.color.hint_text));
+        dockCheckBox.setTextColor(resources.getColor(R.color.hint_text));
+        notificationsCheckBox.setTextColor(resources.getColor(R.color.hint_text));
     }
 
     @Override
@@ -161,14 +180,6 @@ public class SettingsFragment extends DynamicFragment {
                 myBluetoothDevices.add(new MyBluetoothDevice(bluetoothDevice.getName(), bluetoothDevice.getAddress()));
             }
         }
-//
-//        if (adapter == null) {
-//            adapter = new ArrayAdapter<MyBluetoothDevice>(getActivity(), R.layout.spinner_item, myBluetoothDevices);
-//            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-//            bluetoothSpinner.setAdapter(adapter);
-//        } else {
-//            adapter.notifyDataSetChanged();
-//        }
 
         adapter = new ArrayAdapter<MyBluetoothDevice>(getActivity(), R.layout.spinner_item, myBluetoothDevices);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
@@ -187,6 +198,8 @@ public class SettingsFragment extends DynamicFragment {
                 i++;
             }
         }
+
+        if (BuildConfig.FLAVOR.equals("free")) disable();
     }
 
     @Override

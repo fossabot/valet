@@ -3,6 +3,7 @@
 
     <string name="app_name">Valet</string>
     <string name="app_name_caps">VALET</string>
+    <string name="app_name_free">Valet Free</string>
     <string name="period">.</string>
     <string name="not_supported">Laitteesi ei tue Google Play Palveluita. Ota yhteyttä osoitteeseen
         support@valetapp.co hyvituksen saamiseksi.

@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Valet</string>
+    <string name="app_name_free">Valet Free</string>
     <string name="app_name_caps">VALET</string>
     <string name="period">.</string>
     <string name="not_supported">A készüléked nem támogatja a Google Play szolgáltatásait. Küldj
@@ -14,4 +15,5 @@
     <string name="never">Soha</string>
     <string name="accuracy">pontosság:</string>
     <string name="meters">meters</string>
+    <string name="yards">yards</string>
 </resources>

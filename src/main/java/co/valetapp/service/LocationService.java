@@ -103,11 +103,7 @@ public class LocationService extends Service implements GooglePlayServicesClient
 
     private boolean servicesConnected() {
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if (ConnectionResult.SUCCESS == resultCode) {
-            return true;
-        } else {
-            return false;
-        }
+        return ConnectionResult.SUCCESS == resultCode;
     }
 
     private void stopLocationUpdates() {

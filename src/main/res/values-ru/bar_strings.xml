@@ -15,5 +15,5 @@
     <string name="alarm_bar_item">Будильник</string>
     <string name="unpark_bar_item">Распарковать машину</string>
     <string name="unschedule_bar_item">Сбросить</string>
-    <string name="locating_bar_item">Поиск...</string>
+    <string name="locating_bar_item">Поиск&#8230;</string>
 </resources>

@@ -13,5 +13,5 @@
     <string name="alarm_bar_item">Alarma</string>
     <string name="unpark_bar_item">Mueva mi vehículo</string>
     <string name="unschedule_bar_item">Restablecer</string>
-    <string name="locating_bar_item">Localizando...</string>
+    <string name="locating_bar_item">Localizando&#8230;</string>
 </resources>

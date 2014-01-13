@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <string name="auto_info">打開泊車距離傳感器自動操作泊車工具。這稍微使用更多的電池並且不是 100% a準確。\n\n作為一種選擇，您可以鏈接到配對藍牙設備進而使用連通性來自動泊車并節省電池壽命。 \n\n您也可以使用汽車底座。桌面底座將不工作。</string>
-    <string name="auto_set_bar_item">自動停泊您的車輛</string>
-    <string name="bluetooth_bar_item">藍牙設定</string>
-    <string name="auto_park_confirm">您的車將會自動停泊。打開泊車員尋找您的車。</string>
-    <string name="no_bluetooth">藍牙無法使用</string>
+    <string name="auto_info">打開泊車距離傳感器自動操作泊車工具。這稍微使用更多的電池並且不是 100\% a準確。\n\n作為一種選擇，您可以鏈接到配對藍牙設備進而使用連通性來自動泊車并節省電池壽命。 \n\n您也可以使用汽車底座。桌面底座將不工作。</string>
     <string name="select_bluetooth">藍牙</string>
     <string name="parking_sensor">泊車距離傳感器</string>
     <string name="notification_title">泊車員自動泊車</string>

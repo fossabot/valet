@@ -18,7 +18,8 @@
         map:uiZoomControls="true"
         map:uiZoomGestures="true"
         tools:context=".ParkActivity"
-        tools:layout="@layout/map_stub" />
+        tools:layout="@layout/map_stub"
+        tools:ignore="MissingPrefix" />
 
     <FrameLayout android:id="@+id/bar_fl"
         android:background="@color/trans_black"

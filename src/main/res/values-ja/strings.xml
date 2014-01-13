@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">バレー</string>
+    <string name="app_name_free">Valet Free</string>
     <string name="app_name_caps">バレー</string>
     <string name="period">.</string>
     <string name="not_supported">
@@ -13,4 +14,5 @@
     <string name="never">決して</string>
     <string name="accuracy">精度:</string>
     <string name="meters">meters</string>
+    <string name="yards">yards</string>
 </resources>

@@ -1,5 +1,6 @@
 package co.valetapp.util;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,6 +33,7 @@ public class IntentLibrary {
         return intent;
     }
 
+    @TargetApi(16)
     public static Intent getShareIntent(Context context, Double latitude, Double longitude) {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);

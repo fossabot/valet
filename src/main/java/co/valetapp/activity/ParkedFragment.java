@@ -38,10 +38,10 @@ import co.valetapp.util.Tools;
 
 public class ParkedFragment extends DynamicFragment implements View.OnLongClickListener {
 
-    TextView addressTextView, distanceTextView;
-    ObjectAnimator addressAnimator, distanceAnimator;
+    public TextView addressTextView, distanceTextView;
+    public ObjectAnimator addressAnimator, distanceAnimator;
     EditText noteEditText;
-    ImageButton cameraImageButton, deletePictureButton;
+    public ImageButton cameraImageButton, deletePictureButton;
     SharedPreferences prefs;
     View root;
     private static final int SECOND = 1000;
@@ -239,7 +239,7 @@ public class ParkedFragment extends DynamicFragment implements View.OnLongClickL
         return true;
     }
 
-    class GeoCoderAsyncTask extends AsyncTask<Location, Void, List<Address>> {
+    public class GeoCoderAsyncTask extends AsyncTask<Location, Void, List<Address>> {
 
         private Geocoder geocoder;
 

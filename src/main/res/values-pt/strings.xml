@@ -3,6 +3,7 @@
 
     <string name="app_name">Valet</string>
     <string name="app_name_caps">VALET</string>
+    <string name="app_name_free">Valet Free</string>
     <string name="period">.</string>
     <string name="not_supported">O seu dispositivo não suporta os serviços do Google Play. Envie um
         Email para o endereço support@valetapp.co para receber o seu reembolso.
@@ -12,5 +13,6 @@
     <string name="no">Não</string>
     <string name="never">Nunca</string>
     <string name="accuracy">precisão:</string>
+    <string name="yards">yards</string>
     <string name="meters">meters</string>
 </resources>
