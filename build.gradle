@@ -27,22 +27,12 @@ android {
     defaultConfig {
         minSdkVersion 10
         targetSdkVersion 19
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        versionName "2.0.3"
+        versionCode 30
     }
 
     signingConfigs {
-        free {
-            storeFile file("/Users/jophde/.keystore")
-            storePassword "deus ex machina; keystore"
-            keyAlias "valet_free"
-            keyPassword "deus ex machina; valet free"
-        }
-
-        paid {
+        release {
             storeFile file("/Users/jophde/.keystore")
             storePassword "deus ex machina; keystore"
             keyAlias "valet"
@@ -50,20 +40,14 @@ android {
         }
     }
 
-    productFlavors {
-        free {
-            packageName "co.valetapp.free"
-            versionCode 1
-            versionName "1.0.0"
-            signingConfig signingConfigs.free
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
         }
+    }
 
-        paid {
-            packageName "co.valetapp"
-            versionName "2.0.3"
-            versionCode 30
-
-            signingConfig signingConfigs.paid
-        }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
 }
