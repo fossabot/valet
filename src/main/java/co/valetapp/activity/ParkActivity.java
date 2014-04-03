@@ -28,7 +28,13 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
-
+import co.valetapp.R;
+import co.valetapp.activity.BarFragment.BarItem;
+import co.valetapp.activity.ParkedFragment.GeoCoderAsyncTask;
+import co.valetapp.service.AutoParkService;
+import co.valetapp.util.Const;
+import co.valetapp.util.IntentLibrary;
+import co.valetapp.util.Tools;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -55,15 +61,6 @@ import java.util.Locale;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import co.valetapp.BuildConfig;
-import co.valetapp.R;
-import co.valetapp.activity.BarFragment.BarItem;
-import co.valetapp.activity.ParkedFragment.GeoCoderAsyncTask;
-import co.valetapp.service.AutoParkService;
-import co.valetapp.util.Const;
-import co.valetapp.util.IntentLibrary;
-import co.valetapp.util.Tools;
 
 public class ParkActivity extends FragmentActivity
         implements OnMarkerClickListener, GooglePlayServicesClient.ConnectionCallbacks,
@@ -579,13 +576,7 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onHelpItem(View v) {
-        if (BuildConfig.FLAVOR.equals("paid")) {
-            setState(State.HELP);
-        } else if (BuildConfig.FLAVOR.equals("free")) {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("market://details?id=co.valetapp"));
-            startActivity(intent);
-        }
+        setState(State.HELP);
     }
 
     public void onFindItem(View v) {

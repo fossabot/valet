@@ -10,22 +10,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.*;
+import co.valetapp.R;
+import co.valetapp.service.AutoParkService;
+import co.valetapp.util.Const;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
-import co.valetapp.BuildConfig;
-import co.valetapp.R;
-import co.valetapp.service.AutoParkService;
-import co.valetapp.util.Const;
 
 public class SettingsFragment extends DynamicFragment {
 
@@ -198,8 +190,6 @@ public class SettingsFragment extends DynamicFragment {
                 i++;
             }
         }
-
-        if (BuildConfig.FLAVOR.equals("free")) disable();
     }
 
     @Override
