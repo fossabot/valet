@@ -28,6 +28,7 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+import co.valetapp.BuildConfig;
 import co.valetapp.R;
 import co.valetapp.activity.BarFragment.BarItem;
 import co.valetapp.activity.ParkedFragment.GeoCoderAsyncTask;
@@ -228,10 +229,6 @@ public class ParkActivity extends FragmentActivity
     protected void onResume() {
         super.onResume();
 
-        if (Tools.isParked(this)) {
-            showVehicle();
-        }
-
         if (vehicleMarker != null) {
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
             googleMap.animateCamera(cameraUpdate);
@@ -249,6 +246,14 @@ public class ParkActivity extends FragmentActivity
 
         if (servicesConnected()) {
             mLocationClient.connect();
+        }
+    }
+
+    @Override protected void onStart() {
+        super.onStart();
+
+        if (Tools.isParked(this)) {
+            showVehicle();
         }
     }
 
@@ -717,10 +722,7 @@ public class ParkActivity extends FragmentActivity
             mPictureUri = Uri.fromFile(f);
             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mPictureUri);
             startActivityForResult(takePictureIntent, actionCode);
-        } else {
-            throw new NullPointerException("File is null");
         }
-
     }
 
     public static boolean isIntentAvailable(Context context, String action) {
@@ -891,9 +893,12 @@ public class ParkActivity extends FragmentActivity
 
     @Override
     public void onBackPressed() {
-        assert !stateStack.isEmpty();
+        State state = null;
+        if (!stateStack.isEmpty()) {
+            state = stateStack.peek();
+        }
 
-        if (shouldSkipState(stateStack.peek())) {
+        if (shouldSkipState(state)) {
             stateStack.pop();
 
             if (stateStack.isEmpty()) {
@@ -912,12 +917,13 @@ public class ParkActivity extends FragmentActivity
     }
 
     private boolean shouldSkipState(State s) {
-        return s == State.PARKING || s == State.LOCATED || s == State.PARKED || s == State.TIMED
-                || s == State.RATING;
+        return s != null && (s == State.PARKING || s == State.LOCATED || s == State.PARKED || s == State.TIMED || s == State.RATING);
     }
 
     private void showVehicle() {
-        assert Tools.isParked(this);
+        if (BuildConfig.DEBUG && !Tools.isParked(this)) {
+            throw new AssertionError("Showing vehicle while not parked");
+        }
 
         Double latitude = Double.parseDouble(prefs.getString(Const.LAT_KEY, "0"));
         Double longitude = Double.parseDouble(prefs.getString(Const.LONG_KEY, "0"));
@@ -962,8 +968,6 @@ public class ParkActivity extends FragmentActivity
 
     private DynamicFragment getDynamicFragment() {
         FragmentManager fm = getSupportFragmentManager();
-        fm.executePendingTransactions();
-
         return (DynamicFragment) fm.findFragmentById(R.id.dynamic_fl);
     }
 

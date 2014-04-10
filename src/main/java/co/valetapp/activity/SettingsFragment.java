@@ -79,31 +79,6 @@ public class SettingsFragment extends DynamicFragment {
             }
         });
 
-        ParkActivity pa = (ParkActivity) getActivity();
-        if (pa.servicesConnected()) {
-            sensorCheckBox = (CheckBox) view.findViewById(R.id.sensorCheckBox);
-            sensorCheckBox.setEnabled(true);
-            sensorCheckBox.setChecked(prefs.getBoolean(Const.PARKING_SENSOR_KEY, false));
-            sensorCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        prefs.edit().putBoolean(Const.PARKING_SENSOR_KEY, true).commit();
-                        Intent autoParkServiceIntent = new Intent(getActivity(), AutoParkService.class);
-                        autoParkServiceIntent.setAction(AutoParkService.ACTION_START);
-                        getActivity().startService(autoParkServiceIntent);
-                    } else {
-                        prefs.edit().putBoolean(Const.PARKING_SENSOR_KEY, false).commit();
-                        Intent autoParkServiceIntent = new Intent(getActivity(), AutoParkService.class);
-                        autoParkServiceIntent.setAction(AutoParkService.ACTION_STOP);
-                        getActivity().startService(autoParkServiceIntent);
-                    }
-                }
-            });
-        } else {
-            sensorCheckBox.setEnabled(false);
-        }
-
 
         dockCheckBox = (CheckBox) view.findViewById(R.id.dockCheckBox);
         dockCheckBox.setChecked(prefs.getBoolean(Const.DOCK_KEY, false));
@@ -152,6 +127,31 @@ public class SettingsFragment extends DynamicFragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        ParkActivity pa = (ParkActivity) getActivity();
+        if (pa.servicesConnected()) {
+            sensorCheckBox = (CheckBox) getView().findViewById(R.id.sensorCheckBox);
+            sensorCheckBox.setEnabled(true);
+            sensorCheckBox.setChecked(prefs.getBoolean(Const.PARKING_SENSOR_KEY, false));
+            sensorCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        prefs.edit().putBoolean(Const.PARKING_SENSOR_KEY, true).commit();
+                        Intent autoParkServiceIntent = new Intent(getActivity(), AutoParkService.class);
+                        autoParkServiceIntent.setAction(AutoParkService.ACTION_START);
+                        getActivity().startService(autoParkServiceIntent);
+                    } else {
+                        prefs.edit().putBoolean(Const.PARKING_SENSOR_KEY, false).commit();
+                        Intent autoParkServiceIntent = new Intent(getActivity(), AutoParkService.class);
+                        autoParkServiceIntent.setAction(AutoParkService.ACTION_STOP);
+                        getActivity().startService(autoParkServiceIntent);
+                    }
+                }
+            });
+        } else {
+            sensorCheckBox.setEnabled(false);
+        }
 
         Set<BluetoothDevice> bondedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
 
