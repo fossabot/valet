@@ -15,4 +15,7 @@
     <string name="yards">yards</string>
     <string name="accuracy">accuracy:</string>
     <string name="meters">meters</string>
+    <string name="select_alarm">Alarm</string>
+    <string name="select_ringtone">Select Ringtone</string>
+    <string name="clock">24 Hour Clock</string>
 </resources>

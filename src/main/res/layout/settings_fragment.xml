@@ -76,8 +76,59 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <View
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/default_text" />
+        </FrameLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <co.valetapp.view.FontableCheckBox
+            android:id="@+id/alarmCheckBox"
+            android:text="@string/alarm_bar_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/default_text"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:singleLine="true"
+            android:textSize="14sp"
+            app:font="Gotham-Medium.ttf" />
+
+        <co.valetapp.view.FontableCheckBox
+            android:id="@+id/clockCheckBox"
+            android:layout_width="wrap_content"
+            app:font="Gotham-Medium.ttf"
+            android:textSize="14sp"
+            android:textColor="@color/default_text"
+            android:layout_height="wrap_content"
+            android:text="@string/clock" />
+
+        <ImageButton
+            android:id="@+id/alarmButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="selectRingtone"
+            android:padding="8dp"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/alarm_selector"
+            android:contentDescription="@string/select_ringtone"
+            android:background="@drawable/default_selector" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <co.valetapp.view.FontableCheckBox
             android:id="@+id/notificationsCheckBox"

@@ -13,7 +13,9 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.location.Location;
 import android.location.LocationManager;
+import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -66,6 +68,8 @@ import java.util.regex.Pattern;
 public class ParkActivity extends FragmentActivity
         implements OnMarkerClickListener, GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener, LocationListener, FindFragment.Callback {
+
+    public static final int RINGTONE_PICKER_RESULT = 11;
 
     // Update frequency in seconds
     public static final int UPDATE_INTERVAL_IN_SECONDS = 5;
@@ -243,14 +247,14 @@ public class ParkActivity extends FragmentActivity
                 prefs.edit().remove(Const.IMAGE_KEY);
             }
         }
-
-        if (servicesConnected()) {
-            mLocationClient.connect();
-        }
     }
 
     @Override protected void onStart() {
         super.onStart();
+
+        if (servicesConnected()) {
+            mLocationClient.connect();
+        }
 
         if (Tools.isParked(this)) {
             showVehicle();
@@ -318,7 +322,34 @@ public class ParkActivity extends FragmentActivity
                         }
                         break;
                 }
+            case RINGTONE_PICKER_RESULT:
+                switch(resultCode) {
+                    case RESULT_OK:
+                        Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+                        if (uri != null) {
+                            if (BuildConfig.DEBUG) {
+                                Log.d("Ringtone", uri.toString());
+                            }
+                            prefs.edit().putString(Const.RINGTONE_URI_KEY, uri.toString()).commit();
+                            break;
+                        }
+                }
+                break;
         }
+    }
+
+    public void selectRingtone(View v) {
+        Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+            intent.putExtra(RingtoneManager.EXTRA_RINGTONE_INCLUDE_DRM, true);
+        }
+        if (prefs.contains(Const.RINGTONE_URI_KEY)) {
+            Uri uri = Uri.parse(prefs.getString(Const.RINGTONE_URI_KEY, ""));
+            intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, uri);
+        }
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALL);
+        startActivityForResult(intent, RINGTONE_PICKER_RESULT);
+
     }
 
     private void setSharedLocation() {
@@ -370,7 +401,14 @@ public class ParkActivity extends FragmentActivity
         final Window win = getWindow();
         win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
                 | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
-        win.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+        win.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override public void run() {
+                win.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+            }
+        }, 30 * 1000); // Let screen turn off after 30 seconds.
     }
 
     private boolean isAlarmIntent() {
@@ -666,6 +704,9 @@ public class ParkActivity extends FragmentActivity
         } else {
             setState(State.PARKING);
         }
+
+        final Window win = getWindow();
+        win.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
     }
 
     public void onYesItem(View v) {

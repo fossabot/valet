@@ -21,11 +21,11 @@ import java.util.Set;
 
 public class SettingsFragment extends DynamicFragment {
 
-    Spinner bluetoothSpinner;
-    CheckBox bluetoothCheckBox, sensorCheckBox, dockCheckBox, notificationsCheckBox;
+    Spinner bluetoothSpinner, alarmSpinner;
+    CheckBox bluetoothCheckBox, sensorCheckBox, dockCheckBox, notificationsCheckBox, alarmCheckBox, clockCheckBox;
     ImageButton bluetoothButton;
     SharedPreferences prefs;
-    ArrayAdapter<MyBluetoothDevice> adapter;
+    ArrayAdapter<MyBluetoothDevice> bluetoothAdapter;
     List<MyBluetoothDevice> myBluetoothDevices = new ArrayList<MyBluetoothDevice>();
 
     @Override
@@ -106,6 +106,29 @@ public class SettingsFragment extends DynamicFragment {
             }
         });
 
+        alarmCheckBox = (CheckBox) view.findViewById(R.id.alarmCheckBox);
+        alarmCheckBox.setChecked(prefs.getBoolean(Const.ALARM_KEY, false));
+        alarmCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    prefs.edit().putBoolean(Const.ALARM_KEY, true).commit();
+                } else {
+                    prefs.edit().putBoolean(Const.ALARM_KEY, false).commit();
+                }
+            }
+        });
+
+        clockCheckBox = (CheckBox) view.findViewById(R.id.clockCheckBox);
+        clockCheckBox.setChecked(prefs.getBoolean(Const.IS_24_HOUR_CLOCK, false));
+        clockCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    prefs.edit().putBoolean(Const.IS_24_HOUR_CLOCK, true).commit();
+                } else {
+                    prefs.edit().putBoolean(Const.IS_24_HOUR_CLOCK, false).commit();
+                }
+            }
+        });
     }
 
     private void disable() {
@@ -173,9 +196,9 @@ public class SettingsFragment extends DynamicFragment {
             }
         }
 
-        adapter = new ArrayAdapter<MyBluetoothDevice>(getActivity(), R.layout.spinner_item, myBluetoothDevices);
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        bluetoothSpinner.setAdapter(adapter);
+        bluetoothAdapter = new ArrayAdapter<MyBluetoothDevice>(getActivity(), R.layout.spinner_item, myBluetoothDevices);
+        bluetoothAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        bluetoothSpinner.setAdapter(bluetoothAdapter);
 
         if (prefs.contains(Const.BLUETOOTH_KEY)) {
             String address = prefs.getString(Const.BLUETOOTH_KEY, "");

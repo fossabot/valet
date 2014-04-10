@@ -23,6 +23,9 @@ public class Const {
     public static final String NOTIFICATIONS_KEY = "co.valetapp.notifications";
     public static final String IMAGE_KEY = "co.valetapp.image";
     public static final String SHOW_RATING_KEY = "co.valetapp.rating";
+    public static final String ALARM_KEY = "co.valetapp.alarm";
+    public static final String RINGTONE_URI_KEY = "co.valetapp.ringtone";
+    public static final String IS_24_HOUR_CLOCK = "co.valetapp.24hourclock";
 
     private Const() {
     }

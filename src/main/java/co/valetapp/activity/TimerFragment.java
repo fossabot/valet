@@ -7,10 +7,9 @@ import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import co.valetapp.R;
 
 import java.util.Calendar;
-
-import co.valetapp.R;
 
 public class TimerFragment extends DynamicFragment implements OnSeekBarChangeListener {
 
@@ -43,7 +42,6 @@ public class TimerFragment extends DynamicFragment implements OnSeekBarChangeLis
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromUser) {
-
         if (!fromUser) {
             seekBar.setProgress(progress);
         }

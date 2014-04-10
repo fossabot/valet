@@ -6,13 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import co.valetapp.R;
+import co.valetapp.util.Const;
+import co.valetapp.util.Tools;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
-
-import co.valetapp.R;
 
 public class AlarmFragment extends DynamicFragment {
 
@@ -24,14 +24,12 @@ public class AlarmFragment extends DynamicFragment {
         for (int i = 0; i < 24; i++) HOURS_LIST_24.add(Integer.toString(i));
 
         HOURS_LIST_12 = new ArrayList<>();
-        for (int i = 0; i < 12; i++) HOURS_LIST_12.add(Integer.toString(i));
+        for (int i = 1; i <= 12; i++) HOURS_LIST_12.add(Integer.toString(i));
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        is24HourClock = !getResources().getConfiguration().locale.equals(Locale.US);
     }
 
     @Override
@@ -54,14 +52,6 @@ public class AlarmFragment extends DynamicFragment {
                 adapter = ArrayAdapter.createFromResource(getActivity(), R.array.day_of_week, R.layout.spinner_item);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         dayOfWeekSpinner.setAdapter(adapter);
-
-        if (is24HourClock) {
-            adapter = new ArrayAdapter<CharSequence>(getActivity(), R.layout.spinner_item, HOURS_LIST_24);
-        } else {
-            adapter = new ArrayAdapter<CharSequence>(getActivity(), R.layout.spinner_item, HOURS_LIST_12);
-        }
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        hourSpinner.setAdapter(adapter);
 
         adapter = ArrayAdapter.createFromResource(getActivity(), R.array.minute, R.layout.spinner_item);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
@@ -106,6 +96,21 @@ public class AlarmFragment extends DynamicFragment {
         hourSpinner.setSelection(9);
         minuteSpinner.setSelection(0);
         amPmSpinner.setSelection(0);
+    }
+
+    @Override public void onStart() {
+        super.onStart();
+
+        is24HourClock = Tools.getPrefs(getActivity()).getBoolean(Const.IS_24_HOUR_CLOCK, false);
+
+        ArrayAdapter<CharSequence> adapter;
+        if (is24HourClock) {
+            adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, HOURS_LIST_24);
+        } else {
+            adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, HOURS_LIST_12);
+        }
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        hourSpinner.setAdapter(adapter);
 
         if (is24HourClock) {
             amPmSpinner.setVisibility(View.GONE);
@@ -117,14 +122,14 @@ public class AlarmFragment extends DynamicFragment {
 
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(Calendar.MINUTE, getMinute());
-
         if (is24HourClock) {
             calendar.set(Calendar.HOUR_OF_DAY, getHour());
         } else {
             calendar.set(Calendar.HOUR, getHour());
             calendar.set(Calendar.AM_PM, getAmPm());
         }
+
+        calendar.set(Calendar.MINUTE, getMinute());
 
         calendar.set(Calendar.DAY_OF_WEEK, getDayOfWeek());
 
@@ -158,7 +163,16 @@ public class AlarmFragment extends DynamicFragment {
     }
 
     int getHour() {
-        return Integer.parseInt((String) hourSpinner.getSelectedItem());
+        int i =  Integer.parseInt((String) hourSpinner.getSelectedItem());
+        if (!is24HourClock) {
+            if (i == 12) {
+                return 0;
+            } else {
+                return i;
+            }
+        } else {
+            return i;
+        }
     }
 
     int getMinute() {

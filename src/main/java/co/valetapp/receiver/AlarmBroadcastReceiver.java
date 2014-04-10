@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
@@ -25,12 +26,17 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
         PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, Const.TAG);
         wl.acquire();
 
-        Intent i = new Intent(context, ParkActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        i.setAction(Const.ACTION_ALARM);
-        context.startActivity(i);
+        SharedPreferences prefs = Tools.getPrefs(context);
 
-        boolean hasNotifications = Tools.getPrefs(context).getBoolean(Const.NOTIFICATIONS_KEY, false);
+        if (prefs.getBoolean(Const.ALARM_KEY, false)) {
+            Intent i = new Intent(context, ParkActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.setAction(Const.ACTION_ALARM);
+            context.startActivity(i);
+        }
+
+
+        boolean hasNotifications = prefs.getBoolean(Const.NOTIFICATIONS_KEY, false);
         if (hasNotifications) {
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(context)

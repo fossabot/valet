@@ -13,4 +13,5 @@
     <string name="yards">yards</string>
     <string name="accuracy">准确性:</string>
     <string name="meters">meters</string>
+    <string name="clock">24 Hour Clock</string>
 </resources>

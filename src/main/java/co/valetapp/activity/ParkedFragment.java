@@ -1,7 +1,6 @@
 package co.valetapp.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.Address;
 import android.location.Geocoder;
@@ -12,18 +11,15 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.PowerManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.widget.*;
+import co.valetapp.R;
+import co.valetapp.util.Const;
+import co.valetapp.util.Tools;
 import com.nineoldandroids.animation.ObjectAnimator;
 
 import java.io.IOException;
@@ -31,10 +27,6 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-import co.valetapp.R;
-import co.valetapp.util.Const;
-import co.valetapp.util.Tools;
 
 public class ParkedFragment extends DynamicFragment implements View.OnLongClickListener {
 
@@ -53,7 +45,6 @@ public class ParkedFragment extends DynamicFragment implements View.OnLongClickL
     TextView hoursTextView, minutesTextView, secondsTextView, dateTextView;
     long time;
     Ringtone ringtone;
-    PowerManager.WakeLock wl;
     CountDownTimer countDownTimer;
 
     @Override
@@ -73,9 +64,6 @@ public class ParkedFragment extends DynamicFragment implements View.OnLongClickL
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        PowerManager pm = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
-        wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Valet");
 
         root = view.findViewById(R.id.root);
 
@@ -104,8 +92,14 @@ public class ParkedFragment extends DynamicFragment implements View.OnLongClickL
             }
         });
 
-        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-        ringtone = RingtoneManager.getRingtone(getActivity().getApplicationContext(), notification);
+        Uri ringtoneUri;
+        if (prefs.contains(Const.RINGTONE_URI_KEY)) {
+            ringtoneUri = Uri.parse(prefs.getString(Const.RINGTONE_URI_KEY, null));
+        } else {
+            ringtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        }
+
+        ringtone = RingtoneManager.getRingtone(getActivity().getApplicationContext(), ringtoneUri);
 
         countdownLinearLayout = (LinearLayout) view.findViewById(R.id.countdown_linear_layout);
         hoursTextView = (TextView) view.findViewById(R.id.hours_text_view);
@@ -196,9 +190,12 @@ public class ParkedFragment extends DynamicFragment implements View.OnLongClickL
     }
 
     private void alarm() {
-        if (ringtone != null) {
-            ringtone.play();
+        if (prefs.getBoolean(Const.ALARM_KEY, false)) {
+            if (ringtone != null) {
+                ringtone.play();
+            }
         }
+
         hoursTextView.setText("00");
         minutesTextView.setText("00");
         secondsTextView.setText("00");
