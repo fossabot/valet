@@ -16,4 +16,6 @@
     <string name="clock">24 Hour Clock</string>
     <string name="select_alarm">Alarm</string>
     <string name="select_ringtone">Select Ringtone</string>
+    <string name="metric_units">Metric Units</string>
+    <string name="standard_units">Standard Units</string>
 </resources>
