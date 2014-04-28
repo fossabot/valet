@@ -26,6 +26,8 @@ public class Const {
     public static final String ALARM_KEY = "co.valetapp.alarm";
     public static final String RINGTONE_URI_KEY = "co.valetapp.ringtone";
     public static final String IS_24_HOUR_CLOCK = "co.valetapp.24hourclock";
+    public static final String IS_STANDARD_UNITS = "standard";
+    public static final String IS_METRIC_UNITS = "metric";
 
     private Const() {
     }

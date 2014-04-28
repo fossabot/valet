@@ -23,6 +23,7 @@ public class SettingsFragment extends DynamicFragment {
 
     Spinner bluetoothSpinner, alarmSpinner;
     CheckBox bluetoothCheckBox, sensorCheckBox, dockCheckBox, notificationsCheckBox, alarmCheckBox, clockCheckBox;
+    RadioGroup unitsRadioGroup;
     ImageButton bluetoothButton;
     SharedPreferences prefs;
     ArrayAdapter<MyBluetoothDevice> bluetoothAdapter;
@@ -127,6 +128,26 @@ public class SettingsFragment extends DynamicFragment {
                 } else {
                     prefs.edit().putBoolean(Const.IS_24_HOUR_CLOCK, false).commit();
                 }
+            }
+        });
+
+        unitsRadioGroup = (RadioGroup) view.findViewById(R.id.unitsRadioGroup);
+        if (prefs.getBoolean(Const.IS_STANDARD_UNITS, false)) {
+            unitsRadioGroup.check(R.id.standardRadioButton);
+        } else {
+            unitsRadioGroup.check(R.id.metricRadioButton);
+        }
+        unitsRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override public void onCheckedChanged(RadioGroup group, int checkedId) {
+                SharedPreferences.Editor editor = prefs.edit();
+                if (checkedId == R.id.standardRadioButton) {
+                    editor.putBoolean(Const.IS_STANDARD_UNITS, true);
+                    editor.putBoolean(Const.IS_METRIC_UNITS, false);
+                } else if (checkedId == R.id.metricRadioButton) {
+                    editor.putBoolean(Const.IS_STANDARD_UNITS, false);
+                    editor.putBoolean(Const.IS_METRIC_UNITS, true);
+                }
+                editor.commit();
             }
         });
     }

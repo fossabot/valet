@@ -10,7 +10,6 @@ import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.location.Location;
 import android.location.LocationManager;
 import android.media.RingtoneManager;
@@ -60,7 +59,6 @@ import com.parse.ParseObject;
 import java.io.File;
 import java.util.Collection;
 import java.util.List;
-import java.util.Locale;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -511,20 +509,11 @@ public class ParkActivity extends FragmentActivity
         DynamicFragment dynamicFragment = getDynamicFragment();
         if (dynamicFragment != null && dynamicFragment instanceof ParkedFragment) {
             ParkedFragment parkedFragment = (ParkedFragment) dynamicFragment;
-            boolean isUs = false;
-            Resources resources = getResources();
-            if (resources != null) {
-                Configuration configuration = resources.getConfiguration();
-                if (configuration != null) {
-                    Locale locale = configuration.locale;
-                    if (locale != null && configuration.locale.equals(Locale.US)) {
-                        isUs = true;
-                    }
-                }
-            }
+            boolean isStandardUnits = false;
+            isStandardUnits = prefs.getBoolean(Const.IS_STANDARD_UNITS, false);
 
             String distance;
-            if (isUs) {
+            if (isStandardUnits) {
                 float d = vehicleLocation.distanceTo(location) * Const.METERS_TO_MILES;
                 distance = String.format("%.2f", d) + getString(R.string.mile_abbreviation);
             } else {
@@ -608,7 +597,9 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onParkItem(View v) {
-        Tools.park(this, vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude, true, true);
+        if (vehicleMarker != null) {
+            Tools.park(this, vehicleMarker.getPosition().latitude, vehicleMarker.getPosition().longitude, true, true);
+        }
 
         setState(State.PARKED);
     }

@@ -1,14 +1,14 @@
 package co.valetapp.activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.Locale;
-
 import co.valetapp.R;
+import co.valetapp.util.Const;
 
 /**
  * Created by jophde on 7/29/13.
@@ -19,6 +19,7 @@ public class LocatedFragment extends DynamicFragment {
 
     TextView accuracyUnitLabelTextView;
     TextView accuracyTextView;
+    SharedPreferences prefs;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,10 +33,11 @@ public class LocatedFragment extends DynamicFragment {
         accuracyUnitLabelTextView = (TextView) view.findViewById(R.id.accuracyUnitLabelTextView);
         accuracyTextView = (TextView) view.findViewById(R.id.accuracyTextView);
 
-        if (getResources().getConfiguration().locale.equals(Locale.US)) {
-            accuracyUnitLabelTextView.setText(R.string.yards);
-        } else {
+        prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
+        if (prefs.getBoolean(Const.IS_METRIC_UNITS, false)) {
             accuracyUnitLabelTextView.setText(R.string.meters);
+        } else {
+            accuracyUnitLabelTextView.setText(R.string.yards);
         }
     }
 
@@ -50,10 +52,10 @@ public class LocatedFragment extends DynamicFragment {
     }
 
     public void setAccuracyTextView(float accuracy) {
-        if (getResources().getConfiguration().locale.equals(Locale.US)) {
-            accuracyTextView.setText(Integer.toString((int) (accuracy * METERS_TO_YARDS)));
-        } else {
+        if (prefs.getBoolean(Const.IS_METRIC_UNITS, false)) {
             accuracyTextView.setText(Integer.toString((int) accuracy));
+        } else {
+            accuracyTextView.setText(Integer.toString((int) (accuracy * METERS_TO_YARDS)));
         }
     }
 

@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class ParkedFragment extends DynamicFragment implements View.OnLongClickListener {
 
@@ -132,12 +131,8 @@ public class ParkedFragment extends DynamicFragment implements View.OnLongClickL
 
             long timeInMillis = Tools.getTime(getActivity());
 
-            if (getResources().getConfiguration().locale.equals(Locale.US)) {
-                dateTextView.setText(android.text.format.DateFormat.format("MMM dd 'at' h:mmaa", timeInMillis));
-            } else {
-                String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date(timeInMillis));
-                dateTextView.setText(currentDateTimeString);
-            }
+            String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date(timeInMillis));
+            dateTextView.setText(currentDateTimeString);
 
             long millisInFuture = timeInMillis - System.currentTimeMillis();
 
