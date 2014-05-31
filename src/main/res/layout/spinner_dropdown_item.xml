@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<co.valetapp.view.FontableCheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/text1"
     style="?android:attr/spinnerDropDownItemStyle"
     android:layout_width="match_parent"
@@ -9,5 +8,4 @@
     android:singleLine="true"
     android:textSize="14sp"
     android:background="@drawable/spinner_selector"
-    android:textColor="@color/inverse_text_selector"
-    app:font="Gotham-Medium.ttf" />
+    android:textColor="@color/inverse_text_selector" />

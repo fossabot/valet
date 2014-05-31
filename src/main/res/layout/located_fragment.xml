@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:babel="http://schemas.android.com/apk/res-auto"
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -14,20 +14,19 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true">
 
-        <co.valetapp.view.FontableTextView
+        <com.babelsdk.main.view.BabelTextView
             android:id="@+id/accuracyLabelTextView"
-            app:font="Gotham-Medium.ttf"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
 
             android:text="@string/accuracy"
+            babel:text="accuracy"
             android:textSize="14sp" />
 
-        <co.valetapp.view.FontableTextView
+        <TextView
             android:id="@+id/accuracyTextView"
-            app:font="Gotham-Medium.ttf"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,14 +35,14 @@
             android:singleLine="true"
             android:textSize="14sp" />
 
-        <co.valetapp.view.FontableTextView
+        <com.babelsdk.main.view.BabelTextView
             android:id="@+id/accuracyUnitLabelTextView"
-            app:font="Gotham-Medium.ttf"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
             android:text="@string/meters"
+            babel:text="meters"
             android:textSize="14sp" />
 
     </LinearLayout>

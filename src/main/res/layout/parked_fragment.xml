@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:babel="http://schemas.android.com/apk/res-auto"
     android:padding="8dp"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp">
 
-        <co.valetapp.view.FontableTextView
+        <TextView
             android:id="@+id/address_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,10 +22,9 @@
             android:textColor="@color/default_text"
             android:hint="@string/hint_address"
             android:textColorHint="@color/hint_text"
-            android:textSize="14sp"
-            app:font="Gotham-Medium.ttf" />
+            android:textSize="14sp" />
 
-        <co.valetapp.view.FontableTextView
+        <TextView
             android:id="@+id/distance_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,8 +34,7 @@
             android:gravity="right"
             android:singleLine="true"
             android:textColor="@color/default_text"
-            android:textSize="14sp"
-            app:font="Gotham-Medium.ttf" />
+            android:textSize="14sp" />
 
     </RelativeLayout>
 
@@ -48,14 +46,13 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <co.valetapp.view.FontableEditText
+        <EditText
             android:id="@+id/noteEditText"
             android:layout_height="wrap_content"
             android:textColor="@color/default_text"
             android:singleLine="true"
             android:textColorHint="@color/hint_text"
             android:hint="@string/note"
-            app:font="Gotham-Medium.ttf"
             android:background="@null"
             android:textSize="14sp"
             android:cursorVisible="false"
@@ -96,7 +93,7 @@
             android:gravity="center"
             android:layout_height="wrap_content">
 
-            <co.valetapp.view.FontableTextView
+            <TextView
                 android:id="@+id/hours_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,17 +101,16 @@
                 android:textSize="24sp"
                 android:gravity="right"
                 android:layout_marginRight="4dp"
-                android:minEms="1"
-                app:font="Gotham-Bold.ttf" />
+                android:minEms="1" />
 
-            <co.valetapp.view.FontableTextView
+            <com.babelsdk.main.view.BabelTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hour_abbreviation"
-                android:textSize="24sp"
-                app:font="Gotham-Bold.ttf" />
+                babel:text="hour_abbreviation"
+                android:textSize="24sp" />
 
-            <co.valetapp.view.FontableTextView
+            <TextView
                 android:id="@+id/minutes_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -122,17 +118,16 @@
                 android:textSize="24sp"
                 android:gravity="right"
                 android:layout_marginRight="4dp"
-                android:minEms="2"
-                app:font="Gotham-Bold.ttf" />
+                android:minEms="2"/>
 
-            <co.valetapp.view.FontableTextView
+            <com.babelsdk.main.view.BabelTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/mintute_abbreviation"
-                android:textSize="24sp"
-                app:font="Gotham-Bold.ttf" />
+                babel:text="minute_abbreviation"
+                android:textSize="24sp" />
 
-            <co.valetapp.view.FontableTextView
+            <TextView
                 android:id="@+id/seconds_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -140,25 +135,22 @@
                 android:textSize="24sp"
                 android:gravity="right"
                 android:layout_marginRight="4dp"
-                android:minEms="2"
-                app:font="Gotham-Bold.ttf" />
+                android:minEms="2" />
 
-            <co.valetapp.view.FontableTextView
+            <com.babelsdk.main.view.BabelTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/second_abbreviation"
-                android:textSize="24sp"
-                app:font="Gotham-Bold.ttf" />
+                babel:text="second_abbreviation"
+                android:textSize="24sp" />
 
         </LinearLayout>
 
-        <co.valetapp.view.FontableTextView
+        <TextView
             android:id="@+id/dateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textSize="12sp"
-            app:font="Gotham-Medium.ttf" />
-
+            android:textSize="12sp" />
     </LinearLayout>
 </LinearLayout>

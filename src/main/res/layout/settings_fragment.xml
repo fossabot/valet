@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:babel="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -20,16 +20,16 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <co.valetapp.view.FontableCheckBox
+            <com.babelsdk.main.view.BabelCheckBox
                 android:id="@+id/bluetoothCheckBox"
                 android:text="@string/select_bluetooth"
+                babel:text="select_bluetooth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:layout_marginEnd="8dp"
                 android:singleLine="true"
-                android:textSize="14sp"
-                app:font="Gotham-Medium.ttf" />
+                android:textSize="14sp" />
 
             <Spinner
                 android:id="@+id/bluetoothSpinner"
@@ -57,25 +57,25 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <co.valetapp.view.FontableCheckBox
+            <com.babelsdk.main.view.BabelCheckBox
                 android:id="@+id/dockCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_marginRight="8dp"
                 android:layout_marginEnd="8dp"
                 android:textSize="14sp"
-                app:font="Gotham-Medium.ttf"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
-                android:text="@string/dock" />
+                android:text="@string/dock"
+                babel:text="dock"/>
 
-            <co.valetapp.view.FontableCheckBox
+            <com.babelsdk.main.view.BabelCheckBox
                 android:id="@+id/sensorCheckBox"
                 android:layout_width="wrap_content"
-                app:font="Gotham-Medium.ttf"
                 android:textSize="14sp"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
-                android:text="@string/parking_sensor" />
+                android:text="@string/parking_sensor"
+                babel:text="parking_sensor"/>
 
         </LinearLayout>
 
@@ -98,26 +98,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <co.valetapp.view.FontableCheckBox
+            <com.babelsdk.main.view.BabelCheckBox
                 android:id="@+id/alarmCheckBox"
                 android:text="@string/alarm_bar_item"
+                babel:text="alarm_bar_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/default_text"
                 android:layout_marginRight="8dp"
                 android:layout_marginEnd="8dp"
                 android:singleLine="true"
-                android:textSize="14sp"
-                app:font="Gotham-Medium.ttf" />
+                android:textSize="14sp" />
 
-            <co.valetapp.view.FontableCheckBox
+            <com.babelsdk.main.view.BabelCheckBox
                 android:id="@+id/clockCheckBox"
                 android:layout_width="wrap_content"
-                app:font="Gotham-Medium.ttf"
                 android:textSize="14sp"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
-                android:text="@string/clock" />
+                android:text="@string/clock"
+                babel:text="clock"/>
 
             <ImageButton
                 android:id="@+id/alarmButton"
@@ -135,14 +135,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <co.valetapp.view.FontableCheckBox
+            <com.babelsdk.main.view.BabelCheckBox
                 android:id="@+id/notificationsCheckBox"
                 android:layout_width="wrap_content"
                 android:textSize="14sp"
-                app:font="Gotham-Medium.ttf"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
-                android:text="@string/notifications" />
+                android:text="@string/notifications"
+                babel:text="notifications"/>
 
         </FrameLayout>
 
@@ -165,27 +165,23 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <co.valetapp.view.FontableRadioButton
+            <com.babelsdk.main.view.BabelRadioButton
                 android:id="@+id/standardRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/standard_units"
-                app:font="Gotham-Medium.ttf"
+                babel:text="standard_units"
                 android:textColor="@color/default_text"
                 android:textSize="14sp" />
 
-            <co.valetapp.view.FontableRadioButton
+            <com.babelsdk.main.view.BabelRadioButton
                 android:id="@+id/metricRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/metric_units"
-                app:font="Gotham-Medium.ttf"
+                babel:text="metric_units"
                 android:textColor="@color/default_text"
                 android:textSize="14sp" />
         </RadioGroup>
-
-
-
     </LinearLayout>
-
 </ScrollView>

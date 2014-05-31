@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.9.+'
+        classpath 'com.android.tools.build:gradle:0.10.+'
     }
 }
 
@@ -11,18 +11,20 @@ apply plugin: 'android'
 
 repositories {
     mavenCentral()
+    maven { url uri('http://repos.babelsdk.com/snapshots') }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
-    compile 'com.google.android.gms:play-services:4.3.23'
+//    compile fileTree(dir: 'libs', include: '*.jar')
+    compile 'com.google.android.gms:play-services:4.4.52'
     compile 'com.android.support:support-v4:19.1.0'
     compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.babelsdk:babel-main:0.1.0-SNAPSHOT'
 }
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.3"
+    buildToolsVersion "19.1.0"
 
     defaultConfig {
         minSdkVersion 10
@@ -42,6 +44,8 @@ android {
 
     buildTypes {
         release {
+            runProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             signingConfig signingConfigs.release
         }
     }

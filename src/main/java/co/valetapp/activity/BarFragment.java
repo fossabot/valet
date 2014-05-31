@@ -15,7 +15,6 @@ public class BarFragment extends Fragment implements View.OnLongClickListener {
 
     public enum BarItem {
         PARK(R.layout.park_bar_item),
-        LOCATION(R.layout.location_bar_item),
         SETTINGS(R.layout.settings_bar_item),
         HELP(R.layout.help_bar_item),
         LOCATING(R.layout.locating_bar_item),

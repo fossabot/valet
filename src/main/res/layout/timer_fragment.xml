@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:babel="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
@@ -13,40 +13,37 @@
         android:layout_marginBottom="32dp"
         android:gravity="center" >
 
-        <co.valetapp.view.FontableTextView
+        <TextView
             android:id="@+id/hour_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLength="2"
             android:minEms="2"
             android:gravity="center"
-            android:textSize="36sp"
-            app:font="Gotham-Medium.ttf" />
+            android:textSize="36sp"/>
         
-        <co.valetapp.view.FontableTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/separator"
-            android:textSize="36sp"
-            app:font="Gotham-Medium.ttf" />
+            android:textSize="36sp"/>
         
-         <co.valetapp.view.FontableTextView
+         <TextView
             android:id="@+id/minutes_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLength="2"
             android:minEms="2"
             android:gravity="center"
-            android:textSize="36sp"
-            app:font="Gotham-Medium.ttf" />
+            android:textSize="36sp"/>
          
-          <co.valetapp.view.FontableTextView
+          <com.babelsdk.main.view.BabelTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="@string/hours"
-            android:textSize="18sp"
-            app:font="Gotham-Medium.ttf" />
+            babel:text="hours"
+            android:textSize="18sp"/>
     </LinearLayout>
 
     <SeekBar
