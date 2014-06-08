@@ -55,6 +55,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.Parse;
+import com.parse.ParseAnalytics;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 
@@ -113,6 +114,8 @@ public class ParkActivity extends FragmentActivity
         BabelSdk.init(this, "valet", "", "");
 
         Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
+        ParseAnalytics.trackAppOpened(getIntent());
+
         Crittercism.initialize(getApplicationContext(), "5145fe5c4002050d07000002");
 
         prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);

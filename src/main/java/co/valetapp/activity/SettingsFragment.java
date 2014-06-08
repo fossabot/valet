@@ -18,10 +18,9 @@ import co.valetapp.R;
 import co.valetapp.service.AutoParkService;
 import co.valetapp.util.Const;
 import com.babelsdk.main.BabelSdk;
+import com.parse.ParseAnalytics;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class SettingsFragment extends DynamicFragment {
 
@@ -50,23 +49,37 @@ public class SettingsFragment extends DynamicFragment {
         babel.setChecked(prefs.getBoolean(BabelSdk.PREF_ENABLE, false));
         babel.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Map<String, String> dimensions = new HashMap<String, String>();
+                dimensions.put("babel_saw_video", Boolean.toString(prefs.getBoolean("saw", false)));
+                dimensions.put("android_version", Integer.toString(Build.VERSION.SDK_INT));
+                dimensions.put("locale", getActivity().getResources().getConfiguration().locale.toString());
 
                 if (isChecked) {
-                    if (!prefs.getBoolean("saw", false)) {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=wipIPLaylBs")));
-                    }
-                    prefs.edit().putBoolean("saw", true).commit();
+                    ParseAnalytics.trackEvent("babel_enable", dimensions);
                     prefs.edit().putBoolean(BabelSdk.PREF_ENABLE, true).commit();
                 } else {
                     prefs.edit().putBoolean(BabelSdk.PREF_ENABLE, false).commit();
+                    ParseAnalytics.trackEvent("babel_disable", dimensions);
                 }
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                     getActivity().recreate();
+                    if (!prefs.getBoolean("saw", false)) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=wipIPLaylBs")));
+                    }
                 } else {
-                    getActivity().finish();
-                    getActivity().startActivity(getActivity().getIntent());
+                    if (prefs.getBoolean("saw", false)) {
+                        getActivity().finish();
+                        getActivity().startActivity(getActivity().getIntent());
+                    } else {
+                        getActivity().finish();
+                        getActivity().startActivity(getActivity().getIntent());
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=wipIPLaylBs")));
+                    }
                 }
+
+
+                prefs.edit().putBoolean("saw", true).commit();
             }
         });
 
