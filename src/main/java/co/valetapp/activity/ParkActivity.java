@@ -255,10 +255,6 @@ public class ParkActivity extends FragmentActivity
                 prefs.edit().remove(Const.IMAGE_KEY);
             }
         }
-    }
-
-    @Override protected void onStart() {
-        super.onStart();
 
         if (servicesConnected()) {
             mLocationClient.connect();
@@ -268,6 +264,7 @@ public class ParkActivity extends FragmentActivity
             showVehicle();
         }
     }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -312,7 +309,6 @@ public class ParkActivity extends FragmentActivity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case CONNECTION_FAILURE_RESOLUTION_REQUEST:
-
                 switch (resultCode) {
                     case RESULT_OK:
                         startActivity(getIntent());
@@ -321,7 +317,7 @@ public class ParkActivity extends FragmentActivity
                         Toast.makeText(this, getString(R.string.not_supported), Toast.LENGTH_LONG).show();
                         finish();
                 }
-
+                break;
             case IMAGE_CAPTURE_REQUEST:
                 switch (resultCode) {
                     case RESULT_OK:
@@ -330,16 +326,19 @@ public class ParkActivity extends FragmentActivity
                         }
                         break;
                 }
+                break;
             case RINGTONE_PICKER_RESULT:
                 switch(resultCode) {
                     case RESULT_OK:
-                        Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
-                        if (uri != null) {
-                            if (BuildConfig.DEBUG) {
-                                Log.d("Ringtone", uri.toString());
+                        if (data != null) {
+                            Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+                            if (uri != null) {
+                                if (BuildConfig.DEBUG) {
+                                    Log.d("Ringtone", uri.toString());
+                                }
+                                prefs.edit().putString(Const.RINGTONE_URI_KEY, uri.toString()).commit();
+                                break;
                             }
-                            prefs.edit().putString(Const.RINGTONE_URI_KEY, uri.toString()).commit();
-                            break;
                         }
                 }
                 break;

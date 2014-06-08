@@ -20,5 +20,5 @@
     <string name="clock">24 Hour Clock</string>
     <string name="metric_units">Metric Units</string>
     <string name="standard_units">Standard Units</string>
-    <string name="translation">Babel Translation (Press and hold text)</string>
+    <string name="translation" translatable="false">Babel Translation (Press and hold text)</string>
 </resources>

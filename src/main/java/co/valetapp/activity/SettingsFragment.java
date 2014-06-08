@@ -63,20 +63,14 @@ public class SettingsFragment extends DynamicFragment {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                     getActivity().recreate();
+                } else {
+                    getActivity().finish();
+                    getActivity().startActivity(getActivity().getIntent());
                 }
             }
         });
 
         bluetoothButton = (ImageView) view.findViewById(R.id.bluetoothButton);
-        bluetoothButton.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Toast.makeText(getActivity(), bluetoothButton.getContentDescription(), Toast.LENGTH_LONG).show();
-
-                return true;
-            }
-        });
-
 
         bluetoothSpinner = (Spinner) view.findViewById(R.id.bluetoothSpinner);
         bluetoothSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
