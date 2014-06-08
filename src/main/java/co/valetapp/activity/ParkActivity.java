@@ -37,8 +37,8 @@ import co.valetapp.service.AutoParkService;
 import co.valetapp.util.Const;
 import co.valetapp.util.IntentLibrary;
 import co.valetapp.util.Tools;
-import com.babelsdk.main.B;
-import com.babelsdk.main.manager.BabelManager;
+import com.babelsdk.main.BabelSdk;
+import com.crittercism.app.Crittercism;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -54,9 +54,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-//import com.parse.Parse;
-//import com.parse.ParseGeoPoint;
-//import com.parse.ParseObject;
+import com.parse.Parse;
+import com.parse.ParseGeoPoint;
+import com.parse.ParseObject;
 
 import java.io.File;
 import java.util.Collection;
@@ -64,6 +64,10 @@ import java.util.List;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+//import com.parse.Parse;
+//import com.parse.ParseGeoPoint;
+//import com.parse.ParseObject;
 
 public class ParkActivity extends FragmentActivity
         implements OnMarkerClickListener, GooglePlayServicesClient.ConnectionCallbacks,
@@ -105,9 +109,11 @@ public class ParkActivity extends FragmentActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        BabelManager.getInstance().setDebug(true);
-        B.init(this, "", "");
-//        Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
+        BabelSdk.DEBUG = false;
+        BabelSdk.init(this, "valet", "", "");
+
+        Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
+        Crittercism.initialize(getApplicationContext(), "5145fe5c4002050d07000002");
 
         prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
         if (!prefs.contains(Const.SHOW_RATING_KEY)) {
@@ -984,15 +990,15 @@ public class ParkActivity extends FragmentActivity
     }
 
     private void saveData() {
-//        if (Tools.isParked(this)) {
-//            ParseGeoPoint point = new ParseGeoPoint(Double.parseDouble(prefs.getString(Const.LAT_KEY, "0")), Double.parseDouble(prefs.getString(Const.LONG_KEY, "0")));
-//            ParseObject park = new ParseObject("Park");
-//            park.put("location", point);
-//            if (Tools.isTimed(this)) {
-//                park.put("time", prefs.getLong(Const.TIME_KEY, 0));
-//            }
-//            park.saveEventually();
-//        }
+        if (Tools.isParked(this)) {
+            ParseGeoPoint point = new ParseGeoPoint(Double.parseDouble(prefs.getString(Const.LAT_KEY, "0")), Double.parseDouble(prefs.getString(Const.LONG_KEY, "0")));
+            ParseObject park = new ParseObject("Park");
+            park.put("location", point);
+            if (Tools.isTimed(this)) {
+                park.put("time", prefs.getLong(Const.TIME_KEY, 0));
+            }
+            park.saveEventually();
+        }
     }
 
     private SupportMapFragment getMapFragment() {

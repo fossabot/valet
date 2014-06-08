@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:babel="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="0dp"
     android:layout_height="@dimen/barHeight"
     android:layout_weight="1"
@@ -13,7 +13,7 @@
         android:onClick="onTimerItem"
         android:background="@drawable/default_selector"
         android:text="@string/timer_bar_item"
-        babel:text="timer_bar_item"
+        app:babel_text="timer_bar_item"
         android:clickable="false"
         android:textSize="18sp" />
 </FrameLayout>

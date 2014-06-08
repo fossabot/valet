@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:babel="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="0dp"
     android:layout_height="@dimen/barHeight"
     android:layout_weight="1"
@@ -8,12 +8,12 @@
 
     <com.babelsdk.main.view.BabelTextView
         android:layout_width="match_parent"
+        android:onClick="onNoItem"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:onClick="onNoItem"
         android:background="@drawable/default_selector"
         android:text="@string/no"
-        babel:text="no"
+        app:babel_text="no"
         android:textColor="@color/default_text_selector"
         android:textSize="18sp" />
 

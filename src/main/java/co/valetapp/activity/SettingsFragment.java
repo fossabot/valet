@@ -6,7 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,7 @@ import android.widget.*;
 import co.valetapp.R;
 import co.valetapp.service.AutoParkService;
 import co.valetapp.util.Const;
+import com.babelsdk.main.BabelSdk;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +28,7 @@ public class SettingsFragment extends DynamicFragment {
     Spinner bluetoothSpinner, alarmSpinner;
     CheckBox bluetoothCheckBox, sensorCheckBox, dockCheckBox, notificationsCheckBox, alarmCheckBox, clockCheckBox;
     RadioGroup unitsRadioGroup;
-    ImageButton bluetoothButton;
+    ImageView bluetoothButton;
     SharedPreferences prefs;
     ArrayAdapter<MyBluetoothDevice> bluetoothAdapter;
     List<MyBluetoothDevice> myBluetoothDevices = new ArrayList<MyBluetoothDevice>();
@@ -40,7 +44,30 @@ public class SettingsFragment extends DynamicFragment {
 
         prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
 
-        bluetoothButton = (ImageButton) view.findViewById(R.id.bluetoothButton);
+        CheckBox babel = (CheckBox) view.findViewById(R.id.translationCheckbox);
+
+        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        babel.setChecked(prefs.getBoolean(BabelSdk.PREF_ENABLE, false));
+        babel.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+                    if (!prefs.getBoolean("saw", false)) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=wipIPLaylBs")));
+                    }
+                    prefs.edit().putBoolean("saw", true).commit();
+                    prefs.edit().putBoolean(BabelSdk.PREF_ENABLE, true).commit();
+                } else {
+                    prefs.edit().putBoolean(BabelSdk.PREF_ENABLE, false).commit();
+                }
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                    getActivity().recreate();
+                }
+            }
+        });
+
+        bluetoothButton = (ImageView) view.findViewById(R.id.bluetoothButton);
         bluetoothButton.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

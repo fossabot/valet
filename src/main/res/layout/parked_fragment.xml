@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:babel="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp">
 
-        <TextView
+        <com.babelsdk.main.view.BabelTextView
             android:id="@+id/address_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,15 +21,17 @@
             android:layout_alignParentLeft="true"
             android:textColor="@color/default_text"
             android:hint="@string/hint_address"
+            app:babel_hint="hint_address"
             android:textColorHint="@color/hint_text"
             android:textSize="14sp" />
 
-        <TextView
+        <com.babelsdk.main.view.BabelTextView
             android:id="@+id/distance_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:hint="@string/hint_distance"
+            app:babel_hint="hint_distance"
             android:textColorHint="@color/hint_text"
             android:gravity="right"
             android:singleLine="true"
@@ -46,36 +48,41 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <EditText
+        <com.babelsdk.main.view.BabelEditText
             android:id="@+id/noteEditText"
             android:layout_height="wrap_content"
             android:textColor="@color/default_text"
             android:singleLine="true"
             android:textColorHint="@color/hint_text"
             android:hint="@string/note"
+            app:babel_hint="note"
             android:background="@null"
             android:textSize="14sp"
             android:cursorVisible="false"
             android:layout_weight="1"
             android:layout_width="0dp" />
 
-        <ImageButton
+        <com.babelsdk.main.view.BabelImageView
             android:id="@+id/deletePictureButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onDeletePictureButton"
+            android:adjustViewBounds="true"
             android:padding="8dp"
             android:src="@drawable/reset_bar_item_selector"
             android:contentDescription="@string/delete"
+            app:babel_content_description="delete"
             android:background="@drawable/default_selector" />
 
-        <ImageButton
+        <com.babelsdk.main.view.BabelImageView
             android:id="@+id/cameraImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:onClick="onCameraButton"
             android:padding="8dp"
             android:contentDescription="@string/camera_button_cd"
+            app:babel_content_description="camera_button_cd"
             android:src="@drawable/camera_selector"
 
             android:background="@drawable/default_selector" />
@@ -107,7 +114,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hour_abbreviation"
-                babel:text="hour_abbreviation"
+                app:babel_text="hour_abbreviation"
                 android:textSize="24sp" />
 
             <TextView
@@ -124,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/mintute_abbreviation"
-                babel:text="minute_abbreviation"
+                app:babel_text="minute_abbreviation"
                 android:textSize="24sp" />
 
             <TextView
@@ -141,7 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/second_abbreviation"
-                babel:text="second_abbreviation"
+                app:babel_text="second_abbreviation"
                 android:textSize="24sp" />
 
         </LinearLayout>

@@ -27,12 +27,12 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class ParkedFragment extends DynamicFragment implements View.OnLongClickListener {
+public class ParkedFragment extends DynamicFragment  {
 
     public TextView addressTextView, distanceTextView;
     public ObjectAnimator addressAnimator, distanceAnimator;
     EditText noteEditText;
-    public ImageButton cameraImageButton, deletePictureButton;
+    public ImageView cameraImageButton, deletePictureButton;
     SharedPreferences prefs;
     View root;
     private static final int SECOND = 1000;
@@ -66,11 +66,9 @@ public class ParkedFragment extends DynamicFragment implements View.OnLongClickL
 
         root = view.findViewById(R.id.root);
 
-        cameraImageButton = (ImageButton) view.findViewById(R.id.cameraImageButton);
-        cameraImageButton.setOnLongClickListener(this);
+        cameraImageButton = (ImageView) view.findViewById(R.id.cameraImageButton);
 
-        deletePictureButton = (ImageButton) view.findViewById(R.id.deletePictureButton);
-        cameraImageButton.setOnLongClickListener(this);
+        deletePictureButton = (ImageView) view.findViewById(R.id.deletePictureButton);
 
         addressTextView = (TextView) view.findViewById(R.id.address_view);
         addressAnimator = ObjectAnimator.ofFloat(addressTextView, "alpha", 0f, 1f);
@@ -222,13 +220,6 @@ public class ParkedFragment extends DynamicFragment implements View.OnLongClickL
             countDownTimer.cancel();
             countDownTimer = null;
         }
-    }
-
-    @Override
-    public boolean onLongClick(View v) {
-        Toast.makeText(getActivity(), v.getContentDescription(), Toast.LENGTH_LONG).show();
-
-        return true;
     }
 
     public class GeoCoderAsyncTask extends AsyncTask<Location, Void, List<Address>> {

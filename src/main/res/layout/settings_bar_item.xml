@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+<com.babelsdk.main.view.BabelImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="48dp"
     android:layout_height="@dimen/barHeight"
     android:layout_margin="8dp"
     android:onClick="onSettingsItem"
+    android:adjustViewBounds="true"
+    android:padding="8dp"
     android:src="@drawable/settings_bar_item_selector"
     android:contentDescription="@string/settings_bar_item_cd"
+    app:babel_content_description="settings_bar_item_cd"
     android:background="@drawable/default_selector" />

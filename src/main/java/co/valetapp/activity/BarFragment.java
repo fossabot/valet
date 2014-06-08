@@ -68,7 +68,7 @@ public class BarFragment extends Fragment implements View.OnLongClickListener {
                 View view = getActivity().getLayoutInflater().inflate(barItem.getResourceId(), barLinearLayout, false);
                 assert view != null;
                 view.setTag(barItem);
-                view.setOnLongClickListener(this);
+//                view.setOnLongClickListener(this);
                 barLinearLayout.addView(view);
             }
         }
