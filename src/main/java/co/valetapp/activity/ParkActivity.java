@@ -37,8 +37,6 @@ import co.valetapp.service.AutoParkService;
 import co.valetapp.util.Const;
 import co.valetapp.util.IntentLibrary;
 import co.valetapp.util.Tools;
-import com.babelsdk.main.BabelSdk;
-import com.crittercism.app.Crittercism;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -54,7 +52,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
@@ -110,13 +107,7 @@ public class ParkActivity extends FragmentActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        BabelSdk.DEBUG = false;
-        BabelSdk.init(this, "valet", "", "");
-
-        Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
         ParseAnalytics.trackAppOpened(getIntent());
-
-        Crittercism.initialize(getApplicationContext(), "5145fe5c4002050d07000002");
 
         prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
         if (!prefs.contains(Const.SHOW_RATING_KEY)) {
@@ -179,11 +170,11 @@ public class ParkActivity extends FragmentActivity
 
 
             if (savedInstanceState != null) {
-                // If the actiivty is destroyed the system forgets that the saved variable was a Stack and not an ArrayList.
-                // This hack deals with that.
-//                stateStack = (Stack<State>) savedInstanceState.getSerializable(STATE_STACK);
-                stateStack.addAll((Collection<State>) savedInstanceState.getSerializable(STATE_STACK));
-                setState(stateStack.peek(), false);
+                if (savedInstanceState.containsKey(STATE_STACK)) {
+                    stateStack.addAll((Collection<State>) savedInstanceState.getSerializable(STATE_STACK));
+                    setState(stateStack.peek(), false);
+                }
+
 
                 Handler h = new Handler();
                 h.post(new Runnable() {
@@ -486,10 +477,12 @@ public class ParkActivity extends FragmentActivity
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
 
             if (vehicleMarker == null) {
-                vehicleMarker = googleMap.addMarker(new MarkerOptions()
-                        .position(latLng)
-                        .draggable(true)
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin)));
+                if (googleMap != null) {
+                    vehicleMarker = googleMap.addMarker(new MarkerOptions()
+                            .position(latLng)
+                            .draggable(true)
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin)));
+                }
             } else if (location.getAccuracy() != 0.0f && location.getAccuracy() < bestAccuracy) {
                 vehicleMarker.setPosition(latLng);
 
