@@ -3,6 +3,7 @@ package co.valetapp.activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,14 @@ public class LocatedFragment extends DynamicFragment {
         accuracyTextView = (TextView) view.findViewById(R.id.accuracyTextView);
 
         prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
+        if (prefs.contains(Const.IS_METRIC_UNITS)) {
+            Log.d("valet", "has metric unit key");
+        }
+
+        if (prefs.contains((Const.IS_STANDARD_UNITS))) {
+            Log.d("valet", "has standard unit key");
+        }
+
         if (prefs.getBoolean(Const.IS_METRIC_UNITS, false)) {
             accuracyUnitLabelTextView.setText(R.string.meters);
         } else {

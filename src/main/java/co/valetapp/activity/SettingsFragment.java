@@ -6,10 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,42 +42,20 @@ public class SettingsFragment extends DynamicFragment {
         prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
 
         CheckBox babel = (CheckBox) view.findViewById(R.id.translationCheckbox);
-
-        final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        babel.setChecked(prefs.getBoolean(BabelSdk.PREF_ENABLE, false));
+        babel.setChecked(BabelSdk.isEnabled(getActivity()));
         babel.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 Map<String, String> dimensions = new HashMap<String, String>();
-                dimensions.put("babel_saw_video", Boolean.toString(prefs.getBoolean("saw", false)));
                 dimensions.put("android_version", Integer.toString(Build.VERSION.SDK_INT));
                 dimensions.put("locale", getActivity().getResources().getConfiguration().locale.toString());
 
                 if (isChecked) {
                     ParseAnalytics.trackEvent("babel_enable", dimensions);
-                    prefs.edit().putBoolean(BabelSdk.PREF_ENABLE, true).commit();
                 } else {
-                    prefs.edit().putBoolean(BabelSdk.PREF_ENABLE, false).commit();
                     ParseAnalytics.trackEvent("babel_disable", dimensions);
                 }
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                    getActivity().recreate();
-                    if (!prefs.getBoolean("saw", false)) {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=wipIPLaylBs")));
-                    }
-                } else {
-                    if (prefs.getBoolean("saw", false)) {
-                        getActivity().finish();
-                        getActivity().startActivity(getActivity().getIntent());
-                    } else {
-                        getActivity().finish();
-                        getActivity().startActivity(getActivity().getIntent());
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=wipIPLaylBs")));
-                    }
-                }
-
-
-                prefs.edit().putBoolean("saw", true).commit();
+                BabelSdk.setEnabled(getActivity(), isChecked);
             }
         });
 
@@ -166,6 +142,7 @@ public class SettingsFragment extends DynamicFragment {
         });
 
         unitsRadioGroup = (RadioGroup) view.findViewById(R.id.unitsRadioGroup);
+
         if (prefs.getBoolean(Const.IS_STANDARD_UNITS, false)) {
             unitsRadioGroup.check(R.id.standardRadioButton);
         } else {

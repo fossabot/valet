@@ -35,14 +35,11 @@
             android:singleLine="true"
             android:textSize="14sp" />
 
-        <com.babelsdk.main.view.BabelTextView
+        <TextView
             android:id="@+id/accuracyUnitLabelTextView"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text="@string/meters"
-            app:babel_text="meters"
             android:textSize="14sp" />
 
     </LinearLayout>

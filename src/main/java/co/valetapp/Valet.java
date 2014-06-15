@@ -11,6 +11,7 @@ public class Valet extends Application {
 
         BabelSdk.DEBUG = BuildConfig.DEBUG;
         BabelSdk.init(this, "valet", "", "");
+        BabelSdk.setEnabled(this, true);
 
         Parse.initialize(this, "Rk1aoK66rLulnNtaALeL6PhQcGEDkmiudGItreof", "zcG1VzOhhxkQofbYaGNqbHC0BHKbw6myuNkZDeuq");
         Crittercism.initialize(getApplicationContext(), "5145fe5c4002050d07000002");

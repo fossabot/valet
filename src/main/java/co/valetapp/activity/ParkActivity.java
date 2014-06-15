@@ -59,6 +59,7 @@ import com.parse.ParseObject;
 import java.io.File;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -112,6 +113,21 @@ public class ParkActivity extends FragmentActivity
         prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
         if (!prefs.contains(Const.SHOW_RATING_KEY)) {
             prefs.edit().putBoolean(Const.SHOW_RATING_KEY, true);
+        }
+
+        if (!prefs.contains(Const.IS_STANDARD_UNITS) && !prefs.contains(Const.IS_METRIC_UNITS) && !prefs.contains(Const.IS_24_HOUR_CLOCK)) {
+            SharedPreferences.Editor editor = prefs.edit();
+            Locale locale = getResources().getConfiguration().locale;
+            if (locale.equals(Locale.US)) {
+                editor.putBoolean(Const.IS_STANDARD_UNITS, true);
+                editor.putBoolean(Const.IS_METRIC_UNITS, false);
+                editor.putBoolean(Const.IS_24_HOUR_CLOCK, false);
+            } else {
+                editor.putBoolean(Const.IS_STANDARD_UNITS, false);
+                editor.putBoolean(Const.IS_METRIC_UNITS, true);
+                editor.putBoolean(Const.IS_24_HOUR_CLOCK, true);
+            }
+            editor.commit();
         }
 
         am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);

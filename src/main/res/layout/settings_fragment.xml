@@ -168,21 +168,19 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <com.babelsdk.main.view.BabelRadioButton
+            <RadioButton
                 android:id="@+id/standardRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/standard_units"
-                app:babel_text="standard_units"
                 android:textColor="@color/default_text"
                 android:textSize="14sp" />
 
-            <com.babelsdk.main.view.BabelRadioButton
+            <RadioButton
                 android:id="@+id/metricRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/metric_units"
-                app:babel_text="metric_units"
                 android:textColor="@color/default_text"
                 android:textSize="14sp" />
         </RadioGroup>
