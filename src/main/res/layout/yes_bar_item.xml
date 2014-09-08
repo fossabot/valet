@@ -6,13 +6,12 @@
     android:layout_margin="8dp"
     android:layout_weight="2">
 
-    <com.babelsdk.main.view.BabelTextView
+    <TextView
         android:onClick="onYesItem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/yes"
-        app:babel_text="yes"
         android:textColor="@color/inverse_text_selector"
         android:background="@drawable/highlighted_selector"
         android:textSize="18sp" />

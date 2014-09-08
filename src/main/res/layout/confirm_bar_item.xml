@@ -6,14 +6,13 @@ android:layout_height="@dimen/barHeight"
 android:layout_margin="8dp"
 android:layout_weight="1">
 
-<com.babelsdk.main.view.BabelTextView
+<TextView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/default_selector"
     android:gravity="center"
     android:onClick="onUnparkItem"
     android:text="@string/unpark_bar_item"
-    app:babel_text="unpark_bar_item"
     android:textColor="@color/default_text_selector"
     android:clickable="false"
     android:textSize="18sp"/>

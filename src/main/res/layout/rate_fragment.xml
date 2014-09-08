@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.babelsdk.main.view.BabelTextView
+<TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
     android:text="@string/rate"
-    app:babel_text="rate"
     android:gravity="center"
     android:singleLine="true"
     android:textSize="18sp"

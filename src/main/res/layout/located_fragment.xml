@@ -14,15 +14,12 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true">
 
-        <com.babelsdk.main.view.BabelTextView
+        <TextView
             android:id="@+id/accuracyLabelTextView"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
-
             android:text="@string/accuracy"
-            app:babel_text="accuracy"
             android:textSize="14sp" />
 
         <TextView
@@ -45,7 +42,7 @@
     </LinearLayout>
 
 
-    <com.babelsdk.main.view.BabelImageView
+    <ImageView
         android:id="@+id/locationImageButton"
         android:onClick="onLocationItem"
         android:layout_width="48dp"
@@ -55,6 +52,5 @@
         android:layout_alignParentRight="true"
         android:src="@drawable/location_bar_item_selector"
         android:contentDescription="@string/locate_bar_item_cd"
-        app:babel_content_description="locate_bar_item_cd"
         android:background="@drawable/default_selector" />
 </RelativeLayout>

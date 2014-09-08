@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.babelsdk.main.view.BabelImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:babel_content_description="locate_bar_item_cd"
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="48dp"
     android:layout_height="@dimen/barHeight"
     android:layout_margin="8dp"

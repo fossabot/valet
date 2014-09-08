@@ -8,21 +8,19 @@
     android:id="@+id/radioGroup"
     android:gravity="center">
 
-    <com.babelsdk.main.view.BabelRadioButton
+    <RadioButton
         android:id="@+id/normalRadioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/normal_radio_button"
-        app:babel_text="normal_radio_button"
         android:textColor="@color/default_text"
         android:textSize="14sp" />
 
-    <com.babelsdk.main.view.BabelRadioButton
+    <RadioButton
         android:id="@+id/satelliteRadioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/satellite_radio_button"
-        app:babel_text="satellite_radio_button"
         android:textColor="@color/default_text"
         android:textSize="14sp" />
 </RadioGroup>

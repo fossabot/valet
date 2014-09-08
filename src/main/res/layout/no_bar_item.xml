@@ -6,14 +6,13 @@
     android:layout_weight="1"
     android:layout_margin="8dp">
 
-    <com.babelsdk.main.view.BabelTextView
+    <TextView
         android:layout_width="match_parent"
         android:onClick="onNoItem"
         android:layout_height="match_parent"
         android:gravity="center"
         android:background="@drawable/default_selector"
         android:text="@string/no"
-        app:babel_text="no"
         android:textColor="@color/default_text_selector"
         android:textSize="18sp" />
 

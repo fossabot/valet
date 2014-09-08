@@ -15,7 +15,6 @@ import android.widget.*;
 import co.valetapp.R;
 import co.valetapp.service.AutoParkService;
 import co.valetapp.util.Const;
-import com.babelsdk.main.BabelSdk;
 import com.parse.ParseAnalytics;
 
 import java.util.*;
@@ -40,24 +39,6 @@ public class SettingsFragment extends DynamicFragment {
         super.onViewCreated(view, savedInstanceState);
 
         prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
-
-        CheckBox babel = (CheckBox) view.findViewById(R.id.translationCheckbox);
-        babel.setChecked(BabelSdk.isEnabled(getActivity()));
-        babel.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Map<String, String> dimensions = new HashMap<String, String>();
-                dimensions.put("android_version", Integer.toString(Build.VERSION.SDK_INT));
-                dimensions.put("locale", getActivity().getResources().getConfiguration().locale.toString());
-
-                if (isChecked) {
-                    ParseAnalytics.trackEvent("babel_enable", dimensions);
-                } else {
-                    ParseAnalytics.trackEvent("babel_disable", dimensions);
-                }
-
-                BabelSdk.setEnabled(getActivity(), isChecked);
-            }
-        });
 
         bluetoothButton = (ImageView) view.findViewById(R.id.bluetoothButton);
 

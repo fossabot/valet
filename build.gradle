@@ -3,17 +3,16 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.10.+'
+        classpath 'com.android.tools.build:gradle:0.12.1'
         classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.10.+'
     }
 }
 
 apply plugin: 'android-sdk-manager'
-apply plugin: 'android'
+apply plugin: 'com.android.application'
 
 repositories {
     mavenCentral()
-    maven { url uri('http://repos.babelsdk.com/releases') }
 }
 
 dependencies {
@@ -21,18 +20,18 @@ dependencies {
     compile 'com.google.android.gms:play-services:4.4.52'
     compile 'com.android.support:support-v4:19.1.0'
     compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.babelsdk:babel-main:0.1.7'
+    compile project(':sdk')
 }
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
 
     defaultConfig {
         minSdkVersion 10
-        targetSdkVersion 19
-        versionName "2.1.7"
-        versionCode 42
+        targetSdkVersion 20
+        versionName "2.1.9"
+        versionCode 44
     }
 
     signingConfigs {

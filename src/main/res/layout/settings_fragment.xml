@@ -20,10 +20,9 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <com.babelsdk.main.view.BabelCheckBox
+            <CheckBox
                 android:id="@+id/bluetoothCheckBox"
                 android:text="@string/select_bluetooth"
-                app:babel_text="select_bluetooth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
@@ -39,7 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
 
-            <com.babelsdk.main.view.BabelImageView
+            <ImageView
                 android:id="@+id/bluetoothButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -47,7 +46,6 @@
                 android:padding="8dp"
                 android:src="@drawable/bluetooth_selector"
                 android:contentDescription="@string/select_bluetooth"
-                app:babel_content_description="select_bluetooth"
                 android:background="@drawable/default_selector" />
 
         </LinearLayout>
@@ -58,7 +56,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <com.babelsdk.main.view.BabelCheckBox
+            <CheckBox
                 android:id="@+id/dockCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_marginRight="8dp"
@@ -66,17 +64,15 @@
                 android:textSize="14sp"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
-                android:text="@string/dock"
-                app:babel_text="dock"/>
+                android:text="@string/dock" />
 
-            <com.babelsdk.main.view.BabelCheckBox
+            <CheckBox
                 android:id="@+id/sensorCheckBox"
                 android:layout_width="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
-                android:text="@string/parking_sensor"
-                app:babel_text="parking_sensor"/>
+                android:text="@string/parking_sensor" />
 
         </LinearLayout>
 
@@ -99,10 +95,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.babelsdk.main.view.BabelCheckBox
+            <CheckBox
                 android:id="@+id/alarmCheckBox"
                 android:text="@string/alarm_bar_item"
-                app:babel_text="alarm_bar_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/default_text"
@@ -111,16 +106,15 @@
                 android:singleLine="true"
                 android:textSize="14sp" />
 
-            <com.babelsdk.main.view.BabelCheckBox
+            <CheckBox
                 android:id="@+id/clockCheckBox"
                 android:layout_width="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
-                android:text="@string/clock"
-                app:babel_text="clock"/>
+                android:text="@string/clock"/>
 
-            <com.babelsdk.main.view.BabelImageView
+            <ImageView
                 android:id="@+id/alarmButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -129,7 +123,6 @@
                 android:layout_marginLeft="8dp"
                 android:src="@drawable/alarm_selector"
                 android:contentDescription="@string/select_ringtone"
-                app:babel_content_description="select_ringtone"
                 android:background="@drawable/default_selector" />
         </LinearLayout>
 
@@ -137,14 +130,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.babelsdk.main.view.BabelCheckBox
+            <CheckBox
                 android:id="@+id/notificationsCheckBox"
                 android:layout_width="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
-                android:text="@string/notifications"
-                app:babel_text="notifications"/>
+                android:text="@string/notifications"/>
 
         </FrameLayout>
 
@@ -196,16 +188,5 @@
                 android:layout_height="1dp"
                 android:background="@color/default_text" />
         </FrameLayout>
-
-        <com.babelsdk.main.view.BabelCheckBox
-            android:id="@+id/translationCheckbox"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:textSize="14sp"
-            android:layout_gravity="left"
-            android:textColor="@color/default_text"
-            android:layout_height="wrap_content"
-            android:text="@string/translation"
-            app:babel_text="translation"/>
     </LinearLayout>
 </ScrollView>

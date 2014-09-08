@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.babelsdk.main.view.BabelImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="0dp"
     android:layout_height="@dimen/barHeight"
     android:layout_weight="1"
@@ -10,5 +9,4 @@
     android:onClick="onShareItem"
     android:src="@drawable/share_bar_item_selector"
     android:contentDescription="@string/share_bar_item_cd"
-    app:babel_content_description="share_bar_item_cd"
     android:background="@drawable/default_selector" />
