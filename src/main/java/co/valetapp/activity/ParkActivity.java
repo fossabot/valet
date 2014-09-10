@@ -37,6 +37,7 @@ import co.valetapp.service.AutoParkService;
 import co.valetapp.util.Const;
 import co.valetapp.util.IntentLibrary;
 import co.valetapp.util.Tools;
+import com.colatris.sdk.Colatris;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -105,6 +106,8 @@ public class ParkActivity extends FragmentActivity
     LocationRequest mLocationRequest;
     LocationClient mLocationClient;
     Uri mPictureUri;
+
+    @Override protected void attachBaseContext(Context newBase) { super.attachBaseContext(Colatris.proxy(newBase)); }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

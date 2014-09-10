@@ -10,9 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:clickable="true"
         android:onClick="onTimerItem"
         android:background="@drawable/default_selector"
         android:text="@string/timer_bar_item"
-        android:clickable="false"
         android:textSize="18sp" />
 </FrameLayout>

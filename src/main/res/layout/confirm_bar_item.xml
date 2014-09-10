@@ -14,7 +14,7 @@ android:layout_weight="1">
     android:onClick="onUnparkItem"
     android:text="@string/unpark_bar_item"
     android:textColor="@color/default_text_selector"
-    android:clickable="false"
+    android:clickable="true"
     android:textSize="18sp"/>
 
 </FrameLayout>

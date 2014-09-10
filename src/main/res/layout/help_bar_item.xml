@@ -12,6 +12,7 @@
         android:onClick="onHelpItem"
         android:layout_gravity="center"
         android:gravity="center"
+        android:clickable="true"
         android:text="@string/bar_item_help"
         android:background="@drawable/default_selector"
         android:textSize="18sp" />

@@ -176,17 +176,5 @@
                 android:textColor="@color/default_text"
                 android:textSize="14sp" />
         </RadioGroup>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="16dp"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-            <View
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/default_text" />
-        </FrameLayout>
     </LinearLayout>
 </ScrollView>

@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="@string/yes"
+        android:clickable="true"
         android:textColor="@color/inverse_text_selector"
         android:background="@drawable/highlighted_selector"
         android:textSize="18sp" />
