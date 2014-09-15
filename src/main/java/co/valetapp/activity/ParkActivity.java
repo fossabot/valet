@@ -53,9 +53,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.parse.ParseAnalytics;
-import com.parse.ParseGeoPoint;
-import com.parse.ParseObject;
 
 import java.io.File;
 import java.util.Collection;
@@ -64,10 +61,6 @@ import java.util.Locale;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-//import com.parse.Parse;
-//import com.parse.ParseGeoPoint;
-//import com.parse.ParseObject;
 
 public class ParkActivity extends FragmentActivity
         implements OnMarkerClickListener, GooglePlayServicesClient.ConnectionCallbacks,
@@ -111,8 +104,6 @@ public class ParkActivity extends FragmentActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ParseAnalytics.trackAppOpened(getIntent());
-
         prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
         if (!prefs.contains(Const.SHOW_RATING_KEY)) {
             prefs.edit().putBoolean(Const.SHOW_RATING_KEY, true);
@@ -709,8 +700,6 @@ public class ParkActivity extends FragmentActivity
     public void onUnparkItem(View v) {
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        saveData();
-
         Tools.unpark(this);
         mPictureUri = null;
 
@@ -1001,18 +990,6 @@ public class ParkActivity extends FragmentActivity
         googleMap.animateCamera(cameraUpdate);
 
         googleMap.setMyLocationEnabled(true);
-    }
-
-    private void saveData() {
-        if (Tools.isParked(this)) {
-            ParseGeoPoint point = new ParseGeoPoint(Double.parseDouble(prefs.getString(Const.LAT_KEY, "0")), Double.parseDouble(prefs.getString(Const.LONG_KEY, "0")));
-            ParseObject park = new ParseObject("Park");
-            park.put("location", point);
-            if (Tools.isTimed(this)) {
-                park.put("time", prefs.getLong(Const.TIME_KEY, 0));
-            }
-            park.saveEventually();
-        }
     }
 
     private SupportMapFragment getMapFragment() {

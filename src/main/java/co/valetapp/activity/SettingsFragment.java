@@ -15,7 +15,6 @@ import android.widget.*;
 import co.valetapp.R;
 import co.valetapp.service.AutoParkService;
 import co.valetapp.util.Const;
-import com.parse.ParseAnalytics;
 
 import java.util.*;
 
