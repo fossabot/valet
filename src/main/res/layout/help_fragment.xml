@@ -11,6 +11,5 @@
         android:text="@string/auto_info"
         android:layout_gravity="center"
         android:lineSpacingExtra="2dp"
-        android:clickable="true"
         android:id="@+id/textView" />
 </ScrollView>
