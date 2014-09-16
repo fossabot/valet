@@ -21,4 +21,5 @@
     <string name="metric_units">Metric Units</string>
     <string name="standard_units">Standard Units</string>
     <string name="translation" translatable="false">Babel Translation (Press and hold text)</string>
+    <string name="accuracy_f">accuracy: %1$d %2$s</string>
 </resources>

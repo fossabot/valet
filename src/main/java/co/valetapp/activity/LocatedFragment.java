@@ -18,7 +18,6 @@ public class LocatedFragment extends DynamicFragment {
 
     static final double METERS_TO_YARDS = 1.09361;
 
-    TextView accuracyUnitLabelTextView;
     TextView accuracyTextView;
     SharedPreferences prefs;
 
@@ -31,23 +30,9 @@ public class LocatedFragment extends DynamicFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        accuracyUnitLabelTextView = (TextView) view.findViewById(R.id.accuracyUnitLabelTextView);
         accuracyTextView = (TextView) view.findViewById(R.id.accuracyTextView);
 
         prefs = getActivity().getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
-        if (prefs.contains(Const.IS_METRIC_UNITS)) {
-            Log.d("valet", "has metric unit key");
-        }
-
-        if (prefs.contains((Const.IS_STANDARD_UNITS))) {
-            Log.d("valet", "has standard unit key");
-        }
-
-        if (prefs.getBoolean(Const.IS_METRIC_UNITS, false)) {
-            accuracyUnitLabelTextView.setText(R.string.meters);
-        } else {
-            accuracyUnitLabelTextView.setText(R.string.yards);
-        }
     }
 
     @Override
@@ -61,11 +46,13 @@ public class LocatedFragment extends DynamicFragment {
     }
 
     public void setAccuracyTextView(float accuracy) {
+        String text;
         if (prefs.getBoolean(Const.IS_METRIC_UNITS, false)) {
-            accuracyTextView.setText(Integer.toString((int) accuracy));
+            text = getString(R.string.accuracy_f, (int) accuracy, getText(R.string.meters));
         } else {
-            accuracyTextView.setText(Integer.toString((int) (accuracy * METERS_TO_YARDS)));
+            text = getString(R.string.accuracy_f, (int) (accuracy * METERS_TO_YARDS), getText(R.string.yards));
         }
+        accuracyTextView.setText(text);
     }
 
 }
