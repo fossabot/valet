@@ -34,5 +34,4 @@
 	<string name="reset_dialog_positive_button">Yes</string>
 	<string name="reset_dialog_no_button">No</string>
     <string name="camera_button_cd">Take a picture</string>
-
 </resources>

@@ -8,7 +8,7 @@ public class Valet extends Application {
     @Override public void onCreate() {
         super.onCreate();
 
-        Colatris.init(1, R.class, this, !BuildConfig.DEBUG);
+        Colatris.init(1, R.class, this, true);
         Crittercism.initialize(getApplicationContext(), "5145fe5c4002050d07000002");
     }
 }
