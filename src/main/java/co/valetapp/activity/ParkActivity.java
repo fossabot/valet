@@ -627,6 +627,10 @@ public class ParkActivity extends FragmentActivity
         setState(State.HELP);
     }
 
+    public void onTranslateItem(View v) {
+        Colatris.showTranslatorPrompt();
+    }
+
     public void onFindItem(View v) {
         setState(State.FIND);
     }
@@ -896,7 +900,7 @@ public class ParkActivity extends FragmentActivity
             case SETTINGS:
                 dynamicFragment = new SettingsFragment();
 
-                barFragment.setItems(BarItem.HELP);
+                barFragment.setItems(BarItem.TRANSLATE, BarItem.HELP);
 
                 break;
 
@@ -908,7 +912,6 @@ public class ParkActivity extends FragmentActivity
                 barFragment.setItems(BarItem.YES, BarItem.NO, BarItem.NEVER);
 
                 break;
-
         }
 
         FragmentManager fm = getSupportFragmentManager();
