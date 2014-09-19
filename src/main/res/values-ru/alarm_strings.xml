@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="hour_abbreviation">ч</string>
+    <string name="mintute_abbreviation">м</string>
+    <string name="second_abbreviation">с</string>
+</resources>
