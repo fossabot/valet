@@ -20,4 +20,6 @@
     <string name="select_ringtone">Select Ringtone</string>
     <string name="metric_units">Metric Units</string>
     <string name="standard_units">Standard Units</string>
+    <string name="accuracy_f">accuracy: %1$d %2$s</string>
+    <string name="bar_item_translate">Translate</string>
 </resources>
