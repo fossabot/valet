@@ -4,7 +4,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.12.1'
-        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.10.+'
+        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
     }
 }
 
@@ -30,8 +30,8 @@ android {
     defaultConfig {
         minSdkVersion 10
         targetSdkVersion 20
-        versionName "2.1.9"
-        versionCode 44
+        versionName "2.2.0"
+        versionCode 45
     }
 
     signingConfigs {
