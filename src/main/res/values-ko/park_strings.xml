@@ -13,7 +13,6 @@
 	<string name="share_intent_chooser_title">공유</string>
 	<string name="find_intent_chooser_title">찾기</string>
 	<string name="vehicle_marker_title">당신의 차</string>
-	<string name="accuracy_abbreviation">정확도</string>
     <string name="mile_abbreviation">마일</string>
     <string name="kilometer_abbreviation">km</string>
 	<string name="pm">오후</string>

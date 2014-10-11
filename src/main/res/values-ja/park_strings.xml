@@ -14,7 +14,6 @@
 	<string name="share_intent_chooser_title">共有する</string>
 	<string name="find_intent_chooser_title">探す</string>
 	<string name="vehicle_marker_title">あなたの車</string>
-	<string name="accuracy_abbreviation">正確性</string>
     <string name="mile_abbreviation">分</string>
     <string name="kilometer_abbreviation">キロ</string>
 	<string name="pm">PM</string>

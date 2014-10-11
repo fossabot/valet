@@ -13,7 +13,6 @@
 	<string name="share_intent_chooser_title">Delen</string>
 	<string name="find_intent_chooser_title">Zoeken</string>
 	<string name="vehicle_marker_title">Uw auto</string>
-	<string name="accuracy_abbreviation">nauwk</string>
     <string name="mile_abbreviation">mijl</string>
     <string name="kilometer_abbreviation">km</string>
 	<string name="pm">PM</string>

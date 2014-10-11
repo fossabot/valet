@@ -13,7 +13,6 @@
 	<string name="share_intent_chooser_title">共享</string>
 	<string name="find_intent_chooser_title">寻找</string>
 	<string name="vehicle_marker_title">您的车</string>
-	<string name="accuracy_abbreviation">精确度</string>
     <string name="mile_abbreviation">英里</string>
     <string name="kilometer_abbreviation">公里</string>
 	<string name="pm">下午</string>

@@ -13,7 +13,6 @@
 	<string name="share_intent_chooser_title">Megosztás</string>
 	<string name="find_intent_chooser_title">Keresés</string>
 	<string name="vehicle_marker_title">Az autóm</string>
-	<string name="accuracy_abbreviation">pontosság</string>
     <string name="mile_abbreviation">mérföld</string>
     <string name="kilometer_abbreviation">km</string>
 	<string name="pm">du.</string>

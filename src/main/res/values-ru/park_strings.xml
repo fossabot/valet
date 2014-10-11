@@ -17,7 +17,6 @@
     <string name="share_intent_chooser_title">Поделиться</string>
     <string name="find_intent_chooser_title">Найти</string>
     <string name="vehicle_marker_title">Ваша машина</string>
-    <string name="accuracy_abbreviation">точн</string>
     <string name="mile_abbreviation">миль</string>
     <string name="kilometer_abbreviation">км</string>
     <string name="pm">ПП</string>

@@ -13,7 +13,6 @@
 	<string name="share_intent_chooser_title">Partilhar</string>
 	<string name="find_intent_chooser_title">Procurar</string>
 	<string name="vehicle_marker_title">O seu carro</string>
-	<string name="accuracy_abbreviation">precisão</string>
     <string name="mile_abbreviation">mi</string>
     <string name="kilometer_abbreviation">km</string>
 	<string name="pm">PM</string>

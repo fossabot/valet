@@ -1,39 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:padding="8dp">
 
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
-    android:padding="8dp">
-
-    <LinearLayout
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/accuracyTextView"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true">
-
-        <TextView
-            android:id="@+id/accuracyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:singleLine="true"
-            android:textSize="14sp" />
-
-    </LinearLayout>
-
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:singleLine="true"
+        android:textColor="@color/default_text"
+        android:textSize="14sp"/>
 
     <ImageView
         android:id="@+id/locationImageButton"
-        android:onClick="onLocationItem"
         android:layout_width="48dp"
         android:layout_height="@dimen/barHeight"
-        android:padding="8dp"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:src="@drawable/location_bar_item_selector"
+        android:layout_centerVertical="true"
+        android:background="@drawable/default_selector"
         android:contentDescription="@string/locate_bar_item_cd"
-        android:background="@drawable/default_selector" />
+        android:onClick="onLocationItem"
+        android:padding="8dp"
+        android:src="@drawable/location_bar_item_selector"/>
 </RelativeLayout>
