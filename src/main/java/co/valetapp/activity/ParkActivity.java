@@ -628,7 +628,7 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onTranslateItem(View v) {
-        Colatris.showTranslatorPrompt();
+//        Colatris.showTranslatorPrompt();
     }
 
     public void onFindItem(View v) {
