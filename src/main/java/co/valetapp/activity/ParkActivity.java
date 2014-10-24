@@ -66,6 +66,11 @@ public class ParkActivity extends FragmentActivity
         implements OnMarkerClickListener, GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener, LocationListener, FindFragment.Callback {
 
+    private static final String PROVIDER = "flp";
+    private static final double LAT = 37.377166;
+    private static final double LNG = -122.086966;
+    private static final float ACCURACY = 3.0f;
+
     public static final int RINGTONE_PICKER_RESULT = 11;
 
     // Update frequency in seconds
@@ -261,7 +266,10 @@ public class ParkActivity extends FragmentActivity
         }
 
         if (servicesConnected()) {
-            mLocationClient.connect();
+            if (!BuildConfig.DEBUG) {
+                mockLocation();
+                mLocationClient.connect();
+            }
         }
 
         if (Tools.isParked(this)) {
@@ -481,6 +489,7 @@ public class ParkActivity extends FragmentActivity
 
     @Override
     public void onLocationChanged(Location location) {
+        Log.d("VALET", "-----> On Location Changed");
         if (Tools.isParked(this)) {
             if (getDynamicFragment() instanceof ParkedFragment) setParkedFragment(location);
         } else {
@@ -504,7 +513,7 @@ public class ParkActivity extends FragmentActivity
             bestAccuracy = location.getAccuracy();
 
 
-            if (isParkingFragment()) {
+            if (isParkingFragment() || BuildConfig.DEBUG) {
                 setState(State.LOCATED);
             }
 
@@ -556,7 +565,10 @@ public class ParkActivity extends FragmentActivity
 
     @Override
     public void onConnected(Bundle bundle) {
+        Log.d("VALET", "-----> Location services connected");
+
         Location location = mLocationClient.getLastLocation();
+
         if (location != null) {
             if (!Tools.isParked(this)) {
                 CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(
@@ -567,6 +579,7 @@ public class ParkActivity extends FragmentActivity
 
             }
         }
+
         mLocationClient.requestLocationUpdates(mLocationRequest, this);
     }
 
@@ -818,6 +831,7 @@ public class ParkActivity extends FragmentActivity
 
         switch (state) {
             case PARKING:
+                Log.d("VALET", "------>  Parking");
                 stateStack.clear();
                 stateStack.push(State.PARKING);
 
@@ -830,15 +844,12 @@ public class ParkActivity extends FragmentActivity
                 barFragment.setItems(BarItem.LOCATING);
 
                 startLocationUpdates();
-
                 break;
             case LOCATED:
                 barFragment.setItems(BarItem.PARK, BarItem.SETTINGS);
 
                 dynamicFragment = new LocatedFragment();
-
                 startLocationUpdates();
-
                 break;
             case MANUAL:
                 barFragment.setItems(BarItem.PARK);
@@ -931,11 +942,26 @@ public class ParkActivity extends FragmentActivity
     }
 
     private void startLocationUpdates() {
-        if (servicesConnected()) {
+        if (BuildConfig.DEBUG) {
+            if (vehicleMarker == null) {
+                mockLocation();
+            }
+        } else if (servicesConnected()) {
             if (!mLocationClient.isConnected()) {
                 mLocationClient.connect();
+                Log.d("VALET", "-----> Starting location updates");
             }
         }
+    }
+
+    void mockLocation() {
+        Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                onLocationChanged(createLocation(LAT, LNG, ACCURACY));
+            }
+        });
     }
 
     @Override
@@ -1037,5 +1063,18 @@ public class ParkActivity extends FragmentActivity
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return mDialog;
         }
+    }
+
+    /*
+   * From input arguments, create a single Location with provider set to
+   * "flp"
+   */
+    public Location createLocation(double lat, double lng, float accuracy) {
+        // Create a new Location
+        Location newLocation = new Location(PROVIDER);
+        newLocation.setLatitude(lat);
+        newLocation.setLongitude(lng);
+        newLocation.setAccuracy(accuracy);
+        return newLocation;
     }
 }
