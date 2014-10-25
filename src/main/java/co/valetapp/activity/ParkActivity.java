@@ -959,7 +959,13 @@ public class ParkActivity extends FragmentActivity
         handler.post(new Runnable() {
             @Override
             public void run() {
-                onLocationChanged(createLocation(LAT, LNG, ACCURACY));
+                Location location = createLocation(LAT, LNG, ACCURACY);
+                onLocationChanged(location);
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(
+                        new LatLng(location.getLatitude(), location.getLongitude()), Const.ZOOM_LEVEL);
+                if (googleMap != null) {
+                    googleMap.animateCamera(cameraUpdate);
+                }
             }
         });
     }
