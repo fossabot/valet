@@ -911,7 +911,7 @@ public class ParkActivity extends FragmentActivity
             case SETTINGS:
                 dynamicFragment = new SettingsFragment();
 
-                barFragment.setItems(BarItem.TRANSLATE, BarItem.HELP);
+                barFragment.setItems(BarItem.HELP);
 
                 break;
 

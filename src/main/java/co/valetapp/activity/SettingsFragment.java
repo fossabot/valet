@@ -188,23 +188,25 @@ public class SettingsFragment extends DynamicFragment {
             sensorCheckBox.setEnabled(false);
         }
 
-        Set<BluetoothDevice> bondedDevices = BluetoothAdapter.getDefaultAdapter().getBondedDevices();
+        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+        if (adapter != null) {
+            Set<BluetoothDevice> bondedDevices = adapter.getBondedDevices();
+            if (bondedDevices == null || bondedDevices.size() == 0) {
+                bluetoothSpinner.setVisibility(View.GONE);
+                bluetoothCheckBox.setEnabled(false);
+                bluetoothCheckBox.setTextColor(getResources().getColor(R.color.hint_text));
 
-        if (bondedDevices == null || bondedDevices.size() == 0) {
-            bluetoothSpinner.setVisibility(View.GONE);
-            bluetoothCheckBox.setEnabled(false);
-            bluetoothCheckBox.setTextColor(getResources().getColor(R.color.hint_text));
+            } else {
+                bluetoothSpinner.setVisibility(View.VISIBLE);
+                bluetoothCheckBox.setEnabled(true);
+                bluetoothCheckBox.setTextColor(getResources().getColor(R.color.default_text));
+            }
 
-        } else {
-            bluetoothSpinner.setVisibility(View.VISIBLE);
-            bluetoothCheckBox.setEnabled(true);
-            bluetoothCheckBox.setTextColor(getResources().getColor(R.color.default_text));
-        }
-
-        myBluetoothDevices.clear();
-        if (bondedDevices != null) {
-            for (BluetoothDevice bluetoothDevice : bondedDevices) {
-                myBluetoothDevices.add(new MyBluetoothDevice(bluetoothDevice.getName(), bluetoothDevice.getAddress()));
+            myBluetoothDevices.clear();
+            if (bondedDevices != null) {
+                for (BluetoothDevice bluetoothDevice : bondedDevices) {
+                    myBluetoothDevices.add(new MyBluetoothDevice(bluetoothDevice.getName(), bluetoothDevice.getAddress()));
+                }
             }
         }
 
