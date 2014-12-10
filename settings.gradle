@@ -1,5 +1,3 @@
-include ':sdk'
-project(':sdk').projectDir = new File('../colatris/sdk')
-
-include ':app'
-project(':app').projectDir = new File('../colatris/app')
+include 'sdk', 'shared'
+project(':sdk').projectDir    = new File('../colatris/sdk')
+project(':shared').projectDir = new File('../colatris/shared')

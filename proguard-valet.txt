@@ -13,32 +13,13 @@
 # and specify the fully qualified class name to the JavaScript interface
 # class:
 
--keep class * extends java.util.ListResourceBundle {
-    protected Object[][] getContents();
-}
-
--keep public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
-    public static final *** NULL;
-}
-
--keepnames @com.google.android.gms.common.annotation.KeepName class *
--keepclassmembernames class * {
-    @com.google.android.gms.common.annotation.KeepName *;
-}
-
--keepnames class * implements android.os.Parcelable {
-    public static final ** CREATOR;
-}
-
 -keep public class com.crittercism.**
 -keepclassmembers public class com.crittercism.* {
     *;
 }
-
 -keepattributes SourceFile, LineNumberTable
 
--keep public class com.colatris.sdk.**
--keepclassmembers public class com.colatris.sdk.* { *; }
--keepattributes InnerClasses
--keep class **.R
--keep class **.R$* { <fields>; }
+-keep public class com.colatris.**
+-keepclassmembers public class com.colatris.* { *; }
+-dontwarn com.colatris.**
+

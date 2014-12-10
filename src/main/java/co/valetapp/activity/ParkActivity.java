@@ -105,7 +105,9 @@ public class ParkActivity extends FragmentActivity
     LocationClient mLocationClient;
     Uri mPictureUri;
 
-    @Override protected void attachBaseContext(Context newBase) { super.attachBaseContext(Colatris.proxy(newBase)); }
+    @Override protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(Colatris.proxy(newBase, this));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
