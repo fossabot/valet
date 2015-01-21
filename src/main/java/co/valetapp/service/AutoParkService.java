@@ -5,19 +5,24 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.location.ActivityRecognitionClient;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.ActivityRecognition;
+import com.google.android.gms.location.LocationServices;
+
+import co.valetapp.util.Const;
 
 /**
  * User: jophde
  * Date: 5/16/13
  * Time: 10:24 PM
  */
-public class AutoParkService extends Service implements GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener {
+public class AutoParkService extends Service implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = "Auto";
 
@@ -36,7 +41,7 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
      */
     private PendingIntent mActivityRecognitionPendingIntent;
     // Store the current activity recognition client
-    private ActivityRecognitionClient mActivityRecognitionClient;
+    private GoogleApiClient googleApiClient;
     // Flag that indicates if a request is underway.
     private boolean mInProgress;
     private REQUEST_TYPE mRequestType;
@@ -53,8 +58,11 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
          * connection failure listener, the constructor uses "this"
          * to specify the values of those parameters.
          */
-        mActivityRecognitionClient =
-                new ActivityRecognitionClient(this, this, this);
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(ActivityRecognition.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
         /*
          * Create the PendingIntent that Location Services uses
          * to send activity recognition updates back to this app.
@@ -107,7 +115,7 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
             // Indicate that a request is in progress
             mInProgress = true;
             // Request a connection to Location Services
-            mActivityRecognitionClient.connect();
+            googleApiClient.connect();
             //
         } else {
             /*
@@ -116,7 +124,7 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
              * re-setting the flag, and then re-trying the
              * request.
              */
-            mActivityRecognitionClient.disconnect();
+            googleApiClient.disconnect();
             mInProgress = false;
             startUpdates();
         }
@@ -132,7 +140,7 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
             // Indicate that a request is in progress
             mInProgress = true;
             // Request a connection to Location Services
-            mActivityRecognitionClient.connect();
+            googleApiClient.connect();
             //
         } else {
             /*
@@ -141,7 +149,7 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
              * re-setting the flag, and then re-trying the
              * request.
              */
-            mActivityRecognitionClient.disconnect();
+            googleApiClient.disconnect();
             mInProgress = false;
             stopUpdates();
         }
@@ -162,39 +170,31 @@ public class AutoParkService extends Service implements GooglePlayServicesClient
          * detection interval and PendingIntent. This call is
          * synchronous.
          */
-                mActivityRecognitionClient.requestActivityUpdates(
-                        DETECTION_INTERVAL_MILLISECONDS,
-                        mActivityRecognitionPendingIntent);
+
+         ActivityRecognition.ActivityRecognitionApi.requestActivityUpdates(googleApiClient, DETECTION_INTERVAL_MILLISECONDS,
+                 mActivityRecognitionPendingIntent);
 
         /*
          * Since the preceding call is synchronous, turn off the
          * in progress flag and disconnect the client
          */
                 mInProgress = false;
-                mActivityRecognitionClient.disconnect();
+                googleApiClient.disconnect();
                 break;
 
             case STOP:
-                mActivityRecognitionClient.removeActivityUpdates(
-                        mActivityRecognitionPendingIntent);
+                ActivityRecognition.ActivityRecognitionApi.removeActivityUpdates(googleApiClient, mActivityRecognitionPendingIntent);
 
                 mInProgress = false;
-                mActivityRecognitionClient.disconnect();
+                googleApiClient.disconnect();
 
                 break;
         }
     }
 
-    /*
-    * Called by Location Services once the activity recognition
-    * client is disconnected.
-    */
     @Override
-    public void onDisconnected() {
-        // Turn off the request flag
-        mInProgress = false;
-        // Delete the client
-        mActivityRecognitionClient = null;
+    public void onConnectionSuspended(int i) {
+        Log.i(Const.TAG, "Connection to Google Play suspended");
     }
 
     @Override

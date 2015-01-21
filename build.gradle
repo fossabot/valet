@@ -7,12 +7,12 @@ buildscript {
     dependencies {
         classpath ':dexguard:'
         classpath 'com.android.tools.build:gradle:1.0.0'
-        classpath 'com.colatris:colatris-plugin:0.2.0'
+        classpath 'com.colatris:colatris-plugin:0.2.3'
     }
 }
 
 apply plugin: 'com.android.application'
-//apply plugin: 'dexguard'
+apply plugin: 'dexguard'
 apply plugin: 'com.colatris.plugin'
 
 repositories {
@@ -21,25 +21,24 @@ repositories {
 }
 
 dependencies {
-    compile 'com.google.android.gms:play-services:6.1.11'
-    compile 'com.android.support:support-v4:19.1.0'
+    compile 'com.google.android.gms:play-services:6.5.87'
+    compile 'com.android.support:support-v4:21.0.3'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.crittercism:crittercism-android-agent:5.0.3'
 
-//    compile 'com.colatris:colatris-sdk:0.2.0'
-    compile project('sdk')
+    compile 'com.colatris:colatris-sdk:0.2.3'
 }
 
 android {
     compileSdkVersion 21
-    buildToolsVersion '21.1.1'
+    buildToolsVersion '21.1.2'
 
     defaultConfig {
         minSdkVersion 10
         targetSdkVersion 21
-        versionName "2.2.1"
-        versionCode 46
-        manifestPlaceholders = [colatrisProjectId: 1, colatrisContentVersion: 1]
+        versionName "2.2.8"
+        versionCode 53
+        manifestPlaceholders = [colatrisProjectId: 1, colatrisContentVersion: 3]
     }
 
     signingConfigs {
@@ -53,10 +52,10 @@ android {
 
     buildTypes {
         debug {
-//            proguardFiles getDefaultDexGuardFile('dexguard-debug.pro'), 'proguard-valet.txt'
+            proguardFiles getDefaultDexGuardFile('dexguard-debug.pro'), 'proguard-valet.txt'
         }
         release {
-//            proguardFiles getDefaultDexGuardFile('dexguard-release.pro'), 'proguard-valet.txt'
+            proguardFiles getDefaultDexGuardFile('dexguard-release.pro'), 'proguard-valet.txt'
             signingConfig signingConfigs.release
         }
     }

@@ -6,19 +6,20 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 
 import co.valetapp.util.Const;
 import co.valetapp.util.Tools;
 
-public class LocationService extends Service implements GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener, LocationListener {
+public class LocationService extends Service implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private static final int MILLISECONDS_PER_SECOND = 1000;
     public static final int UPDATE_INTERVAL_IN_SECONDS = 1;
@@ -26,7 +27,7 @@ public class LocationService extends Service implements GooglePlayServicesClient
 
     boolean mReliablyParked;
     LocationRequest mLocationRequest;
-    LocationClient mLocationClient;
+    GoogleApiClient mGoogleApiClient;
     Location mLocation;
 
     Runnable mTimeout = new Runnable() {
@@ -48,7 +49,12 @@ public class LocationService extends Service implements GooglePlayServicesClient
         mLocationRequest = LocationRequest.create();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         mLocationRequest.setInterval(UPDATE_INTERVAL);
-        mLocationClient = new LocationClient(this, this, this);
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
     }
 
     @Override
@@ -56,7 +62,7 @@ public class LocationService extends Service implements GooglePlayServicesClient
         mReliablyParked = intent.getBooleanExtra(Const.RELIABLY_PARKED_KEY, false);
 
         if (servicesConnected()) {
-            mLocationClient.connect();
+            mGoogleApiClient.connect();
             mHandler.postDelayed(mTimeout, 30 * 1000);
         } else {
             stopSelf(); // Calls onDestroy()
@@ -67,12 +73,13 @@ public class LocationService extends Service implements GooglePlayServicesClient
 
     @Override
     public void onConnected(Bundle bundle) {
-        mLocationClient.requestLocationUpdates(mLocationRequest, this);
+        LocationServices.FusedLocationApi.requestLocationUpdates(
+                mGoogleApiClient, mLocationRequest, this);
     }
 
     @Override
-    public void onDisconnected() {
-        stopSelf();
+    public void onConnectionSuspended(int i) {
+        Log.i(Const.TAG, "Google play connection suspended");
     }
 
     @Override
@@ -107,12 +114,7 @@ public class LocationService extends Service implements GooglePlayServicesClient
     }
 
     private void stopLocationUpdates() {
-        if (servicesConnected()) {
-            if (mLocationClient.isConnected()) {
-                mLocationClient.removeLocationUpdates(this);
-                mLocationClient.disconnect();
-            }
-        }
+        mGoogleApiClient.disconnect();
     }
 
     @Override

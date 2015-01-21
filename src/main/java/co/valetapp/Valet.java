@@ -12,8 +12,9 @@ public class Valet extends Application {
         super.onCreate();
 
         Colatris.Config config = new Colatris.Config();
-        config.setManualMode(true);
-        config.setLogLevel(Colatris.Config.LogLevel.DEBUG);
+        config.setProdServing(Colatris.Config.ProdServing.DAILY);
+//        config.setManualMode(true);
+        config.setLogLevel(Colatris.Config.LogLevel.NONE);
         Colatris.init(this, config);
 
         Crittercism.initialize(getApplicationContext(), "5145fe5c4002050d07000002");

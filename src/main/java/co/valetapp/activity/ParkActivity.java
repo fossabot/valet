@@ -39,11 +39,11 @@ import co.valetapp.util.IntentLibrary;
 import co.valetapp.util.Tools;
 import com.colatris.sdk.Colatris;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -63,8 +63,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ParkActivity extends FragmentActivity
-        implements OnMarkerClickListener, GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener, LocationListener, FindFragment.Callback {
+        implements OnMarkerClickListener, GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener, LocationListener, FindFragment.Callback {
 
     private static final String PROVIDER = "flp";
     private static final double LAT = 37.377166;
@@ -102,7 +102,7 @@ public class ParkActivity extends FragmentActivity
     GeoCoderAsyncTask geoCoderAsyncTask;
     // Define an object that holds accuracy and frequency parameters
     LocationRequest mLocationRequest;
-    LocationClient mLocationClient;
+    GoogleApiClient googleApiClient;
     Uri mPictureUri;
 
     @Override protected void attachBaseContext(Context newBase) {
@@ -134,9 +134,13 @@ public class ParkActivity extends FragmentActivity
         am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         setSharedLocation();
 
-        mLocationRequest = LocationRequest.create();
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
 
-        mLocationClient = new LocationClient(this, this, this);
+        mLocationRequest = LocationRequest.create();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         mLocationRequest.setInterval(UPDATE_INTERVAL);
         mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
@@ -270,7 +274,7 @@ public class ParkActivity extends FragmentActivity
         if (servicesConnected()) {
             if (!BuildConfig.DEBUG) {
                 mockLocation();
-                mLocationClient.connect();
+                googleApiClient.connect();
             }
         }
 
@@ -308,7 +312,6 @@ public class ParkActivity extends FragmentActivity
     protected void onPause() {
         super.onPause();
 
-        stopLocationUpdates();
 
         if (googleMap != null) {
             googleMap.stopAnimation();
@@ -317,6 +320,13 @@ public class ParkActivity extends FragmentActivity
         if (geoCoderAsyncTask != null) {
             geoCoderAsyncTask.cancel(true);
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        googleApiClient.disconnect();
     }
 
     @Override
@@ -438,22 +448,6 @@ public class ParkActivity extends FragmentActivity
     }
 
     private void stopLocationUpdates() {
-        if (servicesConnected()) {
-            // If the client is connected
-            if (mLocationClient.isConnected()) {
-            /*
-             * Remove location updates for a listener.
-             * The current Activity is the listener, so
-             * the argument is "this".
-             */
-                mLocationClient.removeLocationUpdates(this);
-            }
-        /*
-         * After disconnect() is called, the client is
-         * considered "dead".
-         */
-            mLocationClient.disconnect();
-        }
     }
 
     public boolean servicesConnected() {
@@ -569,7 +563,7 @@ public class ParkActivity extends FragmentActivity
     public void onConnected(Bundle bundle) {
         Log.d("VALET", "-----> Location services connected");
 
-        Location location = mLocationClient.getLastLocation();
+        Location location = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
 
         if (location != null) {
             if (!Tools.isParked(this)) {
@@ -582,12 +576,13 @@ public class ParkActivity extends FragmentActivity
             }
         }
 
-        mLocationClient.requestLocationUpdates(mLocationRequest, this);
+        LocationServices.FusedLocationApi.requestLocationUpdates(
+                googleApiClient, mLocationRequest, this);
     }
 
     @Override
-    public void onDisconnected() {
-
+    public void onConnectionSuspended(int i) {
+        Log.i(Const.TAG, "Google Play connection suspended");
     }
 
     @Override
@@ -949,8 +944,8 @@ public class ParkActivity extends FragmentActivity
                 mockLocation();
             }
         } else if (servicesConnected()) {
-            if (!mLocationClient.isConnected()) {
-                mLocationClient.connect();
+            if (!googleApiClient.isConnected()) {
+                googleApiClient.connect();
                 Log.d("VALET", "-----> Starting location updates");
             }
         }
