@@ -57,7 +57,7 @@ public class ParkedFragment extends DynamicFragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.parked_fragment, null);
+        return getActivity().getLayoutInflater().inflate(R.layout.parked_fragment, null);
     }
 
     @Override

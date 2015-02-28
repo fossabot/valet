@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Valet</string>
     <string name="app_name_free">Valet Free</string>
@@ -17,13 +16,12 @@
     <string name="clock">24 Hour Clock</string>
     <string name="metric_units">Metric Units</string>
     <string name="standard_units">Standard Units</string>
-    <string name="translation" translatable="false">Babel Translation (Press and hold text)</string>
     <string name="accuracy_f">accuracy: %1$d %2$s</string>
     <string name="bar_item_translate">Translate</string>
     <string name="hour_abbreviation">h</string>
     <string name="mintute_abbreviation">m</string>
     <string name="second_abbreviation">s</string>
-    <string name="auto_info">Turn the Parking Sensor on to automate the park feature. This uses slightly more battery and is not 100\% accurate.\n\nAlternatively you may link to a paired Bluetooth device to utilize connectivity to auto park and save battery life.\n\nYou can also use a car dock.  Desk docks will not work.</string>
+    <string name="auto_info">Turn the Parking Sensor on to automate the park feature. This uses slightly more battery and is not 100 percent accurate.\n\nAlternatively you may link to a paired Bluetooth device to utilize connectivity to auto park and save battery life.\n\nYou can also use a car dock.  Desk docks will not work.</string>
     <string name="select_bluetooth">Bluetooth</string>
     <string name="parking_sensor">Parking Sensor</string>
     <string name="notification_title">Valet Auto Park</string>
@@ -48,7 +46,7 @@
     <string name="alarm_bar_item">Alarm</string>
     <string name="unpark_bar_item">Unpark My Car</string>
     <string name="unschedule_bar_item">Reset</string>
-    <string name="locating_bar_item">Locating&#8230;</string>
+    <string name="locating_bar_item">Locating…</string>
     <string name="bar_item_help">Help</string>
     <string name="settings_bar_item_cd">Settings</string>
     <string name="hint_address">Address</string>

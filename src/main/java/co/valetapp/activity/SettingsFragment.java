@@ -30,7 +30,7 @@ public class SettingsFragment extends DynamicFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.settings_fragment, null);
+        return getActivity().getLayoutInflater().inflate(R.layout.settings_fragment, null);
     }
 
     @Override

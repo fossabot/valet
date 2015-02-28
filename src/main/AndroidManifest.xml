@@ -85,8 +85,8 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
 
-        <meta-data android:name="colatrisProjectId" android:value="${colatrisProjectId}" />
-        <meta-data android:name="colatrisContentVersion" android:value="${colatrisContentVersion}" />
+        <meta-data android:name="colatrisConfig" android:value="${colatrisConfig}" />
+
     </application>
 
 </manifest>

@@ -31,7 +31,7 @@ public class FindFragment extends DynamicFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.find_fragment, null);
+        return getActivity().getLayoutInflater().inflate(R.layout.find_fragment, null);
     }
 
     @Override

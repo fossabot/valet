@@ -1,25 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="font" format="string" />
+    <attr format="string" name="font"/>
 
     <declare-styleable name="com.roqbot.client.view.FontableTextView">
-        <attr name="font" />
+        <attr name="font"/>
     </declare-styleable>
     <declare-styleable name="com.roqbot.client.view.FontableButton">
-        <attr name="font" />
+        <attr name="font"/>
     </declare-styleable>
     <declare-styleable name="com.roqbot.client.view.FontableCheckedTextView">
-        <attr name="font" />
+        <attr name="font"/>
     </declare-styleable>
     <declare-styleable name="com.roqbot.client.view.FontableCheckBox">
-        <attr name="font" />
+        <attr name="font"/>
     </declare-styleable>
     <declare-styleable name="com.roqbot.client.view.FontableEditText">
-        <attr name="font" />
+        <attr name="font"/>
     </declare-styleable>
     <declare-styleable name="com.roqbot.client.view.FontableRadioButton">
-        <attr name="font" />
+        <attr name="font"/>
     </declare-styleable>
 
 </resources>

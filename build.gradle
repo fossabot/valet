@@ -1,13 +1,14 @@
 buildscript {
     repositories {
-        flatDir { dirs '/Users/jophde/DexGuard6.1.02/lib' }
+        flatDir { dirs '/Users/jophde/DexGuard6.1.07/lib' }
         mavenCentral()
+        maven { url "http://repos.colatris.com/snapshots" }
         maven { url "http://repos.colatris.com/releases" }
     }
     dependencies {
         classpath ':dexguard:'
         classpath 'com.android.tools.build:gradle:1.0.0'
-        classpath 'com.colatris:colatris-plugin:0.2.3'
+        classpath 'com.colatris:colatris-plugin:0.8.1'
     }
 }
 
@@ -15,9 +16,20 @@ apply plugin: 'com.android.application'
 apply plugin: 'dexguard'
 apply plugin: 'com.colatris.plugin'
 
+colatris {
+    projectId = 1
+    contentVersion = 8
+    apiKey = "x8lEHezEbY8UFEhmJCXtwVWazU97dPHXrT5MHuM3veg"
+    description = "Valet Colatris Update"
+    editorMode = true
+    prodServing = "daily"
+}
+
+
 repositories {
     mavenCentral()
     maven { url "http://repos.colatris.com/releases" }
+    maven { url "http://repos.colatris.com/snapshots" }
 }
 
 dependencies {
@@ -26,7 +38,7 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.crittercism:crittercism-android-agent:5.0.3'
 
-    compile 'com.colatris:colatris-sdk:0.2.3'
+    compile 'com.colatris:colatris-sdk:0.8.1'
 }
 
 android {
@@ -36,9 +48,8 @@ android {
     defaultConfig {
         minSdkVersion 10
         targetSdkVersion 21
-        versionName "2.2.8"
-        versionCode 53
-        manifestPlaceholders = [colatrisProjectId: 1, colatrisContentVersion: 3]
+        versionName "2.3.3"
+        versionCode 61
     }
 
     signingConfigs {

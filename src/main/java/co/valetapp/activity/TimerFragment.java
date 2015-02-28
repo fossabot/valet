@@ -23,7 +23,7 @@ public class TimerFragment extends DynamicFragment implements OnSeekBarChangeLis
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.timer_fragment, null);
+        return getActivity().getLayoutInflater().inflate(R.layout.timer_fragment, null);
     }
 
     @Override

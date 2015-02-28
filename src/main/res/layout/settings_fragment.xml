@@ -26,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
+                android:saveEnabled="false"
                 android:layout_marginEnd="8dp"
                 android:singleLine="true"
                 android:textSize="14sp" />
@@ -61,6 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_marginRight="8dp"
                 android:layout_marginEnd="8dp"
+                android:saveEnabled="false"
                 android:textSize="14sp"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
@@ -70,6 +72,7 @@
                 android:id="@+id/sensorCheckBox"
                 android:layout_width="wrap_content"
                 android:textSize="14sp"
+                android:saveEnabled="false"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
                 android:text="@string/parking_sensor" />
@@ -98,6 +101,7 @@
             <CheckBox
                 android:id="@+id/alarmCheckBox"
                 android:text="@string/alarm_bar_item"
+                android:saveEnabled="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/default_text"
@@ -110,6 +114,7 @@
                 android:id="@+id/clockCheckBox"
                 android:layout_width="wrap_content"
                 android:textSize="14sp"
+                android:saveEnabled="false"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
                 android:text="@string/clock"/>
@@ -134,6 +139,7 @@
                 android:id="@+id/notificationsCheckBox"
                 android:layout_width="wrap_content"
                 android:textSize="14sp"
+                android:saveEnabled="false"
                 android:textColor="@color/default_text"
                 android:layout_height="wrap_content"
                 android:text="@string/notifications"/>
@@ -164,6 +170,7 @@
                 android:id="@+id/standardRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:saveEnabled="false"
                 android:text="@string/standard_units"
                 android:textColor="@color/default_text"
                 android:textSize="14sp" />
@@ -172,6 +179,7 @@
                 android:id="@+id/metricRadioButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:saveEnabled="false"
                 android:text="@string/metric_units"
                 android:textColor="@color/default_text"
                 android:textSize="14sp" />

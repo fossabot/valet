@@ -50,7 +50,7 @@ public class BarFragment extends Fragment implements View.OnLongClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.bar_fragment, null);
+        return getActivity().getLayoutInflater().inflate(R.layout.bar_fragment, null);
     }
 
     @Override

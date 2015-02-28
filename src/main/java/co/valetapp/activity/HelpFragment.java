@@ -12,6 +12,6 @@ public class HelpFragment extends DynamicFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.help_fragment, null);
+        return getActivity().getLayoutInflater().inflate(R.layout.help_fragment, null);
     }
 }

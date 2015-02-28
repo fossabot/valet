@@ -272,7 +272,7 @@ public class ParkActivity extends FragmentActivity
         }
 
         if (servicesConnected()) {
-            if (!BuildConfig.DEBUG) {
+            if (BuildConfig.DEBUG) {
                 mockLocation();
                 googleApiClient.connect();
             }
@@ -509,7 +509,7 @@ public class ParkActivity extends FragmentActivity
             bestAccuracy = location.getAccuracy();
 
 
-            if (isParkingFragment() || BuildConfig.DEBUG) {
+            if (isParkingFragment()) {
                 setState(State.LOCATED);
             }
 
