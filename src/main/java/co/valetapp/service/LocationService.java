@@ -59,11 +59,7 @@ public class LocationService extends Service implements GoogleApiClient.Connecti
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent != null) {
-            mReliablyParked = intent.getBooleanExtra(Const.RELIABLY_PARKED_KEY, false);
-        } else {
-            mReliablyParked = false;
-        }
+        mReliablyParked = intent != null && intent.getBooleanExtra(Const.RELIABLY_PARKED_KEY, false);
 
 
         if (servicesConnected()) {
