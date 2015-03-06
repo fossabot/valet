@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">Ayudante de cámara</string>
     <string name="app_name_caps">VALET</string>
     <string name="app_name_free">Servicio gratuito</string>
@@ -17,7 +16,7 @@
     <string name="select_ringtone">Seleccionar tono</string>
     <string name="metric_units">Unidades métricas</string>
     <string name="standard_units">Unidades estándar</string>
-    <string name="accuracy_f">precisión:% 1 $ d% 2 $ s</string>
+    <string name="accuracy_f">precisión:%1$d %2$s</string>
     <string name="bar_item_translate">Traducir</string>
     <string name="parked">Estacionado!</string>
     <string name="no_address">No se encontró la dirección</string>
