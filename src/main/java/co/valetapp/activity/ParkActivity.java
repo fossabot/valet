@@ -111,6 +111,7 @@ public class ParkActivity extends FragmentActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
         if (!prefs.contains(Const.SHOW_RATING_KEY)) {
             prefs.edit().putBoolean(Const.SHOW_RATING_KEY, true);
@@ -211,6 +212,8 @@ public class ParkActivity extends FragmentActivity
                 setInitialState();
             }
         }
+
+        throw new RuntimeException("FOO");
     }
 
     ViewTreeObserver.OnGlobalLayoutListener listener = new ViewTreeObserver.OnGlobalLayoutListener() {

@@ -87,6 +87,9 @@
 
         <meta-data android:name="colatrisConfig" android:value="${colatrisConfig}" />
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ed7856e50d8cb24aded6d75b07a742f8386b3d5d" />
     </application>
 
 </manifest>

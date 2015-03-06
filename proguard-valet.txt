@@ -13,13 +13,8 @@
 # and specify the fully qualified class name to the JavaScript interface
 # class:
 
--keep public class com.crittercism.**
--keepclassmembers public class com.crittercism.* {
-    *;
-}
 -keepattributes SourceFile, LineNumberTable
 
 -keep public class com.colatris.**
 -keepclassmembers public class com.colatris.* { *; }
--dontwarn com.colatris.**
 
