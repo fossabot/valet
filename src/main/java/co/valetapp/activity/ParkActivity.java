@@ -97,7 +97,7 @@ public class ParkActivity extends FragmentActivity
     float bestAccuracy;
     GoogleMap googleMap;
     Marker vehicleMarker;
-    Stack<State> stateStack = new Stack<State>();
+    Stack<State> stateStack = new Stack<>();
     AlarmManager am;
     GeoCoderAsyncTask geoCoderAsyncTask;
     // Define an object that holds accuracy and frequency parameters
@@ -194,7 +194,13 @@ public class ParkActivity extends FragmentActivity
             if (savedInstanceState != null) {
                 if (savedInstanceState.containsKey(STATE_STACK)) {
                     stateStack.addAll((Collection<State>) savedInstanceState.getSerializable(STATE_STACK));
-                    setState(stateStack.peek(), false);
+
+                    if (stateStack.isEmpty()) {
+                        setInitialState();
+                    } else {
+                        setState(stateStack.peek(), false);
+                    }
+
                 }
 
 
@@ -212,8 +218,6 @@ public class ParkActivity extends FragmentActivity
                 setInitialState();
             }
         }
-
-        throw new RuntimeException("FOO");
     }
 
     ViewTreeObserver.OnGlobalLayoutListener listener = new ViewTreeObserver.OnGlobalLayoutListener() {
