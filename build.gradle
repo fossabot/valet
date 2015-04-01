@@ -50,14 +50,14 @@ dependencies {
 
 android {
     compileSdkVersion 22
-    buildToolsVersion '22'
+    buildToolsVersion '22.0.1'
 
     defaultConfig {
         applicationId 'co.valetapp'
         minSdkVersion 10
         targetSdkVersion 22
-        versionName "2.4.1"
-        versionCode 241
+        versionName "2.4.3"
+        versionCode 243
     }
 
     signingConfigs {
