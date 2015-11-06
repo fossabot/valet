@@ -2,7 +2,6 @@ package co.valetapp;
 
 import android.app.Application;
 
-import com.colatris.sdk.Colatris;
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 
@@ -14,7 +13,5 @@ public class Valet extends Application {
         if (!BuildConfig.DEBUG) {
             Fabric.with(this, new Crashlytics());
         }
-
-        Colatris.setDebug(BuildConfig.DEBUG);
     }
 }

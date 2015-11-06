@@ -29,7 +29,6 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
-import co.valetapp.BuildConfig;
 import co.valetapp.R;
 import co.valetapp.activity.BarFragment.BarItem;
 import co.valetapp.activity.ParkedFragment.GeoCoderAsyncTask;
@@ -37,7 +36,6 @@ import co.valetapp.service.AutoParkService;
 import co.valetapp.util.Const;
 import co.valetapp.util.IntentLibrary;
 import co.valetapp.util.Tools;
-import com.colatris.sdk.Colatris;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -53,6 +51,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.optimizely.Optimizely;
+import com.optimizely.Variable.LiveVariable;
 
 import java.io.File;
 import java.util.Collection;
@@ -105,16 +105,15 @@ public class ParkActivity extends FragmentActivity
     GoogleApiClient googleApiClient;
     Uri mPictureUri;
 
-    @Override protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(Colatris.proxy(newBase, this));
-    }
+    private static LiveVariable<Integer> timesViewedThreshold = Optimizely.integerVariable("timesViewedThreshold", 3);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
         if (!prefs.contains(Const.SHOW_RATING_KEY)) {
-            prefs.edit().putBoolean(Const.SHOW_RATING_KEY, true);
+            prefs.edit().putBoolean(Const.SHOW_RATING_KEY, true).commit();
+            prefs.edit().putInt(Const.TIMES_VIEWED, 0).commit();
         }
 
         if (!prefs.contains(Const.IS_STANDARD_UNITS) && !prefs.contains(Const.IS_METRIC_UNITS) && !prefs.contains(Const.IS_24_HOUR_CLOCK)) {
@@ -148,6 +147,9 @@ public class ParkActivity extends FragmentActivity
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.park_activity);
+
+//        Apptimize.setup(this, "BipzETgeYNNjWf3Fech2cHsAjZERva4");
+
 
         googleMap = getMapFragment().getMap();
         if (googleMap != null) {
@@ -218,6 +220,8 @@ public class ParkActivity extends FragmentActivity
                 setInitialState();
             }
         }
+
+        Optimizely.startOptimizelyWithAPIToken("AAM7hIkArvTfWHJu4V6jnLhSvkmaqoX5~2984270397", getApplication());
     }
 
     ViewTreeObserver.OnGlobalLayoutListener listener = new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -275,13 +279,6 @@ public class ParkActivity extends FragmentActivity
             } else {
                 mPictureUri = null;
                 prefs.edit().remove(Const.IMAGE_KEY);
-            }
-        }
-
-        if (servicesConnected()) {
-            if (BuildConfig.DEBUG) {
-                mockLocation();
-                googleApiClient.connect();
             }
         }
 
@@ -364,9 +361,6 @@ public class ParkActivity extends FragmentActivity
                         if (data != null) {
                             Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
                             if (uri != null) {
-                                if (BuildConfig.DEBUG) {
-                                    Log.d("Ringtone", uri.toString());
-                                }
                                 prefs.edit().putString(Const.RINGTONE_URI_KEY, uri.toString()).commit();
                                 break;
                             }
@@ -725,7 +719,14 @@ public class ParkActivity extends FragmentActivity
         mPictureUri = null;
 
         if (prefs.getBoolean(Const.SHOW_RATING_KEY, true)) {
-            setState(State.RATING);
+            int timesViewed = prefs.getInt(Const.TIMES_VIEWED, 0);
+            int threshold = timesViewedThreshold.get() + 1;
+            if (timesViewed >= threshold) {
+                setState(State.RATING);
+            } else {
+                prefs.edit().putInt(Const.TIMES_VIEWED, (timesViewed + 1)).commit();
+                setState(State.PARKING);
+            }
         } else {
             setState(State.PARKING);
         }
@@ -946,11 +947,7 @@ public class ParkActivity extends FragmentActivity
     }
 
     private void startLocationUpdates() {
-        if (BuildConfig.DEBUG) {
-            if (vehicleMarker == null) {
-                mockLocation();
-            }
-        } else if (servicesConnected()) {
+        if (servicesConnected()) {
             if (!googleApiClient.isConnected()) {
                 googleApiClient.connect();
                 Log.d("VALET", "-----> Starting location updates");
@@ -1004,10 +1001,6 @@ public class ParkActivity extends FragmentActivity
     }
 
     private void showVehicle() {
-        if (BuildConfig.DEBUG && !Tools.isParked(this)) {
-            throw new AssertionError("Showing vehicle while not parked");
-        }
-
         Double latitude = Double.parseDouble(prefs.getString(Const.LAT_KEY, "0"));
         Double longitude = Double.parseDouble(prefs.getString(Const.LONG_KEY, "0"));
 

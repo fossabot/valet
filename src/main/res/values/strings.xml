@@ -33,7 +33,7 @@
     <string name="info">Information</string>
     <string name="delete">Delete</string>
     <string name="view">View</string>
-    <string name="park_bar_item">Park My Truck</string>
+    <string name="park_bar_item">Park My Car</string>
     <string name="reset_bar_item_cd">Unpark my car.</string>
     <string name="find_bar_item_cd">Find my car.</string>
     <string name="alarm_bar_item_cd">Set an alarm.</string>
