@@ -1,5 +1,6 @@
 package co.valetapp.activity;
 
+import android.Manifest;
 import android.app.AlarmManager;
 import android.app.Dialog;
 import android.content.Context;
@@ -19,10 +20,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -105,15 +108,43 @@ public class ParkActivity extends FragmentActivity
     GoogleApiClient googleApiClient;
     Uri mPictureUri;
 
-    private static LiveVariable<Integer> timesViewedThreshold = Optimizely.integerVariable("timesViewedThreshold", 3);
+    private static LiveVariable<Integer> timesViewedThreshold = Optimizely.integerForKey("timesViewedThreshold", 3);
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch(requestCode) {
+            case 1:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    requestLocation();
+
+                    Toast.makeText(this, R.string.warn_locating, Toast.LENGTH_LONG).show();
+
+                } else {
+                    Toast.makeText(this, R.string.permission_fail, Toast.LENGTH_LONG).show();
+                }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(LocationServices.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
+
+        mLocationRequest = LocationRequest.create();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(UPDATE_INTERVAL);
+        mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
 
         prefs = getSharedPreferences(Const.SHARED_PREFS_NAME, MODE_PRIVATE);
         if (!prefs.contains(Const.SHOW_RATING_KEY)) {
-            prefs.edit().putBoolean(Const.SHOW_RATING_KEY, true).commit();
-            prefs.edit().putInt(Const.TIMES_VIEWED, 0).commit();
+            prefs.edit().putBoolean(Const.SHOW_RATING_KEY, true).apply();
+            prefs.edit().putInt(Const.TIMES_VIEWED, 0).apply();
         }
 
         if (!prefs.contains(Const.IS_STANDARD_UNITS) && !prefs.contains(Const.IS_METRIC_UNITS) && !prefs.contains(Const.IS_24_HOUR_CLOCK)) {
@@ -128,28 +159,16 @@ public class ParkActivity extends FragmentActivity
                 editor.putBoolean(Const.IS_METRIC_UNITS, true);
                 editor.putBoolean(Const.IS_24_HOUR_CLOCK, true);
             }
-            editor.commit();
+            editor.apply();
         }
 
         am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         setSharedLocation();
 
-        googleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(LocationServices.API)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .build();
 
-        mLocationRequest = LocationRequest.create();
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequest.setInterval(UPDATE_INTERVAL);
-        mLocationRequest.setFastestInterval(FASTEST_INTERVAL);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.park_activity);
-
-//        Apptimize.setup(this, "BipzETgeYNNjWf3Fech2cHsAjZERva4");
-
 
         googleMap = getMapFragment().getMap();
         if (googleMap != null) {
@@ -222,6 +241,11 @@ public class ParkActivity extends FragmentActivity
         }
 
         Optimizely.startOptimizelyWithAPIToken("AAM7hIkArvTfWHJu4V6jnLhSvkmaqoX5~2984270397", getApplication());
+    }
+
+    private void requestLocation() {
+        LocationServices.FusedLocationApi.requestLocationUpdates(
+                googleApiClient, mLocationRequest, this);
     }
 
     ViewTreeObserver.OnGlobalLayoutListener listener = new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -409,7 +433,7 @@ public class ParkActivity extends FragmentActivity
             } else {
                 Editor edit = prefs.edit();
                 edit.remove(Const.TIME_KEY);
-                edit.commit();
+                edit.apply();
 
                 am.cancel(Tools.getAlarmIntent(this));
             }
@@ -577,8 +601,17 @@ public class ParkActivity extends FragmentActivity
             }
         }
 
-        LocationServices.FusedLocationApi.requestLocationUpdates(
-                googleApiClient, mLocationRequest, this);
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    1);
+        } else {
+            requestLocation();
+        }
     }
 
     @Override
@@ -932,7 +965,7 @@ public class ParkActivity extends FragmentActivity
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.replace(R.id.bar_fl, barFragment);
         ft.replace(R.id.dynamic_fl, dynamicFragment);
         ft.commit();
@@ -1080,4 +1113,6 @@ public class ParkActivity extends FragmentActivity
         newLocation.setAccuracy(accuracy);
         return newLocation;
     }
+
+
 }

@@ -89,4 +89,6 @@
     <string name="camera_button_cd">Take a picture</string>
     <string name="separator">:</string>
     <string name="hours">hours</string>
+    <string name="permission_fail">Valet requires location permission to figure out where you car is parked.</string>
+    <string name="warn_locating">Acquiring location the first time after granting permission might take a few seconds.</string>
 </resources>
