@@ -56,6 +56,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.optimizely.Optimizely;
 import com.optimizely.Variable.LiveVariable;
+import com.optimizely.integration.DefaultOptimizelyEventListener;
 
 import java.io.File;
 import java.util.Collection;
@@ -240,7 +241,8 @@ public class ParkActivity extends FragmentActivity
             }
         }
 
-        Optimizely.startOptimizelyWithAPIToken("AAM7hIkArvTfWHJu4V6jnLhSvkmaqoX5~2984270397", getApplication());
+        Optimizely.disableKillSwitch();
+        Optimizely.startOptimizelyAsync("AAM7hIkArvTfWHJu4V6jnLhSvkmaqoX5~2984270397", getApplication(), new DefaultOptimizelyEventListener());
     }
 
     private void requestLocation() {
