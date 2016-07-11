@@ -42,8 +42,8 @@ android {
         applicationId 'co.valetapp'
         minSdkVersion 10
         targetSdkVersion 23
-        versionCode 90000258
-        versionName "2.5.8"
+        versionCode 90000259
+        versionName "2.5.9"
     }
 
     lintOptions {
