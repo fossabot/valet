@@ -32,6 +32,7 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+
 import co.valetapp.R;
 import co.valetapp.activity.BarFragment.BarItem;
 import co.valetapp.activity.ParkedFragment.GeoCoderAsyncTask;
@@ -39,6 +40,7 @@ import co.valetapp.service.AutoParkService;
 import co.valetapp.util.Const;
 import co.valetapp.util.IntentLibrary;
 import co.valetapp.util.Tools;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -109,11 +111,11 @@ public class ParkActivity extends FragmentActivity
     GoogleApiClient googleApiClient;
     Uri mPictureUri;
 
-    private static LiveVariable<Integer> timesViewedThreshold = Optimizely.integerForKey("timesViewedThreshold", 3);
+    public static LiveVariable<Integer> timesViewedThreshold = Optimizely.integerForKey("timesViewedThreshold", 3);
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch(requestCode) {
+        switch (requestCode) {
             case 1:
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
@@ -136,6 +138,7 @@ public class ParkActivity extends FragmentActivity
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
+
 
         mLocationRequest = LocationRequest.create();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -165,7 +168,6 @@ public class ParkActivity extends FragmentActivity
 
         am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         setSharedLocation();
-
 
 
         super.onCreate(savedInstanceState);
@@ -241,13 +243,18 @@ public class ParkActivity extends FragmentActivity
             }
         }
 
-        Optimizely.disableKillSwitch();
-        Optimizely.startOptimizelyAsync("AAM7hIkArvTfWHJu4V6jnLhSvkmaqoX5~2984270397", getApplication(), new DefaultOptimizelyEventListener());
+//        Optimizely.disableKillSwitch();
+        Optimizely.setVerboseLogging(true);
+        Optimizely.setDumpNetworkCalls(true);
+        Optimizely.startOptimizelyWithAPIToken("AAM7hIkArvTfWHJu4V6jnLhSvkmaqoX5~2984270397", getApplication(), new DefaultOptimizelyEventListener());
     }
 
     private void requestLocation() {
-        LocationServices.FusedLocationApi.requestLocationUpdates(
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            LocationServices.FusedLocationApi.requestLocationUpdates(
                 googleApiClient, mLocationRequest, this);
+        }
+
     }
 
     ViewTreeObserver.OnGlobalLayoutListener listener = new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -304,7 +311,7 @@ public class ParkActivity extends FragmentActivity
                 mPictureUri = Uri.parse(prefs.getString(Const.IMAGE_KEY, ""));
             } else {
                 mPictureUri = null;
-                prefs.edit().remove(Const.IMAGE_KEY);
+                prefs.edit().remove(Const.IMAGE_KEY).apply();
             }
         }
 
@@ -376,18 +383,18 @@ public class ParkActivity extends FragmentActivity
                 switch (resultCode) {
                     case RESULT_OK:
                         if (mPictureUri != null) {
-                            prefs.edit().putString(Const.IMAGE_KEY, mPictureUri.toString()).commit();
+                            prefs.edit().putString(Const.IMAGE_KEY, mPictureUri.toString()).apply();
                         }
                         break;
                 }
                 break;
             case RINGTONE_PICKER_RESULT:
-                switch(resultCode) {
+                switch (resultCode) {
                     case RESULT_OK:
                         if (data != null) {
                             Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
                             if (uri != null) {
-                                prefs.edit().putString(Const.RINGTONE_URI_KEY, uri.toString()).commit();
+                                prefs.edit().putString(Const.RINGTONE_URI_KEY, uri.toString()).apply();
                                 break;
                             }
                         }
@@ -463,7 +470,8 @@ public class ParkActivity extends FragmentActivity
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
-            @Override public void run() {
+            @Override
+            public void run() {
                 win.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
             }
         }, 30 * 1000); // Let screen turn off after 30 seconds.
@@ -692,7 +700,7 @@ public class ParkActivity extends FragmentActivity
     public void onUnscheduleItem(View v) {
         Editor edit = prefs.edit();
         edit.remove(Const.TIME_KEY);
-        edit.commit();
+        edit.apply();
 
 
         am.cancel(Tools.getAlarmIntent(this));
@@ -734,7 +742,7 @@ public class ParkActivity extends FragmentActivity
         Editor editor = getSharedPreferences(Const.SHARED_PREFS_NAME, Context.MODE_PRIVATE).edit();
         editor.putLong(Const.TIME_KEY, time);
         editor.putBoolean(Const.RELIABLY_PARKED_KEY, true);
-        editor.commit();
+        editor.apply();
 
         am.set(AlarmManager.RTC_WAKEUP, time, Tools.getAlarmIntent(this));
 
@@ -759,7 +767,7 @@ public class ParkActivity extends FragmentActivity
             if (timesViewed >= threshold) {
                 setState(State.RATING);
             } else {
-                prefs.edit().putInt(Const.TIMES_VIEWED, (timesViewed + 1)).commit();
+                prefs.edit().putInt(Const.TIMES_VIEWED, (timesViewed + 1)).apply();
                 setState(State.PARKING);
             }
         } else {
@@ -771,11 +779,12 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onYesItem(View v) {
+        Optimizely.trackEvent("rate");
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("market://details?id=co.valetapp"));
         startActivity(intent);
 
-        prefs.edit().putBoolean(Const.SHOW_RATING_KEY, false).commit();
+        prefs.edit().putBoolean(Const.SHOW_RATING_KEY, false).apply();
 
         setState(State.PARKING);
     }
@@ -785,7 +794,7 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onNeverItem(View v) {
-        prefs.edit().putBoolean(Const.SHOW_RATING_KEY, false).commit();
+        prefs.edit().putBoolean(Const.SHOW_RATING_KEY, false).apply();
 
         setState(State.PARKING);
     }
@@ -837,7 +846,7 @@ public class ParkActivity extends FragmentActivity
     public void onDeletePictureButton(View v) {
         Tools.deleteExternalStoragePublicPicture();
         mPictureUri = null;
-        prefs.edit().remove(Const.IMAGE_KEY).commit();
+        prefs.edit().remove(Const.IMAGE_KEY).apply();
 
         if (stateStack.peek() == State.PARKED) {
             ParkedFragment parkedFragment = (ParkedFragment) getDynamicFragment();
@@ -876,7 +885,9 @@ public class ParkActivity extends FragmentActivity
                 stateStack.push(State.PARKING);
 
                 vehicleMarker = null;
-                googleMap.setMyLocationEnabled(false);
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    googleMap.setMyLocationEnabled(false);
+                }
                 googleMap.clear();
 
                 dynamicFragment = new ParkingFragment();
@@ -1056,7 +1067,9 @@ public class ParkActivity extends FragmentActivity
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(vehicleMarker.getPosition(), Const.ZOOM_LEVEL);
         googleMap.animateCamera(cameraUpdate);
 
-        googleMap.setMyLocationEnabled(true);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            googleMap.setMyLocationEnabled(true);
+        }
     }
 
     private SupportMapFragment getMapFragment() {
