@@ -29,7 +29,7 @@ dependencies {
         transitive = true;
     }
 
-    compile('com.optimizely:optimizely-rc:1.6.0-rc5@aar') {
+    compile('com.optimizely:optimizely-beta:1.6.0-beta1@aar') {
         transitive = true
     }
 }
@@ -42,8 +42,8 @@ android {
         applicationId 'co.valetapp'
         minSdkVersion 10
         targetSdkVersion 23
-        versionCode 90000259
-        versionName "2.5.9"
+        versionCode 90000260
+        versionName "2.5.10"
     }
 
     lintOptions {
