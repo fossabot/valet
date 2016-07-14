@@ -245,7 +245,7 @@ public class ParkActivity extends FragmentActivity
 
 //        Optimizely.disableKillSwitch();
         Optimizely.setVerboseLogging(true);
-        Optimizely.setDumpNetworkCalls(true);
+//        Optimizely.setDumpNetworkCalls(true);
         Optimizely.startOptimizelyWithAPIToken("AAM7hIkArvTfWHJu4V6jnLhSvkmaqoX5~2984270397", getApplication(), new DefaultOptimizelyEventListener());
     }
 
