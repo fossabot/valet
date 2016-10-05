@@ -4,7 +4,7 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.android.tools.build:gradle:2.1.3'
         classpath 'io.fabric.tools:gradle:1.21.2'
     }
 }
@@ -21,27 +21,23 @@ repositories {
 dependencies {
     compile 'com.google.android.gms:play-services-location:8.4.0'
     compile 'com.google.android.gms:play-services-maps:8.4.0'
-    compile 'com.android.support:support-v4:23.3.0'
+    compile 'com.android.support:support-v4:24.2.1'
     compile 'com.nineoldandroids:library:2.4.0'
 
 
     compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
         transitive = true;
     }
-
-    compile('com.optimizely:optimizely:1.6.0@aar') {
-        transitive = true
-    }
 }
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion '23.0.3'
 
     defaultConfig {
         applicationId 'co.valetapp'
         minSdkVersion 10
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 90000262
         versionName "2.5.12"
     }

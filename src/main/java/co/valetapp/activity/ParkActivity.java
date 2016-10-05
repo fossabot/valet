@@ -51,14 +51,12 @@ import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.optimizely.Optimizely;
-import com.optimizely.Variable.LiveVariable;
-import com.optimizely.integration.DefaultOptimizelyEventListener;
 
 import java.io.File;
 import java.util.Collection;
@@ -111,7 +109,6 @@ public class ParkActivity extends FragmentActivity
     GoogleApiClient googleApiClient;
     Uri mPictureUri;
 
-    public static LiveVariable<Integer> timesViewedThreshold = Optimizely.integerForKey("timesViewedThreshold", 3);
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -242,11 +239,6 @@ public class ParkActivity extends FragmentActivity
                 setInitialState();
             }
         }
-
-//        Optimizely.disableKillSwitch();
-        Optimizely.setVerboseLogging(true);
-//        Optimizely.setDumpNetworkCalls(true);
-        Optimizely.startOptimizelyWithAPIToken("AAM7hIkArvTfWHJu4V6jnLhSvkmaqoX5~2984270397", getApplication(), new DefaultOptimizelyEventListener());
     }
 
     private void requestLocation() {
@@ -763,8 +755,7 @@ public class ParkActivity extends FragmentActivity
 
         if (prefs.getBoolean(Const.SHOW_RATING_KEY, true)) {
             int timesViewed = prefs.getInt(Const.TIMES_VIEWED, 0);
-            int threshold = timesViewedThreshold.get() + 1;
-            if (timesViewed >= threshold) {
+            if (timesViewed >= 5) {
                 setState(State.RATING);
             } else {
                 prefs.edit().putInt(Const.TIMES_VIEWED, (timesViewed + 1)).apply();
@@ -779,7 +770,6 @@ public class ParkActivity extends FragmentActivity
     }
 
     public void onYesItem(View v) {
-        Optimizely.trackEvent("rate");
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("market://details?id=co.valetapp"));
         startActivity(intent);
